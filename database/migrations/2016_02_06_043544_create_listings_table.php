@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Listings extends Migration
+class CreateListingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,7 +26,7 @@ class Listings extends Migration
             //Foreign Key
             //References the user table, id of the user who put up the listing
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
