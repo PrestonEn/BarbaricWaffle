@@ -1,0 +1,6 @@
+/**
+* This class...
+*/
+class articleThing{
+	// Classs variables, behaviours etc.	
+};

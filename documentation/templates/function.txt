@@ -1,0 +1,11 @@
+/**
+* This function takes in a variable which is then returned as "Hello, $who". It also echo's it globally.
+* @who Variable to be passed in which is of form string.
+* @return Returns the string with "Hello, " appended infront.
+*/
+function helloWho($who)
+{
+	$out = "Hello, " . $who;
+	echo $out;
+	return $out;
+}

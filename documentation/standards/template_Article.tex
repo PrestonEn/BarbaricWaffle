@@ -1,0 +1,137 @@
+% !TeX program = xelatex
+% !TeX encoding = utf8
+
+\documentclass[]{article}
+
+\usepackage{fontspec}
+\setmainfont{Garamond}
+
+\newcommand*{\SignatureAndDate}[1]{%
+	\par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}%
+	\par\noindent\makebox[2.5in][l]{#1}      \hfill\makebox[2.0in][l]{Date}%
+}%
+
+\usepackage{textcomp}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\textcopyright Project Meta-Management}
+\cfoot{\thepage}
+
+%opening
+\title{Team Project Meta-Management Standards Guide}
+\author{Tyler Kennedy Collins\\ tk11br@brocku.ca\\ Brock University Computer Science\\Team Project Meta-Management\\}
+\date{Updated as of January 11th, 2016}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{fancy}
+
+\begin{abstract}
+The purpose of this document is to give Team Project Meta-Management a single clear and concise document to reference when building any project related material. The standards covered include documentation, meetings, laravel, programming, commenting, testing, and finally presentation.
+\end{abstract}
+
+\section{Documentation}
+Documentation standards apply when presenting any final drafts to the customer.
+\begin{itemize}
+	\item Final drafts of all documents are to be exported as a .pdf from LaTeX.
+	\item Rough copies of documents can be kept in any format. The format should ensure a simple and easy port to LaTeX.
+	\item All documents are to use the article document class from LaTeX.
+	\item This class will format font size, spacing, and other elements as necessary.
+	\item The font to be used is "Garamond".
+	\item Documents names should never contain any spaces.
+	\item Any chart based documentation will be in .pdf format and exported from Microsoft's Visio.
+	\item Final drafts of documents must be signed by at least four team members.
+\end{itemize}
+
+\section{Meetings}
+To keep our meetings on track and productive the following standards have been introduced.
+\begin{itemize}
+	\item Group meetings will always have a dedicated note taker to keep track of meeting minutes. This person will generally be the Technical Librarian unless otherwise stated.
+	\item Meeting minutes will be uploaded to the GitHub repository under the meetings folder. They are to take the form of "DD-MM-YYYY.ext".
+	\item Standard meetings will always take place from 3:30pm to 5:00pm on Wednesdays in room D205.
+	\item Any other extra meeting time will always be scheduled with at least 24-hours notice for team members to properly plan.
+	\item If a team member must miss a meeting they must alert the team leader at least twelve hours before so arrangements can be made.
+	\item Smaller meetings which do not include the entire team must also have their meeting minutes kept and uploaded to the repository.
+	\item Meetings should always include a positive attitude where respect between team members is kept at all times.
+\end{itemize}
+
+\section{Laravel}
+Since the application we are building is a service built using Laravel we should adhere to its standards. These standards are very strictly defined and well kept throughout the entire framework. Below is a guide to Laravel's standards.
+\begin{itemize}
+	\item preston
+	\item pls
+	\item halp
+\end{itemize}
+
+\section{Programming}
+Actual programming standards are quite important. The list below states things that every programmer on the team must follow to have their code accepted into production builds.
+\begin{itemize}
+	\item Tab characters are to be exactly four spaces.
+	\item All functions, classes, and variables should follow the typical camel case convention.
+	\item Comments are to adhere to the "Commenting" section.
+	\item Take advantage of abstraction and make code as modular as possible.
+	\item Laravel has many ways of accomplishing the same task. Always take the most efficient as possible.
+	\item Redundant statements should be removed.
+	\item All code that is produced by team members will be constantly under review to ensure that they meet the proper standards.
+\end{itemize}
+
+\section{Commenting}
+Commenting is to be kept up to date throughout the project as is common in Laravel. Not included below is a template comment for functions and classes. These will instead be located on the repository for ease of use. The following will be the typical practices.
+\begin{itemize}
+	\item Comment variables only when their name is not sufficient to explain their use.
+	\item Use the function comment template when creating functions.
+	\item Use the class commenting template whenever a new class is made.
+	\item At the start of files where coding is done, a header identifying programmer names and the date is required.
+	\item Attempt to follow Laravel convention wherever possible.
+	\item Upon presenting this document to the customer, templates are to be attached as an appendix of sorts.
+\end{itemize}
+
+\section{Testing}
+Testing standards will be a stringent set of requirements since we are building a large scalable application. This section of the guide is to not only be followed by the testers, but also by programmers. Template testing documents can be found on the GitHub repository.
+\subsection{Local Testing}
+Local testing is to be done as follows.
+\begin{itemize}
+	\item Programmers will first test their own code in the fashion of a unit test.
+	\item Testing is then to be done on this code by an outside tester or the test leader. The purpose of this is to avoid any biased coding.
+	\item Second stage tests are to be uploaded to the GitHub repository and named after the test is completed. These tests will be signed off on by the testing leader.
+\end{itemize}
+\subsection{Production Testing}
+The following is a step by step process of how testing will be accomplished on development builds.
+\begin{itemize}
+	\item One of the team leaders will call for a freeze of pushing to development branches. \item Coders can continue to work, but not push to their final branches.
+	\item The team leader who called for the freeze will then begin merging from the development branches into the master branch.
+	\item This will be viewable by all team members through GitHub's pull request interfaces.
+	\item A build will then be completed and deployed to a live server for testing. 
+	\item This testing takes exactly the same form as previously described. All issues with this build will be tracked using GitHub's issue tracker and fixed in a small sprint.
+	\item Upon reaching a bug free development build, all pushing freezes will be lifted.
+\end{itemize}
+
+\section{Presentations}
+Presentations are the most important portion of our interaction with the customer. As such, we will be presenting standards for these as well.
+\begin{itemize}
+	\item Presentations are to be built using "reaveal.js". Note that an introduction seminar to the framework will be given.
+	\item All group members must be present and in business casual attire.
+	\item In formal presentations all group members must introduce themselves and their roles.
+	\item Presentations should always be of an appropriate length and speak to the customers concerns or interests regarding our product.
+	\item Always leave room for questions.
+	\item Never should a team member read from slides. Summarize as much as possible.
+\end{itemize}
+
+\section{Agreements}
+This document is to be signed by all team members to show their agreement to the standards. Should any modifications be required a new draft of this document can be made.\\\\ The customer is to also sign as to approve of our standardized methods.\\\\ This document after being signed will be made available on the repository.\\\\\\\\\\\\\\
+
+\SignatureAndDate{Preston Engstrom}\\\\
+\SignatureAndDate{Tyler Kennedy Collins}\\\\
+\SignatureAndDate{Jaclyn Binch}\\\\
+\SignatureAndDate{Andrew Rooney}\\\\
+\SignatureAndDate{Alex Lawrence}\\\\
+\SignatureAndDate{Yucen Jin}\\\\
+\SignatureAndDate{Jeff Yang}\\\\
+
+\SignatureAndDate{Customer}
+\end{document}
