@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ListingInfo extends Migration
+class CreateListingInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -51,7 +51,7 @@ class ListingInfo extends Migration
             $table->integer('num_bathrooms_total')->unsigned();
             $table->integer('num_roommates_max')->unsigned();
 
-            $table->boolean('has_furnishings')
+            $table->boolean('has_furnishings');
             $table->string('details_furnishings', 255);
 
             //Utilities & extras
