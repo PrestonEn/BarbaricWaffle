@@ -13,6 +13,8 @@
 
 \usepackage{textcomp}
 
+\usepackage{hyperref}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} % sets both header and footer to nothing
@@ -61,11 +63,10 @@ To keep our meetings on track and productive the following standards have been i
 \end{itemize}
 
 \section{Laravel}
-Since the application we are building is a service built using Laravel we should adhere to its standards. These standards are very strictly defined and well kept throughout the entire framework. Below is a guide to Laravel's standards.
+Since the application we are creating is a service built using Laravel, we should adhere to its standards. These standards are very strictly defined and well kept throughout the entire framework. Specified below are the formal standards to be used.
 \begin{itemize}
-	\item preston
-	\item pls
-	\item halp
+	\item All code is to be made to follow the PSR-0 and PSR-1 standards as to emulate Laravel.\cite{laravelCite}
+	\item Master page based CSS and HTML are to be run through the CS-Fixer tool to comply to the Google standards.\cite{googleCite}
 \end{itemize}
 
 \section{Programming}
@@ -134,4 +135,10 @@ This document is to be signed by all team members to show their agreement to the
 \SignatureAndDate{Jeff Yang}\\\\
 
 \SignatureAndDate{Customer}
+
+\pagebreak
+
+\bibliography{outputRef}{}
+\bibliographystyle{unsrt}%unsrt
+
 \end{document}

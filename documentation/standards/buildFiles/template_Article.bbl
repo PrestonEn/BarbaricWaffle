@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{laravelCite}
+Taylor Otwell.
+\newblock Laravel contribution guide.
+\newblock \url{https://laravel.com/docs/4.2/contributions}.
+\newblock Accessed 10/1/2016.
+
+\bibitem{googleCite}
+Google.
+\newblock Google html/css style guide.
+\newblock \url{https://google.github.io/styleguide/htmlcssguide.xml}.
+\newblock Accessed 10/1/2016.
+
+\end{thebibliography}
