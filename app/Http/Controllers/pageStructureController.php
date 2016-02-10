@@ -10,10 +10,27 @@ use App\Http\Controllers\Controller;
 class pageStructureController extends Controller
 {
 
-
-	// asdfkjasdkfjasldkfjaskldfjaksdjfkasldjfaklsdfj
-
     public function navbarTop(){
     	return view('testing.profileSection');
     }
+
+    public function signIn(){
+    	return view('testing.signIn');
+    }
+
+    public function signUp(){
+    	return view('testing.signUp');
+    }
+
+    public function mapListing(){
+    	return view('testing.mapListing');
+    }
+
+    public function profile(){
+    	return view('testing.profile');
+    }
+    public function portalPage(){
+        return view('testing.portalPage');
+    }
+    
 }

@@ -3,32 +3,8 @@
 
 @section('content')
 
-
-<style>
-
-form {
-	font-size: 1.3em;
-	margin-top: 5%;
-}
-
-#signUpTitle {
-	font-size: 400%;
-	margin-top: 5%;
-	margin-left: 10%;
-}
-
-.row {
-	margin-bottom: 2%;
-}
-
-#phoneNumDiv input {
-	font-size: 1em;
-	text-align: center;
-}
-
-</style>
-
-
+<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('CSS/signUp.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 <h1 id = "signUpTitle"> Sign Up </h1>
 

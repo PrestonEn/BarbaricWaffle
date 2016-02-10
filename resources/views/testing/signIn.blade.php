@@ -3,37 +3,8 @@
 @section('content')
 
 
-<style>
-
-form {
-	font-size: 1.3em;
-	margin-top: 5%;
-}
-
-#signUpTitle {
-	font-size: 400%;
-	margin-top: 5%;
-	margin-left: 10%;
-}
-
-.row {
-	margin-bottom: 2%;
-	margin-top: 3%;
-}
-
-#phoneNumDiv input {
-	font-size: 1em;
-	text-align: center;
-}
-
-#forgotPass {
-	font-size: 0.7em;
-	color: blue;
-}
-
-</style>
-
-
+<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('CSS/signIn.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 <h1 id = "signUpTitle"> Sign In </h1>	
 
@@ -41,23 +12,23 @@ form {
 <form action = "" method = "post">
 
 	<div class = "row">
-		<div class = "col-xs-1"></div>
-		<div class = "col-xs-7">
+		<div class = "col-xs-3"></div>
+		<div class = "col-xs-6">
 			Username :  
 			<input type = "text" class = "form-control" name = "pass">
 		</div>
 	</div>	
 
 	<div class = "row">
-		<div class = "col-xs-1"></div>
-		<div class = "col-xs-7">
+		<div class = "col-xs-3"></div>
+		<div class = "col-xs-6">
 			Password :  
 			<input type = "password" class = "form-control" name = "pass">
 		</div>
 	</div>	
 
 	<div class = "row">
-		<div class = "col-xs-1"></div>
+		<div class = "col-xs-3"></div>
 		<div class = "col-xs-5">
 			<button type="submit" class = "btn btn-default">Submit</button>
 		</div>

@@ -2,9 +2,7 @@
 
 @section('profileContent')
 
-	Testing 1 2 3
-	<br>
-	What's up???
+	@section('testing.favourites')
 
 @stop
 

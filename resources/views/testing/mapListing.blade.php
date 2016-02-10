@@ -1,39 +1,9 @@
+<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('CSS/mapListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
+
+
 	@extends('testing.navbarTop')
-
-<style>	
-.row {
-  margin: 0px;
-  padding: 0px;
-}
-
-#col1, #col2{
-  margin: 0px;
-  padding: 0px;
-  height:100%
-}
-
-#col2>.row {
-  height: 30%;
-  width: 100%;
-  margin-top: 0px;
-  margin-top: 1.3em;
-  margin-bottom: 1.3em;
-}
-
-#col2{
-  overflow-y: scroll;
-}
-
-#col2 img {
-  height: 80%;
-  width: 80%;
-} 
-
-#col2 table {
-  font-size: 80%;
-}
-</style>
-
 
 	@section('content')
 
@@ -43,13 +13,7 @@
     <div id = "col1" class = "col-xs-8">
 
       <script>
-        function initMap() {
-          var mapDiv = document.getElementById("col1");
-          var map = new google.maps.Map(mapDiv, {
-            center: {lat: 43.1, lng: -79.3},
-            zoom: 11
-          });
-        }
+        initMap();
       </script>
 
     </div>

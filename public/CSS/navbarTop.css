@@ -1,0 +1,18 @@
+    .navbar {
+      margin-bottom: 0;
+      color: white;
+    }
+
+    .navbar .navbar-header {
+      font-size: 1.3em;
+      margin: 0.7em;
+    }
+
+    #navElements {
+      margin-right: 1em;
+    }    
+
+    .navbar input{
+      margin: 0.7em;
+      color:black;
+    }
