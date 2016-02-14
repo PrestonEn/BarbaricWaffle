@@ -17,11 +17,11 @@
 
 
 <body>
-  <nav class="navbar navbar-inverse .navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class = "navbar-header">Fun Website Name
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button-small" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style = "margin:0px;padding:0px">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -30,14 +30,14 @@
 
     <div class="collapse navbar-collapse">
     <ul id = "navEl" class="nav navbar-nav">
-      <li><a href="#">Link1</a></li>
-      <li><a href="#">Link2</a></li>
-      <li><a href="#">Link3</a></li>
+      <li><a href="../mapListing">Home</a></li>
+      <li><a href="../profile">Profile</a></li>
+      <li><a href="../profileFavourites">Favourites</a></li>
       <li><a href="#">Link4</a></li>
       <li><a href="#">Link5</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
-      <li><a href="#">Sign&nbspin</a></li>
+      <li><a href="../signIn">Sign&nbspin</a></li>
     </ul>
     </div>
   </div>

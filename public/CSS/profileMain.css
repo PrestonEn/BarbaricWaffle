@@ -1,0 +1,42 @@
+.panel {
+	padding: 0.2em;
+	margin-top: 1%;
+	background-color: #CCC;
+	text-align: center;
+}
+
+.profileInfo {
+	font-size: 0.7em;
+	overflow-x: auto;
+}
+
+#listings {
+	overflow-x: scroll;
+}
+
+.tableTitle {
+	margin-bottom: 2px;
+	text-align: center;
+	font-size: 80%;
+}
+
+.actualComment {
+	margin-left: 13%;
+	font-size: 0.5em;
+	text-align: left;
+}
+
+.commentorsName {
+	font-size: 0.6em;
+	text-decoration: underline;
+	text-align: left;
+}
+
+#commentsTable td {
+	padding: 2%;
+}
+
+#commentsTable .panel {
+	background-color: white
+}
+

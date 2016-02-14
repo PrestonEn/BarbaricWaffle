@@ -37,5 +37,16 @@
 		</div>	
 	</div>
 
+
+	<div class = "row" id = "registerInquiry">
+		<div class = "col-xs-3"></div>
+		<div class = "col-xs-6">
+			<div class = "panel panel-default">
+				Not Yet Registered? <a href="../signUp"> Sign up </a>
+			</div>
+		</div>
+	</div>
+
+
 </form>
 @stop

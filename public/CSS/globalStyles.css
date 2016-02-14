@@ -3,3 +3,17 @@
 	margin: 0px;
 }
 
+body {
+	margin-top: 3.5em;
+}
+
+#registerInquiry .panel{
+	background-color: #CCC;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+#profileTitle {
+	font-size: 250%;
+	text-align: center;
+}

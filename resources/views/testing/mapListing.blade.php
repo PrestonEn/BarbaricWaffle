@@ -3,13 +3,13 @@
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 
 
-	@extends('testing.navbarTop')
+  @extends('testing.navbarTop')
 
-	@section('content')
+  @section('content')
 
 
 
-  <div class = "row" style="background-color: white; height:94%">
+  <div class = "row">
     <div id = "col1" class = "col-xs-8">
 
       <script>
@@ -288,9 +288,9 @@
 
 
 
-	@stop
+  @stop
 
-	
+  
 
 
 

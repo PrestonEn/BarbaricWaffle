@@ -33,4 +33,12 @@ class pageStructureController extends Controller
         return view('testing.portalPage');
     }
     
+    public function profileFavourites(){
+        return view('testing.profileFavourites');
+    }
+
+    public function profileEdit(){
+        return view('testing.profileFavourites');
+    }
+
 }

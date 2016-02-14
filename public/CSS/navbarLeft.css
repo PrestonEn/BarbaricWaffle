@@ -3,8 +3,22 @@
 		font-size: 1.3em;
 	}
 
+	#baseCol {
+		margin:0px;
+		padding:0px;
+		position: fixed;
+		left: 0;
+	}
+
+	#infoCol {
+		width: 65%;
+		padding:0px;
+		position: absolute;
+		right: 6px;
+	}
+
 	#profilePic{
 		height :100%;
 		width :100%;
-		border: solid 8px navy;
+		border: solid 8px black;
 	}
