@@ -1,10 +1,10 @@
 % !TeX program = xelatex
 % !TeX encoding = utf8
 
-\documentclass[]{article}
+\documentclass[14pt]{article}
 
 \usepackage{fontspec}
-\setmainfont{Garamond}
+\setmainfont[Ligatures=TeX,Scale=1.2]{Garamond}
 
 \usepackage{textcomp}
 
@@ -125,11 +125,14 @@ The project will follow the Agile SCRUM development methodology. Development wil
 
 \section{Preliminary Design}
 %%% INCLUDE THE SITE MAP with descriptions of functions on major pages
-The project's preliminary design is focused on how a user will traverse the application. By defining the site map first, it allows both the Front End and Back End development teams to identify priority interfaces and services.\\
-\begin{center}
+The project's preliminary design is focused on how a user will traverse the application. By defining the site map first, it allows both the Front End and Back End development teams to identify priority interfaces and services. \textbf{Figure 1}, shown below, is a site map showing a users possible paths through homestead.
+\\A more expanded design document will be presented to the customer upon approval of the Definition document. This design document will include the data flow diagrams, database schema diagrams, interface mock-ups and Agile User Stories.
+
+
+\begin{figure}[!ht]
+	 \caption{Homestead Site Map}
 	\includegraphics[width=0.75\textwidth]{Phase1SiteMap.png}
-\end{center}
-\\
-A more expanded design document will be presented to the customer upon approval of the Definition document. This design document will include the data flow diagrams, database schema diagrams, interface mock-ups and Agile User Stories.
+\end{figure}
+
 
 \end{document}
