@@ -12,7 +12,9 @@ Route::get('profile','pageStructureController@profile');
 
 Route::get('profileFavourites', 'pageStructureController@profileFavourites');
 
-Route::get('profileEdit', 'pageStructureController@profileEdit');
+Route::get('profileSettings', 'pageStructureController@profileSettings');
+
+Route::get('profilePostings', 'pageStructureController@profilePostings');
 
 Route::get('/','pageStructureController@portalPage');
 

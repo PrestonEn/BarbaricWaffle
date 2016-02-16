@@ -1,0 +1,30 @@
+
+#email {
+	overflow-x: auto;
+	max-width: 100%;
+	font-size: 0.6em;
+}
+
+#emailTitle{
+	font-size: 1.1em;
+}
+
+form {
+	margin: 2%;
+	padding: 3%;
+	font-size: 0.6em;
+	background-color: #CCC;
+}
+.panel {
+	padding: 0.2em;
+	background-color: #CCC;
+}
+
+#button {
+	text-align: right;
+	margin-top: 2%;
+}
+
+#passFormTitle {
+	margin-top: 6%;
+}

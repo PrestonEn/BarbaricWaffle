@@ -16,4 +16,5 @@ body {
 #profileTitle {
 	font-size: 250%;
 	text-align: center;
+	overflow: auto;
 }

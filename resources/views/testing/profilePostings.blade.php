@@ -6,9 +6,9 @@
 @section('profileContent')
 
 <head>
-	<title> ProfileMain </title>
-	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
-	<link href="{!! asset('CSS/profileFavourites.css') !!}" media="all" rel="stylesheet" type="text/css" />
+  <title> ProfileMain </title>
+  <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
+  <link href="{!! asset('CSS/profileFavourites.css') !!}" media="all" rel="stylesheet" type="text/css" />
    <script type="text/javascript" src="{!! asset('JS/profileFavourites.js') !!}"></script>
 
 </head>
@@ -16,7 +16,7 @@
 <body>
    <div class = "row">
       <div class = "col-md-8">
-	     <h1 id = "profileTitle"> Favourite Listings <h1>
+       <h1 id = "profileTitle"> Posted Listings <h1>
       </div>
       <div class = "col-md-4">
          <button class = "btn-md" value = "0" onclick="makeEditable(this)">Edit</button>

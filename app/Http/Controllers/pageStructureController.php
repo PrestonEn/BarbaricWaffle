@@ -37,8 +37,12 @@ class pageStructureController extends Controller
         return view('testing.profileFavourites');
     }
 
-    public function profileEdit(){
-        return view('testing.profileFavourites');
+    public function profileSettings(){
+        return view('testing.profileSettings');
+    }
+
+    public function profilePostings(){
+        return view('testing.profilePostings');
     }
 
 }
