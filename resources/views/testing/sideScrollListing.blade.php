@@ -11,7 +11,7 @@
          
          <div class = "col-xs-6">
             <div id = "eg1">
-                <img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                <img class = "img-responsive" style="min-width:20em;" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
             </div>
           </div>
           

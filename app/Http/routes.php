@@ -16,6 +16,10 @@ Route::get('profileSettings', 'pageStructureController@profileSettings');
 
 Route::get('profilePostings', 'pageStructureController@profilePostings');
 
+Route::get('addListing', 'pageStructureController@addListing');
+
+Route::get('houseTemplate', 'pageStructureController@houseTemplate');
+
 Route::get('/','pageStructureController@portalPage');
 
 ?>

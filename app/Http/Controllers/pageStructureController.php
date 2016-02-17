@@ -45,4 +45,12 @@ class pageStructureController extends Controller
         return view('testing.profilePostings');
     }
 
+    public function addListing(){
+        return view('testing.addListing');
+    }
+
+    public function houseTemplate(){
+        return view('testing.houseTemplate');
+    }
+
 }

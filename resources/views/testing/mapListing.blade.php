@@ -10,7 +10,7 @@
 
 
   <div class = "row">
-    <div id = "col1" class = "col-xs-8">
+    <div id = "col1" class = "col-sm-8 col-xs-12">
 
       <script>
         initMap();
@@ -18,7 +18,7 @@
 
     </div>
 
-    <div id = "col2" class = "col-xs-4">
+    <div id = "col2" class = "col-xs-0 col-sm-4">
 
       <div id = "subrow" class = "row">
           

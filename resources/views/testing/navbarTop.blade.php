@@ -33,7 +33,7 @@
       <li><a href="../mapListing">Home</a></li>
       <li><a href="../profile">Profile</a></li>
       <li><a href="../profileFavourites">Favourites</a></li>
-      <li><a href="#">Link4</a></li>
+      <li><a href="../addListing">Post Listing</a></li>
       <li><a href="#">Link5</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
