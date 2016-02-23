@@ -6,13 +6,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    //Table associated with this model
+    protected $table = 'users';
+
+    //Primary key
+    $primary_key = 'users_id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -23,4 +29,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function listings(){
+        return $this->hasMany('App/Listing');
+    }
+
+    public function scopeRealtor(){
+
+    }
 }
