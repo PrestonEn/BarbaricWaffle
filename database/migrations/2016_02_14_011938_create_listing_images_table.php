@@ -13,14 +13,14 @@ class CreateListingImagesTable extends Migration
      */
     public function up()
     {
-            Schema::create('listing_image', function (Blueprint $table) {
+            Schema::create('listing_images', function (Blueprint $table) {
             //Primary key
-            $table->increments('listing_image_id');
+            $table->increments('listing_images_id');
 
             //Foreign Key
             //References the id on the listing table which this image belongs to.
-            $table->integer('listing_id')->unsigned();
-            $table->foreign('listing_id')->references('listing_id')->on('listings');
+            $table->integer('listings_id')->unsigned();
+            $table->foreign('listings_id')->references('listings_id')->on('listings');
 
             //Filename of image
             //Do not include file path. 

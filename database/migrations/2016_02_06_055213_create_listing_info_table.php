@@ -20,8 +20,8 @@ class CreateListingInfoTable extends Migration
 
             //Foreign Key
             //Each Listing can have any number of listing_info records.
-            $table->integer('listing_id')->unsigned();
-            $table->foreign('listing_id')->references('listing_id')->on('listings');
+            $table->integer('listings_id')->unsigned();
+            $table->foreign('listings_id')->references('listings_id')->on('listings');
 
             //When the listing was posted and removed.
             //End date will be set to some date far in the future until the posting is deleted.
@@ -74,7 +74,6 @@ class CreateListingInfoTable extends Migration
             //MLS number storage.
             //Has a small prefix of 2 letters, then 7 digits.
             $table->string('mls_number', 10);
-
         });
     }
 

@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             //Primary key
-            $table->increments('id');
+            $table->increments('users_id');
 
             //User details required for account creation
             $table->string('first_name', 60);
@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
 
             //Additional User Information
+            
 
             //Laravel Generated
             $table->rememberToken();
