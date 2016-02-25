@@ -10,7 +10,7 @@ class Listing_Image extends Model
 	protected $table = 'listing_images';
 
     //Primary key
-    $primaryKey = 'listing_images_id';
+    protected $primaryKey = 'listing_images_id';
 
     //Fields the user can set
     protected $fillable = [

@@ -10,7 +10,7 @@ class Listing_Info extends Model
 	protected $table = 'listing_info';
 
     //Primary key
-    $primaryKey = 'listing_info_id';
+    protected $primaryKey = 'listing_info_id';
 
     //Fields the user can set
     protected $fillable = [

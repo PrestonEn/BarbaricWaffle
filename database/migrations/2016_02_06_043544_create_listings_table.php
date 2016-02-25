@@ -32,6 +32,8 @@ class CreateListingsTable extends Migration
                   ->references('users_id')
                   ->on('users');
                 //->onDelete('cascade');    //This may be appropriate when we properly implement soft deletion.
+
+            $table->timestamps();
         });
     }
 

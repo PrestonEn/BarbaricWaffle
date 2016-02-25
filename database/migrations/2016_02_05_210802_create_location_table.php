@@ -35,6 +35,8 @@ class CreateLocationTable extends Migration
 
             //To be changed later, google walkscore
             $table->integer('walkscore');
+
+            $table->timestamps();
         });
     }
 

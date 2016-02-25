@@ -33,6 +33,8 @@ class CreateListingImagesTable extends Migration
             //0 being the listings main image and higher
             //values showing up later in the listing details.
             $table->integer('image_priority');
+
+            $table->timestamps();
         });
     }
 
@@ -43,6 +45,6 @@ class CreateListingImagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listing_image');
+        Schema::drop('listing_images');
     }
 }

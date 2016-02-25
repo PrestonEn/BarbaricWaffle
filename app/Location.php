@@ -10,11 +10,11 @@ class Location extends Model
     protected $table = 'location';
 
     //primary key
-    $primaryKey = 'location_id';
+    protected $primaryKey = 'location_id';
 
     //Fields the user can set
     protected $fillable = [
-            'street_name'
+            'street_name',
             'street_num',
             'city',
             'province',
