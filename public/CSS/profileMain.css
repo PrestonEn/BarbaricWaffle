@@ -1,42 +1,65 @@
+h2 {
+	white-space: nowrap;
+	overflow: hidden;
+	width: 7.5em;
+	height: 100%;
+	font-size: 0.6em;
+	font-size: 3vmin;
+	margin: 4px;
+}
+
+#profileTitle {
+	font-size: 3em;
+	font-size: 5vmax;
+	text-align: center;
+}
+
 .panel {
-	padding: 0.2em;
-	margin-top: 1%;
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	margin-top: 2%;
 	background-color: #CCC;
 	text-align: center;
 }
 
+
+
+.tableTitle {
+	margin-bottom: 2px;
+	text-align: center;
+	font-size: 60%;
+
+}
+
 .profileInfo {
-	font-size: 0.7em;
+	font-size: 0.6em;
+	font-size: 2.5vh;
 	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 #listings {
 	overflow-x: scroll;
 }
 
-.tableTitle {
-	margin-bottom: 2px;
-	text-align: center;
-	font-size: 80%;
-}
-
 .actualComment {
 	margin-left: 13%;
-	font-size: 0.5em;
+	font-size: 0.7em;
+	font-size: 2.3vmin;
 	text-align: left;
 }
 
 .commentorsName {
 	font-size: 0.6em;
+	font-size: 2.5vmin;
 	text-decoration: underline;
 	text-align: left;
-}
-
-#commentsTable td {
-	padding: 2%;
 }
 
 #commentsTable .panel {
 	background-color: white
 }
+
 

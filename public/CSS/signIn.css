@@ -20,6 +20,8 @@ form {
 }
 
 #forgotPass {
+	position: absolute;
+	right:0;
 	font-size: 0.7em;
 	color: blue;
 }

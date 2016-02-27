@@ -13,7 +13,11 @@
 
 <body>
 
-	<h1 id = "profileTitle"> Person's Name <h1>
+
+<div class = "col-xs-12">
+  <div id = "pTitle">
+	 <h1 id = "profileTitle"> Person's Name <h1>
+  </div>
 
   <form action="" method="post">
       <div class = "row">
@@ -105,7 +109,7 @@
       </div> 
     </form>
 
-
+</div>
 @stop
 
 @extends('testing.navbarTop')

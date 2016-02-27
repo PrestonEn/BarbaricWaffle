@@ -14,20 +14,23 @@
 </head>
 
 <body>
-   <div class = "row">
-      <div class = "col-md-8">
-	     <h1 id = "profileTitle"> Favourite Listings <h1>
-      </div>
-      <div class = "col-md-4">
-         <button class = "btn-md" value = "0" onclick="makeEditable(this)">Edit</button>
-      </div>
+
+<div id = "profileTitle"> Favourite Listings </div>
+
+   <div class = "row" id = "buttonDiv">
+      <div class = "col-xs-12">
+         <label id = "buttonHolder"></label>
+         <labeL><button id = 'editButton' class = "btn btn-primary" value = "0" onclick="makeEditable(this)">edit</button></label>
+	   </div>
    </div>
 
+
+   
       <div class = "col-md-4">
             <table class = "table">
-               
+            
                   <tr>
-                     <th colspan = 2> $listingTitle</th>
+                     <th class = "removeable" colspan = 2> $listingTitle</th>
                   </tr>
 
                   <tr>
@@ -61,7 +64,7 @@
             <table class = "table">
                
                   <tr>
-                     <th colspan = 2> $listingTitle</th>
+                     <th class = "removeable" colspan = 2> $listingTitle</th>
                   </tr>
 
                   <tr>
@@ -94,7 +97,7 @@
             <table class = "table">
                
                   <tr>
-                     <th colspan = 2> $listingTitle</th>
+                     <th class = "removeable" colspan = 2> $listingTitle</th>
                   </tr>
 
                   <tr>
@@ -127,7 +130,7 @@
             <table class = "table">
                
                   <tr>
-                     <th colspan = 2> $listingTitle</th>
+                     <th class = "removeable" colspan = 2> $listingTitle</th>
                   </tr>
 
                   <tr>
@@ -155,12 +158,8 @@
 
             </table> 
       </div>
+</form>
 
-
-
-
-
-</body>
 @stop
 
 @extends('testing.navbarTop')

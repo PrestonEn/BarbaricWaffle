@@ -53,4 +53,8 @@ class pageStructureController extends Controller
         return view('testing.houseTemplate');
     }
 
+    public function profileSearches(){
+        return view('testing.profileSearches');
+    }
+
 }

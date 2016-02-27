@@ -14,30 +14,29 @@
 <body>
 	<h1 id = "profileTitle"> Person's Name <h1>
 
-	<div class = "row"> 
 		<div class = "panel">
-			<strong class = "tableTitle">Phone Number : </strong><br>
+			<strong class = "tableTitle">Phone Number : </strong>
 			<div class = "profileInfo"> 555-555-5555 </div>
 		</div>
-	</div>	
 
-	<div class = "row"> 
-		<div class = "panel panel-default">
-			<strong class = "tableTitle">E-mail Address : </strong><br>
+
+		<div class = "panel">
+			<strong class = "tableTitle">E-mail Address : </strong>
 			<div class = "profileInfo"> someExceptionallyLongEmail@brocku.ca </div>
 		</div>
-	</div>	
 
 
 	<div class = "panel panel-default">
-		<h2 class = "tableTitle"> <strong> User's Listings </strong></h2>
+      <div class = "tableTitle">
+         <strong> User's Listings </strong>
+      </div>
 
 			<div class = "row" id = "listings">
 				<table id = "listingTable" class = "table table-bordered">
 					<tr>
 						<td class = "listingCell">
                				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
+               				<table id = "test" class = "table table-condensed">	
                					<tr>
                						<td>
    										<h2> Listing Title <h2>

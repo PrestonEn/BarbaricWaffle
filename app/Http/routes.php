@@ -20,6 +20,8 @@ Route::get('addListing', 'pageStructureController@addListing');
 
 Route::get('houseTemplate', 'pageStructureController@houseTemplate');
 
-Route::get('/','pageStructureController@portalPage');
+Route::get('profileSearches', 'pageStructureController@profileSearches');
+
+Route::get('/','pageStructureController@mapListing');
 
 ?>
