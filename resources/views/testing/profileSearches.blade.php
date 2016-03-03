@@ -6,7 +6,7 @@
 @section('profileContent')
 
 <head>
-	<title> ProfileMain </title>
+	<title> ProfileSearches </title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileSearches.css') !!}" media="all" rel="stylesheet" type="text/css" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -18,7 +18,7 @@
 
    <div class = "col-xs-12">
 
-   <div id = "profileTitle"> Saved Searches </div>
+   <div class = "pageTitle"> Saved Searches </div>
 
 
    <div class = "row" id = "buttonDiv">

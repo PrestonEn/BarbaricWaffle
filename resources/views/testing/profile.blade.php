@@ -12,24 +12,22 @@
 </head>
 
 <body>
-	<h1 id = "profileTitle"> Person's Name <h1>
+	<div class = "pageTitle"> Person's Name </div>
 
 		<div class = "panel">
-			<strong class = "tableTitle">Phone Number : </strong>
+			<strong>Phone Number : </strong>
 			<div class = "profileInfo"> 555-555-5555 </div>
 		</div>
 
 
 		<div class = "panel">
-			<strong class = "tableTitle">E-mail Address : </strong>
+			<strong>E-mail Address : </strong>
 			<div class = "profileInfo"> someExceptionallyLongEmail@brocku.ca </div>
 		</div>
 
 
 	<div class = "panel panel-default">
-      <div class = "tableTitle">
          <strong> User's Listings </strong>
-      </div>
 
 			<div class = "row" id = "listings">
 				<table id = "listingTable" class = "table table-bordered">

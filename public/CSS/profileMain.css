@@ -8,11 +8,6 @@ h2 {
 	margin: 4px;
 }
 
-#profileTitle {
-	font-size: 3em;
-	font-size: 5vmax;
-	text-align: center;
-}
 
 .panel {
 	padding-top: 0.1em;
@@ -24,13 +19,8 @@ h2 {
 	text-align: center;
 }
 
-
-
-.tableTitle {
-	margin-bottom: 2px;
-	text-align: center;
-	font-size: 60%;
-
+.panel strong {
+	font-size: 2vmax;
 }
 
 .profileInfo {
@@ -42,6 +32,8 @@ h2 {
 
 #listings {
 	overflow-x: scroll;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
 }
 
 .actualComment {

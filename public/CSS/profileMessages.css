@@ -1,0 +1,52 @@
+img {
+	min-height: 3em;
+	min-width: 3em;
+}
+
+strong, em {
+	font-size: 2.2vw;
+}
+
+.imgHolder, .nameHolder{
+	margin: auto;
+	width: 10vw;
+}
+.linkHolder {
+	text-align: right;
+	font-size: 1.6vw;
+	text-align: bottom;
+	margin-top: 0.5em;
+}
+
+table{
+	background-color: #CCC;
+	min-height: 10em;
+}
+
+.panel-collapse .list-group {
+	border: 1px solid black;
+	font-size: 1.6vw;
+	margin-left: 1.5em;
+}
+
+li {
+	overflow: auto;
+}
+
+.col-xs-9 {
+	border-left: 3px solid black;
+	background-color: #f2f2f2;
+}
+
+.col-xs-3 {
+	text-align: left;
+	margin-left: 0px;
+}
+
+.col-xs-3 strong{
+	font-size: 2vw;
+}
+
+.col-xs-3 em {
+	font-size: 1.6vw;
+}

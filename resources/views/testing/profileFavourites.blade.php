@@ -6,7 +6,7 @@
 @section('profileContent')
 
 <head>
-	<title> ProfileMain </title>
+	<title> ProfileFavourites</title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileFavourites.css') !!}" media="all" rel="stylesheet" type="text/css" />
    <script type="text/javascript" src="{!! asset('JS/profileFavourites.js') !!}"></script>
@@ -15,7 +15,7 @@
 
 <body>
 
-<div id = "profileTitle"> Favourite Listings </div>
+<div class = "pageTitle"> Favourite Listings </div>
 
    <div class = "row" id = "buttonDiv">
       <div class = "col-xs-12">

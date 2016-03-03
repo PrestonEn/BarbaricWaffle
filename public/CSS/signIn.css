@@ -3,12 +3,6 @@ form {
 	margin-top: 5%;
 }
 
-#signUpTitle {
-	font-size: 400%;
-	margin-top: 10%;
-	margin-left: 25%;
-}
-
 .row {
 	margin-bottom: 2%;
 	margin-top: 3%;
@@ -24,4 +18,8 @@ form {
 	right:0;
 	font-size: 0.7em;
 	color: blue;
+}
+
+#instrText {
+	text-align: center;
 }

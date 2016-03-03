@@ -7,3 +7,10 @@ body {
 	text-align: center;
 	font-size: 0.9em;
 }
+
+.pageTitle {
+	font-size: 3em;
+	font-size: 4vmax;
+	text-align: center;
+	font-weight: bold;
+}
