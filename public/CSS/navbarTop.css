@@ -20,3 +20,8 @@
     .button {
       margin: 0px;
     }
+
+    #siteName {
+      color: white;
+      text-decoration: none;
+    }

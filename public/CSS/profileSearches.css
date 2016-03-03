@@ -1,0 +1,53 @@
+table {
+	margin: auto;
+	margin-top: 1%;
+}
+
+button {
+	text-align: center;
+	font-size: 0.4em;
+	width: 65px;
+	background-color: grey;
+	position: absolute;
+	right:30px;
+	margin-right: 4.5%;
+}
+
+#buttonDiv {
+	margin-bottom: 2.9em;
+}
+
+table td, table th{
+	padding: 1em;
+
+}
+
+#title {
+	color: red;
+	font-size: 1.4vw;
+}
+
+table th{
+	font-size: 2vmin;
+	background-color: #CCC;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+table td {
+	font-size: 2vmin;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#tableDiv {
+	margin-top: 6%;
+	text-align: left;
+}
+
+button {
+	position: absolute;
+	right:0;
+}
+
+

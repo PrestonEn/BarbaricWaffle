@@ -4,6 +4,7 @@
   height:100%
 }
 
+
 #col2>.row {
   height: 30%;
   width: 100%;
@@ -19,9 +20,11 @@
 #col2 img {
   height: 80%;
   width: 80%;
+  min-height: 10em;
 } 
 
 #col2 table {
   font-size: 80%;
 }
+
 

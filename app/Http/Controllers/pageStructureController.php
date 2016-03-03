@@ -10,10 +10,6 @@ use App\Http\Controllers\Controller;
 class pageStructureController extends Controller
 {
 
-    public function navbarTop(){
-    	return view('testing.profileSection');
-    }
-
     public function signIn(){
     	return view('testing.signIn');
     }
@@ -51,6 +47,22 @@ class pageStructureController extends Controller
 
     public function houseTemplate(){
         return view('testing.houseTemplate');
+    }
+
+    public function profileSearches(){
+        return view('testing.profileSearches');
+    }
+
+    public function listingsList(){
+        return view('testing.listingsList');
+    }
+
+    public function passwordRetrieval(){
+        return view('testing.passwordRetrieval');
+    }
+
+    public function profileMessages(){
+        return view('testing.profileMessages');
     }
 
 }

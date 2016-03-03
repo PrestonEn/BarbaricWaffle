@@ -6,14 +6,18 @@
 @section('profileContent')
 
 <head>
-	<title> ProfileMain </title>
+	<title> ProfileSettings </title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileSettings.css') !!}" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 
-	<h1 id = "profileTitle"> Person's Name <h1>
+
+<div class = "col-xs-12">
+  <div class = "pageTitle">
+    Person's Name
+  </div>
 
   <form action="" method="post">
       <div class = "row">
@@ -105,7 +109,7 @@
       </div> 
     </form>
 
-
+</div>
 @stop
 
 @extends('testing.navbarTop')

@@ -1,12 +1,21 @@
 .table {
 	font-size: 0.7em;
-	background-color: #CCC;
+	background-color: #cce6ff;
+}
+
+#buttonDiv {
+	margin-bottom: 2.9em;
 }
 
 button {
+	text-align: center;
+	font-size: 0.4em;
+	width: 65px;
 	background-color: grey;
-	position: relative;
-	left: 80%;
-	margin-top: 8%;
+	position: absolute;
+	right:30px;
 }
 
+.tablePostHistory{
+	background-color: #CCC;
+}

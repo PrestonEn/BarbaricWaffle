@@ -1,5 +1,5 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
-
+<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 
 @extends('testing.navbarTop') @section('content')
 

@@ -19,7 +19,7 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <div class = "navbar-header">Fun Website Name
+    <div class = "navbar-header"><a id = "siteName" href="../mapListing">Fun Website Name</a>
 
         <button type="button-small" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style = "margin:0px;padding:0px">
         <span class="icon-bar"></span>
@@ -34,7 +34,8 @@
       <li><a href="../profile">Profile</a></li>
       <li><a href="../profileFavourites">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
-      <li><a href="#">Link5</a></li>
+      <li><a href="../houseTemplate">house</a></li>
+      <li><a href="../listingsList">Listings</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
       <li><a href="../signIn">Sign&nbspin</a></li>

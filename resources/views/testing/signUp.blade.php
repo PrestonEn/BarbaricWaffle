@@ -6,7 +6,7 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/signUp.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
-<h1 id = "signUpTitle"> Sign Up </h1>
+<div class = "pageTitle"> Sign Up </div>
 
 <form action = "" method = "post">
 	<div class = "row">

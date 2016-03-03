@@ -1,8 +1,9 @@
 
 #email {
 	overflow-x: auto;
+	text-align: left;
 	max-width: 100%;
-	font-size: 0.6em;
+	font-size: 2vw;
 }
 
 #emailTitle{
@@ -26,5 +27,22 @@ form {
 }
 
 #passFormTitle {
-	margin-top: 6%;
+	text-align: center;
+	margin-top: 2%;
+}
+
+body {
+	margin-left: 1em;
+}
+
+#profileTitle{
+	font-size: 3vw;
+}
+
+.col-xs-10{
+	font-size: 1.7vw;
+}
+
+#pTitle {
+	text-align: center;
 }
