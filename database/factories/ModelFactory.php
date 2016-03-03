@@ -39,3 +39,42 @@ $factory->define(App\Listing::class, function (Faker\Generator $faker) {
     return [
     ];
 });
+
+$factory->define(App\Listing_Info::class, function (Faker\Generator $faker) {
+    return [
+            'listing_title'         => 'title_'.        $faker->text(30),
+            'listing_description'   => 'description_'.  $faker->text(120),
+
+            'price_monthly'     =>  $faker->randomFloat(2,0,5000),
+            'price_description' =>  $faker->text(200),
+
+            'rental_length_months_min'  =>  $faker->randomDigit,
+            'rental_available_from'     =>  $faker->dateTimeBetween('now','1 year'),
+            'rental_available_to'       =>  $faker->dateTimeBetween('2 years', '4 years'),
+
+            'room_level'            =>  $faker->randomDigit,
+            'room_size_sqft'        =>  $faker->numberBetween(20, 1000),
+            'num_bedrooms_total'    =>  $faker->randomDigit,
+            'num_bathrooms_total'   =>  $faker->randomDigit,
+            'num_roommates_max'     =>  $faker->randomDigit,
+
+            'has_furnishings'       =>  $faker->boolean,
+            'details_furnishings'   =>  $faker->text(200),
+
+            'has_kitchen'       =>  $faker->boolean,
+            'has_laundry'       =>  $faker->boolean,
+            'has_yard'          =>  $faker->boolean,
+
+            'owner_pays_internet'       =>  $faker->boolean,
+            'owner_pays_water'          =>  $faker->boolean,
+            'owner_pays_electricity'    =>  $faker->boolean,
+
+            'owner_has_pets'        =>  $faker->boolean,
+            'allowed_dogs'          =>  $faker->boolean,
+            'allowed_cats'          =>  $faker->boolean,
+            'allowed_other_pets'    =>  $faker->boolean,
+            'details_pets'          =>  $faker->text(200),
+
+            'mls_number'    =>  $faker->text(10)
+    ];
+});
