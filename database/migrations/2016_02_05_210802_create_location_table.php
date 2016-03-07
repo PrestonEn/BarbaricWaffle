@@ -16,7 +16,7 @@ class CreateLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('location', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             //Primary Key: location_id
             $table->increments('location_id');
 

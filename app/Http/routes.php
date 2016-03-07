@@ -22,7 +22,7 @@ Route::get('houseTemplate', 'pageStructureController@houseTemplate');
 
 Route::get('profileSearches', 'pageStructureController@profileSearches');
 
-Route::get('listingsList', 'pageStructureController@listingsList');
+Route::get('listingsList', 'lisController@allListings');
 
 Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
 

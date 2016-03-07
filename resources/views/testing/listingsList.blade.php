@@ -7,7 +7,6 @@
 
   @section('content')
 
-
   <div class = "pageTitle">
     Available Properties
   </div>
@@ -36,41 +35,7 @@
 
   <div class = "pageBody row">
 
-
-      <div class = "listing col-xs-12">
-        <div class = "col-xs-12 col-sm-4">
-        <img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-        </div>
-        <div class = "col-xs-12 col-sm-8">
-            <table class = "table table-condensed">
-              <tr>
-                <th colspan = 2> Title </th>
-              </tr>
-    
-              <tr>
-                <td colspan = 2> 123 address rd </td>
-              </tr>
-              
-              <tr>
-                <td> Price </td>
-                <td> 450/mth </td>
-              </tr>
-
-              <tr>
-                <td colspan = 2> Other feature we deem important </td>
-              </tr>
-
-              <tr>
-                <td> little icons </td>
-              </tr>
-
-              <tr>
-                <td id = "description">Here is some fun little description about what the house is like and what's nearby and what the buses are like
-                  to get from here to anywhere. Fun fun fun fun fun funfunfunfunfunfun.</td>
-              </tr>
-            </table> 
-          </div>
-        </div>
+      @foreach ($listingInfo as $listing)
 
 
       <div class = "listing col-xs-12">
@@ -80,20 +45,24 @@
         <div class = "col-xs-12 col-sm-8">
             <table class = "table table-condensed">
               <tr>
-                <th colspan = 2> Title </th>
+                <th colspan = 2>Title : {{$listing->listing_title}} </th>
               </tr>
     
               <tr>
-                <td colspan = 2> 123 address rd </td>
+                <td colspan = 2> {{ $listing->listing->location->street_num}} </td>
               </tr>
               
               <tr>
-                <td> Price </td>
-                <td> 450/mth </td>
+                <td> {{ $listing->price_description }} </td>
+                <td> <strong>{{$listing->price_monthly}}/mth </strong></td>
               </tr>
 
               <tr>
-                <td colspan = 2> Other feature we deem important </td>
+                <td colspan= 2>  <strong> Available from : </strong> {{$listing->rental_available_from}} 
+                &nbsp &nbsp &nbsp<strong> To : </strong> {{$listing->rental_available_to}} 
+                &nbsp &nbsp &nbsp<strong> Min. Lease : </strong> {{$listing->rental_length_months_min}} months
+              </td>
+                
               </tr>
 
               <tr>
@@ -101,53 +70,15 @@
               </tr>
 
               <tr>
-                <td id = "description">Here is some fun little description about what the house is like and what's nearby and what the buses are like
-                  to get from here to anywhere. Fun fun fun fun fun funfunfunfunfunfun.</td>
+                <td id = "description">
+                   {{$listing->listing_description}} 
+                </td>
               </tr>
             </table> 
           </div>
-        </div>
-
-
-
-     <div class = "listing col-xs-12">
-        <div class = "col-xs-12 col-sm-4">
-        <img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-        </div>
-        <div class = "col-xs-12 col-sm-8">
-            <table class = "table table-condensed">
-              <tr>
-                <th colspan = 2> Title </th>
-              </tr>
+        </div>  
+      @endforeach
     
-              <tr>
-                <td colspan = 2> 123 address rd </td>
-              </tr>
-              
-              <tr>
-                <td> Price </td>
-                <td> 450/mth </td>
-              </tr>
-
-              <tr>
-                <td colspan = 2> Other feature we deem important </td>
-              </tr>
-
-              <tr>
-                <td> little icons </td>
-              </tr>
-
-              <tr>
-                <td id = "description">Here is some fun little description about what the house is like and what's nearby and what the buses are like
-                  to get from here to anywhere. Fun fun fun fun fun funfunfunfunfunfun.</td>
-              </tr>
-            </table> 
-          </div>
-        </div>
-
-
-
-
   </div>
 
 

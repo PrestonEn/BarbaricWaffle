@@ -1,10 +1,16 @@
 img {
-	min-height: 3em;
-	min-width: 3em;
+	width: 10vmax;
+	height: 10vmax;
+	min-height: 4em;
+	min-width: 4em;
+}
+
+table a {
+	font-size: 1.6vw;
 }
 
 strong, em {
-	font-size: 2.2vw;
+	font-size: 1.8vw;
 }
 
 .imgHolder, .nameHolder{
@@ -19,23 +25,22 @@ strong, em {
 }
 
 table{
+	padding: 0px;
 	background-color: #CCC;
-	min-height: 10em;
+	margin-bottom: 0px;
 }
 
-.panel-collapse .list-group {
-	border: 1px solid black;
-	font-size: 1.6vw;
-	margin-left: 1.5em;
+.list-group {
+	font-size: 2vw;
 }
 
 li {
+	min-height: 3em;
 	overflow: auto;
 }
 
 .col-xs-9 {
 	border-left: 3px solid black;
-	background-color: #f2f2f2;
 }
 
 .col-xs-3 {

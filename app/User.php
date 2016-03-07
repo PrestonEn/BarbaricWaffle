@@ -10,7 +10,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     //Primary key
-    protected $primary_key = 'users_id';
+    protected $primary_key = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     public function listings(){
-        return $this->hasMany('App/Listing');
+        return $this->hasMany('App\Listing');
     }
 
     public function scopeRealtor(){

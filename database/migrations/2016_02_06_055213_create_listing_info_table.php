@@ -14,14 +14,14 @@ class CreateListingInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('listing_info', function (Blueprint $table) {
+        Schema::create('listing_infos', function (Blueprint $table) {
             //Primary Key
             $table->increments('listing_info_id');
 
             //Foreign Key
             //Each Listing can have any number of listing_info records.
-            $table->integer('listings_id')->unsigned();
-            $table->foreign('listings_id')->references('listings_id')->on('listings');
+            $table->integer('listing_id')->unsigned();
+            $table->foreign('listing_id')->references('listing_id')->on('listings');
 
             //When the listing was posted and removed.
             //End date will be set to some date far in the future until the posting is deleted.
@@ -87,6 +87,6 @@ class CreateListingInfoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listing_info');
+        Schema::drop('listing_infos');
     }
 }

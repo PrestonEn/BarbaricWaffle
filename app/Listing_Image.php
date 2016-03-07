@@ -10,7 +10,7 @@ class Listing_Image extends Model
 	protected $table = 'listing_images';
 
     //Primary key
-    protected $primaryKey = 'listing_images_id';
+    protected $primaryKey = 'listing_image_id';
 
     //Fields the user can set
     protected $fillable = [
@@ -19,6 +19,6 @@ class Listing_Image extends Model
     ];
 
     public function listing(){
-    	$this->belongsTo('App/Listing');
+    	return $this->belongsTo('App\Listing');
     }
 }

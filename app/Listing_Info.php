@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Listing_Info extends Model
 {
 	//Table associated with this model
-	protected $table = 'listing_info';
+	protected $table = 'listing_infos';
 
     //Primary key
     protected $primaryKey = 'listing_info_id';
@@ -51,16 +51,20 @@ class Listing_Info extends Model
     ];
 
     public function listing(){
-    	$this->belongsTo('App/Listing');
+    	return $this->belongsTo('App\Listing');
     }
 
     public function user(){
     	//This method is something I can't test now.
     	//Hopefully it works as intended.
-    	$this->belongsTo('App/Listing')->belongsTo('User');
+    	return $this->belongsTo('App\Listing')->belongsTo('User');
     }
 
     public function scopeActive($query){
     	return $query->where('is_active', 1);
+    }
+
+    public function location(){
+        return $this->belongsTo('App\Listing')->belongsTo('App\Location');
     }
 }

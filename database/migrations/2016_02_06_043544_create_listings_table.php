@@ -16,20 +16,20 @@ class CreateListingsTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             //Primary key
-            $table->increments('listings_id');
+            $table->increments('listing_id');
 
             //Foreign Key
             //References location table, the address of the listing
             $table->integer('location_id')->unsigned();
             $table->foreign('location_id')
                   ->references('location_id')
-                  ->on('location');
+                  ->on('locations');
 
             //Foreign Key
             //References the user table, id of the user who put up the listing
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')
-                  ->references('users_id')
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                  ->references('user_id')
                   ->on('users');
                 //->onDelete('cascade');    //This may be appropriate when we properly implement soft deletion.
 

@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             //Primary key
-            $table->increments('users_id');
+            $table->increments('user_id');
 
             //User details required for account creation
             $table->string('first_name', 60);

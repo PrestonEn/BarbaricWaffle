@@ -10,25 +10,25 @@ class Listing extends Model
 	protected $table = 'listings';
 
     //Primary key
-    protected $primaryKey = 'listings_id';
+    protected $primaryKey = 'listing_id';
 
     //Fields the user can set
     protected $fillable = [
     ];
 
     public function user(){
-    	$this->belongsTo('App/User');
+    	return $this->belongsTo('App\User');
     }
 
     public function location(){
-    	$this->hasOne('App/Location');
+    	return $this->belongsTo('App\Location');
     }
 
     public function listing_image(){
-    	$this->hasMany('App/Listing_Image');
+    	return $this->hasMany('App\Listing_Image');
     }
 
     public function listing_info(){
-    	$this->hasMany('App/Listing_Info');
+    	return $this->hasMany('App\Listing_Info');
     }
 }

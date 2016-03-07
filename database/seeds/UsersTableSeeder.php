@@ -38,10 +38,10 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'users_id'      => $u->id,
-                ])->listings_id;
+                    'user_id'      => $u->id,
+                ])->listing_id;
                 $listing_infos = factory(App\Listing_Info::class)->create([
-                    'listings_id' => $tlist,
+                    'listing_id' => $tlist,
                 ]);
             });
     }

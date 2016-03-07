@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     //Table associated with this model
-    protected $table = 'location';
+    protected $table = 'locations';
 
     //primary key
     protected $primaryKey = 'location_id';
@@ -24,7 +24,7 @@ class Location extends Model
     ];
     
     public function listing(){
-        $this->belongsTo('App/Listing');
+        return $this->hasOne('App\Listing');
     }
 
 }
