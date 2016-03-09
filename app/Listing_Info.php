@@ -54,17 +54,7 @@ class Listing_Info extends Model
     	return $this->belongsTo('App\Listing');
     }
 
-    public function user(){
-    	//This method is something I can't test now.
-    	//Hopefully it works as intended.
-    	return $this->belongsTo('App\Listing')->belongsTo('User');
-    }
-
     public function scopeActive($query){
     	return $query->where('is_active', 1);
-    }
-
-    public function location(){
-        return $this->belongsTo('App\Listing')->belongsTo('App\Location');
     }
 }

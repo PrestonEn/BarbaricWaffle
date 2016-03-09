@@ -48,7 +48,6 @@ class CreateLocationTable extends Migration
      */
     public function down()
     {
-        //AL: Not sure if more is needed for this.
-        Schema::drop('location');
+        Schema::drop('locations');
     }
 }
