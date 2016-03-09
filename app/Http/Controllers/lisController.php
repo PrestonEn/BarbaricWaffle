@@ -15,17 +15,26 @@ class lisController extends Controller
 {
     
 		public function allListings(){
-/*			$listingInfo = Listing_Info::all();
-			print($listingInfo);
-*/
-
-			//$listingInfo = Listing::find(1)->listing_info->active();
-			$listingInfo = Listing_Info::where('is_active','=',1)->get();			
-			
-			//$listTest = Listing_Info::find(1)->location;
-			return view('testing.listingsList', compact('listingInfo'));
+			$listingInfo = Listing_Info::where('is_active','=',1)->get();
+			$num = Listing_Info::where('is_active','=',1)->count();	
+			return view('testing.listingsList', compact('listingInfo'), compact('num'));
 		
 
+		}
+
+		public function getProfileListings($userId){
+			$user = User::where('user_id','=',$userId)->first();
+			var_dump(Listing::first()->user);
+			//var_dump ($user->listings);
+			/*
+			var_dump($list);
+			foreach ($list as $l){
+				var_dump($l);
+			}
+			
+*/
+
+			//return view ('testing.profilePostings');
 		}
 
 /*			print($listings);

@@ -15,7 +15,9 @@
 
 <body>
    
-   <div class = "pageTitle"> Posted Listings </div>
+   <div class = "pageTitle"> Posted Listings 
+      
+   </div>
 
       <div class = "row" id = "buttonDiv">
          <div class = "col-xs-12">

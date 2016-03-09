@@ -14,7 +14,7 @@ Route::get('profileFavourites', 'pageStructureController@profileFavourites');
 
 Route::get('profileSettings', 'pageStructureController@profileSettings');
 
-Route::get('profilePostings', 'pageStructureController@profilePostings');
+Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
 Route::get('addListing', 'pageStructureController@addListing');
 

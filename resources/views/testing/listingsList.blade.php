@@ -1,11 +1,14 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/listingsList.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
+ 
 
 
   @extends('testing.navbarTop')
 
   @section('content')
+
+  <div id = "test">
+  </div>
 
   <div class = "pageTitle">
     Available Properties
@@ -13,7 +16,7 @@
 
   <div class = "pageBar row">
     <div class = "col-xs-6 col-sm-4">
-      <strong> Listings Found : </strong> ##
+      <strong> Listings Found : </strong> {{ $num }} 
     </div>
     <div id = "selDiv" class = "col-xs-6 col-sm-4">
       Sort by:
@@ -25,7 +28,7 @@
     </div>
     <div  id = "refineDiv" class = "panel panel-default col-xs-5 col-sm-4">
       <table class="table-condensed">
-        <tr> <th> Search Listings </th> </tr>
+        <tr> <th> Search Listings </th></tr>
         <tr> <td> <input type="text" name = "searchVal"> <button class="btn btn-sm" type = "submit" onClick="#">search</button> </td> </tr>
         <tr> <td> Some additional Search properties here </td> </tr>
       </table>
@@ -45,11 +48,11 @@
         <div class = "col-xs-12 col-sm-8">
             <table class = "table table-condensed">
               <tr>
-                <th colspan = 2>Title : {{$listing->listing_title}} </th>
+                <th colspan = 2>{{$listing->listing_title}} </th>
               </tr>
     
               <tr>
-                <td colspan = 2> {{ $listing->listing->location->street_num}} </td>
+                <td colspan = 2><em> {{ $listing->listing->location->street_num}} {{ $listing->listing->location->street_name}}, {{ $listing->listing->location->city}}</em></td>
               </tr>
               
               <tr>
@@ -66,7 +69,22 @@
               </tr>
 
               <tr>
-                <td> little icons </td>
+                <td class = "features">
+                 @if ($listing->has_kitchen)
+                  <img style = "height:3vmax;width:3vmax;float:left;" class = "img-responsive" src="../images/kitchen.jpeg">
+                 @endif
+
+                 @if ($listing->allowed_dogs || $listing->allowed_cats || $listing->allowed_other_pets)
+                  <img style = "height:3vmax;width:3vmax;float:left" class = "img-responsive" src="../images/pets.jpeg">
+                 @endif
+
+                 @if ($listing->has_furnishings)
+                  <img style = "height:3vmax;width:3vmax;float:left" class = "img-responsive" src="../images/furnished.jpeg">
+                 @endif
+
+
+
+                </td>
               </tr>
 
               <tr>
@@ -84,7 +102,9 @@
 
   @stop
 
-  
 
+
+
+<script type="text/javascript" src="{!! asset('JS/listingsList.js') !!}"></script> 
 
 
