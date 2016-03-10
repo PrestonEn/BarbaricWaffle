@@ -15,26 +15,23 @@ class lisController extends Controller
 {
     
 		public function allListings(){
-			$listingInfo = Listing_Info::where('is_active','=',1)->get();
+			$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('created_at')->get();
 			$num = Listing_Info::where('is_active','=',1)->count();	
 			return view('testing.listingsList', compact('listingInfo'), compact('num'));
-		
+		}
 
+		public function mainProfileActiveListings($userId){
+			$user = User::where('user_id','=',$userId)->first();
+			$listingsActive = $user->listings;
+			//$listingsActive = Listing_Info::all();
+			return view('testing.profile', compact('listingsActive'), compact('user'));
 		}
 
 		public function getProfileListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
-			var_dump(Listing::first()->user);
-			//var_dump ($user->listings);
-			/*
-			var_dump($list);
-			foreach ($list as $l){
-				var_dump($l);
-			}
-			
-*/
-
-			//return view ('testing.profilePostings');
+			$listingsActive = $user->listings;
+			$listingsInactive = $user->listings::where('is_active','=',0)->get();
+			return view ('testing.profilePostings', compact('listingActive'), compact('listingInactive'));
 		}
 
 /*			print($listings);

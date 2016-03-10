@@ -16,7 +16,7 @@
 <body>
    
    <div class = "pageTitle"> Posted Listings 
-      
+
    </div>
 
       <div class = "row" id = "buttonDiv">
@@ -30,7 +30,8 @@
             <table class = "table">
                
                   <tr>
-                     <th class = "removeable" colspan = 2> $listingTitle</th>
+                     <th class = "removeable" colspan = 2> 
+                     </th>
                   </tr>
 
                   <tr>

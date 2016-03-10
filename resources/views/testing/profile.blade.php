@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<div class = "pageTitle"> Person's Name </div>
+	<div class = "pageTitle"> {{$user->first_name}} {{$user->last_name}} </div>
 
 		<div class = "panel">
 			<strong>Phone Number : </strong>
@@ -22,7 +22,7 @@
 
 		<div class = "panel">
 			<strong>E-mail Address : </strong>
-			<div class = "profileInfo"> someExceptionallyLongEmail@brocku.ca </div>
+			<div class = "profileInfo"> {{$user->email}} </div>
 		</div>
 
 
@@ -32,108 +32,29 @@
 			<div class = "row" id = "listings">
 				<table id = "listingTable" class = "table table-bordered">
 					<tr>
+
+                  @foreach ($listingsActive as $listing)
+                    @foreach($listing->listing_info as $list)
+                    @if($list->is_active)
 						<td class = "listingCell">
                				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                				<table id = "test" class = "table table-condensed">	
                					<tr>
                						<td>
-   										<h2> Listing Title <h2>
+   										<h2> {{$list->listing_title}} <h2>
    									</td>
    								</tr>
 				
 								<tr>
                						<td>
-   										<h2> $$$$/month <h2>
+   										<h2> {{$list->price_monthly}}/month <h2>
    									</td>
    								</tr>
    							</table>
    						</td>
-
-   						<td class = "listingCell">
-             				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
-               				<tr>
-               					<td>
-   									<h2> Listing Title <h2>
-   								</td>
-   							</tr>
-				
-							<tr>
-               					<td>
-   									<h2> $$$$/month <h2>
-   								</td>
-   							</tr>
-   							</table>
-   						</td>
-
-
-   						<td class = "listingCell">
-               				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
-               				<tr>
-               					<td>
-   									<h2> Listing Title <h2>
-   								</td>
-   							</tr>
-				
-							<tr>
-               					<td>
-   									<h2> $$$$/month <h2>
-   								</td>
-   							</tr>
-   						</table>
-   						</td>
-
-   						<td class = "listingCell">
-               				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
-               				<tr>
-               					<td>
-   									<h2> Listing Title <h2>
-   								</td>
-   							</tr>
-				
-							<tr>
-               					<td>
-   									<h2> $$$$/month <h2>
-   								</td>
-   							</tr>
-   						</table>
-   						</td>
-
-   						<td class = "listingCell">
-               				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
-               				<tr>
-               					<td>
-   									<h2> Listing Title <h2>
-   								</td>
-   							</tr>
-				
-							<tr>
-               					<td>
-   									<h2> $$$$/month <h2>
-   								</td>
-   							</tr>
-   						</table>
-   						</td>   			
-
-   						<td class = "listingCell">
-               				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table class = "table table-condensed">	
-               				<tr>
-               					<td>
-   									<h2> Listing Title <h2>
-   								</td>
-   							</tr>
-				
-							<tr>
-               					<td>
-   									<h2> $$$$/month <h2>
-   								</td>
-   							</tr>
-   						</table>
-					</tr>
+                     @endif
+                     @endforeach
+                  @endforeach    			
 				</table>
 			</div>
 	</div>

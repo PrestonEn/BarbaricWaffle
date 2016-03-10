@@ -71,15 +71,31 @@
               <tr>
                 <td class = "features">
                  @if ($listing->has_kitchen)
-                  <img style = "height:3vmax;width:3vmax;float:left;" class = "img-responsive" src="../images/kitchen.jpeg">
+                  <img class = "img-responsive" src="../images/kitchen.jpeg">
                  @endif
 
                  @if ($listing->allowed_dogs || $listing->allowed_cats || $listing->allowed_other_pets)
-                  <img style = "height:3vmax;width:3vmax;float:left" class = "img-responsive" src="../images/pets.jpeg">
+                  <img class = "img-responsive" src="../images/pets.jpeg">
                  @endif
 
                  @if ($listing->has_furnishings)
-                  <img style = "height:3vmax;width:3vmax;float:left" class = "img-responsive" src="../images/furnished.jpeg">
+                  <img class = "img-responsive" src="../images/furnished.jpeg">
+                 @endif
+
+                 @if ($listing->has_laundry)
+                  <img class = "img-responsive" src="../images/laundry.jpeg">
+                 @endif
+
+                 @if (!$listing->owner_pays_hydro)
+                  <img class = "img-responsive" src="../images/water.jpeg">
+                 @endif
+
+                 @if (!$listing->owner_pays_electricity)
+                  <img class = "img-responsive" src="../images/hydro.jpeg">
+                 @endif
+
+                 @if (!$listing->owner_pays_internet)
+                  <img class = "img-responsive" src="../images/internet.jpeg">
                  @endif
 
 
