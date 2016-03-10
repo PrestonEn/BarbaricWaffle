@@ -11,6 +11,7 @@ return array(
     'CreateListingsTable' => $baseDir . '/database/migrations/2016_02_06_043544_create_listings_table.php',
     'CreateLocationTable' => $baseDir . '/database/migrations/2016_02_05_210802_create_location_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateUserFavouritesTable' => $baseDir . '/database/migrations/2016_03_10_002752_create_user_favourites_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

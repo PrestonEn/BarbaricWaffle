@@ -34,6 +34,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Listing');
     }
 
+    public function favourite_listings(){
+        return $this->belongsToMany('App\Listing', 'favourites_listing_user');
+    }
+
     public function scopeRealtor(){
 
     }

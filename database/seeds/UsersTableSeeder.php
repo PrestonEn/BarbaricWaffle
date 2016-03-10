@@ -44,5 +44,59 @@ class UsersTableSeeder extends Seeder
                     'listing_id' => $tlist,
                 ]);
             });
+
+        
+        factory(App\User::class, 2)
+            ->create()
+            ->each(function($u){
+                $tloc = factory(App\Location::class)->create()->location_id;
+                $tlist = factory(App\Listing::class)->create([
+                    'location_id'   => $tloc,
+                    'user_id'      => $u->id,
+                ])->listing_id;
+                factory(App\Listing_Info::class)->create([
+                    'listing_id'    => $tlist,
+                ]);
+                factory(App\Listing_Info::class)->create([
+                    'listing_id'    => $tlist,
+                    'is_active'     => false,
+                ]);
+
+                $tloc = factory(App\Location::class)->create()->location_id;
+                $tlist = factory(App\Listing::class)->create([
+                    'location_id'   => $tloc,
+                    'user_id'      => $u->id,
+                ])->listing_id;
+                factory(App\Listing_Info::class)->create([
+                    'listing_id'    => $tlist,
+                ]);
+
+                $tloc = factory(App\Location::class)->create()->location_id;
+                $tlist = factory(App\Listing::class)->create([
+                    'location_id'   => $tloc,
+                    'user_id'      => $u->id,
+                ])->listing_id;
+                factory(App\Listing_Info::class)->create([
+                    'listing_id'    => $tlist,
+                ]);
+
+                $tloc = factory(App\Location::class)->create()->location_id;
+                $tlist = factory(App\Listing::class)->create([
+                    'location_id'   => $tloc,
+                    'user_id'      => $u->id,
+                ])->listing_id;
+                factory(App\Listing_Info::class)->create([
+                    'listing_id'    => $tlist,
+                ]);
+            });
+            
+        DB::table('favourites_listing_user')->insert([
+            'listing_id'    => '1',
+            'user_id'       => '1',
+        ]);
+        DB::table('favourites_listing_user')->insert([
+            'listing_id'    => '2',
+            'user_id'       => '1',
+        ]);
     }
 }
