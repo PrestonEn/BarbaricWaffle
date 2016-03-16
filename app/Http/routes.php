@@ -30,4 +30,6 @@ Route::get('profileMessages', 'pageStructureController@profileMessages');
 
 Route::get('/','pageStructureController@mapListing');
 
+Route::post('/register', array('uses'=>'ListingController@add'));
+
 ?>
