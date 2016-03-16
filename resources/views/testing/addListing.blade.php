@@ -1,4 +1,5 @@
 <link href="{!! asset('css/addListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{!! asset('JS/postListing.js') !!}"></script>
 
 
 @extends('testing.navbarTop') @section('content')
@@ -8,19 +9,18 @@
     <div class="row">
         <h2>New Listing</h2>
 
-        <form action="/file-upload"
-      id="my-awesome-dropzone" role="form">
+        <form onsubmit="checkAnswers()" id="my-awesome-dropzone" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" id="title" placeholder="Enter Title">
+                <input type="text" class="form-control" id="title" placeholder="Enter Title" required>
             </div>
 
             <div class="row">
 
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                    <input type="text" class="form-control" id="address" placeholder="Enter Address" required>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="rent" placeholder="Rent">
+                    <input type="text" class="form-control" id="rent" placeholder="Rent" required>
                 </div>
 
             </div>
@@ -33,7 +33,7 @@
 
                 <div class="form-group col-sm-6">
 
-                    <select class="form-control" id="houseType">
+                    <select class="form-control" id="houseType" required>
                         <option>House</option>
                         <option>Apartment</option>
                         <option>Condo</option>
@@ -41,15 +41,15 @@
                 </div>
                 <div class="form-group col-sm-6">
 
-                    <input type="text" class="form-control" id="size" placeholder="Sq/ft">
+                    <input type="text" class="form-control" id="size" placeholder="Sq/ft" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="bedrooms" placeholder="Bedrooms">
+                    <input type="text" class="form-control" id="bedrooms" placeholder="Bedrooms" required>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="bathrooms" placeholder="Bathrooms">
+                    <input type="text" class="form-control" id="bathrooms" placeholder="Bathrooms" required>
                 </div>
             </div>
             <div class="checkbox">
@@ -66,7 +66,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description"></textarea>
+                <textarea class="form-control" rows="5" id="description" required></textarea>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="amenities" placeholder="Amenities">
@@ -159,7 +159,7 @@
             
 
             <br />
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button onclick="checkSubmit()" class="btn btn-default">Submit</button>
             <button type="save" class="btn btn-default">Save</button>
         </form>
 

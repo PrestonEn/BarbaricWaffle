@@ -37,8 +37,8 @@
                     @foreach($listing->listing_info as $list)
                     @if($list->is_active)
 						<td class = "listingCell">
-               				<img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-               				<table id = "test" class = "table table-condensed">	
+               				<img class="listImages" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+               				<table class = "listingData table table-condensed">	
                					<tr>
                						<td>
    										<h2> {{$list->listing_title}} <h2>

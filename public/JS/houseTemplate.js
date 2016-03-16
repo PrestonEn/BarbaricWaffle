@@ -9,7 +9,7 @@ $(document).ready(function () {
             outer.css({ "max-height": $('#inner').outerHeight() + 'px' });
         }
         else{
-            outer.css({ "max-height": "0px;"; "text-align": "center" });
+            outer.css({ "max-height": "0px;"});
         }
          outer.toggleClass('hideFeatures');
     });

@@ -31,11 +31,11 @@
     <div class="collapse navbar-collapse">
     <ul id = "navEl" class="nav navbar-nav">
       <li><a href="../mapListing">Home</a></li>
-      <li><a href="../profile">Profile</a></li>
-      <li><a href="../profileFavourites">Favourites</a></li>
+      <li><a href="../profile/12">Profile</a></li>
+      <li><a href="../profileFavourites/12">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
-      <li><a href="../houseTemplate">house</a></li>
-      <li><a href="../listingsList">Listings</a></li>
+      <li><a href="../houseTemplate/1">house</a></li>
+      <li><a href="../listingsList/1">Listings</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
       <li><a href="../signIn">Sign&nbspin</a></li>

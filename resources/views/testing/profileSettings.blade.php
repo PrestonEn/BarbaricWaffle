@@ -16,7 +16,7 @@
 
 <div class = "col-xs-12">
   <div class = "pageTitle">
-    Person's Name
+    {{$user->first_name}} {{$user->last_name}}
   </div>
 
   <form action="" method="post">
@@ -39,7 +39,7 @@
       <div class = "col-xs-1"></div>
       <div id = "email" class = "col-xs-10">
         <strong id = "emailTitle">Current E-mail :</strong>
-        SomeEmailAddress@hotmail.com
+        {{$user->email}}
       </div>
     </div>  
 

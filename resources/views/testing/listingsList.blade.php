@@ -7,6 +7,7 @@
 
   @section('content')
 
+  
   <div id = "test">
   </div>
 
@@ -20,10 +21,10 @@
     </div>
     <div id = "selDiv" class = "col-xs-6 col-sm-4">
       Sort by:
-      <select>
-        <option> Most Recent </option>
-        <option> Lowest Price </option>
-        <option> Highest Price </option>
+      <select onchange="organizeListings(value)">
+        <option value = "1"> Most Recent </option>
+        <option value = "2"> Lowest Price </option>
+        <option value = "3"> Highest Price </option>
       </select>
     </div>
     <div  id = "refineDiv" class = "panel panel-default col-xs-5 col-sm-4">
@@ -86,15 +87,15 @@
                   <img class = "img-responsive" src="../images/laundry.jpeg">
                  @endif
 
-                 @if (!$listing->owner_pays_hydro)
+                 @if ($listing->owner_pays_hydro)
                   <img class = "img-responsive" src="../images/water.jpeg">
                  @endif
 
-                 @if (!$listing->owner_pays_electricity)
+                 @if ($listing->owner_pays_electricity)
                   <img class = "img-responsive" src="../images/hydro.jpeg">
                  @endif
 
-                 @if (!$listing->owner_pays_internet)
+                 @if ($listing->owner_pays_internet)
                   <img class = "img-responsive" src="../images/internet.jpeg">
                  @endif
 

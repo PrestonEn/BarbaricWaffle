@@ -1,17 +1,23 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
-<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
+
 
 @extends('testing.navbarTop') @section('content')
 
 <div class="customWidth">
     <div class="row">
         <div class="col-sm-3">
-            <h4>4010 Dundas West Toronto, ON</h4>
-            <h1>$1,000,000</h1>
-            <h4 class="style">4 Bedrooms</h4>
-            <h4>3+ Bathrooms</h4>
-            <p>Added to our website 28 days ago</p>
-            <p class="mls">MLS®: N3232412</p>
+            <h4>{{ $listingInfo->listing->location->street_num}} {{ $listingInfo->listing->location->street_name}} {{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}</h4>
+            <h1>${{$listingInfo->price_monthly}}/mth</h1>
+            <h4 class="style">{{$listingInfo->num_bedrooms_total}} Bedrooms</h4>
+            <h4>{{$listingInfo->num_bathrooms_total}} Bathrooms</h4>
+            <p>Added to our website 
+
+                @if($date==0)
+                today 
+                @else
+                {{$date}} day(s) ago</p>
+                @endif
+            <p class="mls">MLS®: {{ $listingInfo->mls_number }}</p>
 
         </div>
         <div class="col-sm-6">
@@ -22,19 +28,27 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4>Description</h4>
-                    <p>Hello, thank you for visitngLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu iaculis lectus, a condimentum eros. Cras sit amet diam et nunc malesuada scelerisque. Proin finibus odio sed fermentum pharetra. Proin in pellentesque.a condimentum eros. Cras sit amet diam et nunc malesuada scelerisque. Proin finibus odio sed fermentum pharetra. Proin in pellentesque.</p>
+                    <p> {{$listingInfo->listing_description}}</p>
                     <p id="features">Features +</p>
-                    <div class="features hideFeatures" id="outer">
+                    <div class="features hidefeatures" id="outer">
                         <div id="inner">
                             <ul>
-                                <li>Air Conditioning</li>
-                                <li>Free Cable</li>
+                                @if ($listingInfo->has_kitchen)
+                                <li>Kitchen Access</li>
+                                @endif
+                                @if ($listingInfo->has_laundry)
+                                <li>Laundry included</li>
+                                @endif
+                                @if ($listingInfo->owner_pays_internet)
                                 <li>Free Internet</li>
-                                <li>Heating Included</li>
+                                @endif
+                                @if ($listingInfo->owner_pays_water)
+                                <li>Water bill paid</li>
+                                @endif
+                                @if ($listingInfo->owner_pays_hydro)
                                 <li>Hydro Included</li>
-
+                                @endif
                             </ul>
-
                         </div>
                     </div>
 
@@ -51,8 +65,8 @@
                     <div class="profile"></div>
                 </div>
                 <div class="col-sm-7">
-                    <h2>Jeff Yang</h2>
-                    <p>Joined 1 day ago</p>
+                    <h2>{{ $listingInfo->listing->user->first_name}} {{ $listingInfo->listing->user->last_name}}</h2>
+                    <p>Joined {{ $listingInfo->listing->user->created_at->diffInDays()}} day(s) ago</p>
 
                     <p class="col-sm-6" id="sendMessage">Send a message</p>
                     <p class="col-sm-6" id="viewProfile">View Profile</p>
@@ -74,8 +88,9 @@
 </div>
 
 
-<script type="text/javascript" src="{!! asset('JS/houseTemplate.js') !!}"></script>
 
+<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('JS/houseTemplate.js') !!}"></script>
 
 
 @stop

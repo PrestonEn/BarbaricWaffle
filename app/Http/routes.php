@@ -10,19 +10,19 @@ Route::get('mapListing','pageStructureController@mapListing');
 
 Route::get('profile/{userId}','lisController@mainProfileActiveListings');
 
-Route::get('profileFavourites', 'pageStructureController@profileFavourites');
+Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
 
-Route::get('profileSettings', 'pageStructureController@profileSettings');
+Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
 Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
 Route::get('addListing', 'pageStructureController@addListing');
 
-Route::get('houseTemplate', 'pageStructureController@houseTemplate');
+Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
 
 Route::get('profileSearches', 'pageStructureController@profileSearches');
 
-Route::get('listingsList', 'lisController@allListings');
+Route::get('listingsList/{order}', 'lisController@allListings');
 
 Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
 

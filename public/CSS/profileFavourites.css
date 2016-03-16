@@ -19,3 +19,20 @@
 .tablePostHistory{
 	background-color: #CCC;
 }
+
+.prices{
+	text-align: right;
+}
+
+.features img{
+	float:left;
+	margin-right: 1em;
+	height: 1.6vmax;
+	width: 1.6vmax;
+}
+.features2 img{
+	float:left;
+	margin-right: 0.3em;
+	height: 1.2vmax;
+	width: 1.2vmax;
+}

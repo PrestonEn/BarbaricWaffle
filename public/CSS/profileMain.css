@@ -1,15 +1,3 @@
-h2 {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 10em;
-	height: 100%;
-	font-size: 0.6em;
-	font-size: 2vmax;
-	margin: 4px;
-}
-
-
 .panel {
 	padding-top: 0.1em;
 	padding-bottom: 0.1em;
@@ -55,4 +43,21 @@ h2 {
 	background-color: white
 }
 
+.listingCell {
+	max-width: 13vw;
+}
 
+.listingData, .listImages {
+	margin: auto;
+	width: 100%;
+	max-width: 30em;
+}
+
+.listingData h2 {
+	display: block;
+	overflow: auto;
+	max-width: 100%;
+	height: auto;
+	font-size: 1em;
+	margin: 4px;
+}
