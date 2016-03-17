@@ -18,7 +18,7 @@ button {
 }
 
 table td, table th{
-	padding: 1em;
+	padding: 0.8em;
 
 }
 
@@ -36,8 +36,8 @@ table th{
 
 table td {
 	font-size: 2vmin;
-	padding-left: 2em;
-	padding-right: 2em;
+	padding-left: 0.8em;
+	padding-right: 0.8em;
 }
 
 #tableDiv {
@@ -49,5 +49,3 @@ button {
 	position: absolute;
 	right:0;
 }
-
-

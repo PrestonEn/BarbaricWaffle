@@ -46,9 +46,6 @@ class lisController extends Controller
 		public function getFavouriteListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$list = Listing::all();
-			/*foreach($list as $l){
-				var_dump($l->favourite_listings);
-			}*/
 			$listings = $user->favourite_listings;
 			return view ('testing.profileFavourites', compact('listings'));
 		}
@@ -63,6 +60,11 @@ class lisController extends Controller
 			return view('testing.houseTemplate', compact('listingInfo'), compact('date'));
 		}
 
+		public function viewForeignProfile($userId){
+			$user = User::where('user_id','=',$userId)->first();
+			$listingsActive = $user->listings;
+			return view('testing.profileView', compact('listingsActive'), compact('user'));
+		}
 
 
 

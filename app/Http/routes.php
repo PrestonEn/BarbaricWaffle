@@ -10,6 +10,8 @@ Route::get('mapListing','pageStructureController@mapListing');
 
 Route::get('profile/{userId}','lisController@mainProfileActiveListings');
 
+Route::get('profileView/{userId}','lisController@viewForeignProfile');
+
 Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
 
 Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');

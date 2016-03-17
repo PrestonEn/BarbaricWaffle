@@ -3,17 +3,17 @@
 	overflow-x: auto;
 	text-align: left;
 	max-width: 100%;
-	font-size: 2vw;
+	font-size: 2vmax;
 }
 
 #emailTitle{
-	font-size: 1.1em;
+	font-size: 2.5vmax;
 }
 
 form {
 	margin: 2%;
 	padding: 3%;
-	font-size: 0.6em;
+	font-size: 1.7vmax;
 	background-color: #CCC;
 }
 .panel {
@@ -31,18 +31,14 @@ form {
 	margin-top: 2%;
 }
 
-body {
-	margin-left: 1em;
-}
-
-#profileTitle{
-	font-size: 3vw;
-}
-
-.col-xs-10{
-	font-size: 1.7vw;
+.form-control{
+	font-size: 2vmax;
 }
 
 #pTitle {
 	text-align: center;
+}
+
+form .row{
+	margin-top: 1.2em;
 }

@@ -35,17 +35,17 @@ select {
 }
 
 #refineDiv table button{
-	width: 8vw;
+	width: 8vmax;
 	height: 3vw;
 	min-height: 20px;
-	font-size: 1.3vw;
+	font-size: 1.3vmax;
 	background-color: #b3b3cc;
-	text-align: center;
+	margin: auto;
 }
 
 
 #refineDiv table input {
-	width: 17vw;
+	width: 14vw;
 
 }
 

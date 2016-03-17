@@ -39,15 +39,15 @@
          </tr>   
          <tr>
             <td class = "name"> someSearchName </td>
-            <td colspan = "5"> Some little icons or something for search values</td>
+            <td colspan = "6"> Some little icons or something for search values</td>
          </tr>
          <tr>
             <td class = "name">  someSearchName asdfsajdkfajsdfkjsdkfk</td>
-            <td colspan = "5"> test </td>
+            <td colspan = "6"> test </td>
          </tr>
          <tr>
             <td class = "name">  someSearchName asdfsajdkfajsdfkjsdkfk</td>
-            <td colspan = "5"> test </td>
+            <td colspan = "6"> test </td>
          </tr>
       </table> 
    </div>

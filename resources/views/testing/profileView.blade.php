@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang = "en">
 
-@extends('testing.navbarLeft')
 
-@section('profileContent')
+@extends('testing.navbarTop')
+
+@section('content')
 
 <head>
 	<title> ProfileMain </title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileMain.css') !!}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{!! asset('CSS/profileView.css') !!}" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<div class = "pageTitle"> {{$user->first_name}} {{$user->last_name}} </div>
+
+	<img src="../images/profilePicDefault.jpeg" id="profilePic" class="img-responsive img-circle">
 
 		<div class = "panel">
 			<strong>Phone Number : </strong>
@@ -102,9 +104,8 @@
 	</table>
 </div>
 
-@stop
-
-@extends('testing.navbarTop')
-
 </body>
 </html>
+
+@stop
+

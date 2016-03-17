@@ -28,7 +28,9 @@
 	float:left;
 	margin-right: 1em;
 	height: 1.6vmax;
+	min-height: 3em;
 	width: 1.6vmax;
+	min-width: 3em;
 }
 .features2 img{
 	float:left;

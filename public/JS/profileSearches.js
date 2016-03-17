@@ -10,7 +10,7 @@ function edit(button){
 	var headers = document.getElementsByClassName("name");
 	for (var i = headers.length - 1; i >= 0; i--) {
 	 	var text = headers[i].innerHTML;
-		headers[i].innerHTML = "<label style = 'color:red;margin-right:0.5em;margin-left:1px; padding:0.1em; font-size:0.2vw;'><input type=checkbox value = '"+text+"''></labeL>" + text;
+		headers[i].innerHTML = "<label style = 'color:red;margin-right:0.5em;margin-left:1px; padding:0.1em; padding-right: 2vw; font-size:0.2vw;'><input type=checkbox value = '"+text+"''></labeL>" + text;
 	};
 
 	}

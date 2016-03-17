@@ -44,13 +44,28 @@
 }
 
 .listingCell {
-	max-width: 13vw;
+	min-width: 20vw;
+	max-width: 15em;
 }
+	
+.dataTitle{
+	height:5em;
+	overflow: hidden;
+}	
+
+.dataPrice{
+	height:2em;
+	overflow: hidden;
+}	
 
 .listingData, .listImages {
 	margin: auto;
 	width: 100%;
 	max-width: 30em;
+}
+
+.tableTitle{
+	font-size: 2.7vmin;
 }
 
 .listingData h2 {

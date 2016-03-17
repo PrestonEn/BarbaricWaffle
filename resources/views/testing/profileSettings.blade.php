@@ -22,13 +22,10 @@
   <form action="" method="post">
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           Input Picture Drag and Drop here
-        </div>
       </div>  
       <div class = "row">
-        <div class = "col-xs-1"></div>
-        <div id = "button" class = "col-xs-10">
+        <div id = "button" class = "col-xs-12">
           <button type = "submit" class = "btn-md">Submit</input>
         </div>
       </div> 
@@ -46,16 +43,16 @@
     <form action="" method="post">
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           New E-mail:  
+          <div class = "col-xs-12">
           <input type = "text" class = "form-control" name = "nEmail">
         </div>
       </div>  
 
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           Verify E-mail:  
+          <div class = "col-xs-12">
           <input type = "text" class = "form-control" name = "bEmail">
         </div>
       </div> 
@@ -79,24 +76,24 @@
     <form action="" method="post">
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           Old Password:  
+          <div class = "col-xs-12">
           <input type = "password" class = "form-control" name = "oldPass">
         </div>
       </div>  
 
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           New Password:  
+          <div class = "col-xs-12">
           <input type = "password" class = "form-control" name = "nPass">
         </div>
       </div> 
 
       <div class = "row">
         <div class = "col-xs-1"></div>
-        <div class = "col-xs-10">
           Verify Password:  
+          <div class = "col-xs-12">
           <input type = "password" class = "form-control" name = "vPass">
         </div>
       </div>
