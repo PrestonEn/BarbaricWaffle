@@ -29,7 +29,7 @@
       @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 1)
-      <div class = "col-md-4">
+      <div class = "col-md-4" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
             <table class = "table">
                
                   <tr>

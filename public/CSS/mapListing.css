@@ -17,11 +17,16 @@
   overflow-y: scroll;
 }
 
-#col2 img {
+#col2 .housePic {
   height: 80%;
   width: 80%;
   min-height: 10em;
 } 
+
+.feature {
+  width: 1.1vw;
+  height: 1.1vw;
+}
 
 #col2 table {
   font-size: 80%;

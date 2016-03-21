@@ -42,7 +42,7 @@
       @foreach ($listingInfo as $listing)
 
 
-      <div class = "listing col-xs-12">
+      <div class = "listing col-xs-12" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
         <div class = "col-xs-12 col-sm-4">
         <img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
         </div>
@@ -98,9 +98,6 @@
                  @if ($listing->owner_pays_internet)
                   <img class = "img-responsive" src="../images/internet.jpeg">
                  @endif
-
-
-
                 </td>
               </tr>
 

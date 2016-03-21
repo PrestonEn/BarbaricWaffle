@@ -36,7 +36,7 @@
                   @foreach ($listingsActive as $listing)
                     @foreach($listing->listing_info as $list)
                     @if($list->is_active)
-						<td class = "listingCell">
+						<td class = "listingCell" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
                				<img class="listImages" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                				<table class = "listingData table table-condensed">	
                					<tr>
@@ -69,35 +69,14 @@
 		<tr>
 			<td>
 				<div class = "panel default-panel">
-				<div class = "commentorsName"> Nicholas Cage :</div>
+				<div class = "commentorsName"> Commentor :</div>
 				<div class = "actualComment">
-					This is a comment about how the person is a wonderful human being. Things are wonderful. Life is wonderful. It's a wonderful life.
+					Comment.
 				</div>
 			</div>
 			</td>
 		</tr>
-
-		<tr>
-			<td>
-				<div class = "panel default-panel">
-				<div class = "commentorsName"> Nicholas Cage :</div>
-				<div class = "actualComment">
-					This is a comment about how the person is a wonderful human being. Things are wonderful. Life is wonderful. It's a wonderful life.
-				</div>
-			</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>
-				<div class = "panel default-panel">
-				<div class = "commentorsName"> Nicholas Cage :</div>
-				<div class = "actualComment">
-					This is a comment about how the person is a wonderful human being. Things are wonderful. Life is wonderful. It's a wonderful life.
-				</div>
-			</div>
-			</td>
-		</tr>		
+		
 
 	</table>
 </div>

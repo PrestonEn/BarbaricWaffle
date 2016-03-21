@@ -6,7 +6,7 @@ Route::get('signIn','pageStructureController@signIn');
 
 Route::get('signUp','pageStructureController@signUp');
 
-Route::get('mapListing','pageStructureController@mapListing');
+Route::get('mapListing','lisController@mapListings');
 
 Route::get('profile/{userId}','lisController@mainProfileActiveListings');
 

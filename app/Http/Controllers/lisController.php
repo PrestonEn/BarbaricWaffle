@@ -14,20 +14,25 @@ use Carbon\Carbon;
 
 class lisController extends Controller
 {
-    
-		public function allListings($order){
+   		public function allListings($order){
 
 			if($order==1){
-			$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('created_at')->get();
+				$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('created_at')->get();
 			}
 			if($order==2){
-			$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','asc')->get();	
+				$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','asc')->get();	
 			}
 			if($order==3){
-			$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','desc')->get();	
+				$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','desc')->get();	
 			}
 			$num = Listing_Info::where('is_active','=',1)->count();	
 			return view('testing.listingsList', compact('listingInfo'), compact('num'));
+		}
+
+		public function mapListings(){
+			$listingInfo = Listing_Info::where('is_active','=',1)->get();
+			$num = Listing_Info::where('is_active','=',1)->count();	
+			return view('testing.mapListing', compact('listingInfo'), compact('num'));
 		}
 
 		public function mainProfileActiveListings($userId){
