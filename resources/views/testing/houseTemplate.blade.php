@@ -68,8 +68,10 @@
                     <h2>{{ $listingInfo->listing->user->first_name}} {{ $listingInfo->listing->user->last_name}}</h2>
                     <p>Joined {{ $listingInfo->listing->user->created_at->diffInDays()}} day(s) ago</p>
 
+
+
                     <p class="col-sm-6" id="sendMessage">Send a message</p>
-                    <p class="col-sm-6" id="viewProfile">View Profile</p>
+                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$listingInfo->listing->user->user_id}}">View Profile</a></p>
 
                 </div>
             </div>

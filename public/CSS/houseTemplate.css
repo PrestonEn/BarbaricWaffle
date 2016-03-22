@@ -127,3 +127,13 @@ ul li{
     list-style-position: inside;
    
 }
+
+p a{
+    text-decoration: none;
+    color: white;
+}
+
+p a:hover{
+    text-decoration: none;
+    color:white;
+};

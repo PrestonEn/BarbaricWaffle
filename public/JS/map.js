@@ -3,20 +3,36 @@ var map;
 var geocoder;
 
 function initMap(arr, ids) {
-  var mapDiv = document.getElementById("col1");
+
+  var coords;  
+  if (navigator.geolocation) {
+    alert('geolocation enabled');
+    navigator.geolocation.getCurrentPosition(function(position){
+      success(position,arr,ids);
+    });
+    
+
+  } else {
+    error('Geo Location is not supported');
+    coords = {lat: 43.1, lng: -79.3};
+    setMap(arr,ids,coords);
+  }
+}
 
 
-  map = new google.maps.Map(mapDiv, {
-    center: {lat: 43.1, lng: -79.3},
-    zoom: 3
+function setMap(arr,ids,position){
+
+    var mapDiv = document.getElementById("col1");
+    map = new google.maps.Map(mapDiv, {
+    center: position,
+    zoom: 12
   });
   var geocoder = new google.maps.Geocoder();
-
-  getCoor('Saint Catharines, Ontario', map, geocoder);
   for (var i = arr.length - 1; i >= 0; i--) {
     getCoor(arr[i],map,geocoder,ids[i]);
   };
 }
+
 
 function getCoor(address, map, geocoder, num){
 
@@ -33,4 +49,11 @@ function getCoor(address, map, geocoder, num){
       //alert('Cannot compute Coordinates : ' + status);
     };
   });
+}
+
+function success(position,arr,ids) {
+     var latitude = position.coords.latitude;
+     var longitude = position.coords.longitude;
+     coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     setMap(arr,ids,coords);
 }
