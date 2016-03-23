@@ -26,7 +26,7 @@ class lisController extends Controller
 				$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','desc')->get();	
 			}
 			$num = Listing_Info::where('is_active','=',1)->count();	
-			return view('testing.listingsList', compact('listingInfo'), compact('num'));
+			return view('testing.listingsList', compact('listingInfo'), compact('num'))->with('order', $order);
 		}
 
 		public function mapListings(){

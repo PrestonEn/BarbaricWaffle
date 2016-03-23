@@ -22,9 +22,22 @@
     <div id = "selDiv" class = "col-xs-6 col-sm-4">
       Sort by:
       <select onchange="organizeListings(value)">
-        <option value = "1"> Most Recent </option>
-        <option value = "2"> Lowest Price </option>
-        <option value = "3"> Highest Price </option>
+        @if ($order == '1')
+          <option value = "1" selected="selected">
+        @else <option value = "1"> 
+        @endif
+        Most Recent </option>
+        @if ($order == '2')
+          <option value = "2" selected="selected">
+        @else <option value = "2">
+        @endif
+        Lowest Price </option>
+        @if ($order == '3')
+          <option value = "3" selected="selected">
+        @else    
+        <option value = "3"> 
+        @endif
+        Highest Price </option>
       </select>
     </div>
     <div  id = "refineDiv" class = "panel panel-default col-xs-5 col-sm-4">

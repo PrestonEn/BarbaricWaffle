@@ -3,7 +3,7 @@ var map;
 var geocoder;
 
 function initMap(arr, ids) {
-
+  alert(ids);
   var coords;  
   if (navigator.geolocation) {
     alert('geolocation enabled');
@@ -25,7 +25,7 @@ function setMap(arr,ids,position){
     var mapDiv = document.getElementById("col1");
     map = new google.maps.Map(mapDiv, {
     center: position,
-    zoom: 12
+    zoom: 14
   });
   var geocoder = new google.maps.Geocoder();
   for (var i = arr.length - 1; i >= 0; i--) {
@@ -34,17 +34,22 @@ function setMap(arr,ids,position){
 }
 
 
-function getCoor(address, map, geocoder, num){
+function getCoor(address, map, geocoder, ids){
 
   geocoder.geocode({'address':address}, function(results,status){
     if (status === google.maps.GeocoderStatus.OK) {
       var marker = new google.maps.Marker({
       position: results[0].geometry.location,
       map: map,
-      title: num,
+      title: address,
       icon: "../images/houseIcon.jpeg",
     });
-  }    
+      google.maps.event.addListener(marker, 'click', function(num) {
+        window.location.href = "houseTemplate/"+ids;
+      });
+  }
+   
+
     else {
       //alert('Cannot compute Coordinates : ' + status);
     };
