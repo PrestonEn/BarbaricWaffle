@@ -8,7 +8,7 @@
 
 <div class = "pageTitle"> Sign Up </div>
 
-<form action = "" method = "post">
+<form action = "register" method = "POST">
 	<div class = "row">
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-5">

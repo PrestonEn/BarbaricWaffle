@@ -39,4 +39,6 @@ Route::get('listingsList/{order}', 'lisController@allListings');
 Route::get('handleRemoval', 'postingModification@makeInactive');
 
 
+Route::post('/register', array('uses'=>'ListingController@add'));
+
 ?>
