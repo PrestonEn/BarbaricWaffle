@@ -2,7 +2,7 @@
 <script type="text/javascript" src="{!! asset('JS/postListing.js') !!}"></script>
 
 
-@extends('testing.navbarTop') @section('content')
+@extends('navbarTop') @section('content')
 
 
 <div class="container" style="width:700px;">

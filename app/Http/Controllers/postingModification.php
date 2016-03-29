@@ -11,11 +11,7 @@ use App\Http\Controllers\Controller;
 class userController extends Controller
 {
     
-	public function profileSettingPagePopulation($userId){
-		$user = User::where('user_id','=',$userId);
-		$user = $user->first();
-		return view('profileSettings', compact('user'));
+	public function makeInactive(){
+			return view('mapListing');
 	}
-
-
 }

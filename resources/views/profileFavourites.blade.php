@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-@extends('testing.navbarLeft')
+@extends('navbarLeft')
 
 @section('profileContent')
 
@@ -29,7 +29,7 @@
 @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 1)
-      <div class = "col-md-4" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+      <div class = "col-md-4">
             <table class = "table">
                
                   <tr>
@@ -40,7 +40,7 @@
 
                   <tr>
                      <td colspan = 2>
-                        <img a class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                        <img a class = "img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                      </td>   
                   </tr>         
     
@@ -97,7 +97,7 @@
 
 @stop
 
-@extends('testing.navbarTop')
+@extends('navbarTop')
 
 </body>
 </html>

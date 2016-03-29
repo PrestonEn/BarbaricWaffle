@@ -3,10 +3,8 @@ var map;
 var geocoder;
 
 function initMap(arr, ids) {
-  alert(ids);
   var coords;  
   if (navigator.geolocation) {
-    alert('geolocation enabled');
     navigator.geolocation.getCurrentPosition(function(position){
       success(position,arr,ids);
     });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-@extends('testing.navbarLeft')
+@extends('navbarLeft')
 
 @section('profileContent')
 
@@ -56,7 +56,7 @@
 
 @stop
 
-@extends('testing.navbarTop')
+@extends('navbarTop')
 
 </body>
 </html>

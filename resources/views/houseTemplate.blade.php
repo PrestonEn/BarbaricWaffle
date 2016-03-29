@@ -1,7 +1,7 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
 
 
-@extends('testing.navbarTop') @section('content')
+@extends('navbarTop') @section('content')
 
 <div class="customWidth">
     <div class="row">

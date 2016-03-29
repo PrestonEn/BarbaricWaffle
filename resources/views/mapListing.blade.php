@@ -3,7 +3,7 @@
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 
 
-  @extends('testing.navbarTop')
+  @extends('navbarTop')
 
   @section('content')
 

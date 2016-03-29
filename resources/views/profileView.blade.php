@@ -1,6 +1,6 @@
 
 
-@extends('testing.navbarTop')
+@extends('navbarTop')
 
 @section('content')
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-@extends('testing.navbarLeft')
+@extends('navbarLeft')
 
 @section('profileContent')
 
@@ -29,18 +29,18 @@
       @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 1)
-      <div class = "col-md-4" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+      <div class = "col-md-4">
             <table class = "table">
                
                   <tr>
-                     <th class = "removeable" colspan = 2> 
+                     <th class = "removeable" name = {{$list->listing_id}} colspan = 2> 
                         {{$list->listing_title}}
                      </th>
                   </tr>
 
                   <tr>
                      <td colspan = 2>
-                        <img class = "img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                        <img class = "img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                      </td>   
                   </tr>         
     
@@ -100,7 +100,7 @@
       <div class = "row" style="border-bottom:3px solid black;"></div>
       <div class = "pageTitle"> Previously Posted Listings </div>
 
-      @foreach($inactiveListings as $listing)
+      @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 0)
       <div class = "col-md-3">
@@ -170,7 +170,7 @@
 </body>
 @stop
 
-@extends('testing.navbarTop')
+@extends('navbarTop')
 
 </body>
 </html>

@@ -26,33 +26,32 @@ class lisController extends Controller
 				$listingInfo = Listing_Info::where('is_active','=',1)->orderBy('price_monthly','desc')->get();	
 			}
 			$num = Listing_Info::where('is_active','=',1)->count();	
-			return view('testing.listingsList', compact('listingInfo'), compact('num'))->with('order', $order);
+			return view('listingsList', compact('listingInfo'), compact('num'))->with('order', $order);
 		}
 
 		public function mapListings(){
 			$listingInfo = Listing_Info::where('is_active','=',1)->get();
 			$num = Listing_Info::where('is_active','=',1)->count();	
-			return view('testing.mapListing', compact('listingInfo'), compact('num'));
+			return view('mapListing', compact('listingInfo'), compact('num'));
 		}
 
 		public function mainProfileActiveListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$listingsActive = $user->listings;
-			return view('testing.profile', compact('listingsActive'), compact('user'));
+			return view('profile', compact('listingsActive'), compact('user'));
 		}
 
 		public function getProfileListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$listings = $user->listings;
-			$inactiveListings = $user->listings;
-			return view ('testing.profilePostings', compact('listings'), compact('inactiveListings'));
+			return view ('profilePostings', compact('listings'));
 		}
 
 		public function getFavouriteListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$list = Listing::all();
 			$listings = $user->favourite_listings;
-			return view ('testing.profileFavourites', compact('listings'));
+			return view ('profileFavourites', compact('listings'));
 		}
 
 		public function singleListingInfo($listingId){
@@ -62,13 +61,13 @@ class lisController extends Controller
 			$creationDate = $listingInfo->created_at;
 			$date = $creationDate->diffInDays();
 
-			return view('testing.houseTemplate', compact('listingInfo'), compact('date'));
+			return view('houseTemplate', compact('listingInfo'), compact('date'));
 		}
 
 		public function viewForeignProfile($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$listingsActive = $user->listings;
-			return view('testing.profileView', compact('listingsActive'), compact('user'));
+			return view('profileView', compact('listingsActive'), compact('user'));
 		}
 
 
