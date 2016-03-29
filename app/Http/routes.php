@@ -6,19 +6,6 @@ Route::get('signIn','pageStructureController@signIn');
 
 Route::get('signUp','pageStructureController@signUp');
 
-Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
-
-Route::get('profileMessages', 'pageStructureController@profileMessages');
-
-Route::get('/','lisController@mapListings');
-
-Route::get('addListing', 'pageStructureController@addListing');
-
-Route::get('profileSearches', 'pageStructureController@profileSearches');
-
-
-
-
 Route::get('mapListing','lisController@mapListings');
 
 Route::get('profile/{userId}','lisController@mainProfileActiveListings');
@@ -31,12 +18,18 @@ Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulat
 
 Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
+Route::get('addListing', 'pageStructureController@addListing');
+
 Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
+
+Route::get('profileSearches', 'pageStructureController@profileSearches');
 
 Route::get('listingsList/{order}', 'lisController@allListings');
 
+Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
 
-Route::get('handleRemoval', 'postingModification@makeInactive');
+Route::get('profileMessages', 'pageStructureController@profileMessages');
 
+Route::get('/','pageStructureController@mapListing');
 
 ?>
