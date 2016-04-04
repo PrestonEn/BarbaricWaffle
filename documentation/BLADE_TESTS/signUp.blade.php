@@ -32,7 +32,7 @@ form {
 
 <h1 id = "signUpTitle"> Sign Up </h1>
 
-<form action = "" method = "post">
+<form action = "register" method = "post">
 	<div class = "row">
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-5">
