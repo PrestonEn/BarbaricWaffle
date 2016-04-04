@@ -42,4 +42,8 @@ Route::get('handleRemoval', 'postingModification@makeInactive');
 
 Route::post('/register', array('uses'=>'ListingController@add'));
 
+// Add listing POST request
+Route::post('/addListing', 'ListingController@addListing');
+
 ?>
+
