@@ -28,7 +28,16 @@ class userController extends Controller
             'phone' => 'min:10|required'
         ]);
 
-
+        $user = new User;
+        $user->first_name = Input::get('firstName');
+        $user->last_name = Input::get('lastName');
+        
+        $user->password = bcrypt(Input::get('pass'));
+        
+        $user->email = Input::get('emailAddress1');
+        $user->phone = Input::get('phone');
+        $user->save();
+        return redirect('signIn');
 
     }
     

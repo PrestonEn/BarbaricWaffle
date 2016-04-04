@@ -56,7 +56,7 @@
 		<div class = "col-xs-6" id = "phoneNumDiv">
 				Phone Number : 
 				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "12">
+				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "20">
 				</div>
 		<div class = "col-xs-5"></div>	
 		</div>
