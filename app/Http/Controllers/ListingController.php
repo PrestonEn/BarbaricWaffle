@@ -22,18 +22,4 @@ class ListingController extends Controller
     }
 
         
-    public function add(){
-        $user = new User;
-        $user->first_name = Input::get('firstName');
-        $user->last_name = Input::get('lastName');
-        
-        $user->password = bcrypt(Input::get('pass'));
-        
-        $user->email = Input::get('emailAddress1');
-        
-        
-        $user->save();
-
-    }
-
 }
