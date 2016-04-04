@@ -50,7 +50,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress1">
+			<input type = "email" class = "form-control" name = "email">
 		</div>
 	</div>
 
@@ -58,7 +58,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress2">
+			<input type = "email" class = "form-control" name = "email_confirmation">
 		</div>
 	</div>
 
@@ -85,7 +85,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify Password :  
-			<input type = "password" class = "form-control" name = "pass2">
+			<input type = "password" class = "form-control" name = "pass_confirmation">
 		</div>
 	</div>
 
