@@ -1,0 +1,25 @@
+form {
+	font-size: 1.3em;
+	margin-top: 5%;
+}
+
+.row {
+	margin-bottom: 2%;
+	margin-top: 3%;
+}
+
+#phoneNumDiv input {
+	font-size: 1em;
+	text-align: center;
+}
+
+#forgotPass {
+	position: absolute;
+	right:0;
+	font-size: 0.7em;
+	color: blue;
+}
+
+#instrText {
+	text-align: center;
+}

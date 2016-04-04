@@ -1,0 +1,25 @@
+	#navbarLeft {
+		margin-top: 1em;
+		font-size: 1.2em;
+	}
+
+	#baseCol {
+		margin:0px;
+		padding:0px;
+		padding-right: 0.5em;
+		position: fixed;
+		left: 0;
+	}
+
+	#infoCol {
+		width: 65%;
+		padding:0px;
+		position: absolute;
+		right: 6px;
+	}
+
+	#profilePic{
+		height :100%;
+		width :100%;
+		border: solid 8px black;
+	}

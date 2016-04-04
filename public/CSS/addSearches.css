@@ -1,0 +1,59 @@
+.main {
+	margin-top: 5em;
+}
+
+
+.backdrop {
+	margin-left: 10vw;
+	margin-right: 10vw;
+	border-color: black;
+}
+
+.backdrop .row{
+	background-color: #CCC;
+	padding-top: 1.3vh;
+	padding-bottom: 1.3vh;
+}
+
+.backdrop .col-xs-5 {
+	text-align: center;
+	font-size: 1.4vmax;
+}
+
+.searchPanel {
+	background-color: #222;
+  	border-color: #080808;
+  	color: #999;
+	position:fixed;
+	bottom: 0px;
+	width:100%;
+	font-size: 1.3max;
+
+}
+
+select {
+	background-color: #333333;
+	color: #999;
+}
+
+#search .panel {
+	font-size: 1.2vmax;
+	max-height: 20%;
+	margin: auto;
+	background-color: #333333;
+	width:95%;
+	padding: 0.4em;
+}
+
+.textField{
+	color: black;
+	width:4em;
+}
+
+#search {
+	font-size: 1.7vw;
+}
+
+#minRange, #maxRange {
+	width:50vw;
+}

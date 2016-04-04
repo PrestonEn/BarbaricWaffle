@@ -1,0 +1,68 @@
+.pageTitle {
+	margin-top: 6%;
+	margin-bottom: 0.7em;
+	text-align: left;
+}
+
+select {
+	-webkit-appearance: menulist-button;
+	height: 3.4vmin;
+}
+
+#selDiv {
+	text-align: right;
+}
+
+.pageBar, #refineDiv table {
+	padding: 2%;
+	font-size: 2.4vmin;
+}
+
+.pageBar {
+	border-bottom: 3px solid black;
+	border-top: 6px solid black;
+	background-color: #f0f0f5;
+}
+
+#refineDiv {
+	background-color: #CCC;
+}
+
+#refineDiv table{
+	text-align: center;
+	margin: auto;
+
+}
+
+#refineDiv table button{
+	width: 8vmax;
+	height: 3vw;
+	min-height: 20px;
+	font-size: 1.3vmax;
+	background-color: #b3b3cc;
+	margin: auto;
+}
+
+
+#refineDiv table input {
+	width: 14vw;
+
+}
+
+.listing {
+	border-top: 4px solid grey;
+}
+
+.pageBody table {
+	margin-top: 6%;
+	font-size: 1.5vmax;
+}
+
+.features img {
+	float: left;
+	min-height: 3em;
+	height: 3vmax;
+	min-width: 3em;
+	width: 3vmax;
+	margin-right: 2vw;
+}

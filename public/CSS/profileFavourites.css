@@ -1,0 +1,40 @@
+.table {
+	font-size: 0.7em;
+	background-color: #cce6ff;
+}
+
+#buttonDiv {
+	margin-bottom: 2.9em;
+}
+
+.btn {
+	text-align: center;
+	font-size: 1em;
+	width: 65px;
+	background-color: grey;
+	position: absolute;
+	right:30px;
+}
+
+.tablePostHistory{
+	background-color: #CCC;
+}
+
+.prices{
+	text-align: right;
+}
+
+.features img{
+	float:left;
+	margin-right: 1em;
+	height: 1.6vmax;
+	min-height: 3em;
+	width: 1.6vmax;
+	min-width: 3em;
+}
+.features2 img{
+	float:left;
+	margin-right: 0.3em;
+	height: 1.2vmax;
+	width: 1.2vmax;
+}

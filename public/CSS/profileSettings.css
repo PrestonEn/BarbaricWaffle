@@ -1,0 +1,44 @@
+
+#email {
+	overflow-x: auto;
+	text-align: left;
+	max-width: 100%;
+	font-size: 2vmax;
+}
+
+#emailTitle{
+	font-size: 2.5vmax;
+}
+
+form {
+	margin: 2%;
+	padding: 3%;
+	font-size: 1.7vmax;
+	background-color: #CCC;
+}
+.panel {
+	padding: 0.2em;
+	background-color: #CCC;
+}
+
+#button {
+	text-align: right;
+	margin-top: 2%;
+}
+
+#passFormTitle {
+	text-align: center;
+	margin-top: 2%;
+}
+
+.form-control{
+	font-size: 2vmax;
+}
+
+#pTitle {
+	text-align: center;
+}
+
+form .row{
+	margin-top: 1.2em;
+}

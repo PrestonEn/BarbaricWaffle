@@ -1,0 +1,139 @@
+h4 {
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.customWidth {
+    width: 90vw;
+    margin: 0 auto;
+    background-color: white;
+    padding-top: 3vh;
+}
+
+.imgGallery {
+    height: 50vh;
+    background-image: url(../uploads/8841854_orig.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+}
+
+.mls {
+    font-weight: bold;
+}
+
+.style {
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+}
+
+.button {
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#callNow {
+    background-color: #4B0082;
+    color: white;
+    border: 1px solid #4B0082;
+}
+
+.similarListing {
+    height: 30vh;
+    border: 1px solid lightgray;
+}
+
+.landlordProfile {
+    margin-top:0vh;
+}
+
+.margin{
+    margin-bottom: 2vh;
+}
+
+.profile {
+    height: 30vh;
+    width: 30vh;
+    border-radius: 30vh;
+    background-image: url(../uploads/defaultProfile.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid lightgray;
+}
+
+
+#sendMessage {
+    padding: 10px;
+    text-align: center;
+    background-color: #4B0082;
+    color: white;
+    width: 49%;
+    margin-right: 2%;
+    cursor: pointer;
+  
+}
+
+
+
+#viewProfile {
+    width: 49%;
+    padding: 10px;
+    text-align: center;
+    background-color: #4B0082;
+    color: white;
+    cursor: pointer;
+}
+
+#features{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.features{
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+   
+   overflow: hidden;
+
+}
+
+.hideFeatures{
+    max-height: 0vh;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+ul {
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
+    padding: 0px;
+}
+
+ul li{
+    list-style-image: url(../uploads/checkmark.png);
+    list-style-position: inside;
+   
+}
+
+p a{
+    text-decoration: none;
+    color: white;
+}
+
+p a:hover{
+    text-decoration: none;
+    color:white;
+};
