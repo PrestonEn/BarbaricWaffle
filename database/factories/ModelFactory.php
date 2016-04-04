@@ -23,8 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Location::class, function (Faker\Generator $faker) {
     return [
-        'street_name'	=> $faker->streetName,
-        'street_num'	=> $faker->buildingNumber,
+        'street_address'=> $faker->buildingNumber . ' ' . $faker->streetName,
         'city'			=> $faker->city,
         'province'		=> $faker->state,
         'postal_code'	=> $faker->postcode,
