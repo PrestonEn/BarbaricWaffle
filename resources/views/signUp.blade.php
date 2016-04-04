@@ -47,7 +47,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify E-mail Address : 
-			<input type = "email" class = "form-control" name = "email_confirm">
+			<input type = "email" class = "form-control" name = "email_confirmation">
 		</div>
 	</div>
 
@@ -74,7 +74,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify Password :  
-			<input type = "password" class = "form-control" name = "pass2">
+			<input type = "password" class = "form-control" name = "pass_confirmation">
 		</div>
 	</div>
 

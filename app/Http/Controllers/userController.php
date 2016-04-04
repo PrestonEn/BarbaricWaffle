@@ -21,10 +21,14 @@ class userController extends Controller
      */
     public function add(Request $request){
         $this->validate($request, [
-            'email' => 'bail|required|max:255'
+            'firstName' => 'required|bail',
+            'lastName' => 'required|bail',
+            'email' => 'bail|required|max:255|confirmed',
+            'pass' => 'bail|min:6|required|confirmed',
+            'phone' => 'min:10|required'
         ]);
 
-        
+
 
     }
     
