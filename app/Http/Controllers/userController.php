@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class userController extends Controller
 {
 
-        /**
+    /**
      * Access data from registration form
      * Create a new user model
      * Save Model to database
@@ -20,12 +20,13 @@ class userController extends Controller
      * Redirect them to login
      */
     public function add(Request $request){
+
         $this->validate($request, [
             'firstName' => 'required|bail',
             'lastName' => 'required|bail',
-            'email' => 'bail|required|max:255|confirmed',
+            'email' => 'bail|required|unique:users|max:255|confirmed',
             'pass' => 'bail|min:6|required|confirmed',
-            'phone' => 'min:10|required'
+            'phone' => 'min:10|unique:users|required'
         ]);
 
         $user = new User;
@@ -34,7 +35,7 @@ class userController extends Controller
         
         $user->password = bcrypt(Input::get('pass'));
         
-        $user->email = Input::get('emailAddress1');
+        $user->email = Input::get('email');
         $user->phone = Input::get('phone');
         $user->save();
         return redirect('signIn');
