@@ -29,10 +29,9 @@ form {
 </style>
 
 
+<h1 id = "signUpTitle"> Sign asdasdUp </h1>
 
-<h1 id = "signUpTitle"> Sign Up </h1>
-
-<form action = "" method = "post">
+<form action = "register" method = "post">
 	<div class = "row">
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-5">
@@ -50,7 +49,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress1">
+			<input type = "email" class = "form-control" name = "email">
 		</div>
 	</div>
 
@@ -58,7 +57,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress2">
+			<input type = "email" class = "form-control" name = "email_confirmation">
 		</div>
 	</div>
 
@@ -67,7 +66,7 @@ form {
 		<div class = "col-xs-6" id = "phoneNumDiv">
 				Phone Number : 
 				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phoneNumber" maxlength = "12">
+				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "12">
 				</div>
 		<div class = "col-xs-5"></div>	
 		</div>
@@ -85,7 +84,7 @@ form {
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify Password :  
-			<input type = "password" class = "form-control" name = "pass2">
+			<input type = "password" class = "form-control" name = "pass_confirmation">
 		</div>
 	</div>
 
@@ -96,6 +95,7 @@ form {
 		</div>
 	</div>
 
-</form>				
+</form>
+
 
 @stop
