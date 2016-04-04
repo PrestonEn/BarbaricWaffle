@@ -27,7 +27,7 @@ class ListingController extends Controller
         $user->first_name = Input::get('firstName');
         $user->last_name = Input::get('lastName');
         
-        $user->password = Input::get('pass');
+        $user->password = bcrypt(Input::get('pass'));
         
         $user->email = Input::get('emailAddress1');
         
