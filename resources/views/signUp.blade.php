@@ -8,7 +8,20 @@
 
 <div class = "pageTitle"> Sign Up </div>
 
-<form action = "register" method = "POST">
+	@if (count($errors) > 0)
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
+
+<form action = "signUp" method = "post">
+	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
 	<div class = "row">
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-5">
@@ -26,7 +39,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress1">
+			<input type = "email" class = "form-control" name = "email">
 		</div>
 	</div>
 
@@ -34,7 +47,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify E-mail Address : 
-			<input type = "email" class = "form-control" name = "emailAddress2">
+			<input type = "email" class = "form-control" name = "email_confirm">
 		</div>
 	</div>
 
@@ -43,7 +56,7 @@
 		<div class = "col-xs-6" id = "phoneNumDiv">
 				Phone Number : 
 				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phoneNumber" maxlength = "12">
+				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "12">
 				</div>
 		<div class = "col-xs-5"></div>	
 		</div>
@@ -82,6 +95,8 @@
 	</div>
 
 
-</form>				
+</form>	
+
+
 
 @stop

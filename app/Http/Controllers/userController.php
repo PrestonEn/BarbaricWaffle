@@ -19,17 +19,12 @@ class userController extends Controller
      *
      * Redirect them to login
      */
-    public function add(){
-        $user = new User;
-        $user->first_name = Input::get('firstName');
-        $user->last_name = Input::get('lastName');
+    public function add(Request $request){
+        $this->validate($request, [
+            'email' => 'bail|required|max:255'
+        ]);
+
         
-        $user->password = bcrypt(Input::get('pass'));
-        
-        $user->email = Input::get('emailAddress1');
-        
-        $user->save();
-        return redirect('signIn');
 
     }
     

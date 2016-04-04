@@ -29,8 +29,7 @@ form {
 </style>
 
 
-
-<h1 id = "signUpTitle"> Sign Up </h1>
+<h1 id = "signUpTitle"> Sign asdasdUp </h1>
 
 <form action = "register" method = "post">
 	<div class = "row">
@@ -67,7 +66,7 @@ form {
 		<div class = "col-xs-6" id = "phoneNumDiv">
 				Phone Number : 
 				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phoneNumber" maxlength = "12">
+				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "12">
 				</div>
 		<div class = "col-xs-5"></div>	
 		</div>
@@ -96,6 +95,7 @@ form {
 		</div>
 	</div>
 
-</form>				
+</form>
+
 
 @stop

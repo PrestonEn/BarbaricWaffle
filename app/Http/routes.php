@@ -1,45 +1,49 @@
 <?php
 
-Route::get('about','pageStructureController@navbarTop');
+Route::group(['middleware' => ['web']], function () {
 
-Route::get('signIn','pageStructureController@signIn');
+    Route::get('about','pageStructureController@navbarTop');
 
-Route::get('signUp','pageStructureController@signUp');
+    Route::get('signIn','pageStructureController@signIn');
 
-Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
+    Route::get('signUp','pageStructureController@signUp');
 
-Route::get('profileMessages', 'pageStructureController@profileMessages');
+    Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
 
-Route::get('/','lisController@mapListings');
+    Route::get('profileMessages', 'pageStructureController@profileMessages');
 
-Route::get('addListing', 'pageStructureController@addListing');
+    Route::get('/','lisController@mapListings');
 
-Route::get('profileSearches', 'pageStructureController@profileSearches');
+    Route::get('addListing', 'pageStructureController@addListing');
 
-Route::get('addSearches', 'pageStructureController@searches');
+    Route::get('profileSearches', 'pageStructureController@profileSearches');
 
-
-
-Route::get('mapListing','lisController@mapListings');
-
-Route::get('profile/{userId}','lisController@mainProfileActiveListings');
-
-Route::get('profileView/{userId}','lisController@viewForeignProfile');
-
-Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
-
-Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
-
-Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
-
-Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
-
-Route::get('listingsList/{order}', 'lisController@allListings');
+    Route::get('addSearches', 'pageStructureController@searches');
 
 
-Route::get('handleRemoval', 'postingModification@makeInactive');
+
+    Route::get('mapListing','lisController@mapListings');
+
+    Route::get('profile/{userId}','lisController@mainProfileActiveListings');
+
+    Route::get('profileView/{userId}','lisController@viewForeignProfile');
+
+    Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
+
+    Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
+
+    Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
+
+    Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
+
+    Route::get('listingsList/{order}', 'lisController@allListings');
 
 
-Route::post('/register', 'userController@add');
+    Route::get('handleRemoval', 'postingModification@makeInactive');
+
+    Route::post('signUp', 'userController@add');
+
+});
+
 
 ?>

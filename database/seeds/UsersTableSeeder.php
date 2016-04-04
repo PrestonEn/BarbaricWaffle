@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => 'manualinsert_first',
             'last_name' => 'manualinsert_last',
-
+            'phone' => '9059310355',
             'email' => 'manualinsert@gmail.com',
             'password' => bcrypt('ManualInsertPass'),
         ]);
