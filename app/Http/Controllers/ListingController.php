@@ -69,19 +69,16 @@ class ListingController extends Controller
         $listingInfo->allowed_other_pets = (Input::has('otherPet')) ? true : false;
         //$listingInfo->mls_number = Input::get('mls');
         
-        
-        //$dateFrom = DateTime::createFromFormat('d-m-Y', Input::get('dateFrom'));
         $usableDateFrom =  Carbon::createFromFormat('d/m/Y', Input::get('dateFrom'));
         
         $listingInfo->rental_available_from = $usableDateFrom;
         
-        //var_dump($usableDateFrom);
-        //$dateTo = DateTime::createFromFormat('d-m-Y', Input::get('dateTo'));
         $usableDateTo = Input::get('dateTo');
         $listingInfo->rental_available_to = $usableDateTo;
         
         $listingInfo->save();
-        
+
+        return redirect('houseTemplate/'.$listing->listing_id);
         
     }
 
