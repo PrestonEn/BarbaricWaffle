@@ -14,6 +14,10 @@ class pageStructureController extends Controller
     	return view('signIn');
     }
 
+    public function searches(){
+        return view('addSearches');
+    }
+
     public function signUp(){
     	return view('signUp');
     }

@@ -16,6 +16,7 @@ Route::get('addListing', 'pageStructureController@addListing');
 
 Route::get('profileSearches', 'pageStructureController@profileSearches');
 
+Route::get('addSearches', 'pageStructureController@searches');
 
 
 
