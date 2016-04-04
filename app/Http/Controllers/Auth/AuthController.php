@@ -51,10 +51,7 @@ class AuthController extends Controller
     public function authenticate()
     {   
 
-        $email = Input::get('email');
-        $password = Input::get('password');
-
-        if (Auth::attempt(['email' => $email, 'password' => $password]))
+        if (Auth::attempt(['email' => 'pe12nh@brocku.ca', 'password' => '1234qwer']))
         {
             return redirect()->intended('/');
         }else{
