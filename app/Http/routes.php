@@ -43,6 +43,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('signUp', 'userController@add');
 
+    Route::post('signIn', 'Auth\AuthController@authenticate');
+
 });
 
 

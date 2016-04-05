@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang = "en">
 
 <head>
@@ -38,14 +39,22 @@
       <li><a href="../listingsList/1">Listings</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
-      <li><a href="../signIn">Sign&nbspin</a></li>
+    @if(Auth::user())
+      <li><a href="../signIn">{{Auth::user()->first_name}}</a></li>
+    @else
+          <li><a href="../signIn">Sign&nbspin</a></li>
+
+    @endif
     </ul>
     </div>
   </div>
 </nav>
 
 
+
+
 <div>
+
 @yield('content')
 </div>
 
