@@ -2,7 +2,7 @@
 <link href="{!! asset('CSS/navbarLeft.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 <div class = "row">
-		<div class = "col-xs-12 col-sm-4" id = "baseCol">
+		<div class = "col-xs-12 col-sm-3" id = "baseCol">
 			<img id = "profilePic" class = "img-responsive" src="../images/profilePicDefault.jpeg">
            
 			<div id = "navbarLeft" class="list-group">
@@ -17,7 +17,7 @@
 		</div>
 
 
-	<div class = "col-xs-12 col-sm-8" id = "infoCol">
+	<div class = "col-xs-12 col-sm-9" id = "infoCol">
 		@yield('profileContent')
 	</div>
 </div>

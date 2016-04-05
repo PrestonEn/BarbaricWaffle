@@ -12,8 +12,7 @@
 			padding:0px;
 		}
 		#infoCol {
-			width: 96%;
-			margin-left: 2%;
+			width: 98%;
 		}
 	}
 
@@ -26,7 +25,7 @@
 			left: 0;
 		}
 		#infoCol {
-			width: 65%;
+			width: 73%;
 			margin-right: 1%;
 			margin-left: 1%;
 			position: absolute;

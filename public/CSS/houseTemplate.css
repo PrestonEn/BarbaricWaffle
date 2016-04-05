@@ -1,5 +1,3 @@
-
-
 h4 {
     text-transform: uppercase;
     font-weight: bolder;
@@ -31,14 +29,53 @@ h4 {
     border-bottom: 2px solid lightgray;
 }
 
+
+
 .button {
-    white-space: nowrap;
     border: 1px solid lightgray;
-    padding: 10px;
+    padding: 3px;
     margin-top: 10px;
     text-align: center;
     cursor: pointer;
+    font-size: 1vw;
 }
+
+@media only screen and (min-width : 320px) {
+        .button {
+            font-size: 1.3em;
+        }
+        #sendMessage, #viewProfile {
+            white-space: nowrap;
+            font-size: 1.3em;
+        }
+    }
+@media only screen and (min-width : 768px) {
+        .button {
+            font-size: 0.7em;
+        }
+        #callNow {
+            white-space: nowrap;
+            font-size: 0.6em;
+        }
+        #sendMessage, #viewProfile {
+            font-size: 1.3vw;
+        }
+    }
+
+@media only screen and (min-width : 830px) {
+        #callNow {
+            font-size: 0.7em;
+        }
+
+    }    
+
+@media only screen and (min-width : 900px) {
+        .button, #callNow {
+            font-size: 1.2vw;
+        }
+    }
+
+
 
 #callNow {
     background-color: #4B0082;
