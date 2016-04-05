@@ -39,16 +39,17 @@ select {
 #refineDiv button{
 	width: 40%;
 	min-width: 5em;
-	height: 3%;
+	height: 1.5em;
 	background-color: #A7A37E;
 	vertical-align: bottom;
 	line-height: 1.5%;
-	font-size: 1.2vmax;
+	font-size: 1em;
 }
 
 #refineDiv input {
+	font-size: 1em;
 	width: 100%;
-	height: 3%;
+	height: 1.5em;
 	vertical-align: bottom;
 }
 
