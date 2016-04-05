@@ -40,6 +40,16 @@ h4 {
     font-size: 1vw;
 }
 
+@media only screen and (max-width : 320px) {
+        .button {
+            font-size: 1.3em;
+        }
+        #sendMessage, #viewProfile {
+            white-space: nowrap;
+            font-size: 1.3em;
+        }
+    }
+
 @media only screen and (min-width : 320px) {
         .button {
             font-size: 1.3em;
@@ -78,9 +88,9 @@ h4 {
 
 
 #callNow {
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
-    border: 1px solid #4B0082;
+    border: 1px solid #F95900;
 }
 
 .similarListing {
@@ -110,7 +120,7 @@ h4 {
 #sendMessage {
     padding: 10px;
     text-align: center;
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
     width: 49%;
     margin-right: 2%;
@@ -124,7 +134,7 @@ h4 {
     width: 49%;
     padding: 10px;
     text-align: center;
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
     cursor: pointer;
 }
