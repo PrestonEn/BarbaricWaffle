@@ -6,11 +6,14 @@
 		padding:0px;
 	}
 
+	#profilePic{
+		border-radius: 50%;
+	}
 	@media only screen and (max-width : 320px){
 		#profilePic{
 			margin: auto;
 			height : auto;
-			width :100%;
+			width :60%;
 			border: solid 8px black;
 		}
 	}
@@ -20,7 +23,7 @@
 		#profilePic{
 			margin: auto;
 			height : auto;
-			width :100%;
+			width :60%;
 			border: solid 8px black;
 		}
 		#baseCol {
@@ -32,7 +35,7 @@
 		}
 	}
 
-	@media only screen and (min-width: 580px){
+	@media only screen and (min-width: 400px){
 		#profilePic{
 			margin: auto;
 			width: 60%;
@@ -46,7 +49,7 @@
 			height: auto;
 		}
 		#navbarLeft {
-			font-size: 1.7vh;
+			font-size: 2.3vmin;
 		}
 		#baseCol {
 			position: fixed;
@@ -62,39 +65,7 @@
 	}
 
 
-	@media only screen and (min-height: 100px){
-		#profilePic {
-			border: 0px;
-			width: 0%;
-			height: auto;
-			margin: auto;
-		}
-		#navbarLeft {
-			margin-top: 5px;
-			font-size: 0.8em;
-			font-weight: bold;
-		}
-	}
 
-	@media only screen and (min-height: 350px){
-		#profilePic {
-			border: solid 8px black;
-			width: 100%;
-			height: auto;
-			margin: auto;
-		}
-		#navbarLeft {
-			margin-top: 0px;
-			font-size: 2.3vh;
-			font-weight: bold;
-		}
-	}
-
-	@media only screen and (min-height: 750px){
-		#navbarLeft {
-			font-size: 1.1em;
-			font-weight: bold;
-		}
-	}
+}
 
 
