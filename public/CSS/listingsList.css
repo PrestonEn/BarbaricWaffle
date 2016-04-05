@@ -6,7 +6,7 @@
 
 select {
 	-webkit-appearance: menulist-button;
-	height: 3.4vmin;
+	height: 1.7max;
 }
 
 #selDiv {
@@ -15,17 +15,17 @@ select {
 
 .pageBar, #refineDiv table {
 	padding: 2%;
-	font-size: 2.4vmin;
+	font-size: 1.2em;
 }
 
 .pageBar {
 	border-bottom: 3px solid black;
 	border-top: 6px solid black;
-	background-color: #f0f0f5;
+	background-color: #A7A37E;
 }
 
 #refineDiv {
-	background-color: #CCC;
+	background-color: #E6E2AF;
 }
 
 #refineDiv table{
@@ -36,16 +36,18 @@ select {
 
 #refineDiv table button{
 	width: 8vmax;
-	height: 3vw;
-	min-height: 20px;
-	font-size: 1.3vmax;
-	background-color: #b3b3cc;
+	height: 2.5vmax;
+	background-color: #A7A37E;
 	margin: auto;
+	line-height: 1.25vmax;
+
 }
 
 
 #refineDiv table input {
-	width: 14vw;
+	width: 50%;
+	height: 2.5vmax;
+	vertical-align: bottom;
 
 }
 
@@ -55,14 +57,13 @@ select {
 
 .pageBody table {
 	margin-top: 6%;
-	font-size: 1.5vmax;
+	font-size: 1.3em;
+
 }
 
 .features img {
 	float: left;
-	min-height: 3em;
-	height: 3vmax;
-	min-width: 3em;
-	width: 3vmax;
-	margin-right: 2vw;
+	height: 1.7em;
+	width: 1.7em;
+	margin-right: 1vw;
 }

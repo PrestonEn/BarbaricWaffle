@@ -25,9 +25,9 @@
           </div>
           
           <div class = "col-xs-6">
-            <table class = "table table-condensed">
+            <table class = "table table-condensed" style = "border-width: 20px;">
               <tr>
-                <th colspan = 2> {{$listing->listing_title}} </th>
+                <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
               </tr>
     
               <tr>

@@ -19,7 +19,7 @@
     <div class = "col-xs-6 col-sm-4">
       <strong> Listings Found : </strong> {{ $num }} 
     </div>
-    <div id = "selDiv" class = "col-xs-6 col-sm-4">
+    <div id = "selDiv" class = "col-xs-6 col-sm-8">
       Sort by:
       <select onchange="organizeListings(value)">
         @if ($order == '1')
@@ -40,11 +40,11 @@
         Highest Price </option>
       </select>
     </div>
-    <div  id = "refineDiv" class = "panel panel-default col-xs-5 col-sm-4">
+    <div  id = "refineDiv" class = "panel panel-default col-xs-12 col-sm-8">
       <table class="table-condensed">
-        <tr> <th> Search Listings </th></tr>
-        <tr> <td> <input type="text" name = "searchVal"> <button class="btn btn-sm" type = "submit" onClick="#">search</button> </td> </tr>
-        <tr> <td> Some additional Search properties here </td> </tr>
+        <tr> <th colspan='6'> Search Listings </th></tr>
+        <tr> <td> <input type="text" name = "searchVal"> <button class="btn btn-sm" type = "submit" onClick="#">search</button> </td>
+        <td> Some additional Search properties here </td> </tr>
       </table>
     </div>
   </div>
