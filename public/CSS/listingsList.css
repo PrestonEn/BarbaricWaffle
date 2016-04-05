@@ -45,9 +45,9 @@ select {
 	width: 34%;
 	height: 2.5vmax;
 	background-color: #A7A37E;
-	margin: auto;
+	vertical-align: bottom;
 	line-height: 1.25vmax;
-	font-size: 1.6vmax;
+	font-size: 1.2vmax;
 }
 
 #refineDiv table input {
