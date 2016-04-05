@@ -48,6 +48,6 @@ Route::group(['middleware' => ['web']], function () {
 
 // Add listing POST request
 Route::post('/addListing', 'ListingController@addListing');
-
+Route::post('/addLongLat', 'ListingController@addLongLat');
 ?>
 
