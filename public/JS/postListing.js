@@ -25,7 +25,14 @@ function geocodeAddress() {
     }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             position: results[0].geometry.location
-            updateDatabase(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            
+            
+            $("#longitude").val(results[0].geometry.location.lng());
+            $("#latitude").val(results[0].geometry.location.lat());
+            //alert($("#latitude").val());
+             //$("#ListingsForm").submit();
+            
+           // updateDatabase(results[0].geometry.location.lat(), results[0].geometry.location.lng());
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -34,15 +41,20 @@ function geocodeAddress() {
 
 function updateDatabase(newLat, newLng) {
 
+    
     // make an ajax request to a PHP file
     // on our site that will update the database
     // pass in our lat/lng as parameters
+    /*
       $.ajax({
         type: "POST",
-        url: "/addLongLat",
-        data: {'lat': newLat, 'long': newLng},
+        url: "/addListing",
+        data: {'_token': $('input[name=_token]').val(), $("#ListingsForm").serialize()},
         success: function() {
             alert("Geodata sent");
         }
     })
+    */
+   
+    //document.forms["ListingsForm"].submit();
 }

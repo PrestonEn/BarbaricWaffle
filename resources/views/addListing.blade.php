@@ -7,7 +7,12 @@
     <div class="row">
         <h2>New Listing</h2>
 
-        <form method="POST" action="addListing" id="my-awesome-dropzone" role="form">
+        <form method="POST" action="addListing" id="ListingsForm" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
+            <input type="hidden" id="longitude" name = "long" />
+            <input type="hidden" id ="latitude" name = "lat" />
+
             <div class="form-group">
                 <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
             </div>
@@ -159,7 +164,7 @@
 
 
             <br />
-            <button id="submit" class="btn btn-default">Submit</button>
+            <button onClick="test(event)" id="submit" class="btn btn-default">Submit</button>
             <button onClick="test(event)" type="save" class="btn btn-default">Save</button>
         </form>
 
@@ -187,10 +192,6 @@
 
 
 <script type="text/javascript" src="{!! asset('JS/postListing.js') !!}"></script>
-<script type="text/javascript">
-$.ajaxSetup({
-   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-});
-</script>
+
 
 @stop

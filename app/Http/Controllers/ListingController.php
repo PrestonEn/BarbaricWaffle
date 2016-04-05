@@ -18,12 +18,9 @@ class ListingController extends Controller
 {
     
     public function addLongLat(){
-        
-        if(Request::ajax()) {
-            $data = Input::all();
-            print_r($data);die;
-    }
-    
+        $long = Input::get('long');
+        $lat = Input::get('lat');
+        var_dump($long);
     }
 
     public function allListings(){
@@ -39,13 +36,17 @@ class ListingController extends Controller
         //adds new listing to database
         //needs login to add session id
         
+        $long = Input::get('long');
+        $lat = Input::get('lat');
+        dd($long);
         $location = new Location;
         $location->street_address = Input::get('address');
         $location->province = Input::get('province');
         $location->postal_code = Input::get('postalCode');
         $location->city = Input::get('city');
         $location->country = Input::get('country');
-        
+        $location->longitude = $long;
+        $location->latitude = $lat;
         $location->save();
         
         $listing = new Listing;
