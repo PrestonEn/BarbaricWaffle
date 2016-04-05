@@ -37,9 +37,20 @@
 
 	<div class = "row">
 		<div class = "col-xs-1"></div>
+		<div class = "col-xs-6" id = "phoneNumDiv">
+				Phone Number : 
+				<div class = "controls form-inline">
+				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "20">
+				</div>
+		<div class = "col-xs-5"></div>	
+		</div>
+	</div>
+
+	<div class = "row">
+		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			E-mail Address : 
-			<input type = "email" class = "form-control" name = "email">
+			<input type = "email" class = "form-control" name = "email" id = "username">
 		</div>
 	</div>
 
@@ -53,20 +64,9 @@
 
 	<div class = "row">
 		<div class = "col-xs-1"></div>
-		<div class = "col-xs-6" id = "phoneNumDiv">
-				Phone Number : 
-				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "20">
-				</div>
-		<div class = "col-xs-5"></div>	
-		</div>
-	</div>
-
-	<div class = "row">
-		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Password :  
-			<input type = "password" class = "form-control" name = "pass">
+			<input type = "password" class = "form-control" name = "pass" id = "password">
 		</div>
 	</div>
 
