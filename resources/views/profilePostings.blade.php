@@ -40,7 +40,7 @@
 
                   <tr>
                      <td colspan = 2>
-                        <img class = "img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                        <img class = "picture img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                      </td>   
                   </tr>         
     

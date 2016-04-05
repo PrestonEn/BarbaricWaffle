@@ -49,3 +49,7 @@
 	height: 1.2vmax;
 	width: 1.2vmax;
 }
+
+.picture.img-responsive{
+	margin: auto; 
+}
