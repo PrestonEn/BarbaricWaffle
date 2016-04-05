@@ -40,12 +40,14 @@
         Highest Price </option>
       </select>
     </div>
+
+
+
     <div  id = "refineDiv" class = "panel panel-default col-xs-12 col-sm-8">
-      <table class="table-condensed">
-        <tr> <th colspan='6'> Search Listings </th></tr>
-        <tr> <td> <input type="text" name = "searchVal"> <button class="btn btn-sm" type = "submit" onClick="#">search</button> </td>
-        <td> Some additional Search properties here </td> </tr>
-      </table>
+            <div id = "listTitle" class = "col-xs-12 col-sm-12"> Search Listings </div>
+            <div class = "col-xs-6 col-sm-6"> <input type="text" name = "searchVal"></div>
+            <div class = "col-xs-2 col-sm-1"> <button class="btn btn-sm" type = "submit" onClick="#">search</button> </div>
+            <div class = "col-xs-12"> Some additional Search properties here </div>
     </div>
   </div>
 
