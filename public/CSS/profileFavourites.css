@@ -1,17 +1,6 @@
-	@media only screen and (min-width : 320px) {
-		.table {
-			font-size: 1.3vmax;
-		}
-	}
-
-	@media only screen and (min-width : 768px) {
-		.table {
-			font-size: 1.5vmax;
-		}
-	}
-
 .table {
 	background-color: #cce6ff;
+	font-size: 1.3em;
 }
 
 #buttonDiv {
