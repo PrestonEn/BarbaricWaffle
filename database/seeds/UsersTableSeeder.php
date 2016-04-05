@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => 'manualinsert_first',
             'last_name' => 'manualinsert_last',
-
+            'phone' => '9059310355',
             'email' => 'manualinsert@gmail.com',
             'password' => bcrypt('ManualInsertPass'),
         ]);
@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'user_id'      => $u->id,
+                    'user_id'      => $u->user_id,
                 ])->listing_id;
                 $listing_infos = factory(App\Listing_Info::class)->create([
                     'listing_id' => $tlist,
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'user_id'      => $u->id,
+                    'user_id'      => $u->user_id,
                 ])->listing_id;
                 factory(App\Listing_Info::class)->create([
                     'listing_id'    => $tlist,
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'user_id'      => $u->id,
+                    'user_id'      => $u->user_id,
                 ])->listing_id;
                 factory(App\Listing_Info::class)->create([
                     'listing_id'    => $tlist,
@@ -74,7 +74,7 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'user_id'      => $u->id,
+                    'user_id'      => $u->user_id,
                 ])->listing_id;
                 factory(App\Listing_Info::class)->create([
                     'listing_id'    => $tlist,
@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder
                 $tloc = factory(App\Location::class)->create()->location_id;
                 $tlist = factory(App\Listing::class)->create([
                     'location_id'   => $tloc,
-                    'user_id'      => $u->id,
+                    'user_id'      => $u->user_id,
                 ])->listing_id;
                 factory(App\Listing_Info::class)->create([
                     'listing_id'    => $tlist,

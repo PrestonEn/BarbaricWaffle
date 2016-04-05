@@ -45,7 +45,7 @@
                   </tr>         
     
                   <tr>
-                     <td colspan = 2> {{ $list->listing->location->street_num}} {{ $list->listing->location->street_name}}, {{ $list->listing->location->city}} </td>
+                     <td colspan = 2> {{ $list->listing->location->street_address}}, {{ $list->listing->location->city}} </td>
                   </tr>
               
                   <tr>
