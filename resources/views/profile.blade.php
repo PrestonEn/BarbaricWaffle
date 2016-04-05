@@ -64,7 +64,7 @@
 <div class = "panel panel-default">
 	<table  id = "commentsTable" class = "table table-bordered">
 		<tr>
-			<th class = "tableTitle"> Comments </th>
+			<th class = "tableTitle"><strong> Comments </strong></th>
 		</tr>
 
 		<tr>
