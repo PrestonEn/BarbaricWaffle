@@ -21,7 +21,7 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <div class = "navbar-header"><a id = "siteName" href="../mapListing">Fun Website Name</a>
+    <div class = "navbar-header"><a id = "siteName" href="../mapListing">Homestead</a>
 
         <button type="button-small" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style = "margin:0px;padding:0px">
         <span class="icon-bar"></span>
@@ -32,7 +32,6 @@
 
     <div class="collapse navbar-collapse">
     <ul id = "navEl" class="nav navbar-nav">
-      <li><a href="../mapListing">Home</a></li>
       <li><a href="../profile/12">Profile</a></li>
       <li><a href="../profileFavourites/12">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
@@ -44,7 +43,6 @@
       <li><a href="../signIn">{{Auth::user()->first_name}}</a></li>
     @else
           <li><a href="../signIn">Sign&nbspin</a></li>
-
     @endif
     </ul>
     </div>
