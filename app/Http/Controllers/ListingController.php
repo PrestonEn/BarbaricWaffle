@@ -18,10 +18,11 @@ class ListingController extends Controller
 {
     
     public function addLongLat(){
-    $listings = Listings::all();
-
-    	return view(testing.listingsList).compact(listings);
-    
+        
+        if(Request::ajax()) {
+            $data = Input::all();
+            print_r($data);die;
+    }
     
     }
 

@@ -40,7 +40,7 @@ function updateDatabase(newLat, newLng) {
       $.ajax({
         type: "POST",
         url: "/addLongLat",
-        data: "",
+        data: {'lat': newLat, 'long': newLng},
         success: function() {
             alert("Geodata sent");
         }
