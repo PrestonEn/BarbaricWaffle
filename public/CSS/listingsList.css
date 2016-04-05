@@ -17,7 +17,6 @@ select {
 	padding: 2%;
 	font-size: 1.2em;
 }
-
 .pageBar {
 	border-bottom: 3px solid black;
 	border-top: 6px solid black;
@@ -25,24 +24,31 @@ select {
 }
 
 #refineDiv {
+	width: 100%;
+	margin-top: 4%;
 	background-color: #E6E2AF;
 }
 
 #refineDiv table{
+	width: 90%;
 	text-align: center;
-	margin: auto;
+	margin: 0%;
+}
 
+#refineDiv table td{
+	padding: 0px;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
 #refineDiv table button{
-	width: 8vmax;
+	width: 34%;
 	height: 2.5vmax;
 	background-color: #A7A37E;
 	margin: auto;
 	line-height: 1.25vmax;
-
+	font-size: 1.6vmax;
 }
-
 
 #refineDiv table input {
 	width: 50%;
