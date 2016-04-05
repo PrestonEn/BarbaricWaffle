@@ -61,9 +61,31 @@
 		}
 	}
 
+
 	@media only screen and (min-height: 100px){
+		#profilePic {
+			border: 0px;
+			width: 0%;
+			height: auto;
+			margin: auto;
+		}
 		#navbarLeft {
-			font-size: 2.5vh;
+			margin-top: 5px;
+			font-size: 0.8em;
+			font-weight: bold;
+		}
+	}
+
+	@media only screen and (min-height: 350px){
+		#profilePic {
+			border: solid 8px black;
+			width: 35vh;
+			height: auto;
+			margin: auto;
+		}
+		#navbarLeft {
+			margin-top: 0px;
+			font-size: 2.3vh;
 			font-weight: bold;
 		}
 	}
