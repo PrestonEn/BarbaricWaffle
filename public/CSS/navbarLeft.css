@@ -79,7 +79,7 @@
 	@media only screen and (min-height: 350px){
 		#profilePic {
 			border: solid 8px black;
-			width: 35vh;
+			width: 100%;
 			height: auto;
 			margin: auto;
 		}
