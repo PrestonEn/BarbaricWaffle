@@ -37,16 +37,12 @@
 %\end{abstract}
 
 \section{Database Seeder}
-The purpose of the database seeder is to provide easily usable test data for team members. This functionality includes mass production of valid randomized data to quickly fill database tables, as well as a quick method for adding specific rows to a database table.
+The purpose of the database seeder is to provide easily usable test data for team members. This functionality includes mass production of valid randomized data to quickly fill database tables, as well as a quick method for adding specific rows to a database table. For all database seeding we use Laravel's seed classes. Running the php artisan 'db:seed' command will run the default DatabaseSeeder class, which can make additional calls to operate specific seeder classes.
+\\\\
+Seeders can directly insert data into a table so long as the data does not conflict with SQL constraints. Because such manual insertions will require the developer to monitor any conflicts that may occur in the database, this is not recommended except for when testing specific cases. In general, we instead use Model Factories which can be used to quickly generate large randomized sets of data. 
+\\\\
+Model factories use the Faker PHP library to conveniently generate many types of randomized data for testing. A model factory specifies the types of data each table column should be filled with and generates non-conflicting entries into the database. A single call to a factory can produce any number of records for testing. In addition, we can insert data with many relations easily by nesting factory requests. This allows us to test any scenario without spending valuable development time manually inserting the data with their relations.
 \\
-For all database seeding we use Laravel's seed classes. Running the php artisan db:seed command will run the default DatabaseSeeder class, which can make additional calls to operate specific seeders
-\\
-Seeders can directly insert data into a table so long as the data does not conflict with SQL constraints. Because any manual insertions will require the developer to monitor any conflicts that may occur in the database, this is not recommended except for when testing specific cases. In general, we instead use Model Factories which can be used to quickly generate large randomized sets of data. 
-\\
-Model factories use the Faker PHP library to conveniently generate many types of randomized data for testing. A model factory only requires specifics of which types of data each table column should be filled with in order to generate non-conflicting entries into the database. A single call to a factory can produce any number of records for testing. In addition, we can insert data with many relations easily by nesting factory requests.
-\\
-
-
 
 %\begin{itemize}
 %\end{itemize}
