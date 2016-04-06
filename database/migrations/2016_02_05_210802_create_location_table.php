@@ -29,8 +29,8 @@ class CreateLocationTable extends Migration
             $table->string('country', 255);
 
             //Latitude longitude values may be overkill, change to smaller double if needed.
-            $table->double('latitude', 10, 6)->nullable;
-            $table->double('longitude', 10, 6)->nullable;
+            $table->double('latitude', 12, 7)->nullable;
+            $table->double('longitude', 12, 7)->nullable;
 
             //To be changed later, google walkscore
             $table->integer('walkscore')->nullable;

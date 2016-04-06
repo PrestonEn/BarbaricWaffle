@@ -10,52 +10,27 @@ function checkSubmit() {
 
 }
 
-function test(e) {
+function postListing(e) {
     e.preventDefault();
     geocodeAddress();
     //jquery form submit
-    document.getElementById('ListingsForm').submit();
-
 }
 
 function geocodeAddress() {
     var geocoder = new google.maps.Geocoder();
-    var address = document.getElementById('address').value;
+    var address = 
+        document.getElementById('address_id').value + 
+        document.getElementById('city_id').value +  
+        document.getElementById('country_id').value ;
     geocoder.geocode({
         'address': address
     }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            position: results[0].geometry.location
-            
-            
-            $("#longitude").val(results[0].geometry.location.lng());
-            $("#latitude").val(results[0].geometry.location.lat());
-            //alert($("#latitude").val());
-             //$("#ListingsForm").submit();
-            
-           // updateDatabase(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            document.getElementById('latitude_id').value = parseFloat(results[0].geometry.location.lat()).toFixed(7);
+            document.getElementById('longitude_id').value = parseFloat(results[0].geometry.location.lng()).toFixed(7);
+            document.getElementById('addListingsForm').submit();
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
-}
-
-function updateDatabase(newLat, newLng) {
-
-    
-    // make an ajax request to a PHP file
-    // on our site that will update the database
-    // pass in our lat/lng as parameters
-    /*
-      $.ajax({
-        type: "POST",
-        url: "/addListing",
-        data: {'_token': $('input[name=_token]').val(), $("#ListingsForm").serialize()},
-        success: function() {
-            alert("Geodata sent");
-        }
-    })
-    */
-   
-    //document.forms["ListingsForm"].submit();
 }

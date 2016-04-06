@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 use App\User;
 use App\Listing;
 use App\Location;
@@ -32,57 +34,68 @@ class ListingController extends Controller
 
         
     
-    public function addListing(){
+    public function addListing(Request $request){
         //adds new listing to database
         //needs login to add session id
         
-        $long = Input::get('long');
-        $lat = Input::get('lat');
+
         $location = new Location;
-        $location->street_address = Input::get('address');
-        $location->province = Input::get('province');
-        $location->postal_code = Input::get('postalCode');
-        $location->city = Input::get('city');
-        $location->country = Input::get('country');
-        $location->longitude = $long;
-        $location->latitude = $lat;
+        $location->street_address = Input::get('address_name');
+        $location->province =       Input::get('province_name');
+        $location->postal_code =    Input::get('postalCode_name');
+        $location->city =           Input::get('city_name');
+        $location->country =        Input::get('country_name');
+        $location->longitude =      Input::get('longitude_name');
+        $location->latitude =       Input::get('latitude_name');
+        
+        //At this point we can do logic to find if this address already exists in the database.
+        //We could then use that address instead of saving a new one.
+        //Then we would check for an active listing, etc etc.
         $location->save();
         
         $listing = new Listing;
         $listing->location_id = $location->location_id;
-        $listing->user_id = '2';//temporary user id until login
-        
+        if(Auth::check()){
+            $listing->user_id = $request->user()->user_id;
+        }else{
+            $listing->user_id = 1;
+        }
         $listing->save();
         
         $listingInfo = new Listing_Info;
         $listingInfo->listing_id = $listing->listing_id;
         $listingInfo->date_created= Carbon::now();
        
-        $listingInfo->is_active = '1';
-        $listingInfo->listing_title = Input::get('title');
-        $listingInfo->listing_description = Input::get('description');
-        $listingInfo->price_monthly = Input::get('rent');
-        $listingInfo->num_bedrooms_total = Input::get('bedrooms');
-        $listingInfo->num_bathrooms_total = Input::get('bathrooms');
-        $listingInfo->room_size_sqft = Input::get('size');
-        $listingInfo->has_kitchen = (Input::has('kitchen')) ? true : false;
-        $listingInfo->has_laundry = (Input::has('laundry')) ? true : false;
-        $listingInfo->has_yard = (Input::has('yard')) ? true : false;
-        $listingInfo->owner_pays_internet = (Input::has('internet')) ? true : false;
-        $listingInfo->owner_pays_water = (Input::has('water')) ? true : false;
-        $listingInfo->owner_pays_electricity = (Input::has('electricity')) ? true : false;
-        $listingInfo->owner_has_pets = (Input::has('pets')) ? true : false;
-        $listingInfo->allowed_dogs = (Input::has('dog')) ? true : false;
-        $listingInfo->allowed_cats = (Input::has('cat')) ? true : false;
-        $listingInfo->allowed_other_pets = (Input::has('otherPet')) ? true : false;
-        //$listingInfo->mls_number = Input::get('mls');
+        $listingInfo->is_active = true;
+
+        $listingInfo->listing_title =       Input::get('title_name');
+        $listingInfo->listing_description = Input::get('description_name', 'No Description');
+
+        $listingInfo->price_monthly =       Input::get('rent_name');
+        $listingInfo->price_description =    Input::get('priceDescription_name', 'No Description');
+
+        $listingInfo->num_bedrooms_total =  Input::get('bedrooms_name');
+        $listingInfo->num_bathrooms_total = Input::get('bathrooms_name');
+        $listingInfo->room_size_sqft =      Input::get('sqftsize_name', 0);
+
+        //Booleans
+        $listingInfo->has_kitchen =             (Input::has('kitchen')) ? true : false;
+        $listingInfo->has_laundry =             (Input::has('laundry')) ? true : false;
+        $listingInfo->has_yard =                (Input::has('yard')) ? true : false;
+        $listingInfo->owner_pays_internet =     (Input::has('internet')) ? true : false;
+        $listingInfo->owner_pays_water =        (Input::has('water')) ? true : false;
+        $listingInfo->owner_pays_electricity =  (Input::has('electricity')) ? true : false;
+        $listingInfo->owner_has_pets =          (Input::has('pets')) ? true : false;
+        $listingInfo->allowed_dogs =            (Input::has('dog')) ? true : false;
+        $listingInfo->allowed_cats =            (Input::has('cat')) ? true : false;
+        $listingInfo->allowed_other_pets =      (Input::has('otherPet')) ? true : false;
         
-        $usableDateFrom =  Carbon::createFromFormat('d/m/Y', Input::get('dateFrom'));
+        $listingInfo->mls_number = Input::get('mls', 'N/A');
         
-        $listingInfo->rental_available_from = $usableDateFrom;
-        
-        $usableDateTo = Input::get('dateTo');
-        $listingInfo->rental_available_to = $usableDateTo;
+        //$usableDateFrom =  Carbon::createFromFormat('d/m/Y', Input::get('dateFrom'));
+        $listingInfo->rental_length_months_min = 0;
+        $listingInfo->rental_available_from = Input::has('dateFrom_name', Carbon::now());
+        $listingInfo->rental_available_to = Input::get('dateTo_name');
         
         $listingInfo->save();
 
