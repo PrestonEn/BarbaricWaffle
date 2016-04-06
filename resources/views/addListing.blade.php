@@ -11,7 +11,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             
             <input type="hidden" id="longitude" name = "long" />
-            <input type="hidden" id ="latitude" name = "lat" />
+            <input type="hidden" id="latitude" name = "lat" />
 
             <div class="form-group">
                 <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
@@ -164,10 +164,9 @@
 
 
             <br />
-            <button onClick="test(event)" id="submit" class="btn btn-default">Submit</button>
-            <button onClick="test(event)" type="save" class="btn btn-default">Save</button>
         </form>
-
+            <button onClick="test(event)" class="btn btn-default">Submit</button>
+            <button onClick="test(event)" class="btn btn-default">Save</button>
 
     </div>
 

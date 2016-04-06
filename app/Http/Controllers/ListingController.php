@@ -38,7 +38,6 @@ class ListingController extends Controller
         
         $long = Input::get('long');
         $lat = Input::get('lat');
-        dd($long);
         $location = new Location;
         $location->street_address = Input::get('address');
         $location->province = Input::get('province');

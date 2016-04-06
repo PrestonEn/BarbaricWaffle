@@ -13,7 +13,8 @@ function checkSubmit() {
 function test(e) {
     e.preventDefault();
     geocodeAddress();
-
+    //jquery form submit
+    document.getElementById('ListingsForm').submit();
 
 }
 
