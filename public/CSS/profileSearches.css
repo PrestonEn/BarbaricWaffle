@@ -4,13 +4,14 @@ table {
 }
 
 button {
-	text-align: center;
-	font-size: 0.4em;
-	width: 65px;
 	background-color: grey;
 	position: absolute;
 	right:30px;
 	margin-right: 4.5%;
+}
+
+#editButton {
+	width: 65px;
 }
 
 #buttonDiv {
@@ -24,7 +25,7 @@ table td, table th{
 
 #title {
 	color: red;
-	font-size: 1.4vw;
+	font-size: ;
 }
 
 table th{

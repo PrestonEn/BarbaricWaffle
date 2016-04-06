@@ -1,6 +1,4 @@
 <link href="{!! asset('css/addListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{!! asset('JS/postListing.js') !!}"></script>
-
 
 @extends('navbarTop') @section('content')
 
@@ -9,7 +7,12 @@
     <div class="row">
         <h2>New Listing</h2>
 
-        <form method="POST" action="addListing" id="my-awesome-dropzone" role="form">
+        <form method="POST" action="addListing" id="ListingsForm" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
+            <input type="hidden" id="longitude" name = "long" />
+            <input type="hidden" id="latitude" name = "lat" />
+
             <div class="form-group">
                 <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
             </div>
@@ -17,7 +20,7 @@
             <div class="row">
 
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" required>
                 </div>
                 <div class="form-group col-sm-6">
                     <input type="text" class="form-control" name="rent" placeholder="Rent" required>
@@ -132,7 +135,7 @@
 
                 <label class="col-sm-6">To</label>
                 <div class="form-group col-sm-6">
-                    <div class='input-group date' id='dateFrom' name='dateFrom'  >
+                    <div class='input-group date' id='dateFrom' name='dateFrom'>
                         <input type='text' id='dateFrom' name='dateFrom' class="form-control" />
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -140,7 +143,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-6">
-                    <div class='input-group date' id='dateTo' name='dateTo' >
+                    <div class='input-group date' id='dateTo' name='dateTo'>
                         <input type='text' id='dateTo' name='dateTo' class="form-control" />
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -148,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="row">
                 <div class="col-sm-12">
@@ -161,10 +164,9 @@
 
 
             <br />
-            <button class="btn btn-default">Submit</button>
-            <button type="save" class="btn btn-default">Save</button>
         </form>
-
+            <button onClick="test(event)" class="btn btn-default">Submit</button>
+            <button onClick="test(event)" class="btn btn-default">Save</button>
 
     </div>
 
@@ -173,16 +175,22 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q"></script>
+
 <script type="text/javascript">
-                $(function () {
-                    $('#dateFrom').datetimepicker({
-                        format: 'DD/MM/YYYY',
-                        defaultDate: new Date()
-                    });
-                    $('#dateTo').datetimepicker({
-                        format: 'DD/MM/YYYY'
-                    });
-                });
-            </script>
+    $(function () {
+        $('#dateFrom').datetimepicker({
+            format: 'DD/MM/YYYY',
+            defaultDate: new Date()
+        });
+        $('#dateTo').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="{!! asset('JS/postListing.js') !!}"></script>
+
 
 @stop
