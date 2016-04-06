@@ -25,13 +25,13 @@
           </div>
           
           <div class = "col-xs-6">
-            <table class = "table table-condensed">
+            <table class = "table table-condensed" style = "border-width: 20px;">
               <tr>
-                <th colspan = 2> {{$listing->listing_title}} </th>
+                <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
               </tr>
     
               <tr>
-                <td colspan = 2> {{ $listing->listing->location->street_num}} {{ $listing->listing->location->street_name}}, {{ $listing->listing->location->city}} </td>
+                <td colspan = 2> {{ $listing->listing->location->street_address}}, {{ $listing->listing->location->city}} </td>
               </tr>
               
               <tr>
@@ -88,7 +88,7 @@
       $ids = array();
       foreach ($listingInfo as $listing) {
         $l = $listing->listing->location;
-        $address = "$l->street_num $l->street_name, $l->city, $l->country, $l->postal_code";
+        $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
         $arr[$i] = $address;
         $ids[$i] = $listing->listing_id;
         $i = $i+1;

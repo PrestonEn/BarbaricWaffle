@@ -16,13 +16,13 @@
 
 	<img src="../images/profilePicDefault.jpeg" id="profilePic" class="img-responsive img-circle">
 
-		<div class = "panel">
+		<div class = "backPane panel">
 			<strong>Phone Number : </strong>
 			<div class = "profileInfo"> 555-555-5555 </div>
 		</div>
 
 
-		<div class = "panel">
+		<div class = "backPane panel">
 			<strong>E-mail Address : </strong>
 			<div class = "profileInfo"> {{$user->email}} </div>
 		</div>
@@ -62,7 +62,7 @@
 	</div>
 
 
-<div class = "panel default-panel">
+<div class = "panel panel-default">
 	<table  id = "commentsTable" class = "table table-bordered">
 		<tr>
 			<th class = "tableTitle"> Comments </th>

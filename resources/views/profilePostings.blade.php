@@ -40,12 +40,12 @@
 
                   <tr>
                      <td colspan = 2>
-                        <img class = "img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                        <img class = "picture img-responsive" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                      </td>   
                   </tr>         
     
                   <tr>
-                     <td colspan = 2> {{ $list->listing->location->street_num}} {{ $list->listing->location->street_name}}, {{ $list->listing->location->city}} </td>
+                     <td colspan = 2> {{ $list->listing->location->street_address}}, {{ $list->listing->location->city}} </td>
                   </tr>
               
                   <tr>
@@ -117,7 +117,7 @@
                         </tr>         
           
                         <tr>
-                           <td colspan = 2> {{ $list->listing->location->street_num}} {{ $list->listing->location->street_name}}, {{ $list->listing->location->city}}  </td>
+                           <td colspan = 2> {{ $list->listing->location->street_address}}, {{ $list->listing->location->city}}  </td>
                         </tr>
                     
                         <tr>

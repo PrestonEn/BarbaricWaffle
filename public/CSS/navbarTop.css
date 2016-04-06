@@ -1,6 +1,7 @@
     .navbar {
       margin-bottom: 0;
       color: white;
+      background-color: #002F2F;
     }
 
     .navbar .navbar-header {
@@ -24,4 +25,8 @@
     #siteName {
       color: white;
       text-decoration: none;
+    }
+
+    body {
+      background-color:  #EFECCA;
     }

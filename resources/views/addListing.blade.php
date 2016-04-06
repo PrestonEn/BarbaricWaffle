@@ -9,18 +9,34 @@
     <div class="row">
         <h2>New Listing</h2>
 
-        <form onsubmit="checkAnswers()" id="my-awesome-dropzone" role="form">
+        <form method="POST" action="addListing" id="my-awesome-dropzone" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" id="title" placeholder="Enter Title" required>
+                <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
             </div>
 
             <div class="row">
 
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="address" placeholder="Enter Address" required>
+                    <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="rent" placeholder="Rent" required>
+                    <input type="text" class="form-control" name="rent" placeholder="Rent" required>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="form-group col-sm-3">
+                    <input type="text" class="form-control" name="postalCode" placeholder="Postal Code" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="text" class="form-control" name="province" placeholder="Province" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="text" class="form-control" name="city" placeholder="City" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="text" class="form-control" name="country" placeholder="Country" required>
                 </div>
 
             </div>
@@ -33,7 +49,7 @@
 
                 <div class="form-group col-sm-6">
 
-                    <select class="form-control" id="houseType" required>
+                    <select class="form-control" name="houseType" required>
                         <option>House</option>
                         <option>Apartment</option>
                         <option>Condo</option>
@@ -41,125 +57,111 @@
                 </div>
                 <div class="form-group col-sm-6">
 
-                    <input type="text" class="form-control" id="size" placeholder="Sq/ft" required>
+                    <input type="text" class="form-control" name="size" placeholder="Sq/ft" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="bedrooms" placeholder="Bedrooms" required>
+                    <input type="text" class="form-control" name="bedrooms" placeholder="Bedrooms" required>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" id="bathrooms" placeholder="Bathrooms" required>
+                    <input type="text" class="form-control" name="bathrooms" placeholder="Bathrooms" required>
                 </div>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="pet">Pets</label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="smoke">Smoke free</label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="furnished">Furnished</label>
+            <div class="row">
+                <div class="checkbox col-sm-4 noMargin">
+                    <label>
+                        <input type="checkbox" name="pet" value="pet">Pets</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="smoke" value="smoke">Smoke free</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="furnished" value="furnished">Furnished</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="kitchen" value="kitchen">Kitchen</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="laundry" value="laundry">Laundry</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="yard" value="yard">Yard</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="internet" value="internet">Internet</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="electricity" value="electricity">Electricity</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="water" value="water">Water</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="cat" value="cat">Cats</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="dog" value="dog">Dogs</label>
+                </div>
+                <div class="checkbox col-sm-4">
+                    <label>
+                        <input type="checkbox" name="otherPet" value="otherPet">Other Pets</label>
+                </div>
+
+
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description" required></textarea>
+                <textarea class="form-control" rows="5" name="description" required></textarea>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="amenities" placeholder="Amenities">
-            </div>
-
-            <label>Availability:</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="availableNow">Now</label>
+                <input type="text" class="form-control" name="amenities" placeholder="Amenities">
             </div>
             <div class="row">
-                <div class="checkbox col-sm-3">
-                    <label>
-                        <input type="checkbox" value="availableFrom">Starting from</label>
-                </div>
+                <label class="col-sm-6">Available from</label>
 
-                <div class="form-group col-sm-3">
-
-                    <select class="form-control" id="month">
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                    </select>
-                </div>
-                <div class="form-group col-sm-3">
-
-                    <select class="form-control" id="day">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                    </select>
-                </div>
-                <div class="form-group col-sm-3">
-
-                    <select class="form-control" id="Year">
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
-                        <option>2020</option>
-
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div id="dropzoneFileUpload" class="dropzone dragPictures">
-<p>Drag and drop images area</p>
+                <label class="col-sm-6">To</label>
+                <div class="form-group col-sm-6">
+                    <div class='input-group date' id='dateFrom' name='dateFrom'  >
+                        <input type='text' id='dateFrom' name='dateFrom' class="form-control" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
-
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class='input-group date' id='dateTo' name='dateTo' >
+                        <input type='text' id='dateTo' name='dateTo' class="form-control" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
             
 
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="dropzoneFileUpload" class="dropzone dragPictures">
+                        <p>Drag and drop images area</p>
+                    </div>
+
+                </div>
+            </div>
+
+
             <br />
-            <button onclick="checkSubmit()" class="btn btn-default">Submit</button>
+            <button class="btn btn-default">Submit</button>
             <button type="save" class="btn btn-default">Save</button>
         </form>
 
@@ -167,6 +169,20 @@
     </div>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript">
+                $(function () {
+                    $('#dateFrom').datetimepicker({
+                        format: 'DD/MM/YYYY',
+                        defaultDate: new Date()
+                    });
+                    $('#dateTo').datetimepicker({
+                        format: 'DD/MM/YYYY'
+                    });
+                });
+            </script>
 
 @stop

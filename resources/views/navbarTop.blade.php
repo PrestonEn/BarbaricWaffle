@@ -11,7 +11,8 @@
   <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
   <link href="{!! asset('CSS/navbarTop.css') !!}" media="all" rel="stylesheet" type="text/css" />
-
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700' rel='stylesheet' type='text/css'>
+  
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
@@ -20,7 +21,7 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <div class = "navbar-header"><a id = "siteName" href="../mapListing">Fun Website Name</a>
+    <div class = "navbar-header"><a id = "siteName" href="../mapListing">Homestead</a>
 
         <button type="button-small" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style = "margin:0px;padding:0px">
         <span class="icon-bar"></span>
@@ -31,7 +32,6 @@
 
     <div class="collapse navbar-collapse">
     <ul id = "navEl" class="nav navbar-nav">
-      <li><a href="../mapListing">Home</a></li>
       <li><a href="../profile/12">Profile</a></li>
       <li><a href="../profileFavourites/12">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
@@ -43,7 +43,6 @@
       <li><a href="../signIn">{{Auth::user()->first_name}}</a></li>
     @else
           <li><a href="../signIn">Sign&nbspin</a></li>
-
     @endif
     </ul>
     </div>

@@ -31,28 +31,28 @@ class CreateListingInfoTable extends Migration
 
             //Listing info.
             $table->string('listing_title', 255);
-            $table->string('listing_description',255);
+            $table->string('listing_description',255)->nullable;
 
             //Price
             $table->double('price_monthly', 10, 2);
-            $table->string('price_description', 255);
+            $table->string('price_description', 255)->nullable;
             
             //Length of rental
-            $table->integer('rental_length_months_min')->unsigned();
+            $table->integer('rental_length_months_min')->unsigned()->nullable;
             $table->date('rental_available_from');
             $table->date('rental_available_to');
 
 
             //House details
-            $table->integer('room_level');
-            $table->integer('room_size_sqft')->unsigned();
+            $table->integer('room_level')->nullable;
+            $table->integer('room_size_sqft')->unsigned()->nullable;
 
-            $table->integer('num_bedrooms_total')->unsigned();
+            $table->integer('num_bedrooms_total')->unsigned()->nullable;
             $table->integer('num_bathrooms_total')->unsigned();
-            $table->integer('num_roommates_max')->unsigned();
+            $table->integer('num_roommates_max')->unsigned()->nullable;
 
             $table->boolean('has_furnishings');
-            $table->string('details_furnishings', 255);
+            $table->string('details_furnishings', 255)->nullable;
 
             //Utilities & extras
             $table->boolean('has_kitchen');
@@ -69,11 +69,11 @@ class CreateListingInfoTable extends Migration
             $table->boolean('allowed_dogs');
             $table->boolean('allowed_cats');
             $table->boolean('allowed_other_pets');
-            $table->string('details_pets', 255);
+            $table->string('details_pets', 255)->nullable;
 
             //MLS number storage.
             //Has a small prefix of 2 letters, then 7 digits.
-            $table->string('mls_number', 10);
+            $table->string('mls_number', 10)->nullable;
 
             $table->timestamps();
         });

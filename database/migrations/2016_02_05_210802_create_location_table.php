@@ -21,20 +21,19 @@ class CreateLocationTable extends Migration
             $table->increments('location_id');
 
             //All the address data below.
-            $table->string('street_name', 255);
-            $table->smallInteger('street_num');
+            $table->string('street_address', 255);
             $table->string('city', 255);
             $table->string('province', 255);
             $table->string('postal_code', 6);
-            $table->string('unit', 31);
+            $table->string('unit', 31)->nullable;
             $table->string('country', 255);
 
             //Latitude longitude values may be overkill, change to smaller double if needed.
-            $table->double('latitude', 10, 6);
-            $table->double('longitude', 10, 6);
+            $table->double('latitude', 10, 6)->nullable;
+            $table->double('longitude', 10, 6)->nullable;
 
             //To be changed later, google walkscore
-            $table->integer('walkscore');
+            $table->integer('walkscore')->nullable;
 
             $table->timestamps();
         });

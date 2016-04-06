@@ -8,7 +8,7 @@ h4 {
 .customWidth {
     width: 90vw;
     margin: 0 auto;
-    background-color: white;
+    background-color: #EFECCA;
     padding-top: 3vh;
 }
 
@@ -29,18 +29,68 @@ h4 {
     border-bottom: 2px solid lightgray;
 }
 
+
+
 .button {
     border: 1px solid lightgray;
-    padding: 10px;
+    padding: 3px;
     margin-top: 10px;
     text-align: center;
     cursor: pointer;
+    font-size: 1vw;
 }
 
+@media only screen and (max-width : 320px) {
+        .button {
+            font-size: 1.3em;
+        }
+        #sendMessage, #viewProfile {
+            white-space: nowrap;
+            font-size: 1em;
+        }
+    }
+
+@media only screen and (min-width : 320px) {
+        .button {
+            font-size: 1.3em;
+        }
+        #sendMessage, #viewProfile {
+            white-space: nowrap;
+            font-size: 1em;
+        }
+    }
+@media only screen and (min-width : 768px) {
+        .button {
+            font-size: 0.7em;
+        }
+        #callNow {
+            white-space: nowrap;
+            font-size: 0.6em;
+        }
+        #sendMessage, #viewProfile {
+            font-size: 1.3vw;
+        }
+    }
+
+@media only screen and (min-width : 830px) {
+        #callNow {
+            font-size: 0.7em;
+        }
+
+    }    
+
+@media only screen and (min-width : 900px) {
+        .button, #callNow {
+            font-size: 1.2vw;
+        }
+    }
+
+
+
 #callNow {
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
-    border: 1px solid #4B0082;
+    border: 1px solid #F95900;
 }
 
 .similarListing {
@@ -70,7 +120,7 @@ h4 {
 #sendMessage {
     padding: 10px;
     text-align: center;
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
     width: 49%;
     margin-right: 2%;
@@ -84,7 +134,7 @@ h4 {
     width: 49%;
     padding: 10px;
     text-align: center;
-    background-color: #4B0082;
+    background-color: #F95900;
     color: white;
     cursor: pointer;
 }
@@ -112,7 +162,7 @@ h4 {
     transition: all 0.2s ease-in;
 }
 
-ul {
+#inner ul {
     -moz-column-count: 2;
     -moz-column-gap: 10px;
     -webkit-column-count: 2;
@@ -122,7 +172,7 @@ ul {
     padding: 0px;
 }
 
-ul li{
+#inner ul li{
     list-style-image: url(../uploads/checkmark.png);
     list-style-position: inside;
    
