@@ -40,9 +40,9 @@ class userController extends Controller
         $user->save();
 
         Mail::raw(' ayyy im an ayyylean',function ($message) {
-            $message->from('p.engstrom94@gmail.com', 'Laravel');
+            $message->from('homestead.proto@gmail.com', 'Laravel');
 
-            $message->to('p.engstrom94@gmail.com');
+            $message->to('homestead.proto@gmail.com');
         });
 
         return redirect('signIn');
