@@ -6,7 +6,15 @@
 <div class="container" style="width:700px;">
     <div class="row">
         <h2>Create a New Listing</h2>
-
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="POST" id="addListingsForm" role="form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="longitude_id" name="longitude_name" />
@@ -15,12 +23,12 @@
             <!-- Title -->
             <div class="form-group">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="title_id" name="title_name" placeholder="Enter Title" required>
+                    <input type="text" class="form-control" id="title_id" name="title_name" placeholder="Enter Title" value="{{ old('title_name') }}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">Listing Description:</label>
-                <textarea class="form-control" rows="5" id="description_id" name="description_name"></textarea>
+                <textarea class="form-control" rows="5" id="description_id" name="description_name">{{ old('description_name') }}</textarea>
             </div>
 
             <!-- Address -->
@@ -32,26 +40,26 @@
 
             <div class="row">
                 <div class="form-group col-sm-9">
-                    <input type="text" class="form-control" id="address_id" name="address_name" placeholder="Street Address" required>
+                    <input type="text" class="form-control" id="address_id" name="address_name" placeholder="Street Address" value="{{ old('address_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="Unit Number">
+                    <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="Unit Number" value="{{ old('unitNum_name') }}">
                 </div>
             </div>
 
             <!-- Country, Province, City, Postal/Zip -->
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="country_id" name="country_name" placeholder="Country" required>
+                    <input type="text" class="form-control" id="country_id" name="country_name" placeholder="Country" value="{{ old('country_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="province_id" name="province_name" placeholder="State/Province" required>
+                    <input type="text" class="form-control" id="province_id" name="province_name" placeholder="State/Province" value="{{ old('province_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="city_id" name="city_name" placeholder="City" required>
+                    <input type="text" class="form-control" id="city_id" name="city_name" placeholder="City" value="{{ old('city_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="postalCode_id" name="postalCode_name" placeholder="Postal/Zip Code" required>
+                    <input type="text" class="form-control" id="postalCode_id" name="postalCode_name" placeholder="Postal/Zip Code" value="{{ old('postalCode_name') }}" required>
                 </div>
             </div>
 
@@ -64,30 +72,31 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="rent_id" name="rent_name" placeholder="Rental Price (Monthly)" required>
+                    <input type="text" class="form-control" id="rent_id" name="rent_name" placeholder="Rental Price (Monthly)" value="{{ old('rent_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
 
-                    <select class="form-control" id="houseType_id" name="houseType_name" required>
+                    <select class="form-control" id="houseType_id" name="houseType_name" value="{{ old('houseType_name') }}" required>
                         <option>House</option>
                         <option>Apartment</option>
                         <option>Condo</option>
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="sqftsize_id" name="sqftsize_name" placeholder="Sqare Footage">
+                    <input type="text" class="form-control" id="sqftSize_id" name="sqftSize_name" placeholder="Sqare Footage" value="{{ old('sqftSize_name') }}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">Pricing Information:</label>
-                <textarea class="form-control" rows="3" id="priceDescription_id" name="priceDescription_name" placeholder="First and last month rent required up front, yearly payments, etc."></textarea>
+                <textarea class="form-control" rows="3" id="priceDescription_id" name="priceDescription_name" 
+                    placeholder="First and last month rent required up front, yearly payments, etc.">{{ old('priceDescription_name') }}</textarea>
             </div>
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="bedrooms_id" name="bedrooms_name" placeholder="Number of Bedrooms" required>
+                    <input type="text" class="form-control" id="bedrooms_id" name="bedrooms_name" placeholder="Number of Bedrooms" value="{{ old('bedrooms_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" placeholder="Number of Bathrooms" required>
+                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" placeholder="Number of Bathrooms" value="{{ old('bathrooms_name') }}"required>
                 </div>
             </div>
             <!--
@@ -143,7 +152,7 @@
             </div>
             -->
             <div class="form-group">
-                <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="Amenities">
+                <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="Amenities" value="{{ old('amenities_name') }}">
             </div>
             <div class="row">
                 <label class="col-sm-6">Available from</label>
@@ -151,7 +160,7 @@
                 <label class="col-sm-6">To</label>
                 <div class="form-group col-sm-6">
                     <div class='input-group date' id='dateFrom_id' name='dateFrom_name'>
-                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" />
+                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" value="{{ old('dateFrom_name') }}"/>
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -159,7 +168,7 @@
                 </div>
                 <div class="form-group col-sm-6">
                     <div class='input-group date' id='dateTo_id' name='dateTo_name'>
-                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" />
+                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" value="{{ old('dateTo_name') }}"/>
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                         </span>

@@ -16,28 +16,66 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Validator;
+
 class ListingController extends Controller
 {
-    
-    public function addLongLat(){
-        $long = Input::get('long');
-        $lat = Input::get('lat');
-        var_dump($long);
-    }
-
     public function allListings(){
-
     	$listings = Listings::all();
-
     	return view(testing.listingsList).compact(listings);
     }
 
-        
-    
     public function addListing(Request $request){
-        //adds new listing to database
         //needs login to add session id
-        
+        if(!Auth::check()){
+            //This should not be possible
+            //But in the case the user SOMEHOW is not logged in, redirect
+            return redirect('signIn');
+        }
+        //$temp = $this->validate($request, [
+        $v = Validator::make($request->all(), [
+            //In order which they appear, to make the error readable
+            
+            //Listing Title
+            'title_name'            => 'bail|required',
+            'description_name'      => '',
+
+            //Location
+            'address_name'      => 'bail|required',
+            'unitNum_name'      => '',
+            'province_name'     => '',
+            'postalCode_name'   => 'bail|required|validZipPostal',
+            'city_name'         => 'bail|required',
+            'country_name'      => 'bail|required',
+
+            //Listinginfo
+
+            'rent_name'             => 'bail|required|numeric',
+            'priceDescription_name' => '',
+
+            'bedrooms_name'         => 'bail|numeric',
+            'bathrooms_name'        => 'bail|numeric',
+            'sqftSize_name'         => 'bail|numeric',
+
+            'mls'                   => 'alpha_num',
+
+            'dateFrom_name'         => 'bail|required|date',
+            'dateTo_name'           => 'bail|date',
+
+            //Latitude/Longitude
+            //Do last because it will output the conditional longitude last
+            'latitude_name'     => 'bail|required|numeric',
+        ]);
+        $v->sometimes('longitude_name', 'bail|required|numeric', function($input) {
+            return is_numeric($input->latitude_name);
+        });
+
+        //Check if validation passes. If not, redirect.
+        if ($v->fails()) {
+            return redirect('addListing')
+                        ->withErrors($v)
+                        ->withInput();
+        }
 
         $location = new Location;
         $location->street_address = Input::get('address_name');
@@ -55,11 +93,7 @@ class ListingController extends Controller
         
         $listing = new Listing;
         $listing->location_id = $location->location_id;
-        if(Auth::check()){
-            $listing->user_id = $request->user()->user_id;
-        }else{
-            $listing->user_id = 1;
-        }
+        $listing->user_id = $request->user()->user_id;
         $listing->save();
         
         $listingInfo = new Listing_Info;
@@ -76,7 +110,7 @@ class ListingController extends Controller
 
         $listingInfo->num_bedrooms_total =  Input::get('bedrooms_name');
         $listingInfo->num_bathrooms_total = Input::get('bathrooms_name');
-        $listingInfo->room_size_sqft =      Input::get('sqftsize_name', 0);
+        $listingInfo->room_size_sqft =      Input::get('sqftSize_name', 0);
 
         //Booleans
         $listingInfo->has_kitchen =             (Input::has('kitchen')) ? true : false;

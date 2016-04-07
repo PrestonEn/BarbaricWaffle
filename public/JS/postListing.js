@@ -19,8 +19,8 @@ function postListing(e) {
 function geocodeAddress() {
     var geocoder = new google.maps.Geocoder();
     var address = 
-        document.getElementById('address_id').value + 
-        document.getElementById('city_id').value +  
+        document.getElementById('address_id').value + " " +
+        document.getElementById('city_id').value +  " " + 
         document.getElementById('country_id').value ;
     geocoder.geocode({
         'address': address
@@ -30,7 +30,9 @@ function geocodeAddress() {
             document.getElementById('longitude_id').value = parseFloat(results[0].geometry.location.lng()).toFixed(7);
             document.getElementById('addListingsForm').submit();
         } else {
-            alert('Geocode was not successful for the following reason: ' + status);
+            //alert('Error: The Address is not valid! please check that the Address, along with Country and City are correct and spelt correctly.');
+            //alert('Geocode was not successful for the following reason: ' + status);
+            document.getElementById('addListingsForm').submit();
         }
     });
 }

@@ -45,11 +45,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('signIn', 'Auth\AuthController@authenticate');
 
+    // Add listing POST request
+    Route::post('/addListing', 'ListingController@addListing');
+    Route::post('/addLongLat', 'ListingController@addLongLat');
 });
 
 
-// Add listing POST request
-Route::post('/addListing', 'ListingController@addListing');
-Route::post('/addLongLat', 'ListingController@addLongLat');
 ?>
 
