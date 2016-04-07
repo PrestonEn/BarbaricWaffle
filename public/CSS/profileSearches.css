@@ -29,14 +29,14 @@ table td, table th{
 }
 
 table th{
-	font-size: 2vmin;
+	font-size: 1.6em;
 	background-color: #CCC;
 	padding-left: 1em;
 	padding-right: 1em;
 }
 
 table td {
-	font-size: 2vmin;
+	font-size: 1.3em;
 	padding-left: 0.8em;
 	padding-right: 0.8em;
 }

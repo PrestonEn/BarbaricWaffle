@@ -33,7 +33,7 @@
    <div id = "tableDiv" class = "table-responsive">
       <table class = "table-bordered">
          <tr>
-            <th><em id = "title"></em> Search Name </th>
+            <th id = "removeDiv"><em id = "title"></em> Search Name </th>
             <th> Search Values </th>
             
          </tr>   

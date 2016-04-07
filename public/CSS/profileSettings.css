@@ -3,7 +3,7 @@
 	overflow-x: auto;
 	text-align: left;
 	max-width: 100%;
-	font-size: 2vmax;
+	font-size: 1.3em;
 }
 
 #emailTitle{
@@ -13,7 +13,7 @@
 form {
 	margin: 2%;
 	padding: 3%;
-	font-size: 1.7vmax;
+	font-size: 1.2em;
 	background-color: #E6E2AF;
 }
 .panel {
