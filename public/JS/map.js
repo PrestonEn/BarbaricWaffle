@@ -20,7 +20,7 @@ function setMap(lat,lon,ids,position){
     var mapDiv = document.getElementById("col1");
     map = new google.maps.Map(mapDiv, {
     center: position,
-    zoom: 14
+    zoom: 4
   });
 
 
@@ -37,15 +37,23 @@ function setMap(lat,lon,ids,position){
     });  
     
    
+    var c = '<div>  Jaclyn!!!!  </div>';
+    var infowindow = new google.maps.InfoWindow({
+    content: c
+  });
+
     marker.addListener('click', function() {
       window.location.href = "houseTemplate/" + this.title;
     });
 
     marker.addListener('mouseover', function() {
+      infowindow.open(map, this);
       this.setIcon(null);
+
     });
 
     marker.addListener('mouseout', function() {
+      infowindow.close();
       this.setIcon("../images/houseIcon.jpeg");
     });
 
