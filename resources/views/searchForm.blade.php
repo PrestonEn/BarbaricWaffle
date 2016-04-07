@@ -1,21 +1,27 @@
-
 <link href="{!! asset('CSS/addSearches.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 <form action="#" method="#">
 
 <div class= "searchPanel img-rounded">
 
+
+
+
 <button class = "btn btn-sm" data-toggle="collapse" data-target="#search">\/</button>
 <div id = "search" class = "collapse">
 
 	<div class = "row panel panel-default">
-		<div class = "sub col-xs-12">
-	<label> Region : </label>
-		<select> 
-			<option> ALL </option>
-		</select>
+
+
+
+		<div class = "col-xs-12">
+				
+
+
 		</div>
 
+		</div>
+		<!--
 		<div class = "col-xs-12">
 			<div class = "col-xs-4" style = "padding-left:0px; padding-right:0px">
 				<label id = "minPrice"> Minimum Price : </label>
@@ -40,9 +46,20 @@
 			<input type="submit"/>
 		</div>
 	</div>
-	<br>
+	<br>-->
 </div>
 
 </div>
 
 </form>
+
+
+<script>
+
+	/*$('.dblSlider').nstSlider({
+		"crossable_handles": false,
+		"left_grip_selector": ".leftSelector",
+		"right_grip_selector": ".rightSelector",
+		"value_bar_selector": ".bar",
+	})*/
+</script>

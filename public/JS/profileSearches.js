@@ -5,7 +5,8 @@ function edit(button){
 		button.innerHTML = "cancel";
 
 	document.getElementById('buttonHolder').innerHTML = "<button type = 'submit' class = 'btn btn-primary' style = 'right: 5em; down: 14em;' onClick='removeElements()'> delete </button>";
-	document.getElementById('title').innerHTML = "<label style= 'color:red;margin-right:0.5em;margin-left:1px;' value>Remove</label>";
+	document.getElementById('title').innerHTML = "<label style= 'color:red;margin-right:0.5em;margin-left:1px;'>Remove</label>";
+	document.getElementById('removeDiv').style.fontSize = "1.1em";
 
 	var headers = document.getElementsByClassName("name");
 	for (var i = headers.length - 1; i >= 0; i--) {
@@ -25,6 +26,7 @@ function edit(button){
 		headers[i].innerHTML = headers[i].getElementsByTagName('input')[0].value;
 	}
 
+	document.getElementById('removeDiv').style.fontSize = "1.6em";
 	document.getElementById('buttonHolder').innerHTML = "";
 	document.getElementById('title').innerHTML = "";
 
