@@ -40,7 +40,7 @@
     </ul>
     <ul class = "nav navbar-nav navbar-right">
     @if(Auth::user())
-      <li><a href="../signIn">{{Auth::user()->first_name}}</a></li>
+      <li><a href="../logout">{{Auth::user()->first_name}}</a></li>
     @else
           <li><a href="../signIn">Sign&nbspin</a></li>
 

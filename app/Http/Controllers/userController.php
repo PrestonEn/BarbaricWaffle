@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Mail;
+
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -38,13 +38,7 @@ class userController extends Controller
         $user->email = Input::get('email');
         $user->phone = Input::get('phone');
         $user->save();
-
-        Mail::raw(' ayyy im an ayyylean',function ($message) {
-            $message->from('homestead.proto@gmail.com', 'Laravel');
-
-            $message->to('homestead.proto@gmail.com');
-        });
-
+        
         return redirect('signIn');
 
     }
