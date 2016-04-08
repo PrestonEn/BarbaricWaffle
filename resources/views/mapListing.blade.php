@@ -22,6 +22,7 @@
             <div id = "eg1">
                 <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
             </div>
+          @extends ('searchForm')
           </div>
           
           <div class = "col-xs-6">
