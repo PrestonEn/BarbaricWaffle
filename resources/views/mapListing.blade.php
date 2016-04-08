@@ -51,39 +51,87 @@
                             <img class="feature" src="../images/hydro.jpeg"> @endif @if ($listing->owner_pays_internet)
                             <img class="feature" src="../images/internet.jpeg"> @endif </td>
                     </tr>
-
                 </table>
             </div>
+            @extends ('searchForm')
+        </div>
+
+        <div class = "col-xs-6">
+            <table class = "table table-condensed" style = "border-width: 20px;">
+                <tr>
+                    <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
+                </tr>
+                <tr>
+                    <td colspan = 2> {{ $listing->listing->location->street_address}}, {{ $listing->listing->location->city}} </td>
+                </tr>
+                <tr>
+                    <td> Price </td>
+                    <td> {{$listing->price_monthly}}/mth </td>
+                </tr>
+
+                <tr>
+                    <td colspan = 2> Other feature we deem important </td>
+                </tr>
+
+                <tr>
+                    <td class = "features"> 
+                        @if ($listing->has_kitchen)
+                        <img class = "feature" src="../images/kitchen.jpeg">
+                        @endif
+                        @if ($listing->allowed_dogs || $listing->allowed_cats || $listing->allowed_other_pets)
+                        <img class = "feature" src="../images/pets.jpeg">
+                        @endif
+
+                        @if ($listing->has_furnishings)
+                        <img class = "feature" src="../images/furnished.jpeg">
+                        @endif
+
+                        @if ($listing->has_laundry)
+                        <img class = "feature" src="../images/laundry.jpeg">
+                        @endif
+
+                        @if ($listing->owner_pays_hydro)
+                        <img class = "feature" src="../images/water.jpeg">
+                        @endif
+
+                        @if ($listing->owner_pays_electricity)
+                        <img class = "feature" src="../images/hydro.jpeg">
+                        @endif
+
+                        @if ($listing->owner_pays_internet)
+                        <img class = "feature" src="../images/internet.jpeg">
+                        @endif
+                    </td>
+                </tr>
+            </table> 
         </div>
         @endforeach
-
     </div>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q&callback=load"></script>
 
-
     <?php
-      $i = 0;
-      $lat = array();
-      $lon = array();
-      $ids = array();
-      $price = array();
-      $title = array();
-      $long = array();
-      $lat = array();
+        $i = 0;
+        $lat = array();
+        $lon = array();
+        $ids = array();
+        $price = array();
+        $title = array();
+        $long = array();
+        $lat = array();
 
-      foreach ($listingInfo as $listing) {
-        $l = $listing->listing->location;
-        $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
-          
-        $long[$i] = $l->longitude;
-        $lat[$i] = $l->latitude;
-        $arr[$i] = $address;
-        $ids[$i] = $listing->listing_id;
-        $price[$i] = $listing->price_monthly;
-        $title[$i] = $listing->listing_title;
-        $i = $i+1;
-      };
+        foreach ($listingInfo as $listing) {
+            $l = $listing->listing->location;
+            $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
+              
+            $long[$i] = $l->longitude;
+            $lat[$i] = $l->latitude;
+            $arr[$i] = $address;
+            $ids[$i] = $listing->listing_id;
+            $price[$i] = $listing->price_monthly;
+            $title[$i] = $listing->listing_title;
+            $i = $i+1;
+        };
     ?>
 
     <script>

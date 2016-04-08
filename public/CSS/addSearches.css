@@ -2,6 +2,25 @@
 	margin-top: 5em;
 }
 
+#colButton {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 3;
+}
+select {
+	width: 10em;
+}
+
+select, input {
+	background-color: #4d4d4d;
+	color: white;
+}
+
+input {
+	position: absolute;
+	right: 40%;
+}
 
 .backdrop {
 	margin-left: 10vw;
@@ -15,11 +34,6 @@
 	padding-bottom: 1.3vh;
 }
 
-.backdrop .col-xs-5 {
-	text-align: center;
-	font-size: 1.4vmax;
-}
-
 .searchPanel {
 	background-color: #222;
   	border-color: #080808;
@@ -31,6 +45,20 @@
 
 }
 
+@media only screen and (max-width :992px){
+	#disappear {
+		display: none;
+	}
+	#slider{ 
+		margin-left: 15%;
+	}
+}
+@media only screen and (min-width : 993px){
+	#disappear {
+		display: block;
+	}
+}
+
 #petsBox {
 	display: none;
 }
@@ -40,7 +68,7 @@
 }
 
 #search .panel {
-	font-size: 1.2vmax;
+	
 	max-height: 20%;
 	margin: auto;
 	background-color: #333333;
@@ -53,9 +81,7 @@
 	width:4em;
 }
 
-#search {
-	font-size: 1.7vw;
-}
+
 
 #minRange, #maxRange {
 	width:50vw;

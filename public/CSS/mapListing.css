@@ -1,7 +1,10 @@
 #col1, #col2{
-  margin: 0px;
-  padding: 0px;
-  height:100%
+  height:100%;
+}
+
+#col1 {
+  position: relative;
+  z-index:1;
 }
 
 #col2>.row {
