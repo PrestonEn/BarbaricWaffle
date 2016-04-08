@@ -10,7 +10,7 @@
 
   <meta charset = "utf-8"> 
   <meta name = "viewport" content = "width=device-width, initial-scale=1">
-  
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
   <link href="{!! asset('CSS/navbarTop.css') !!}" media="all" rel="stylesheet" type="text/css" />

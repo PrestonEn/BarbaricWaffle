@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use Auth;
-
+use Log;
+use Illuminate\Http\Response;
 use App\User;
 use App\Listing;
 use App\Location;
@@ -20,6 +21,11 @@ use Validator;
 
 class ListingController extends Controller
 {
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> origin/jeff_AddingListings
     public function allListings(){
     	$listings = Listings::all();
     	return view(testing.listingsList).compact(listings);
@@ -135,6 +141,22 @@ class ListingController extends Controller
 
         return redirect('houseTemplate/'.$listing->listing_id);
         
+    }
+    
+    public function updateSidebar(Request $request){
+       
+        
+        if(Request::ajax()){
+            if($request::has('id')){
+                 //gets data from ajax request
+                $ids = $_POST['id'];
+                $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
+                //returns sidebar view with udpated listings
+                return view ('sidebarUpdate', compact('listingInfo'));
+		        }
+        }
+        
+       
     }
 
     
