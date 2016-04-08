@@ -1,17 +1,3 @@
-<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<link href="{!! asset('CSS/mapListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
-
-
-@extends('navbarTop') @section('content')
-
-
-
-<div class="row">
-    <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
-    </div>
-
-    <div id="col2" class="col-md-4 col-sm-0 col-xs-0">
 
         @foreach($listingInfo as $listing)
         <div id="subrow" class="row">
@@ -59,47 +45,3 @@
             </div>
         </div>
         @endforeach
-
-    </div>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q&callback=load"></script>
-
-
-    <?php
-      $i = 0;
-      $arr = array();
-      $ids = array();
-      foreach ($listingInfo as $listing) {
-        $l = $listing->listing->location;
-        $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
-        $arr[$i] = $address;
-        $ids[$i] = $listing->listing_id;
-        $i = $i+1;
-      };
-    ?>
-
-        <script>
-            
-
-                function load() {
-                    var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
-                    var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-                    google.maps.event.addDomListener(window, 'load', function () {
-                        initMap(arr, ids)
-                    })
-
-
-                }
-          
-        </script>
-
-       
-
-
-
-
-
-
-
-
-        @stop

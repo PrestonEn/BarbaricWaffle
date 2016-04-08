@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use Auth;
-
+use Log;
+use Illuminate\Http\Response;
 use App\User;
 use App\Listing;
 use App\Location;
@@ -19,11 +20,6 @@ use App\Http\Controllers\Controller;
 class ListingController extends Controller
 {
     
-    public function addLongLat(){
-        $long = Input::get('long');
-        $lat = Input::get('lat');
-        var_dump($long);
-    }
 
     public function allListings(){
 
@@ -101,6 +97,22 @@ class ListingController extends Controller
 
         return redirect('houseTemplate/'.$listing->listing_id);
         
+    }
+    
+    public function updateSidebar(Request $request){
+       
+        
+        if(Request::ajax()){
+            if($request::has('id')){
+                 //gets data from ajax request
+                $ids = $_POST['id'];
+                $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
+                //returns sidebar view with udpated listings
+                return view ('sidebarUpdate', compact('listingInfo'));
+		        }
+        }
+        
+       
     }
 
     

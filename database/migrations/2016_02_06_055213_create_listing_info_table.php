@@ -38,7 +38,7 @@ class CreateListingInfoTable extends Migration
             $table->string('price_description', 255)->nullable;
             
             //Length of rental
-            $table->integer('rental_length_months_min')->unsigned()->nullable->default(0);
+            $table->integer('rental_length_months_min')->unsigned()->nullable;
             $table->date('rental_available_from');
             $table->date('rental_available_to')->nullable;
 

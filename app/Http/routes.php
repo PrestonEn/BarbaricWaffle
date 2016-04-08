@@ -44,12 +44,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('signUp', 'userController@add');
 
     Route::post('signIn', 'Auth\AuthController@authenticate');
+    
+    // Add listing POST request
+Route::post('/addListing', 'ListingController@addListing');
+Route::post('/updateSidebar', 'ListingController@updateSidebar');
 
 });
 
 
-// Add listing POST request
-Route::post('/addListing', 'ListingController@addListing');
-Route::post('/addLongLat', 'ListingController@addLongLat');
-?>
 
+?>
