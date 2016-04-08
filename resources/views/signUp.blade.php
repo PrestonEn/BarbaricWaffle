@@ -26,11 +26,11 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-5">
 			First Name : 
-			<input type = "text" class = "form-control" name = "firstName">
+			<input type = "text" class = "form-control" name = "firstName" value="{{ old('firstName') }}">
 		</div>
 		<div class = "col-xs-5">
 			Last Name : 
-			<input type = "text" class = "form-control" name = "lastName">
+			<input type = "text" class = "form-control" name = "lastName" value="{{ old('lastName') }}">
 		</div>
 
 	</div>
@@ -40,7 +40,7 @@
 		<div class = "col-xs-6" id = "phoneNumDiv">
 				Phone Number : 
 				<div class = "controls form-inline">
-				<input type = "text" class = "form-control input-sm" placeholder="111-111-1111" name = "phone" maxlength = "20">
+				<input type = "text" class = "form-control input-sm" placeholder="123-456-7890 x1234" name = "phone" maxlength = "18" value="{{ old('phone') }}">
 				</div>
 		<div class = "col-xs-5"></div>	
 		</div>
@@ -50,7 +50,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			E-mail Address : 
-			<input type = "email" class = "form-control" name = "email" id = "username">
+			<input type = "email" class = "form-control" name = "email" id = "username" value="{{ old('email') }}">
 		</div>
 	</div>
 
@@ -58,7 +58,7 @@
 		<div class = "col-xs-1"></div>
 		<div class = "col-xs-10">
 			Verify E-mail Address : 
-			<input type = "email" class = "form-control" name = "email_confirmation">
+			<input type = "email" class = "form-control" name = "email_confirmation" value="{{ old('email') }}">
 		</div>
 	</div>
 
