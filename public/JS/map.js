@@ -1,13 +1,16 @@
 var map;
 var geocoder;
 var markers = new Array();
-var j = 0;
+var j = 0; // counts the total number of markers we have - used to loop through all markers to check which are in current bounds
 var markersInBound = new Array();
 var prices = new Array();
 var titles = new Array();
+var longitude = new Array();
+var latitude = new Array();
+
 var infowindow;
 
-function initMap(arr, ids, price, title) {
+function initMap(arr, ids, price, title, long, lat) {
     var coords;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -25,7 +28,8 @@ function initMap(arr, ids, price, title) {
     }
     prices = price;
     titles = title;
-    
+    longitude = long;
+    latitude = lat;
 
 }
 
@@ -38,51 +42,42 @@ function setMap(arr, ids, position) {
         zoom: 14
     });
 
-    infowindow= new google.maps.InfoWindow({
+    infowindow = new google.maps.InfoWindow({
         content: ''
     });
-    
+
 
 
     var geocoder = new google.maps.Geocoder();
-    for (var i = arr.length - 1; i >= 0; i--) {
-        getCoor(arr[i], map, geocoder, ids[i], prices[i], titles[i]);
+    for (var i = ids.length - 1; i >= 0; i--) {
+        getCoor(arr[i], map, geocoder, ids[i], prices[i], titles[i], longitude[i], latitude[i]);
+
 
     };
 
     var timeout;
     map.addListener('bounds_changed', function () {
-        // 3 seconds after the center of the map has changed, pan back to the
-        // marker.
-
         window.clearTimeout(timeout);
 
         timeout = window.setTimeout(function () {
-            //do stuff on event
-            //alert("stopped");
             boundChangedEvent();
         }, 500);
     });
-
-
-
 }
 
+//Event which fires after the long + lat bounds have changed
 function boundChangedEvent() {
 
     var bounds = map.getBounds();
     markersInBound.length = 0;
-    //alert(markers[0].get('id'));
 
     for (var i = 0; i < markers.length; i++) {
         if (bounds.contains(markers[i].getPosition())) {
-            // code for showing your object
             markersInBound[i] = markers[i].get('id');
-            //console.log(markersInBound[i].id);
-            // alert(markersInBound[i]);
+
         }
     }
-
+    //needed in laravel for ajax
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -90,7 +85,7 @@ function boundChangedEvent() {
 
     });
 
-
+    //ajax call to update sideBar
     $.ajax({
         type: "POST",
         url: "/updateSidebar",
@@ -110,48 +105,44 @@ function boundChangedEvent() {
 }
 
 
-function getCoor(address, map, geocoder, ids, price, title) {
+function getCoor(address, map, geocoder, ids, price, title, long, lat) {
 
-    geocoder.geocode({
-        'address': address
-    }, function (results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-            var marker = new google.maps.Marker({
-                position: results[0].geometry.location,
-                map: map,
-                title: address,
-                icon: "../images/houseIcon.jpeg",
-            });
+    var latlng = new google.maps.LatLng(lat, long);
 
-            marker.setValues({
-                type: "point",
-                id: ids
-            });
-            markers[j] = marker;
-            j++;
-            /*
-            google.maps.event.addListener(marker, 'click', function (num) {
-                window.location.href = "houseTemplate/" + ids;
-            });
-            */
-            
-            //htmlString = content of the infowindow - add information here
-            var htmlString = "<p>"+ price+"</p>"+"<p>"+ title+"</p>";
-                    
-            makeInfoWindow(marker, map, infowindow, htmlString);
-
-        } else {
-            //alert('Cannot compute Coordinates : ' + status);
-        };
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        title: address,
+        icon: "../images/houseIcon.jpeg",
     });
+
+
+    marker.setValues({
+        type: "point",
+        id: ids
+    });
+    markers[j] = marker;
+    j++;
+
+    var htmlString = "<p>" + price + "</p>" + "<p>" + title + "</p>";
+
+    makeInfoWindow(marker, map, infowindow, htmlString);
+
+    /*
+    google.maps.event.addListener(marker, 'click', function (num) {
+        window.location.href = "houseTemplate/" + ids;
+    });
+    */
+
 }
 
+//function to make the infowindow
 function makeInfoWindow(marker, map, infowindow, htmlString) {
     google.maps.event.addListener(marker, 'mouseover', function () {
         infowindow.setContent(htmlString);
         infowindow.open(map, marker);
     });
-   
+
 }
 
 
