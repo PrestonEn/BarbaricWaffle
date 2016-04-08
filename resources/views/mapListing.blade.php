@@ -69,11 +69,16 @@
       $i = 0;
       $arr = array();
       $ids = array();
+      $price = array();
+      $title = array();
+
       foreach ($listingInfo as $listing) {
         $l = $listing->listing->location;
         $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
         $arr[$i] = $address;
         $ids[$i] = $listing->listing_id;
+        $price[$i] = $listing->price_monthly;
+        $title[$i] = $listing->listing_title;
         $i = $i+1;
       };
     ?>
@@ -84,8 +89,10 @@
                 function load() {
                     var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
                     var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
+                    var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
+                    var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
                     google.maps.event.addDomListener(window, 'load', function () {
-                        initMap(arr, ids)
+                        initMap(arr, ids, price, title)
                     })
 
 
