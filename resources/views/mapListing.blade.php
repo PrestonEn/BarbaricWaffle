@@ -4,9 +4,6 @@
 
 
 @extends('navbarTop') @section('content')
-
-
-
 <div class="row">
     <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
     </div>
@@ -70,16 +67,6 @@
       $lat = array();
       $lon = array();
       $ids = array();
-<<<<<<< HEAD
-      $arr = array();
-      foreach ($listingInfo as $listing) {
-        $l = $listing->listing->location;
-        //$address = "$l->street_address, $l->city, $l->country, $l->postal_code";
-        $lat[$i] = "$l->latitude";
-        $lon[$i] = "$l->longitude";
-        $arr[$i] = "{lat: " + $lat[$i] + ", lng:" + $lon[$i] + "}";
-
-=======
       $price = array();
       $title = array();
       $long = array();
@@ -92,7 +79,6 @@
         $long[$i] = $l->longitude;
         $lat[$i] = $l->latitude;
         $arr[$i] = $address;
->>>>>>> origin/jeff_AddingListings
         $ids[$i] = $listing->listing_id;
         $price[$i] = $listing->price_monthly;
         $title[$i] = $listing->listing_title;
@@ -100,46 +86,18 @@
       };
     ?>
 
-<<<<<<< HEAD
-    <script> 
-    function load(){
-      var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
-      var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
-      var lon = <?php echo '["' . implode('", "', $lon) . '"]'; ?>;
-      var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-      google.maps.event.addDomListener(window,'load',function(){initMap(lat, lon, ids)})
-    }
+    <script>
+        function load() {
+            var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
+            var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
+            var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
+            var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
+            var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
+            var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
+            google.maps.event.addDomListener(window, 'load', function () {
+                initMap(arr, ids, price, title, long, lat)
+            })
+        }  
     </script>
 
-
-=======
-        <script>
-            
->>>>>>> origin/jeff_AddingListings
-
-                function load() {
-                    var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
-                    var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-                    var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
-                    var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
-                    var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
-                    var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
-                    google.maps.event.addDomListener(window, 'load', function () {
-                        initMap(arr, ids, price, title, long, lat)
-                    })
-
-
-                }
-          
-        </script>
-
-       
-
-
-
-
-
-
-
-
-        @stop
+@stop

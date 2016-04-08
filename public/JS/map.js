@@ -7,29 +7,6 @@ var prices = new Array();
 var titles = new Array();
 var longitude = new Array();
 var latitude = new Array();
-
-<<<<<<< HEAD
-function initMap(lat,lon,ids) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-      success(position,lat,lon,ids);
-    });
-  } else {
-    error('Geo Location is not supported');
-    var coords = {lat: 43.1, lng: -79.3};
-    setMap(lat,lon,ids,coords);
-  }
-}
-
-
-function setMap(lat,lon,ids,position){
-
-    var mapDiv = document.getElementById("col1");
-    map = new google.maps.Map(mapDiv, {
-    center: position,
-    zoom: 4
-  });
-=======
 var infowindow;
 
 function initMap(arr, ids, price, title, long, lat) {
@@ -52,9 +29,7 @@ function initMap(arr, ids, price, title, long, lat) {
     titles = title;
     longitude = long;
     latitude = lat;
-
 }
-
 
 function setMap(arr, ids, position) {
 
@@ -86,7 +61,6 @@ function setMap(arr, ids, position) {
         }, 500);
     });
 }
->>>>>>> origin/jeff_AddingListings
 
 //Event which fires after the long + lat bounds have changed
 function boundChangedEvent() {
@@ -97,55 +71,6 @@ function boundChangedEvent() {
     for (var i = 0; i < markers.length; i++) {
         if (bounds.contains(markers[i].getPosition())) {
             markersInBound[i] = markers[i].get('id');
-
-<<<<<<< HEAD
-  var geocoder = new google.maps.Geocoder();
-  var num;
-
-  for (var i = ids.length - 1; i >= 0; i--) {
-    var coor = new google.maps.LatLng(lat[i], lon[i]);
-    var marker = new google.maps.Marker({
-      position: coor,
-      map: map,
-      title: ids[i],
-      icon: "../images/houseIcon.jpeg",
-    });  
-    
-   
-    var c = '<div>  Jaclyn!!!!  </div>';
-    var infowindow = new google.maps.InfoWindow({
-    content: c
-  });
-
-    marker.addListener('click', function() {
-      window.location.href = "houseTemplate/" + this.title;
-    });
-
-    marker.addListener('mouseover', function() {
-      infowindow.open(map, this);
-      this.setIcon(null);
-
-    });
-
-    marker.addListener('mouseout', function() {
-      infowindow.close();
-      this.setIcon("../images/houseIcon.jpeg");
-    });
-
-    
-
-
-  };
-  marker.addListener('click', function() {
-    map.setZoom(8);
-    map.setCenter(marker.getPosition());
-  });
-}
-
-function success(position,lat,lon,ids) {
-     coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     setMap(lat,lon,ids,coords);
-=======
         }
     }
     //needed in laravel for ajax
@@ -213,8 +138,6 @@ function makeInfoWindow(marker, map, infowindow, htmlString) {
         infowindow.setContent(htmlString);
         infowindow.open(map, marker);
     });
-
->>>>>>> origin/jeff_AddingListings
 }
 
 

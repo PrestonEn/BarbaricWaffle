@@ -46,18 +46,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('signIn', 'Auth\AuthController@authenticate');
     
     // Add listing POST request
-Route::post('/addListing', 'ListingController@addListing');
-Route::post('/updateSidebar', 'ListingController@updateSidebar');
-
-    // Add listing POST request
     Route::post('/addListing', 'ListingController@addListing');
-    Route::post('/addLongLat', 'ListingController@addLongLat');
+    Route::post('/updateSidebar', 'ListingController@updateSidebar');
 });
-
-
-<<<<<<< HEAD
-?>
-=======
->>>>>>> origin/jeff_AddingListings
 
 ?>

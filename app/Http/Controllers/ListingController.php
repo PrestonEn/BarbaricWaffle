@@ -16,16 +16,10 @@ use DateTime;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Validator;
 
 class ListingController extends Controller
 {
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> origin/jeff_AddingListings
     public function allListings(){
     	$listings = Listings::all();
     	return view(testing.listingsList).compact(listings);
@@ -79,8 +73,8 @@ class ListingController extends Controller
         //Check if validation passes. If not, redirect.
         if ($v->fails()) {
             return redirect('addListing')
-                        ->withErrors($v)
-                        ->withInput();
+                ->withErrors($v)
+                ->withInput();
         }
 
         $location = new Location;
@@ -140,12 +134,9 @@ class ListingController extends Controller
         $listingInfo->save();
 
         return redirect('houseTemplate/'.$listing->listing_id);
-        
     }
     
     public function updateSidebar(Request $request){
-       
-        
         if(Request::ajax()){
             if($request::has('id')){
                  //gets data from ajax request
@@ -153,11 +144,7 @@ class ListingController extends Controller
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
                 //returns sidebar view with udpated listings
                 return view ('sidebarUpdate', compact('listingInfo'));
-		        }
-        }
-        
-       
+            }
+        }  
     }
-
-    
 }
