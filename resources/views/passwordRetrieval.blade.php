@@ -14,16 +14,8 @@
 <form action = "" method = "post">
 
 	<div id = "instrText">
-		Please input your registered username and e-mail address into the following form to retrieve your password.
+		Please input your registered e-mail address into the following form to retrieve your password.
 	</div>
-
-	<div class = "row">
-		<div class = "col-xs-1 col-sm-2 col-md-3"></div>
-		<div class = "col-xs-10 col-sm-8 col-md-6">
-			Username :  
-			<input type = "text" class = "form-control" name = "pass">
-		</div>
-	</div>	
 
 	<div class = "row">
 		<div class = "col-xs-1 col-sm-2 col-md-3"></div>
