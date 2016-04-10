@@ -38,6 +38,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Listing', 'favourites_listing_user');
     }
 
+    public function saved_searches(){
+        return $this->hasMany('App\Saved_Search', 'user_id', 'user_id');
+    }
+
     public function scopeRealtor(){
 
     }
