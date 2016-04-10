@@ -5,8 +5,18 @@
 
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/signIn.css') !!}" media="all" rel="stylesheet" type="text/css" />
-	<br>
-	<div class = "pageTitle"> Sign In </div>	
+<br>
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<div class = "pageTitle"> Sign In </div>	
 
 
 @if (session('failure'))
