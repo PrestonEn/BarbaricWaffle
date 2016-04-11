@@ -2,6 +2,27 @@
   height:100%;
 }
 
+.centerText{
+  text-align: center;
+}
+
+#modalButton {
+  background-color: #006666;
+  height: 100%;
+  width: auto;
+  font-size: 1.7vh;
+}
+
+#modalButtonHolder{
+  height: 5vh;
+  width: 100%;
+  position: fixed;
+  background-color: #002F2F;
+  left:0;
+  bottom:0;
+  z-index: 99;
+}
+
 #col1 {
   position: relative;
   z-index:1;

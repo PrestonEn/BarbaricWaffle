@@ -22,7 +22,6 @@
             <div id = "eg1">
                 <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
             </div>
-          @extends ('searchForm')
           </div>
           
           <div class = "col-xs-6">
@@ -79,6 +78,20 @@
           </div>
       </div>
       @endforeach
+
+
+      <div id = "modalButtonHolder">
+        <button type="button" id = "modalButton" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Refine Search</button>
+      </div>
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            ...
+          </div>
+        </div>
+      </div>
+
 
     </div>
 
