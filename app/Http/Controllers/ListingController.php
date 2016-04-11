@@ -59,8 +59,8 @@ class ListingController extends Controller
 
             'mls'                   => 'alpha_num',
 
-            'dateFrom_name'         => 'bail|required|date',
-            'dateTo_name'           => 'bail|date',
+            'dateFrom_name'         => 'bail|required',
+            'dateTo_name'           => 'bail',
 
             //Latitude/Longitude
             //Do last because it will output the conditional longitude last
