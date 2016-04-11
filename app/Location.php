@@ -23,7 +23,10 @@ class Location extends Model
     ];
     
     public function listing(){
-        return $this->hasOne('App\Listing');
+        return $this->hasMany('App\Listing');
     }
 
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id', 'user_id');
+    }
 }

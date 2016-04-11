@@ -18,6 +18,8 @@ class CreateListingInfoTable extends Migration
             //Primary Key
             $table->increments('listing_info_id');
 
+            $table->string('unit', 31)->nullable;
+
             //Foreign Key
             //Each Listing can have any number of listing_info records.
             $table->integer('listing_id')->unsigned();

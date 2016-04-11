@@ -20,13 +20,19 @@ class CreateLocationTable extends Migration
             //Primary Key: location_id
             $table->increments('location_id');
 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                  ->references('user_id')
+                  ->on('users');
+                //->onDelete('cascade');    //This may be appropriate when we properly implement deletion.
+
             //All the address data below.
             $table->string('street_address', 255);
             $table->string('city', 255);
             $table->string('province', 255);
             $table->string('postal_code', 6);
-            $table->string('unit', 31)->nullable;
             $table->string('country', 255);
+            //$table->string('unit', 31)->nullable;//Moved to listingInfo
 
             //Latitude longitude values may be overkill, change to smaller double if needed.
             $table->double('latitude', 12, 7)->nullable;

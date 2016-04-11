@@ -42,7 +42,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Saved_Search', 'user_id', 'user_id');
     }
 
-    public function scopeRealtor(){
-
+    public function locations(){
+        return $this->hasMany('App\Location', 'location_id', 'location_id');
     }
 }
