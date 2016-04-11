@@ -45,6 +45,7 @@ class userController extends Controller
         $user->email = Input::get('email');
         $user->phone = Input::get('phone');
         $user->save();
+        
         return redirect('signIn');
     }
     

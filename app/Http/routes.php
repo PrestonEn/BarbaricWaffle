@@ -47,7 +47,14 @@ Route::group(['middleware' => ['web']], function () {
     
     // Add listing POST request
     Route::post('/addListing', 'ListingController@addListing');
-    Route::post('/updateSidebar', 'ListingController@updateSidebar');
-});
 
+    Route::post('/updateSidebar', 'ListingController@updateSidebar');
+
+    Route::get('/logout', function()
+    {
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('/');
+    });
+});
 ?>
