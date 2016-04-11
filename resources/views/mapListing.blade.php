@@ -25,13 +25,13 @@
           </div>
           
           <div class = "col-xs-6">
-            <table class = "table table-condensed">
+            <table class = "table table-condensed" style = "border-width: 20px;">
               <tr>
-                <th colspan = 2> {{$listing->listing_title}} </th>
+                <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
               </tr>
     
               <tr>
-                <td colspan = 2> {{ $listing->listing->location->street_num}} {{ $listing->listing->location->street_name}}, {{ $listing->listing->location->city}} </td>
+                <td colspan = 2> {{ $listing->listing->location->street_address}}, {{ $listing->listing->location->city}} </td>
               </tr>
               
               <tr>
@@ -84,12 +84,17 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q&callback=load"></script>
     <?php
       $i = 0;
-      $arr = array();
+      $lat = array();
+      $lon = array();
       $ids = array();
+      $arr = array();
       foreach ($listingInfo as $listing) {
         $l = $listing->listing->location;
-        $address = "$l->street_num $l->street_name, $l->city, $l->country, $l->postal_code";
-        $arr[$i] = $address;
+        //$address = "$l->street_address, $l->city, $l->country, $l->postal_code";
+        $lat[$i] = "$l->latitude";
+        $lon[$i] = "$l->longitude";
+        $arr[$i] = "{lat: " + $lat[$i] + ", lng:" + $lon[$i] + "}";
+
         $ids[$i] = $listing->listing_id;
         $i = $i+1;
       };
@@ -98,8 +103,10 @@
     <script> 
     function load(){
       var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
+      var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
+      var lon = <?php echo '["' . implode('", "', $lon) . '"]'; ?>;
       var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-      google.maps.event.addDomListener(window,'load',function(){initMap(arr, ids)})
+      google.maps.event.addDomListener(window,'load',function(){initMap(lat, lon, ids)})
     }
     </script>
 

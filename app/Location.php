@@ -14,8 +14,7 @@ class Location extends Model
 
     //Fields the user can set
     protected $fillable = [
-            'street_name',
-            'street_num',
+            'street_address',
             'city',
             'province',
             'postal_code',

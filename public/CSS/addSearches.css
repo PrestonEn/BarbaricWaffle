@@ -31,9 +31,12 @@
 
 }
 
-select {
-	background-color: #333333;
-	color: #999;
+#petsBox {
+	display: none;
+}
+
+.textLabel {
+	margin-right: 10%;
 }
 
 #search .panel {

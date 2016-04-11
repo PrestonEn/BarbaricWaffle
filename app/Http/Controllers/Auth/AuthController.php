@@ -49,17 +49,15 @@ class AuthController extends Controller
      * @return Response
      */
     public function authenticate()
-    {   
-        $email = Input::get('email');
-        $pass = Input::get('password');
+    {   $email = Input::get('email');
+        $password = Input::get('password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $pass]))
+        if (Auth::attempt(['email' => $email, 'password' => $password]))
         {
             return redirect()->intended('/');
         }else{
             return redirect('signIn')->with('failure', 'Incorrect Email or Password');
         }
-
     }
 
 

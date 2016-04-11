@@ -1,6 +1,6 @@
 .table {
-	font-size: 0.7em;
 	background-color: #cce6ff;
+	font-size: 1.3em;
 }
 
 #buttonDiv {
@@ -28,13 +28,17 @@
 	float:left;
 	margin-right: 1em;
 	height: 1.6vmax;
-	min-height: 3em;
-	width: 1.6vmax;
-	min-width: 3em;
+	min-height: 1em;
+	min-width: 1.6vmax;
+	min-width: 1em;
 }
 .features2 img{
 	float:left;
 	margin-right: 0.3em;
 	height: 1.2vmax;
 	width: 1.2vmax;
+}
+
+.picture.img-responsive{
+	margin: auto; 
 }

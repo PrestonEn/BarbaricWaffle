@@ -6,7 +6,7 @@
 
 select {
 	-webkit-appearance: menulist-button;
-	height: 3.4vmin;
+	height: 1.7max;
 }
 
 #selDiv {
@@ -15,38 +15,42 @@ select {
 
 .pageBar, #refineDiv table {
 	padding: 2%;
-	font-size: 2.4vmin;
+	font-size: 1.2em;
 }
-
 .pageBar {
 	border-bottom: 3px solid black;
 	border-top: 6px solid black;
-	background-color: #f0f0f5;
+	background-color: #A7A37E;
+}
+
+#listTitle {
+	font-size: 1.1em;
+	margin-bottom: 1%
 }
 
 #refineDiv {
-	background-color: #CCC;
-}
-
-#refineDiv table{
-	text-align: center;
-	margin: auto;
-
-}
-
-#refineDiv table button{
-	width: 8vmax;
-	height: 3vw;
-	min-height: 20px;
-	font-size: 1.3vmax;
-	background-color: #b3b3cc;
-	margin: auto;
+	padding: 1%;
+	width: 100%;
+	margin-top: 4%;
+	background-color: #E6E2AF;
 }
 
 
-#refineDiv table input {
-	width: 14vw;
+#refineDiv button{
+	width: 40%;
+	min-width: 5em;
+	height: 1.5em;
+	background-color: #A7A37E;
+	vertical-align: bottom;
+	line-height: 1.5%;
+	font-size: 1em;
+}
 
+#refineDiv input {
+	font-size: 1em;
+	width: 100%;
+	height: 1.5em;
+	vertical-align: bottom;
 }
 
 .listing {
@@ -55,14 +59,13 @@ select {
 
 .pageBody table {
 	margin-top: 6%;
-	font-size: 1.5vmax;
+	font-size: 1.3em;
+
 }
 
 .features img {
 	float: left;
-	min-height: 3em;
-	height: 3vmax;
-	min-width: 3em;
-	width: 3vmax;
-	margin-right: 2vw;
+	height: 1.7em;
+	width: 1.7em;
+	margin-right: 1vw;
 }

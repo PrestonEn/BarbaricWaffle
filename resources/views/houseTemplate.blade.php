@@ -6,7 +6,7 @@
 <div class="customWidth">
     <div class="row">
         <div class="col-sm-3">
-            <h4>{{ $listingInfo->listing->location->street_num}} {{ $listingInfo->listing->location->street_name}} {{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}</h4>
+            <h4>{{ $listingInfo->listing->location->street_address}} {{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}</h4>
             <h1>${{$listingInfo->price_monthly}}/mth</h1>
             <h4 class="style">{{$listingInfo->num_bedrooms_total}} Bedrooms</h4>
             <h4>{{$listingInfo->num_bathrooms_total}} Bathrooms</h4>

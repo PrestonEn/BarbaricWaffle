@@ -24,15 +24,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Location::class, function (Faker\Generator $faker) {
     return [
-        'street_name'	=> $faker->streetName,
-        'street_num'	=> $faker->buildingNumber,
+        'street_address'=> $faker->buildingNumber . ' ' . $faker->streetName,
         'city'			=> $faker->city,
         'province'		=> $faker->state,
         'postal_code'	=> $faker->postcode,
         'unit'			=> $faker->streetName, 
     	'country'		=> $faker->country,
-    	'longitude'		=> $faker->longitude($min = -90, $max = 90),
-    	'latitude'		=> $faker->latitude($min = -180, $max = 180)
+    	'longitude'		=> $faker->randomFloat(6, 0, 10) - 80,
+    	'latitude'		=> $faker->randomFloat(6, 40, 50)
     ];
 });
 

@@ -6,7 +6,7 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/signIn.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
-
+<br>
 <div class = "pageTitle"> Password Retrieval </div>	
 
 
