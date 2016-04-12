@@ -1,8 +1,6 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/listingsList.css') !!}" media="all" rel="stylesheet" type="text/css" />
  
-
-
   @extends('navbarTop')
 
   @section('content')
