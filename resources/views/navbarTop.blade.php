@@ -10,7 +10,7 @@
 
   <meta charset = "utf-8"> 
   <meta name = "viewport" content = "width=device-width, initial-scale=1">
-  
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
   <link href="{!! asset('CSS/navbarTop.css') !!}" media="all" rel="stylesheet" type="text/css" />
@@ -35,18 +35,20 @@
 
     <div class="collapse navbar-collapse">
     <ul id = "navEl" class="nav navbar-nav">
-      <li><a href="../profile/12">Profile</a></li>
+      @if (Auth::check())
+        <li><a href="../profile/{{Auth::user()->user_id}}">My Profile</a></li>
+      @endif
       <li><a href="../profileFavourites/12">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
       <li><a href="../houseTemplate/1">house</a></li>
       <li><a href="../listingsList/1">Listings</a></li>
     </ul>
     <ul class = "nav navbar-nav navbar-right">
-    @if(Auth::user())
+    @if(Auth::check())
       <li><a href="../logout">{{Auth::user()->first_name}}</a></li>
       <li><a href="../logout">Logout</a></li>
     @else
-          <li><a href="../signIn">Sign&nbspin</a></li>
+      <li><a href="../signIn">Sign&nbspin</a></li>
     @endif
     </ul>
     </div>

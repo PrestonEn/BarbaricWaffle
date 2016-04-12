@@ -3,18 +3,25 @@
 <link href="{!! asset('CSS/mainMapSearches.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/nouislider.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
-  @extends('navbarTop')
-
-  @section('content')
-
-
-
-  <div class = "row">
-    <div id = "col1" class = "col-md-8 col-sm-12 col-xs-12">
+@extends('navbarTop') @section('content')
+<div class="row">
+    <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
     </div>
 
+    <div id="col2" class="col-md-4 col-sm-0 col-xs-0">
+
+        @foreach($listingInfo as $listing)
+        <div id="subrow" class="row">
+
+            <div class="col-xs-6" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+                <div id="eg1">
+                    <img class="housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                </div>
+            </div>
+        </div>
+      @endforeach
+
     <div id = "col2" class = "col-md-4 col-sm-0 col-xs-0">
-      
       @foreach($listingInfo as $listing)
       <div class = "row">
           
@@ -227,52 +234,50 @@
           </div>
         </div>
       </div>
-
-
     </div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q&callback=load"></script>
-    <?php
-      $i = 0;
-      $lat = array();
-      $lon = array();
-      $ids = array();
-      $arr = array();
-      foreach ($listingInfo as $listing) {
-        $l = $listing->listing->location;
-        //$address = "$l->street_address, $l->city, $l->country, $l->postal_code";
-        $lat[$i] = "$l->latitude";
-        $lon[$i] = "$l->longitude";
-        $arr[$i] = "{lat: " + $lat[$i] + ", lng:" + $lon[$i] + "}";
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q&callback=load"></script>
 
-        $ids[$i] = $listing->listing_id;
-        $i = $i+1;
-      };
+    <?php
+        $i = 0;
+        $lat = array();
+        $lon = array();
+        $ids = array();
+        $price = array();
+        $title = array();
+        $long = array();
+        $lat = array();
+
+        foreach ($listingInfo as $listing) {
+            $l = $listing->listing->location;
+            $address = "$l->street_address, $l->city, $l->country, $l->postal_code";
+              
+            $long[$i] = $l->longitude;
+            $lat[$i] = $l->latitude;
+            $arr[$i] = $address;
+            $ids[$i] = $listing->listing_id;
+            $price[$i] = $listing->price_monthly;
+            $title[$i] = $listing->listing_title;
+            $i = $i+1;
+        };
     ?>
 
-    <script> 
-    function load(){
-      var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
-      var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
-      var lon = <?php echo '["' . implode('", "', $lon) . '"]'; ?>;
-      var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-      google.maps.event.addDomListener(window,'load',function(){initMap(lat, lon, ids)})
-    }
+    <script>
+        function load() {
+            var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
+            var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
+            var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
+            var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
+            var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
+            var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
+            google.maps.event.addDomListener(window, 'load', function () {
+                initMap(arr, ids, price, title, long, lat)
+            })
+        }  
     </script>
-
 
 <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
 
-
-
-
-
-
-  @stop
-
-  
-
-
-
+@stop

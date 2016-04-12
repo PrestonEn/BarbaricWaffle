@@ -89,8 +89,56 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+
+        //Location Fields
+        'address_name'  => [
+            'required'  => 'An Address is required.',
+        ],
+        'postalCode_name'  => [
+            'required'          => 'A Zip or Postal Code is required.',
+            'validZipPostal'    => 'The Zip or Postal code is not valid! 
+                Zip codes should resemble "12345" or "12345-6789", while postal codes should resemble "A1B 2C3"', 
+        ],   
+        'city_name'  => [
+            'required'  => 'A City is required.',
+        ],   
+        'country_name'  => [
+            'required'  => 'A Country is required.',
+        ],   
+        'longitude_name'  => [
+            'required'  => 'An Error occurred while parsing the Longitude. Please ensure that the address is correct and try again. If you are sure the address is correct, contact the site manager.',
+        ],
+        'latitude_name'  => [
+            'required'  => 'An Error occurred while parsing the Latitude. Please ensure that the address is correct and try again. If you are sure the address is correct, contact the site manager.',
+        ],
+        
+
+        //Listing Fields
+        'title_name' => [
+            'required'  => 'A Title is required.',
+        ],
+        'rent_name' => [
+            'required'  => 'A Rental Price is required.',
+            'numeric'   => 'The Rental Price should only contain numbers!'
+        ],
+        'bedrooms_name' => [
+            'numeric'   => 'The number of bedrooms should be a number.',
+        ],
+        'bathrooms_name' => [
+            'numeric'   => 'The number of bathrooms should be a number.',
+        ],
+        'sqftsize_name' => [
+            'numeric'   => 'The square footage should be a number.',
+        ],
+        'mls' => [
+            'alpha_num' => 'The MLS number should only contain letters and numbers.',
+        ],
+        'dateFrom_name' => [
+            'required'  => 'The listing requires a starting date.',
+            'date'      => 'The starting date is not a real date!',
+        ],
+        'dateTo_name' => [
+            'date'      => 'The starting date is not a real date!',
         ],
     ],
 

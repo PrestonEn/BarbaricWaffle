@@ -28,7 +28,6 @@ $factory->define(App\Location::class, function (Faker\Generator $faker) {
         'city'			=> $faker->city,
         'province'		=> $faker->state,
         'postal_code'	=> $faker->postcode,
-        'unit'			=> $faker->streetName, 
     	'country'		=> $faker->country,
     	'longitude'		=> $faker->randomFloat(6, 0, 10) - 80,
     	'latitude'		=> $faker->randomFloat(6, 40, 50)

@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Mail\Mailer;
-
-
 use Mail;
+use Validator;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -23,19 +22,25 @@ class userController extends Controller
      * Redirect them to login
      */
     public function add(Request $request){
-
-        $this->validate($request, [
-            'firstName' => 'required|bail',
-            'lastName' => 'required|bail',
-            'email' => 'bail|required|unique:users|max:255|confirmed',
-            'pass' => 'bail|min:6|required|confirmed',
-            'phone' => 'min:10|unique:users|required'
+        $v = Validator::make($request->all(), [
+            'firstName' => 'required|max:60',
+            'lastName'  => 'required|max:60',
+            'email'     => 'bail|required|confirmed|email|max:255|unique:users,email',
+            'pass'      => 'bail|required|confirmed|min:6|max:60',
+            'phone'     => 'bail|required|min:10|max:18|unique:users,phone'
         ]);
+
+        //Check if validation passes. If not, redirect.
+        if ($v->fails()) {
+            return redirect('signUp')
+                ->withErrors($v)
+                ->withInput($request->except('pass'));
+        }
 
         $user = new User;
         $user->first_name = Input::get('firstName');
         $user->last_name = Input::get('lastName');
-        
+
         $user->password = bcrypt(Input::get('pass'));
         
         $user->email = Input::get('email');
@@ -50,7 +55,6 @@ class userController extends Controller
 
         $user->save();
         return redirect('signIn');
-
     }
     
 	public function profileSettingPagePopulation($userId){

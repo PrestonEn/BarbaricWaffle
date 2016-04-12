@@ -18,6 +18,8 @@ class CreateListingInfoTable extends Migration
             //Primary Key
             $table->increments('listing_info_id');
 
+            $table->string('unit', 31)->nullable;
+
             //Foreign Key
             //Each Listing can have any number of listing_info records.
             $table->integer('listing_id')->unsigned();
@@ -40,7 +42,7 @@ class CreateListingInfoTable extends Migration
             //Length of rental
             $table->integer('rental_length_months_min')->unsigned()->nullable;
             $table->date('rental_available_from');
-            $table->date('rental_available_to');
+            $table->date('rental_available_to')->nullable;
 
 
             //House details
