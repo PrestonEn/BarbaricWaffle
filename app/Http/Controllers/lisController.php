@@ -41,6 +41,12 @@ class lisController extends Controller
 			return view('profile', compact('listingsActive'), compact('user'));
 		}
 
+		public function getProfileProperties($userId){
+			$user = User::where('user_id','=',$userId)->first();
+			$listings = $user->listings;
+			return view ('profileProperties', compact('listings'));
+		}
+
 		public function getProfileListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
 			$listings = $user->listings;

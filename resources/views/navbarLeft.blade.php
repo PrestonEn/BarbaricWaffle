@@ -12,6 +12,7 @@
 	  			<!--<a href="../profileMessages" class="list-group-item">Messages</a>-->
 	  			<a href="../profilePostings/12" class="list-group-item">Posted Listings</a>
 	  			<a href="../profileSettings/12" class="list-group-item">Profile Settings</a>
+	  			<a href="../profileProperties/12" class="list-group-item">Properties</a>
 
 			</div>
 		</div>

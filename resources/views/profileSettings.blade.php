@@ -35,15 +35,15 @@
     <div class = "row">
       <div class = "col-xs-1"></div>
       <div id = "email" class = "col-xs-10">
-        <strong id = "emailTitle">Current E-mail :</strong>
-        {{$user->email}}
+        <strong class = "formTitle">Current Phone Number :</strong>
+        {{$user->phone}}
       </div>
     </div>  
 
     <form action="" method="post">
       <div class = "row">
         <div class = "col-xs-1"></div>
-          New E-mail:  
+          New Phone Number:  
           <div class = "col-xs-12">
           <input type = "text" class = "form-control" name = "nEmail">
         </div>
@@ -51,7 +51,7 @@
 
       <div class = "row">
         <div class = "col-xs-1"></div>
-          Verify E-mail:  
+          Verify New Phone Number:  
           <div class = "col-xs-12">
           <input type = "text" class = "form-control" name = "bEmail">
         </div>
@@ -66,10 +66,55 @@
     </form>
 
 
+    <div class = "row">
+      <div class = "col-xs-1"></div>
+      <div class = "col-xs-10">
+        <strong class = "formTitle">Modify Name :</strong>
+      </div>
+    </div>  
+
+    <form action="" method="post">
+      <div class = "row">
+        <div class = "col-xs-1"></div>
+        Updated Name: 
+      </div>
+
+      <div class = "row">
+        <div class = "col-xs-6">
+          <input type = "text" class = "form-control"  placeholder = "first name" name = "fName">
+        </div>
+         <div class = "col-xs-6">
+          <input type = "text" class = "form-control"  placeholder = "last name" name = "lName">
+        </div>
+      </div>  
+
+      <div class = "row">
+        <div class = "col-xs-1"></div>
+        Verify Updated Name: 
+      </div>
+
+      <div class = "row">
+        <div class = "col-xs-6">
+          <input type = "text" class = "form-control"  placeholder = "verify first name" name = "vfName">
+        </div>
+         <div class = "col-xs-6">
+          <input type = "text" class = "form-control"  placeholder = "verify last name" name = "vlName">
+        </div>
+      </div>  
+
+      <div class = "row">
+        <div class = "col-xs-1"></div>
+        <div id = "button" class = "col-xs-10">
+          <button type = "submit" class = "btn-md">Submit</input>
+        </div>
+      </div> 
+    </form>
+
+
     <div id = "passFormTitle" class = "row">
         <div class = "col-xs-1"></div>
         <div id = "email" class = "col-xs-10">
-          <strong>Password :</strong>
+          <strong class = "formTitle">Password :</strong>
         </div>
     </div>  
 

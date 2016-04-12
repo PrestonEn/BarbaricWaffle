@@ -34,6 +34,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
+    Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');
+
     Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
 
     Route::get('listingsList/{order}', 'lisController@allListings');

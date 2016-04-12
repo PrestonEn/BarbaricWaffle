@@ -12,15 +12,15 @@
 
 
       @foreach($listingInfo as $listing)
-      <div class = "row">    
-          <div class = "col-xs-6" style = "padding:0;margin:0" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+      <div class = "row" style="padding:0px;margin:0px;">    
+          <div class = "picCol col-xs-6" style = "padding:0px;margin:0px" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
             <div id = "eg1">
-                <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+                <img class = "housePic img-responsive" style= "padding:0px;margin:0px" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
             </div>
           </div>
           
           <div class = "col-xs-6">
-            <!--<table class = "table table-condensed" style = "border-width: 20px;">
+            <table class = "table" style = "border-width: 20px;">
               <tr>
                 <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
               </tr>
@@ -69,7 +69,7 @@
                  @endif </td>
               </tr>
 
-             </table> -->
+             </table>
           </div>
       </div>
       @endforeach
