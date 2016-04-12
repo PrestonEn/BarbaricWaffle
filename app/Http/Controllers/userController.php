@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Mail\Mailer;
 
+
+use Mail;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -37,16 +40,28 @@ class userController extends Controller
         
         $user->email = Input::get('email');
         $user->phone = Input::get('phone');
+        
+
+        Mail::send('emails.registered', $arrayName = array('a' => 5) , function ($message) use ($user) {
+            
+            $message->from('homestead.proto@gmail.com', 'Your Application');
+            $message->to($user->email);
+        });     
+
         $user->save();
         return redirect('signIn');
 
     }
     
 	public function profileSettingPagePopulation($userId){
+
 		$user = User::where('user_id','=',$userId);
 		$user = $user->first();
 		return view('profileSettings', compact('user'));
 	}
+
+
+
 
 
 }

@@ -45,6 +45,13 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('signIn', 'Auth\AuthController@authenticate');
 
+    Route::get('/logout', function()
+    {
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('/');
+    });
+
 });
 
 
