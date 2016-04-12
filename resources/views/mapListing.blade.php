@@ -16,16 +16,16 @@
     <div id = "col2" class = "col-md-4 col-sm-0 col-xs-0">
       
       @foreach($listingInfo as $listing)
-      <div id = "subrow" class = "row">
+      <div class = "row">
           
-          <div class = "col-xs-6" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+          <div class = "col-xs-6" style = "padding:0;margin:0" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
             <div id = "eg1">
                 <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
             </div>
           </div>
           
           <div class = "col-xs-6">
-            <table class = "table table-condensed" style = "border-width: 20px;">
+            <!--<table class = "table table-condensed" style = "border-width: 20px;">
               <tr>
                 <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
               </tr>
@@ -74,7 +74,7 @@
                  @endif </td>
               </tr>
 
-             </table> 
+             </table> -->
           </div>
       </div>
       @endforeach

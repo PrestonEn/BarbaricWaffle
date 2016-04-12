@@ -13,6 +13,11 @@
   font-size: 1.7vh;
 }
 
+.table.table-condensed{
+  padding: 0;
+  margin: 0;
+}
+
 #modalButtonHolder{
   height: 6vh;
   min-height: 30px;
@@ -48,9 +53,8 @@
 }
 
 #col2 .housePic {
-  height: 80%;
-  width: 80%;
-  min-height: 10em;
+  height: 100%;
+  width: auto;
 } 
 
 .feature {
@@ -69,6 +73,5 @@
 .table-condensed tr td {
    border-bottom: 1px solid #A7A37E; /* Change the color you want to set */
 }
-
 
 
