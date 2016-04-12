@@ -45,8 +45,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('signIn', 'Auth\AuthController@authenticate');
     
+    Route::get('addProperty', 'pageStructureController@addProperty');
+
     // Add listing POST request
     Route::post('/addListing', 'ListingController@addListing');
+    Route::post('/addProperty', 'ListingController@addProperty');
+
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');
 
