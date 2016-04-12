@@ -14,7 +14,8 @@
 }
 
 #modalButtonHolder{
-  height: 5vh;
+  height: 6vh;
+  min-height: 30px;
   width: 100%;
   position: fixed;
   background-color: #002F2F;
