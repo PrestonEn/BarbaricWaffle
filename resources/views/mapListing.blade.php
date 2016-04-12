@@ -7,24 +7,12 @@
 <div class="row">
     <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
     </div>
-
-    <div id="col2" class="col-md-4 col-sm-0 col-xs-0">
-
-        @foreach($listingInfo as $listing)
-        <div id="subrow" class="row">
-
-            <div class="col-xs-6" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
-                <div id="eg1">
-                    <img class="housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-                </div>
-            </div>
-        </div>
-      @endforeach
-
     <div id = "col2" class = "col-md-4 col-sm-0 col-xs-0">
+
+
+
       @foreach($listingInfo as $listing)
-      <div class = "row">
-          
+      <div class = "row">    
           <div class = "col-xs-6" style = "padding:0;margin:0" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
             <div id = "eg1">
                 <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
