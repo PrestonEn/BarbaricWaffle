@@ -4,15 +4,14 @@
 <div class = "row">
 		<div class = "col-xs-12 col-sm-3" id = "baseCol">
 			<img id = "profilePic" class = "img-responsive" src="../images/profilePicDefault.jpeg">
-           
 			<div id = "navbarLeft" class="list-group">
-	  			<a id = "colourNavBar" href="../profile/12" class="list-group-item active">Profile</a>
+	  			<a id = "colourNavBar" href="../profile/" class="list-group-item active">Profile</a>
 	  			<a href="../profileSearches" class="list-group-item">Saved Searches</a>
-	  			<a href="../profileFavourites/12" class="list-group-item">Favourites</a>
+	  			<a href="../profileFavourites/{{Auth::user()->user_id}}" class="list-group-item">Favourites</a>
 	  			<!--<a href="../profileMessages" class="list-group-item">Messages</a>-->
-	  			<a href="../profilePostings/12" class="list-group-item">Posted Listings</a>
-	  			<a href="../profileSettings/12" class="list-group-item">Profile Settings</a>
-	  			<a href="../profileProperties/12" class="list-group-item">Properties</a>
+	  			<a href="../profilePostings/{{Auth::user()->user_id}}" class="list-group-item">Posted Listings</a>
+	  			<a href="../profileSettings/{{Auth::user()->user_id}}" class="list-group-item">Profile Settings</a>
+	  			<a href="../profileProperties/{{Auth::user()->user_id}}" class="list-group-item">Properties</a>
 
 			</div>
 		</div>

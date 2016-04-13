@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Mail\Mailer;
 use Mail;
+use Hash;
+use Auth;
 use Validator;
 use App\User;
 use App\Http\Requests;
@@ -48,7 +50,6 @@ class userController extends Controller
         
 
         Mail::send('emails.registered', $arrayName = array('a' => 5) , function ($message) use ($user) {
-            
             $message->from('homestead.proto@gmail.com', 'Your Application');
             $message->to($user->email);
         });     
@@ -58,12 +59,31 @@ class userController extends Controller
     }
     
 	public function profileSettingPagePopulation($userId){
-
 		$user = User::where('user_id','=',$userId);
 		$user = $user->first();
 		return view('profileSettings', compact('user'));
 	}
 
+    public function updatePassword(){
+        if(Auth::attempt(['email' => Auth::user()->email, 'password' => Input::get('oldPass')])){
+            if (Input::get('nPass') == Input::get('vPass')){
+                $newPass = Hash::make(Input::get('vPass'));
+                $user = Auth::user();
+                Auth::user()->fill([
+                    'password' => $newPass])->save();
+                    return view('profileSettings', compact('user'));
+            }
+            else {
+                $text = "Inputted new passwords do not match.";
+                echo $text;
+                return view('profileSettings');
+            }
+        }else{
+            $text = "Inputted current password is incorrect.";
+            echo $text;
+            return view('profileSettings');
+        }
+    }
 
 
 

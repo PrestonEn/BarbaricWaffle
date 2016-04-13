@@ -13,13 +13,14 @@
 
 <body>
 
-
 <div class = "col-xs-12">
   <div class = "pageTitle">
     {{$user->first_name}} {{$user->last_name}}
   </div>
 
   <form action="" method="post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
       <div class = "row">
         <div class = "col-xs-1"></div>
           Input Picture Drag and Drop here
@@ -41,6 +42,8 @@
     </div>  
 
     <form action="" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
       <div class = "row">
         <div class = "col-xs-1"></div>
           New Phone Number:  
@@ -73,7 +76,9 @@
       </div>
     </div>  
 
-    <form action="" method="post">
+    <form action="../updateName" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
       <div class = "row">
         <div class = "col-xs-1"></div>
         Updated Name: 
@@ -118,7 +123,9 @@
         </div>
     </div>  
 
-    <form action="" method="post">
+    <form action= "{{$user->user_id}}/resetPassword" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
       <div class = "row">
         <div class = "col-xs-1"></div>
           Old Password:  

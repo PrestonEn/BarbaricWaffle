@@ -32,6 +32,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
+    Route::post('profileSettings/{userId}/resetPassword', 'userController@updatePassword');
+
+    Route::post('profileSettings/{userId}/updateName', 'userController@updateName');
+
     Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
     Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');

@@ -37,8 +37,8 @@
     <ul id = "navEl" class="nav navbar-nav">
       @if (Auth::check())
         <li><a href="../profile/{{Auth::user()->user_id}}">My Profile</a></li>
+        <li><a href="../profileFavourites/{{Auth::user()->user_id}}">Favourites</a></li>
       @endif
-      <li><a href="../profileFavourites/12">Favourites</a></li>
       <li><a href="../addListing">Post Listing</a></li>
       <li><a href="../houseTemplate/1">house</a></li>
       <li><a href="../listingsList/1">Listings</a></li>
