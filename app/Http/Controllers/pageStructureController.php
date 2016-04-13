@@ -57,7 +57,6 @@ class pageStructureController extends Controller
         if(!Auth::check()){
            return redirect('signIn')->withErrors(['You need to be signed in to add a property!']);
         }
-        dd(Auth::user());
         return view('addProperty');
     }
 

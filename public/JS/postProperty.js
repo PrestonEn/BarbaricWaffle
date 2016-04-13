@@ -18,15 +18,19 @@ function geocodeAddress() {
     var geocoder = new google.maps.Geocoder();
     var address = 
         document.getElementById('address_id').value + " " +
+        document.getElementById('city_id').value + " " +
+        document.getElementById('country_id').value + " " +        
         document.getElementById('postalCode_id').value;
     geocoder.geocode({
         'address': address
     }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
+            alert(JSON.stringify(results));
             document.getElementById('maps_json_id').value = JSON.stringify(results);
             document.getElementById('addPropertyForm').submit();
         } else {
-            alert('Geocode was not successful for the following reason: ' + status );
+            alert('Geocode was not successful for the following reason: ' + status + '\n' 
+                  + 'Please update the address info and reattempt, or contact support');
         }
     });
 }
