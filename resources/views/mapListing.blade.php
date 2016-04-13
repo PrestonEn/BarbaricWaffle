@@ -137,7 +137,7 @@
                       <input id = "cats" type = "checkbox" name = "cats">
                     </div>
                     <div class = "col-sm-6">
-                      <label class = "textLabel">Dogs</label>
+                      <label class = "textLabel">other</label>
                       <input id = "other" type = "checkbox" name = "other">
                     </div>
                   </div>

@@ -13,6 +13,24 @@
 
 <body>
 
+  @if (session('update'))
+    <div class="alert alert-success">
+      <ul>
+        <li>{{ session('update') }}</li>
+      </ul>
+    </div>
+  @endif
+
+  @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+
 <div class = "col-xs-12">
   <div class = "pageTitle">
     {{$user->first_name}} {{$user->last_name}}
@@ -35,20 +53,20 @@
 
     <div class = "row">
       <div class = "col-xs-1"></div>
-      <div id = "email" class = "col-xs-10">
+      <div class = "col-xs-10">
         <strong class = "formTitle">Current Phone Number :</strong>
         {{$user->phone}}
       </div>
     </div>  
 
-    <form action="" method="post">
+    <form action="{{$user->user_id}}/resetPhoneNumber" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
         <div class = "col-xs-1"></div>
           New Phone Number:  
           <div class = "col-xs-12">
-          <input type = "text" class = "form-control" name = "nEmail">
+          <input type = "text" class = "form-control" name = "phone">
         </div>
       </div>  
 
@@ -56,7 +74,7 @@
         <div class = "col-xs-1"></div>
           Verify New Phone Number:  
           <div class = "col-xs-12">
-          <input type = "text" class = "form-control" name = "bEmail">
+          <input type = "text" class = "form-control" name = "phone_confirmation">
         </div>
       </div> 
 
@@ -76,7 +94,7 @@
       </div>
     </div>  
 
-    <form action="../updateName" method="post">
+    <form action="{{$user->user_id}}/resetName" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
@@ -86,10 +104,10 @@
 
       <div class = "row">
         <div class = "col-xs-6">
-          <input type = "text" class = "form-control"  placeholder = "first name" name = "fName">
+          <input type = "text" class = "form-control"  placeholder = "first name" name = "firstName">
         </div>
          <div class = "col-xs-6">
-          <input type = "text" class = "form-control"  placeholder = "last name" name = "lName">
+          <input type = "text" class = "form-control"  placeholder = "last name" name = "lastName">
         </div>
       </div>  
 
@@ -100,10 +118,10 @@
 
       <div class = "row">
         <div class = "col-xs-6">
-          <input type = "text" class = "form-control"  placeholder = "verify first name" name = "vfName">
+          <input type = "text" class = "form-control"  placeholder = "verify first name" name = "firstName_confirmation">
         </div>
          <div class = "col-xs-6">
-          <input type = "text" class = "form-control"  placeholder = "verify last name" name = "vlName">
+          <input type = "text" class = "form-control"  placeholder = "verify last name" name = "lastName_confirmation">
         </div>
       </div>  
 
@@ -146,7 +164,7 @@
         <div class = "col-xs-1"></div>
           Verify Password:  
           <div class = "col-xs-12">
-          <input type = "password" class = "form-control" name = "vPass">
+          <input type = "password" class = "form-control" name = "nPass_confirmation">
         </div>
       </div>
 
