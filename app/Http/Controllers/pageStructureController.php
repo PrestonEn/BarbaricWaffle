@@ -52,10 +52,12 @@ class pageStructureController extends Controller
         }
         return view('addListing');
     }
+    
     public function addProperty(){
-        //if(!Auth::check()){
-        //    return redirect('signIn')->withErrors(['You need to be signed in to add a property!']);
-        //}
+        if(!Auth::check()){
+           return redirect('signIn')->withErrors(['You need to be signed in to add a property!']);
+        }
+        dd(Auth::user());
         return view('addProperty');
     }
 

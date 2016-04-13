@@ -17,9 +17,7 @@
         @endif
         <form method="POST" id="addPropertyForm" role="form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" id="longitude_id" name="longitude_name" />
-            <input type="hidden" id="latitude_id" name="latitude_name" />
-
+            <input tyoe="hidden" name="maps_json_name" id="maps_json_id">
             <!-- Address -->
             <div class="row">
                 <div class="col-sm-12">

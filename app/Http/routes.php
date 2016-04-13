@@ -20,8 +20,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('addSearches', 'pageStructureController@searches');
 
-
-
     Route::get('mapListing','lisController@mapListings');
 
     Route::get('profile/{userId}','lisController@mainProfileActiveListings');
@@ -34,10 +32,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
-    Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
-
     Route::get('listingsList/{order}', 'lisController@allListings');
 
+    Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
 
     Route::get('handleRemoval', 'postingModification@makeInactive');
 
@@ -48,8 +45,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('addProperty', 'pageStructureController@addProperty');
 
     // Add listing POST request
-    Route::post('/addListing', 'ListingController@addListing');
-    Route::post('/addProperty', 'ListingController@addProperty');
+    Route::post('addProperty', 'ListingController@addProperty');
 
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');
