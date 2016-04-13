@@ -1,3 +1,4 @@
+
 function checkSubmit() {
 
     var alert = "*Required"
@@ -25,12 +26,41 @@ function geocodeAddress() {
         'address': address
     }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            alert(JSON.stringify(results));
-            document.getElementById('maps_json_id').value = JSON.stringify(results);
-            document.getElementById('addPropertyForm').submit();
+            var lat = parseFloat(results[0].geometry.location.lat()).toFixed(7);
+            var lng = parseFloat(results[0].geometry.location.lng()).toFixed(7);
+            initialize(lat, lng);
+            //alert(JSON.stringify(results));
+            //document.getElementById('maps_json_id').value = JSON.stringify(results);
+            // document.getElementById('addPropertyForm').submit();
         } else {
             alert('Geocode was not successful for the following reason: ' + status + '\n' 
                   + 'Please update the address info and reattempt, or contact support');
         }
     });
 }
+
+
+
+function initialize(lat, lng) {
+    var center = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: center
+    };
+
+    map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
+
+    var marker = new google.maps.Marker({
+        map: map,
+        position: center
+    });
+    $('#myModal').modal('show')
+}
+
+$('#myModal').on('shown.bs.modal', function (e) {
+  var currentCenter = map.getCenter();  // Get current center before resizing
+  google.maps.event.trigger(map, "resize");
+  map.setCenter(currentCenter); // Re-set previous center
+
+})
