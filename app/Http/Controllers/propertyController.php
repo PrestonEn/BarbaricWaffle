@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
+use App\User;
+use App\Location;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -60,6 +63,19 @@ class propertyController extends Controller
         if($city == '' | $country == '' | $province == '' | $street_name == '' | $street_num == '' | $postal_code == ''){
             return redirect('addProperty')->withErrors(["We can't find your full address, please update your info and resubmit"]);
         }
+
+        $property = new Location;
+
+        $property->street_address = $street_num . " " . $street_name;
+        $property->province = $province;
+        $property->city = $city;
+        $property->country = $country;
+        $property->postal_code = $postal_code;
+        $property->user()->associate(Auth::user());
+        $property->latitude = $lat;
+        $property->longitude = $lng;
+        $property->save();
+
 
     }
 }
