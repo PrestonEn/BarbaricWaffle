@@ -38,3 +38,5 @@ slider.noUiSlider.on('update', function( values, handle ) {
 		document.getElementById('upper').innerHTML = document.getElementById('upper').innerHTML + "+";
 	}
 });
+
+

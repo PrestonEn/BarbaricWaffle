@@ -137,8 +137,8 @@ class ListingController extends Controller
     }
     
     public function updateSidebar(Request $request){
-        if(Request::ajax()){
-            if($request::has('id')){
+        if($request->ajax()){
+            if($request->has('id')){
                  //gets data from ajax request
                 $ids = $_POST['id'];
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
@@ -146,5 +146,58 @@ class ListingController extends Controller
                 return view ('sidebarUpdate', compact('listingInfo'));
             }
         }  
+    }
+    
+    public function searchFilters(Request $request){
+        if($request->ajax()){
+            //dd($request->all());
+            
+            $region = Input::get('region');
+            
+            
+            $rooms = Input::get('rooms');
+            $bathrooms = Input::get('bathrooms');
+            $kitchen =             (Input::has('haskitchen')) ? 1 : 0;
+            //$laundry =             (Input::has('laundry')) ? 1 : 0;
+            $internet =     (Input::has('internet')) ? 1 : 0;
+            $water =        (Input::has('water')) ? 1 : 0;
+            $electricity =  (Input::has('hydro')) ? 1 : 0;
+            $pets =          (Input::has('pets')) ? 1 : 0;
+            $dogs =            (Input::has('dogs')) ? 1 : 0;
+            $cats =            (Input::has('cats')) ? 1 : 0;
+            $other_pets =      (Input::has('other')) ? 1 : 0;
+            $numMates = Input::get('MaxNumRoomates');
+            
+            //$locations = Location::where('city', $region)->get();
+            
+            //$listings = $locations->listing();    
+            $listingInfo = Listing_Info::where('num_bedrooms_total', $rooms)
+                ->where('num_bathrooms_total', $bathrooms)
+                ->where('owner_pays_internet', $internet)
+                ->where('owner_pays_electricity', $electricity)
+                ->where('allowed_dogs', $dogs)
+                ->where('allowed_cats', $cats)
+                ->where('allowed_other_pets', $other)
+                ->get();
+            $listings = array();
+            
+            foreach($listingInfo as $list){
+                //$listings = Location::where($list->listing->location.city, '=', $region);         
+                $location = $list->listing->location;
+                if($location['city'] == $region){
+                    //dd($list);
+                    array_push($listings, $location);
+                }
+            }
+            
+            //dd($internet);
+           // dd($listings);
+            
+            return response()->json(['data'=>$listings]);
+            
+            
+        }
+        
+        
     }
 }

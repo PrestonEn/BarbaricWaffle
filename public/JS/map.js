@@ -7,7 +7,9 @@ var prices = new Array();
 var titles = new Array();
 var longitude = new Array();
 var latitude = new Array();
+var searchLocationID = new Array();
 var infowindow;
+var locationIDs = new Array();
 
 function initMap(arr, ids, price, title, long, lat) {
     var coords;
@@ -15,7 +17,6 @@ function initMap(arr, ids, price, title, long, lat) {
         navigator.geolocation.getCurrentPosition(function (position) {
             success(position, arr, ids);
         });
-
 
     } else {
         error('Geo Location is not supported');
@@ -29,6 +30,7 @@ function initMap(arr, ids, price, title, long, lat) {
     titles = title;
     longitude = long;
     latitude = lat;
+    locationIDs = ids;
 }
 
 function setMap(arr, ids, position) {
@@ -49,7 +51,6 @@ function setMap(arr, ids, position) {
     for (var i = ids.length - 1; i >= 0; i--) {
         getCoor(arr[i], map, geocoder, ids[i], prices[i], titles[i], longitude[i], latitude[i]);
 
-
     };
 
     var timeout;
@@ -69,9 +70,14 @@ function boundChangedEvent() {
     markersInBound.length = 0;
 
     for (var i = 0; i < markers.length; i++) {
+       
         if (bounds.contains(markers[i].getPosition())) {
-            markersInBound[i] = markers[i].get('id');
+            if(markers[i].getVisible() == true){
+                markersInBound[i] = markers[i].get('id');
+        
+            }
         }
+        
     }
     //needed in laravel for ajax
     $.ajaxSetup({
@@ -90,7 +96,7 @@ function boundChangedEvent() {
         },
         success: function (data) {
 
-            $("#col2").html(data);
+            $("#sideBar").html(data);
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -111,15 +117,16 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
         title: address,
         icon: "../images/houseIcon.jpeg",
     });
-
-
+    
+    
     marker.setValues({
         type: "point",
-        id: ids
+        id: ids,
+        visible: true
     });
     markers[j] = marker;
     j++;
-
+    
     var htmlString = "<p>" + price + "</p>" + "<p>" + title + "</p>";
 
     makeInfoWindow(marker, map, infowindow, htmlString);
@@ -146,4 +153,82 @@ function success(position, arr, ids) {
     var longitude = position.coords.longitude;
     coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     setMap(arr, ids, coords);
+}
+
+//updates position on the map
+function updateLatLongFromCity(cityName){
+
+    var geocoder =  new google.maps.Geocoder();
+    geocoder.geocode( { 'address': cityName}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng()));
+            } else {
+            alert("Something got wrong " + status);
+          }
+        });
+}
+
+//function to update according to filters
+function searchFilters(e){
+    
+    e.preventDefault();
+    searchLocationID.length = 0;
+    
+    
+     //needed in laravel for ajax
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+
+    });
+    
+    
+    var input = $("#searchFilter select[name='region']").val(); 
+    updateLatLongFromCity(input);
+    
+    var form = $('#searchFilter').serialize();
+    
+    //ajax call to update sideBar
+    $.ajax({
+        type: "POST",
+        url: "/searchFilter",
+        data: form,
+        success: function (data) {
+           
+            $.each (data, function (k, value) {
+                
+                $.each(value, function(key, val){
+                    searchLocationID.push(val.location_id);
+                    
+                });
+            });
+            
+            var trueMarkers = new Array();
+            var falseMarkers = new Array();
+            
+            for(var i = 0; i< markers.length; i++){
+                for(var j = 0; j<markers.length; j++){
+                    if(markers[j].id == searchLocationID[i]){
+                        trueMarkers.push(markers[j]);
+                    }
+                    else{
+                        falseMarkers.push(markers[j]);
+                    }
+                }    
+            }
+            for(var i = 0; i<falseMarkers.length; i++){
+                falseMarkers[i].setVisible(false);
+            }
+            for(var i = 0; i<trueMarkers.length; i++){
+                trueMarkers[i].setVisible(true);
+            }
+            
+            boundChangedEvent();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("POST: ", jqXHR, textStatus, errorThrown);
+        }
+    });
+   
 }

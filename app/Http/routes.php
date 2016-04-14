@@ -49,6 +49,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/addListing', 'ListingController@addListing');
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');
+    
+    
+    Route::post('/searchFilter', 'ListingController@searchFilters');
 
     Route::get('/logout', function()
     {

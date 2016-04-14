@@ -9,70 +9,10 @@
     </div>
     <div id = "col2" class = "col-md-4 col-sm-0 col-xs-0">
 
-
-
-      @foreach($listingInfo as $listing)
-      <div class = "row">    
-          <div class = "col-xs-6" style = "padding:0;margin:0" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
-            <div id = "eg1">
-                <img class = "housePic img-responsive" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
-            </div>
-          </div>
-          
-          <div class = "col-xs-6">
-            <!--<table class = "table table-condensed" style = "border-width: 20px;">
-              <tr>
-                <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
-              </tr>
-    
-              <tr>
-                <td colspan = 2> {{ $listing->listing->location->street_address}}, {{ $listing->listing->location->city}} </td>
-              </tr>
-              
-              <tr>
-                <td> Price </td>
-                <td> {{$listing->price_monthly}}/mth </td>
-              </tr>
-
-              <tr>
-                <td colspan = 2> Other feature we deem important </td>
-              </tr>
-
-              <tr>
-                <td class = "features"> 
-                  @if ($listing->has_kitchen)
-                  <img class = "feature" src="../images/kitchen.jpeg">
-                 @endif
-
-                 @if ($listing->allowed_dogs || $listing->allowed_cats || $listing->allowed_other_pets)
-                  <img class = "feature" src="../images/pets.jpeg">
-                 @endif
-
-                 @if ($listing->has_furnishings)
-                  <img class = "feature" src="../images/furnished.jpeg">
-                 @endif
-
-                 @if ($listing->has_laundry)
-                  <img class = "feature" src="../images/laundry.jpeg">
-                 @endif
-
-                 @if ($listing->owner_pays_hydro)
-                  <img class = "feature" src="../images/water.jpeg">
-                 @endif
-
-                 @if ($listing->owner_pays_electricity)
-                  <img class = "feature" src="../images/hydro.jpeg">
-                 @endif
-
-                 @if ($listing->owner_pays_internet)
-                  <img class = "feature" src="../images/internet.jpeg">
-                 @endif </td>
-              </tr>
-
-             </table> -->
-          </div>
+      <div id = "sideBar" class = "row">    
+         
       </div>
-      @endforeach
+      
 
 
       <div id = "modalButtonHolder">
@@ -84,7 +24,7 @@
           <div class="modal-content">
             <div id = "search">
 
-              <form action="#" method="#">
+              <form id = "searchFilter" action="#" method="#">
               <div class = "row panel panel-default">
 
               <div class = "row" id = "centerText">
@@ -98,8 +38,12 @@
                     <label class = "textLabel"> Region </label>
                     <select name = "region">
                       <option> All </option>
+                      <option> Toronto </option>
+                      <option> Laval </option>
                     </select>
                   </div>
+                  
+                    
                 </div>
 
                 <div class = "row">
@@ -121,7 +65,7 @@
                   <div class = 'col-sm-1'></div>
                   <div class = "col-sm-5">
                     <label class = "textLabel"> Pet Friendly </label>
-                    <input id = "pets" type = "checkbox" value = '0' onClick="getFurther(value)"/>
+                    <input name = "pets" id = "pets" type = "checkbox" value = '0' onClick="getFurther(value)"/>
                   </div>
                 </div>
 
@@ -150,19 +94,19 @@
                   <div class = "col-sm-8">
                     <div class = "col-sm-6">
                       <label class = "textLabel">Kitchen</label>
-                      <input id = "hasKitchen" type = "checkbox" name = "hasKitchen">
+                      <input id = "hasKitchen" type = "checkbox" name = "hasKitchen" checked="checked">
                     </div>
                     <div class = "col-sm-6">
                       <label class = "textLabel">Hydro</label>
-                      <input id = "hydro" type = "checkbox" name = "hydro">
+                      <input id = "hydro" type = "checkbox" name = "hydro" checked="checked">
                     </div>
                     <div class = "col-sm-6">
                       <label class = "textLabel">Internet</label>
-                      <input id = "internet" type = "checkbox" name = "internet">
+                      <input id = "internet" type = "checkbox" name = "internet" checked="checked">
                     </div>
                     <div class = "col-sm-6">
                       <label class = "textLabel">Water</label>
-                      <input id = "water" type = "checkbox" name = "water">
+                      <input id = "water" type = "checkbox" name = "water" checked="checked">
                     </div>
                   </div>
                 </div>
@@ -199,7 +143,8 @@
                     <div class = "col-sm-6">
                       <select name = "MaxNumRoommates">
                         <option value = "any"> Any </option>
-                        <option value = "5"> 5+ </option>
+                        <option value = "6"> 6+ </option>
+                        <option value = "5"> 5 </option>
                         <option value = "4"> 4 </option>
                         <option value = "3"> 3 </option>
                         <option value = "2"> 2 </option>
@@ -207,15 +152,26 @@
                       </select>
                     </div>
                   </div>
-
+                  <div class = "row">
+                      <div class = "col-sm-1"></div>
+                    <div class = "col-sm-4">
+                    <p>rooms</p>
+                    <input type = "text" name = "rooms" />
+                  </div>
+                  <div class = "col-sm-4">
+                    <p>Bathrooms</p>
+                    <input type = "text" name = "bathrooms" />
+                  </div>
+                  
+                  </div>
 
 
 
                 <div class = "row">
                   <div class = "col-xs-10"></div>
                   <div class = "col-xs-2">
-                  <input type = "submit" id="sButton" value="Create Search" class = "btn btn-sm"></input>
-                  </div>
+                  <button onClick="searchFilters(event)" class="btn btn-default">Submit</button>
+                </div>
                 </div>
               </div>
             </div>
@@ -267,5 +223,4 @@
 <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
-
-@stop
+x@stop
