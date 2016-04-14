@@ -223,4 +223,5 @@
 <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
-x@stop
+        
+@stop

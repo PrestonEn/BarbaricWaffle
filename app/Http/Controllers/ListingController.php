@@ -177,7 +177,7 @@ class ListingController extends Controller
                 ->where('owner_pays_electricity', $electricity)
                 ->where('allowed_dogs', $dogs)
                 ->where('allowed_cats', $cats)
-                ->where('allowed_other_pets', $other)
+                ->where('allowed_other_pets', $other_pets)
                 ->get();
             $listings = array();
             
