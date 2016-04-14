@@ -77,9 +77,10 @@ class lisController extends Controller
 			return view('profileView', compact('listingsActive'), compact('user'));
 		}
 
-		public function listingByLocation($Location){
-			$listingsByLocation = Listing_Info::where('latitude','=',$Location->latitude)->where('longitude','=',$location->longitude)->get();
-			return view('listingsList', compact('listingsByLocation'));
+		public function getPropertyListings($locationId){
+			$location = Location::where('location_id','=',$locationId)->first();
+			$listings = $location->listing;
+			return view('listingByProperty', compact('listings'), compact('location'));
 		}
 
 }

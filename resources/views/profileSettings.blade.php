@@ -53,7 +53,7 @@
 
     <div class = "row">
       <div class = "col-xs-1"></div>
-      <div class = "col-xs-10">
+      <div class = "col-xs-10 phoneNum">
         <strong class = "formTitle">Current Phone Number :</strong>
         {{$user->phone}}
       </div>

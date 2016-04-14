@@ -15,7 +15,7 @@
 
 <body>
 
-<div class = "pageTitle"> Property Properties </div>
+<div class = "pageTitle"> Profile Properties </div>
 
    <div class = "row" id = "buttonDiv">
       <div class = "col-xs-12">
@@ -35,7 +35,7 @@
       <div class = "col-xs-10 col-sm-10">
                   <table class = "table">
                   <tr>
-                     <td colspan = 2 onClick="window.location.href='../location_id'"><strong> {{$location->street_address}}, {{$location->city}} </strong></td>
+                     <td colspan = 2 onClick="window.location.href='../ListingByProperty/{{$location->location_id}}'"><strong> {{$location->street_address}}, {{$location->city}} </strong></td>
                      <td> {{ $location->postal_code}}, {{ $location->country}} 
                      </td>
                   </tr>
