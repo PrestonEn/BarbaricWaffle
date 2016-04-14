@@ -30,9 +30,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function listings(){
-        return $this->hasMany('App\Listing', 'user_id', 'user_id');
-    }
+    // public function listings(){
+    //     return $this->hasMany('App\Listing', 'user_id', 'user_id');
+    // }
 
     public function favourite_listings(){
         return $this->belongsToMany('App\Listing', 'favourites_listing_user');

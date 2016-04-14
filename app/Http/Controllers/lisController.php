@@ -38,7 +38,7 @@ class lisController extends Controller
 
 		public function mainProfileActiveListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
-			$listingsActive = $user->listings;
+			$listingsActive = Listing::users_listings($userId);
 			return view('profile', compact('listingsActive'), compact('user'));
 		}
 

@@ -65,13 +65,13 @@
                     <div class="profile"></div>
                 </div>
                 <div class="col-sm-7">
-                    <h2>{{ $listingInfo->listing->user->first_name}} {{ $listingInfo->listing->user->last_name}}</h2>
-                    <p>Joined {{ $listingInfo->listing->user->created_at->diffInDays()}} day(s) ago</p>
+                    <h2>{{ $listingInfo->listing->location->user->first_name}} {{ $listingInfo->listing->location->user->last_name}}</h2>
+                    <p>Joined {{ $listingInfo->listing->location->user->created_at->diffInDays()}} day(s) ago</p>
 
 
 
                     <p class="col-sm-6" id="sendMessage">Send a message</p>
-                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$listingInfo->listing->user->user_id}}">View Profile</a></p>
+                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$listingInfo->listing->location->user->user_id}}">View Profile</a></p>
 
                 </div>
             </div>

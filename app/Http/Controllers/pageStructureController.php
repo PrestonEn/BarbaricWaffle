@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class pageStructureController extends Controller
 {
@@ -49,8 +50,11 @@ class pageStructureController extends Controller
     public function addListing(){
         if(!Auth::check()){
             return redirect('signIn')->withErrors(['You need to be signed in to post a listing!']);
+        }else{
+            $user = User::where('user_id','=', '21')->first();
+            $locations = $user->locations;
+            return view('addListing', compact('locations'));
         }
-        return view('addListing');
     }
     
     public function addProperty(){

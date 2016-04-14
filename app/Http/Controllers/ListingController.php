@@ -41,15 +41,9 @@ class ListingController extends Controller
             'description_name'      => '',
 
             //Location
-            'address_name'      => 'bail|required',
-            'unitNum_name'      => '',
-            'province_name'     => '',
-            'postalCode_name'   => 'bail|required|validZipPostal',
-            'city_name'         => 'bail|required',
-            'country_name'      => 'bail|required',
+            'location_name'      => 'bail|required|numeric',
 
             //Listinginfo
-
             'rent_name'             => 'bail|required|numeric',
             'priceDescription_name' => '',
 
@@ -61,14 +55,7 @@ class ListingController extends Controller
 
             'dateFrom_name'         => 'bail|required',
             'dateTo_name'           => 'bail',
-
-            //Latitude/Longitude
-            //Do last because it will output the conditional longitude last
-            'latitude_name'     => 'bail|required|numeric',
         ]);
-        $v->sometimes('longitude_name', 'bail|required|numeric', function($input) {
-            return is_numeric($input->latitude_name);
-        });
 
         //Check if validation passes. If not, redirect.
         if ($v->fails()) {
@@ -76,25 +63,9 @@ class ListingController extends Controller
                 ->withErrors($v)
                 ->withInput();
         }
-
-
-        $location = new Location;
-        $location->street_address = Input::get('address_name');
-        $location->province =       Input::get('province_name');
-        $location->postal_code =    Input::get('postalCode_name');
-        $location->city =           Input::get('city_name');
-        $location->country =        Input::get('country_name');
-        $location->longitude =      Input::get('longitude_name');
-        $location->latitude =       Input::get('latitude_name');
-        
-        //At this point we can do logic to find if this address already exists in the database.
-        //We could then use that address instead of saving a new one.
-        //Then we would check for an active listing, etc etc.
-        $location->save();
         
         $listing = new Listing;
-        $listing->location_id = $location->location_id;
-        $listing->user_id = $request->user()->user_id;
+        $listing->location_id = Input::get('location_name');
         $listing->save();
         
         $listingInfo = new Listing_Info;

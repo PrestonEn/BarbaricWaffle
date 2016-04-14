@@ -56,6 +56,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // Add listing POST request
     Route::post('addProperty', 'propertyController@add');
+    Route::post('addListing', 'ListingController@addListing');
 
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');

@@ -31,7 +31,7 @@
                 <textarea class="form-control" rows="5" id="description_id" name="description_name">{{ old('description_name') }}</textarea>
             </div>
 
-            <!-- Address -->
+            <!-- Location -->
             <div class="row">
                 <div class="col-sm-12">
                     <p>Location</p>
@@ -40,26 +40,20 @@
 
             <div class="row">
                 <div class="form-group col-sm-9">
-                    <input type="text" class="form-control" id="address_id" name="address_name" placeholder="Street Address" value="{{ old('address_name') }}" required>
+                    <select class="form-control" id="location_id" name="location_name" value="{{ old('location_name') }}" required>
+                        @foreach ($locations as $loc)
+                            <option value="{{$loc->location_id}}">{{$loc->street_address}}, {{$loc->city}}, {{$loc->province}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group col-sm-3">
                     <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="Unit Number" value="{{ old('unitNum_name') }}">
                 </div>
             </div>
 
-            <!-- Country, Province, City, Postal/Zip -->
             <div class="row">
-                <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="country_id" name="country_name" placeholder="Country" value="{{ old('country_name') }}" required>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="province_id" name="province_name" placeholder="State/Province" value="{{ old('province_name') }}" required>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="city_id" name="city_name" placeholder="City" value="{{ old('city_name') }}" required>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="postalCode_id" name="postalCode_name" placeholder="Postal/Zip Code" value="{{ old('postalCode_name') }}" required>
+                <div class="form-group col-sm-9">  
+                    <a href="../addProperty" class="list-group-item">Add a new Property</a>
                 </div>
             </div>
 
@@ -187,9 +181,9 @@
             </div>
             -->
             <br />
+            <button class="btn btn-default">Submit</button>
         </form>
         <!-- Submits form info thrupostListing.js -->
-        <button onClick="postListing(event)" class="btn btn-default">Submit</button>
         <!-- <button onClick="test(event)" class="btn btn-default">Save</button> -->
     </div>
 </div>
