@@ -77,6 +77,7 @@ class ListingController extends Controller
                 ->withInput();
         }
 
+
         $location = new Location;
         $location->street_address = Input::get('address_name');
         $location->province =       Input::get('province_name');

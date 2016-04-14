@@ -19,7 +19,9 @@ class Location extends Model
             'province',
             'postal_code',
             'unit', 
-        	'country'
+        	'country',
+            'latitude',
+            'longitude'
     ];
     
     public function listing(){
