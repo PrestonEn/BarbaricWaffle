@@ -83,7 +83,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="sqftSize_id" name="sqftSize_name" placeholder="Sqare Footage" value="{{ old('sqftSize_name') }}">
+                    <input type="text" class="form-control" id="sqftSize_id" name="sqftSize_name" placeholder="Square Footage" value="{{ old('sqftSize_name') }}">
                 </div>
             </div>
             <div class="form-group">

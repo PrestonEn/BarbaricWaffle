@@ -1,6 +1,14 @@
+
+#remove {
+	color: red;
+	display: none;
+	font-weight: bold;
+	margin-left: 2em;
+}
+
 .table {
 	background-color: #cce6ff;
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
 
 #buttonDiv {
@@ -41,4 +49,10 @@
 
 .picture.img-responsive{
 	margin: auto; 
+}
+
+.row.favList {
+	white-space: nowrap;
+	overflow: ellipsis;
+	}
 }

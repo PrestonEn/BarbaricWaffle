@@ -13,9 +13,9 @@
   font-size: 1.7vh;
 }
 
-.table.table-condensed{
-  padding: 0;
-  margin: 0;
+.table{
+  padding: 0px;
+  margin: 0px;
 }
 
 #modalButtonHolder{
@@ -29,23 +29,19 @@
   z-index: 99;
 }
 
-#col1 {
-  position: relative;
-  z-index:1;
-}
-
 #col2>.row {
   height: 30%;
   width: 100%;
-  margin-top: 0px;
   margin-top: 1.3em;
   margin-bottom: 1.3em;
+  border-top: 1px solid #00e6e6;
 }
 
 #col2{
-  font-size: 1.4vmax;
+  font-size: 1vmax;
   font-family: 'calibri', sans-serif;
   overflow-y: scroll;
+  padding-left:0px;
 }
 
 #title {

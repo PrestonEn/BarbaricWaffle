@@ -10,7 +10,7 @@
   </div>
 
   <div class = "pageTitle">
-    Available Properties
+    Available Listings
   </div>
 
   <div class = "pageBar row">

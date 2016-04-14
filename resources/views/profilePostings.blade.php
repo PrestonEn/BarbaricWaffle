@@ -33,8 +33,13 @@
             <table class = "table">
                
                   <tr>
-                     <th class = "removeable" name = {{$list->listing_id}} colspan = 2> 
-                        {{$list->listing_title}}
+                     <th colspan = 2>
+                      <div class = "row favList">
+                        <div class = "col-xs-12">
+                          {{$list->listing_title}}
+                        </div>
+                        <div class = "removeable col-xs-4" name = {{$list->listing_id}}></div>
+                      </div>
                      </th>
                   </tr>
 

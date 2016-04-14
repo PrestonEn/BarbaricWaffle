@@ -14,7 +14,7 @@
 
 		<div class = "backPane panel">
 			<strong>Phone Number : </strong>
-			<div class = "profileInfo"> 555-555-5555 </div>
+			<div class = "profileInfo"> {{$user->phone}} </div>
 		</div>
 
 

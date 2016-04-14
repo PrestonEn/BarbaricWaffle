@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Mail\Mailer;
 use Mail;
+use Hash;
+use Auth;
 use Validator;
 use App\User;
 use App\Http\Requests;
@@ -22,20 +24,14 @@ class userController extends Controller
      * Redirect them to login
      */
     public function add(Request $request){
-        $v = Validator::make($request->all(), [
+        $this->validate($request, [
             'firstName' => 'required|max:60',
             'lastName'  => 'required|max:60',
-            'email'     => 'bail|required|confirmed|email|max:255|unique:users,email',
+            'email'     => 'bail|required|confirmed|email|max:255|unique:users',
             'pass'      => 'bail|required|confirmed|min:6|max:60',
-            'phone'     => 'bail|required|min:10|max:18|unique:users,phone'
+            'phone'     => 'bail|required|min:10|max:18|unique:users'
         ]);
 
-        //Check if validation passes. If not, redirect.
-        if ($v->fails()) {
-            return redirect('signUp')
-                ->withErrors($v)
-                ->withInput($request->except('pass'));
-        }
 
         $user = new User;
         $user->first_name = Input::get('firstName');
@@ -48,7 +44,6 @@ class userController extends Controller
         
 
         Mail::send('emails.registered', $arrayName = array('a' => 5) , function ($message) use ($user) {
-            
             $message->from('homestead.proto@gmail.com', 'Your Application');
             $message->to($user->email);
         });     
@@ -58,14 +53,59 @@ class userController extends Controller
     }
     
 	public function profileSettingPagePopulation($userId){
-
 		$user = User::where('user_id','=',$userId);
 		$user = $user->first();
 		return view('profileSettings', compact('user'));
 	}
 
+    public function updatePassword(Request $request){
 
+            $validator = Validator::make($request->all(), [
+                'oldPass' => 'required'
+            ]);
+    
+            $this->validate($request, [
+                'nPass' => 'bail|required|confirmed|min:6|max:60',
+            ]);
 
+            if(!Auth::attempt(['email' => Auth::user()->email, 'password' => Input::get('oldPass')])){
+                return redirect('profileSettings/'.Auth::user()->user_id)
+                    ->withErrors(['The currently set password was not inputted correctly']);
+            }
+                $newPass = Hash::make(Input::get('nPass'));
+                 $user = Auth::user();
+                 Auth::user()->fill([
+                     'password' => $newPass])->save();
+                     return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Password Change Successful');
+    }
 
+    public function updateName(Request $request){
+        $this->validate($request, [
+                'firstName' => 'required|confirmed|max:60',
+                'lastName' => 'required|confirmed|max:60',
+            ]);   
+
+        Auth::user()->fill([
+                     'first_name' => Input::get('firstName'),
+                     'last_name' => Input::get('lastName')])->save();         
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Name Change Successful');
+    
+    }
+
+    public function updatePhoneNumber(Request $request){
+        $this->validate($request, [
+                'phone' => 'bail|required|confirmed|min:10|max:18|unique:users',
+            ]);   
+
+        Auth::user()->fill([
+                     'phone' => Input::get('phone')])->save();         
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Phone Number Change Successful');
+    
+    }    
 
 }

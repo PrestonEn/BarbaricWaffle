@@ -30,7 +30,17 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
+    Route::post('profileSettings/{userId}/resetPassword', 'userController@updatePassword');
+
+    Route::post('profileSettings/{userId}/resetName', 'userController@updateName');
+
+    Route::post('profileSettings/{userId}/resetPhoneNumber', 'userController@updatePhoneNumber');
+
     Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
+
+    Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');
+
+    Route::get('ListingByProperty/{locationId}', 'lisController@getPropertyListings');
 
     Route::get('listingsList/{order}', 'lisController@allListings');
 
