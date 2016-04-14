@@ -65,15 +65,14 @@ class propertyController extends Controller
         }
 
         $property = new Location;
-
-        $property->street_address = $street_num . " " . $street_name;
-        $property->province = $province;
-        $property->city = $city;
-        $property->country = $country;
-        $property->postal_code = $postal_code;
         $property->user()->associate(Auth::user());
-        $property->latitude = $lat;
+        $property->street_address = $street_num . " " . $street_name;
+        $property->postal_code = $postal_code;
+        $property->province = $province;
+        $property->country = $country;
         $property->longitude = $lng;
+        $property->latitude = $lat;
+        $property->city = $city;
         $property->save();
 
 

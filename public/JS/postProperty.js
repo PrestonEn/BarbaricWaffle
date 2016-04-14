@@ -45,7 +45,7 @@ function geocodeAddress() {
 function initialize(lat, lng) {
     var center = new google.maps.LatLng(lat, lng);
     var mapOptions = {
-        zoom: 7,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: center
     };
@@ -56,14 +56,15 @@ function initialize(lat, lng) {
         map: map,
         position: center
     });
+
     $('#myModal').modal('show');
 }
 
 $('#myModal').on('shown.bs.modal', function (e) {
-  var currentCenter = map.getCenter();  // Get current center before resizing
-  google.maps.event.trigger(map, "resize");
-  map.setCenter(currentCenter); // Re-set previous center
 
+    var currentCenter = map.getCenter();  // Get current center before resizing
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(currentCenter); // Re-set previous center
 });
 
 function submitProperty(){
