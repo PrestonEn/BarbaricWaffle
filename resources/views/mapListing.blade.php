@@ -8,11 +8,69 @@
     <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
     </div>
     <div id = "col2" class = "col-md-4 col-sm-0 col-xs-0">
+@foreach($listingInfo as $listing)
+      <div class = "row" style="padding:0px;margin:0px;">    
+          <div class = "picCol col-xs-6" style = "padding:0px;margin:0px" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+            <div id = "eg1">
+                <img class = "housePic img-responsive" style= "padding:0px;margin:0px" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
+            </div>
+          </div>
+          
+          <div class = "col-xs-6">
+            <table class = "table" style = "border-width: 20px;">
+              <tr>
+                <th colspan = 2><label id="title"> {{$listing->listing_title}} </label></th>
+              </tr>
+    
+              <tr>
+                <td colspan = 2> {{ $listing->listing->location->street_address}}, {{ $listing->listing->location->city}} </td>
+              </tr>
+              
+              <tr>
+                <td> Price </td>
+                <td> {{$listing->price_monthly}}/mth </td>
+              </tr>
 
-      <div id = "sideBar" class = "row">    
-         
+              <tr>
+                <td colspan = 2> Other feature we deem important </td>
+              </tr>
+
+              <tr>
+                <td class = "features"> 
+                  @if ($listing->has_kitchen)
+                  <img class = "feature" src="../images/kitchen.jpeg">
+                 @endif
+
+                 @if ($listing->allowed_dogs || $listing->allowed_cats || $listing->allowed_other_pets)
+                  <img class = "feature" src="../images/pets.jpeg">
+                 @endif
+
+                 @if ($listing->has_furnishings)
+                  <img class = "feature" src="../images/furnished.jpeg">
+                 @endif
+
+                 @if ($listing->has_laundry)
+                  <img class = "feature" src="../images/laundry.jpeg">
+                 @endif
+
+                 @if ($listing->owner_pays_hydro)
+                  <img class = "feature" src="../images/water.jpeg">
+                 @endif
+
+                 @if ($listing->owner_pays_electricity)
+                  <img class = "feature" src="../images/hydro.jpeg">
+                 @endif
+
+                 @if ($listing->owner_pays_internet)
+                  <img class = "feature" src="../images/internet.jpeg">
+                 @endif </td>
+              </tr>
+
+             </table>
+          </div>
       </div>
-      
+      @endforeach
+    </div>
 
 
       <div id = "modalButtonHolder">
