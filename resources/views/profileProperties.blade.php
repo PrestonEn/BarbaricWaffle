@@ -15,7 +15,7 @@
 
 <body>
 
-<div class = "pageTitle"> Property Listings </div>
+<div class = "pageTitle"> Property Properties </div>
 
    <div class = "row" id = "buttonDiv">
       <div class = "col-xs-12">
@@ -29,23 +29,19 @@
 
 <div class = "row">
 <div class = "col-xs-11">
-@foreach($listings as $listing)
-      @foreach($listing->listing_info as $list)
-      @if($list->is_active == 1)
+@foreach($locations as $location)
       <div class = "row">
-      <div class = "col-xs-2 col-sm-1 removeable" name = {{$list->listing_id}}></div>
+      <div class = "col-xs-2 col-sm-1 removeable"  name = {{$location->location_id}} ></div>
       <div class = "col-xs-10 col-sm-10">
                   <table class = "table">
                   <tr>
-                     <td colspan = 2><strong> {{ $list->listing->location->street_address}}, {{ $list->listing->location->city}} </strong></td>
-                     <td> {{ $list->listing->location->postal_code}}, {{ $list->listing->location->country}} 
+                     <td colspan = 2 onClick="window.location.href='../location_id'"><strong> {{$location->street_address}}, {{$location->city}} </strong></td>
+                     <td> {{ $location->postal_code}}, {{ $location->country}} 
                      </td>
                   </tr>
                   </table>  
               
       </div>
-      @endif
-      @endforeach
       @endforeach
     </div>
 </div>

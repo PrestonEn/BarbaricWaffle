@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Listing;
 use App\User;
 use App\Location;
@@ -11,6 +11,7 @@ use App\Listing_Info;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\Saved_Search;
 
 class lisController extends Controller
 {
@@ -43,8 +44,8 @@ class lisController extends Controller
 
 		public function getProfileProperties($userId){
 			$user = User::where('user_id','=',$userId)->first();
-			$listings = $user->listings;
-			return view ('profileProperties', compact('listings'));
+			$locations = $user->locations;
+			return view ('profileProperties', compact('locations'));
 		}
 
 		public function getProfileListings($userId){
@@ -76,6 +77,9 @@ class lisController extends Controller
 			return view('profileView', compact('listingsActive'), compact('user'));
 		}
 
-
+		public function listingByLocation($Location){
+			$listingsByLocation = Listing_Info::where('latitude','=',$Location->latitude)->where('longitude','=',$location->longitude)->get();
+			return view('listingsList', compact('listingsByLocation'));
+		}
 
 }
