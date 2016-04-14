@@ -28,9 +28,10 @@ function geocodeAddress() {
         if (status === google.maps.GeocoderStatus.OK) {
             var lat = parseFloat(results[0].geometry.location.lat()).toFixed(7);
             var lng = parseFloat(results[0].geometry.location.lng()).toFixed(7);
+            var formatted_addr = results[0].formatted_address;
+            $('#myModalLabel').text(formatted_addr);
             initialize(lat, lng);
-            //alert(JSON.stringify(results));
-            //document.getElementById('maps_json_id').value = JSON.stringify(results);
+            document.getElementById('maps_json_id').value = JSON.stringify(results);
             // document.getElementById('addPropertyForm').submit();
         } else {
             alert('Geocode was not successful for the following reason: ' + status + '\n' 
@@ -55,7 +56,7 @@ function initialize(lat, lng) {
         map: map,
         position: center
     });
-    $('#myModal').modal('show')
+    $('#myModal').modal('show');
 }
 
 $('#myModal').on('shown.bs.modal', function (e) {
@@ -63,4 +64,12 @@ $('#myModal').on('shown.bs.modal', function (e) {
   google.maps.event.trigger(map, "resize");
   map.setCenter(currentCenter); // Re-set previous center
 
-})
+});
+
+function submitProperty(){
+
+    document.getElementById('addPropertyForm').submit();
+}
+
+
+

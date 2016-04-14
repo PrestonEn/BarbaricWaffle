@@ -32,7 +32,7 @@ class propertyController extends Controller
         $lng = $json_obj[0]->geometry->location->lng;
 
         foreach ($json_obj[0]->address_components as $comp) {
-            echo $comp->types[0] + "</br>";
+            echo $comp->types[0] . "</br>";
             switch ($comp->types[0]) {
                 case 'street_number': //STREET NUMBER
                     $street_num = $comp->long_name;
