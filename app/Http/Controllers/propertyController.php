@@ -35,7 +35,6 @@ class propertyController extends Controller
         $lng = $json_obj[0]->geometry->location->lng;
 
         foreach ($json_obj[0]->address_components as $comp) {
-            echo $comp->types[0] . "</br>";
             switch ($comp->types[0]) {
                 case 'street_number': //STREET NUMBER
                     $street_num = $comp->long_name;
@@ -74,6 +73,8 @@ class propertyController extends Controller
         $property->latitude = $lat;
         $property->city = $city;
         $property->save();
+
+        return redirect('profileProperties/'.Auth::user()->user_id);
 
 
     }
