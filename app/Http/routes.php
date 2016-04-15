@@ -26,7 +26,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileView/{userId}','lisController@viewForeignProfile');
 
-    Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
+    Route::get('profileFavourites', 'lisController@getFavouriteListings');
+    //Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 

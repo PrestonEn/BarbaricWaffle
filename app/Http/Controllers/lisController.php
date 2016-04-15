@@ -12,7 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Saved_Search;
-
+use Auth;
 class lisController extends Controller
 {
    		public function allListings($order){
@@ -53,10 +53,14 @@ class lisController extends Controller
 			return view ('profilePostings', compact('listings'));
 		}
 
-		public function getFavouriteListings($userId){
-			$user = User::where('user_id','=',$userId)->first();
-			$listings = $user->favourite_listings;
-			return view ('profileFavourites', compact('listings'));
+		public function getFavouriteListings(){
+			if(!Auth::check()){
+            	return redirect('signIn')->withErrors(['You need to be signed in to save and view favorites!']);
+			}else{
+				$user = Auth::user();//User::where('user_id','=',$userId)->first();
+				$listings = $user->favourite_listings;
+				return view ('profileFavourites', compact('listings'));
+			}
 		}
 
 		public function singleListingInfo($listingId){
