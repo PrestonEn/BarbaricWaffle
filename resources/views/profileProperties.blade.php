@@ -42,8 +42,8 @@
                   </table>  
               
       </div>
-      @endforeach
     </div>
+@endforeach
 </div>
 @stop
 
