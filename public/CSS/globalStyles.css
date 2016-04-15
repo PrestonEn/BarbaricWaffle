@@ -17,3 +17,8 @@ body {
 	margin-bottom: 0.6em;
 	margin-top: 0.3em;
 }
+
+div.row {
+  margin-right: 0px; 
+  margin-left: 0px;
+}
