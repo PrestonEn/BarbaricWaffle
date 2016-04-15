@@ -28,12 +28,14 @@ class lisController extends Controller
 			}
 			$num = Listing_Info::where('is_active','=',1)->count();	
 			return view('listingsList', compact('listingInfo'), compact('num'))->with('order', $order);
-		}
-
+		} 
+        
 		public function mapListings(){
 			$listingInfo = Listing_Info::where('is_active','=',1)->get();
 			$num = Listing_Info::where('is_active','=',1)->count();	
-			return view('mapListing', compact('listingInfo'), compact('num'));
+            $location = Location::select('city', 'country')->groupBy('city')->get();
+            
+			return view('mapListing', compact('listingInfo','location'), compact('num'));
 		}
 
 		public function mainProfileActiveListings($userId){

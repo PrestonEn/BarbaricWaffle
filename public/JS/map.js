@@ -95,9 +95,14 @@ function boundChangedEvent() {
             'id': markersInBound
         },
         success: function (data) {
-
-            $("#sideBar").html(data);
-
+            if(!$.trim(data)){
+                   
+            }
+            else{
+               
+                $("#sideBar").html(data);
+            
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
@@ -185,7 +190,6 @@ function searchFilters(e){
     
     var prices = slider.noUiSlider.get();
    
-    
     var input = $("#searchFilter select[name='region']").val(); 
     if(input != "All"){
         updateLatLongFromCity(input);
