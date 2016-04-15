@@ -27,6 +27,7 @@ class CreateListingImagesTable extends Migration
             //Should be in form of [filename].[file_type]
             //Filename should be unique.
             $table->string('image_filename')->unique();
+            $table->string('image_filename_thumbnail');
 
             //Image purpose.
             //Number specifies order of appearance, with
