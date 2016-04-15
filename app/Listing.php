@@ -39,7 +39,6 @@ class Listing extends Model
     public function scopeusers_listings($query, $user_id){
         return $query
                 ->join('locations', 'locations.location_id', '=', 'listings.location_id')
-                ->where('locations.user_id', $user_id)
-                ->get();
+                ->where('locations.user_id', $user_id);
     }
 }
