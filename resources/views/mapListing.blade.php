@@ -37,10 +37,11 @@
                   <div class = "col-sm-4">
                     <label class = "textLabel"> Region </label>
                     <select name = "region">
-                      <option> All </option>
-                      <option> Toronto </option>
-                      <option> Laval </option>
-                    </select>
+                        @foreach($location as $loc)
+                        <option> {{$loc->city}}, {{$loc->country}} </option>
+                        @endforeach
+                        
+                      </select>
                   </div>
                   
                     

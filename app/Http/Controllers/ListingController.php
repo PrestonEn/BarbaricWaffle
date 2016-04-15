@@ -170,6 +170,8 @@ class ListingController extends Controller
             $other_pets =      (Input::has('other')) ? 1 : 0;
             $numMates = Input::get('MaxNumRoomates');
             
+            $locations = explode(',', $region);
+            
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
@@ -187,11 +189,11 @@ class ListingController extends Controller
             $listingInfo = $query->get();
             $listings = array();
             
-            foreach($listingInfos as $list){
+            foreach($listingInfo as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
                 if($region != "All"){
-                    if($location['city'] == $region){
+                    if($location['city'] == $locations[0]){
                         //dd($list);
                         array_push($listings, $location);
                     }

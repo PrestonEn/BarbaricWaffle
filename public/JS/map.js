@@ -185,7 +185,6 @@ function searchFilters(e){
     
     var prices = slider.noUiSlider.get();
    
-    
     var input = $("#searchFilter select[name='region']").val(); 
     if(input != "All"){
         updateLatLongFromCity(input);
