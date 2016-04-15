@@ -1,22 +1,7 @@
-function getFurther(value){
-	if (value == 0){
-		document.getElementById('petsBox').style.display = 'block';
-		document.getElementById('pets').value = 1;
-	}
-	else if (value == 1){
-		document.getElementById('petsBox').style.display = 'none';
-		document.getElementById('pets').value = 0;
-	}
-}
 
 
+$( document ).ready(function() {
 
-var slider = document.getElementById('slider');
-
-var val = [
-	document.getElementById('lower'),
-	document.getElementById('upper')
-];
 
 
 var slider = document.getElementById('slider');
@@ -37,6 +22,25 @@ slider.noUiSlider.on('update', function( values, handle ) {
 	if (document.getElementById('upper').innerHTML == "2000.00"){
 		document.getElementById('upper').innerHTML = document.getElementById('upper').innerHTML + "+";
 	}
+    
 });
 
+});
 
+function getFurther(value){
+	if (value == 0){
+		document.getElementById('petsBox').style.display = 'block';
+		document.getElementById('pets').value = 1;
+	}
+	else if (value == 1){
+		document.getElementById('petsBox').style.display = 'none';
+		document.getElementById('pets').value = 0;
+	}
+}
+
+
+
+var val = [
+	document.getElementById('lower'),
+	document.getElementById('upper')
+];

@@ -144,6 +144,7 @@ class ListingController extends Controller
                 $ids = $_POST['id'];
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
                 //returns sidebar view with udpated listings
+               
                 return view ('sidebarUpdate', compact('listingInfo'));
             }
         }  
@@ -154,8 +155,8 @@ class ListingController extends Controller
             //dd($request->all());
             
             $region = Input::get('region');
-            
-            
+            $maxPrice = Input::get('maxPrice');
+            $minPrice = Input::get('minPrice');
             $rooms = Input::get('rooms');
             $bathrooms = Input::get('bathrooms');
             $kitchen =             (Input::has('haskitchen')) ? 1 : 0;
@@ -172,23 +173,34 @@ class ListingController extends Controller
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
-            $listingInfo = Listing_Info::where('num_bedrooms_total', $rooms)
+            $query = Listing_Info::where('num_bedrooms_total', $rooms)
+                ->where('price_monthly',"<=", $maxPrice)
+                ->where('price_monthly',">=", $minPrice)
                 ->where('num_bathrooms_total', $bathrooms)
                 ->where('owner_pays_internet', $internet)
                 ->where('owner_pays_electricity', $electricity)
                 ->where('allowed_dogs', $dogs)
                 ->where('allowed_cats', $cats)
-                ->where('allowed_other_pets', $other)
-                ->get();
+                ->where('allowed_other_pets', $other_pets);
+            
+            
+            $listingInfo = $query->get();
             $listings = array();
             
-            foreach($listingInfo as $list){
+            foreach($listingInfos as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
-                if($location['city'] == $region){
-                    //dd($list);
-                    array_push($listings, $location);
+                if($region != "All"){
+                    if($location['city'] == $region){
+                        //dd($list);
+                        array_push($listings, $location);
+                    }
                 }
+                else{
+                     array_push($listings, $location);
+                }
+                
+                
             }
             
             //dd($internet);
