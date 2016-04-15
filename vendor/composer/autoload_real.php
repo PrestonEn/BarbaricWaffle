@@ -23,7 +23,8 @@ class ComposerAutoloaderInitd73ce7fb79f94675107a3d7807b9d38f
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInitd73ce7fb79f94675107a3d7807b9d38f', 'loadClassLoader'));
 
-        if (PHP_VERSION_ID >= 50600) {
+        $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION');
+        if ($useStaticLoader) {
             require_once __DIR__ . '/autoload_static.php';
 
             call_user_func(\Composer\Autoload\ComposerStaticInitd73ce7fb79f94675107a3d7807b9d38f::getInitializer($loader));
@@ -46,7 +47,11 @@ class ComposerAutoloaderInitd73ce7fb79f94675107a3d7807b9d38f
 
         $loader->register(true);
 
+<<<<<<< HEAD
         if (PHP_VERSION_ID >= 50600) {
+=======
+        if ($useStaticLoader) {
+>>>>>>> master
             $includeFiles = Composer\Autoload\ComposerStaticInitd73ce7fb79f94675107a3d7807b9d38f::$files;
         } else {
             $includeFiles = require __DIR__ . '/autoload_files.php';

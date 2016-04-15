@@ -1,5 +1,6 @@
 <?php
 
+
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('about','pageStructureController@navbarTop');
@@ -71,5 +72,9 @@ Route::group(['middleware' => ['web']], function () {
         Session::flush();
         return Redirect::to('/');
     });
+
+    Route::get('imTest', 'pageStructureController@imtest');
+
+
 });
 ?>

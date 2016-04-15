@@ -57,4 +57,12 @@ class Listing_Info extends Model
     public function scopeActive($query){
     	return $query->where('is_active', '=', 1);
     }
+
+    public function scopewhereIfNotNull($query, $column, $comparison, $value){
+        if($value!=NULL){
+            return $query->where($column, $comparison, $value);
+        }else{
+            return $query;
+        }
+    }
 }

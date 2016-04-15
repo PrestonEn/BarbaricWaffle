@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Intervention\Image\Facades\Image as Image;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -82,6 +82,19 @@ class pageStructureController extends Controller
 
     public function profileMessages(){
         return view('profileMessages');
+    }
+
+    public function imtest(){
+                    // open and resize an image file
+        $img = Image::make('public/foo.jpg')->resize(300, 200);
+
+        // save file as png with medium quality
+        $img->save('public/bar.png', 60);
+
+        // save the same file as jpeg with default quality
+        $img->save('public/bar.jpg');
+
+        dd($img);
     }
 
 }

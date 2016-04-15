@@ -115,6 +115,7 @@ class ListingController extends Controller
                 $ids = $_POST['id'];
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
                 //returns sidebar view with udpated listings
+               
                 return view ('sidebarUpdate', compact('listingInfo'));
             }
         }  
@@ -125,12 +126,12 @@ class ListingController extends Controller
             //dd($request->all());
             
             $region = Input::get('region');
-            
-            
+            $maxPrice = Input::get('maxPrice');
+            $minPrice = Input::get('minPrice');
             $rooms = Input::get('rooms');
             $bathrooms = Input::get('bathrooms');
             $kitchen =             (Input::has('haskitchen')) ? 1 : 0;
-            //$laundry =             (Input::has('laundry')) ? 1 : 0;
+            $laundry = Input::get('laundry');
             $internet =     (Input::has('internet')) ? 1 : 0;
             $water =        (Input::has('water')) ? 1 : 0;
             $electricity =  (Input::has('hydro')) ? 1 : 0;
@@ -140,26 +141,41 @@ class ListingController extends Controller
             $other_pets =      (Input::has('other')) ? 1 : 0;
             $numMates = Input::get('MaxNumRoomates');
             
+            $locations = explode(',', $region);
+            if($laundry == "") $laundry = null;
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
-            $listingInfo = Listing_Info::where('num_bedrooms_total', $rooms)
-                ->where('num_bathrooms_total', $bathrooms)
-                ->where('owner_pays_internet', $internet)
-                ->where('owner_pays_electricity', $electricity)
-                ->where('allowed_dogs', $dogs)
-                ->where('allowed_cats', $cats)
-                ->where('allowed_other_pets', $other)
-                ->get();
+            $query = Listing_Info::whereIfNotNull('num_bedrooms_total', "=",$rooms)
+                ->whereIfNotNull('price_monthly',"<=", $maxPrice)
+                ->whereIfNotNull('price_monthly',">=", $minPrice)
+                ->whereIfNotNull('num_bathrooms_total', "=",$bathrooms)
+                ->whereIfNotNull('num_roomates_max', "<=", $numMates)
+                ->whereIfNotNull('has_laundry', "=", $laundry);
+                //->whereIfNotNull('owner_pays_internet', "=",$internet)
+                //->whereIfNotNull('owner_pays_electricity', "=",$electricity);
+                //->whereIfNotNull('allowed_dogs', "=",$dogs)
+                //->whereIfNotNull('allowed_cats', "=",$cats)
+                //->whereIfNotNull('allowed_other_pets', "=",$other_pets);
+            
+            
+            $listingInfo = $query->get();
             $listings = array();
             
             foreach($listingInfo as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
-                if($location['city'] == $region){
-                    //dd($list);
-                    array_push($listings, $location);
+                if($region != "All"){
+                    if($location['city'] == $locations[0]){
+                        //dd($list);
+                        array_push($listings, $location);
+                    }
                 }
+                else{
+                     array_push($listings, $location);
+                }
+                
+                
             }
             
             //dd($internet);
