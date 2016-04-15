@@ -73,7 +73,6 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
-    Route::get('imTest', 'pageStructureController@imtest');
 
 
 });
