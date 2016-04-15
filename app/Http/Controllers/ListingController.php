@@ -173,7 +173,7 @@ class ListingController extends Controller
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
-            $listingInfo = Listing_Info::where('num_bedrooms_total', $rooms)
+            $query = Listing_Info::where('num_bedrooms_total', $rooms)
                 ->where('price_monthly',"<=", $maxPrice)
                 ->where('price_monthly',">=", $minPrice)
                 ->where('num_bathrooms_total', $bathrooms)
@@ -181,11 +181,13 @@ class ListingController extends Controller
                 ->where('owner_pays_electricity', $electricity)
                 ->where('allowed_dogs', $dogs)
                 ->where('allowed_cats', $cats)
-                ->where('allowed_other_pets', $other_pets)
-                ->get();
+                ->where('allowed_other_pets', $other_pets);
+            
+            
+            $listingInfo = $query->get();
             $listings = array();
             
-            foreach($listingInfo as $list){
+            foreach($listingInfos as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
                 if($region != "All"){
