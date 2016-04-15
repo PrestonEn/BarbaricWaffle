@@ -27,7 +27,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileView/{userId}','lisController@viewForeignProfile');
 
-    Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
+    Route::get('profileFavourites', 'lisController@getFavouriteListings');
+    //Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // Add listing POST request
     Route::post('addProperty', 'propertyController@add');
+    Route::post('addListing', 'ListingController@addListing');
 
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');

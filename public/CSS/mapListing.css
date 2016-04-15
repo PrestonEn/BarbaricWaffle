@@ -69,8 +69,3 @@
 .table-condensed tr td {
    border-bottom: 1px solid #A7A37E; /* Change the color you want to set */
 }
-
-div.row {
-  margin-right: 0px; 
-  margin-left: 0px;
-}

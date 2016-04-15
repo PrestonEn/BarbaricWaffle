@@ -47,7 +47,11 @@ class ComposerAutoloaderInitd73ce7fb79f94675107a3d7807b9d38f
 
         $loader->register(true);
 
+<<<<<<< HEAD
+        if (PHP_VERSION_ID >= 50600) {
+=======
         if ($useStaticLoader) {
+>>>>>>> master
             $includeFiles = Composer\Autoload\ComposerStaticInitd73ce7fb79f94675107a3d7807b9d38f::$files;
         } else {
             $includeFiles = require __DIR__ . '/autoload_files.php';

@@ -60,6 +60,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSavedSearchesTable' => $baseDir . '/database/migrations/2016_04_10_182043_create_saved_searches_table.php',
     'CreateUserFavouritesTable' => $baseDir . '/database/migrations/2016_03_10_002752_create_user_favourites_table.php',
+    'CreateUserImagesTable' => $baseDir . '/database/migrations/2016_04_15_175942_create_user_images_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
