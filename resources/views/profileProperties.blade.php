@@ -29,21 +29,20 @@
 
 <div class = "row">
 <div class = "col-xs-11">
-@foreach($locations as $location)
+   @foreach($locations as $location)
       <div class = "row">
-      <div class = "col-xs-2 col-sm-1 removeable"  name = {{$location->location_id}} ></div>
-      <div class = "col-xs-10 col-sm-10">
-                  <table class = "table">
-                  <tr>
-                     <td colspan = 2 onClick="window.location.href='../ListingByProperty/{{$location->location_id}}'"><strong> {{$location->street_address}}, {{$location->city}} </strong></td>
-                     <td> {{ $location->postal_code}}, {{ $location->country}} 
-                     </td>
-                  </tr>
-                  </table>  
-              
+         <div class = "col-xs-2 col-sm-1 removeable"  name = {{$location->location_id}} ></div>
+         <div class = "col-xs-10 col-sm-10">
+                     <table class = "table">
+                        <tr>
+                           <td colspan = 2 onClick="window.location.href='../ListingByProperty/{{$location->location_id}}'"><strong> {{$location->street_address}}, {{$location->city}} </strong></td>
+                           <td>{{ $location->postal_code}}, {{ $location->country}}</td>
+                        </tr>
+                     </table>  
+                 
+         </div>
       </div>
-    </div>
-@endforeach
+   @endforeach
 </div>
 @stop
 
