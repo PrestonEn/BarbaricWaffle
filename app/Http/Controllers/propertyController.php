@@ -44,13 +44,13 @@ class propertyController extends Controller
                     $street_name = $comp->long_name;
                     break;
                 case 'administrative_area_level_1': //STATE/PROVINCE
-                    $province = $comp->long_name;
+                    $province = $comp->short_name;
                     break;
                 case 'postal_code': //POSTAL CODE
                     $postal_code = $comp->long_name;
                     break;
                 case 'country': //COUNTRY
-                    $country = $comp->long_name;
+                    $country = $comp->short_name;
                     break;
                 case 'neighborhood':
                 case 'locality':

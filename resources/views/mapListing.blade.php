@@ -38,7 +38,7 @@
                     <label class = "textLabel"> Region </label>
                     <select name = "region">
                         @foreach($location as $loc)
-                        <option> {{$loc->city}}, {{$loc->country}} </option>
+                        <option> {{$loc->city}} </option>
                         @endforeach
                         
                       </select>
@@ -64,9 +64,12 @@
                 </div>
                 <div class = "row">
                   <div class = 'col-sm-1'></div>
-                  <div class = "col-sm-5">
-                    <label class = "textLabel"> Pet Friendly </label>
-                    <input name = "pets" id = "pets" type = "checkbox" value = '0' onClick="getFurther(value)"/>
+                  <div class = "col-sm-11">
+                        <label class = "textLabel"> Pet Friendly </label>
+                        <label class="radio-inline"><input type="radio" id = "pets" name="pets" onClick="getFurther(value)">Yes</label>
+                        <label class="radio-inline"><input type="radio" name="pets">No</label>
+                        <label class="radio-inline"><input type="radio" name="pets">Don' care</label>  
+                    
                   </div>
                 </div>
 
@@ -117,7 +120,7 @@
                   <div class = "col-sm-2"><strong> Room Level</strong></div>
                     <div class = "col-sm-6">
                     <select name = "rmLevel">
-                      <option value = "any">Any</option>
+                      <option value = "">Any</option>
                       <option value = "basement">Basement</option>
                       <option value = "mainFloor">Main Floor</option>
                       <option value = "upper">Upper Floors</option>
@@ -130,7 +133,7 @@
                       <div class = "col-sm-2"><strong>Laundry</strong></div>
                       <div class = "col-sm-6">
                       <select name = "Laundry">
-                        <option value = "any"> Any </option>
+                        <option value = ""> Any </option>
                         <option value = "coinOper"> On Site (coin operated) </option>
                         <option value = "noCost"> On Site (no cost) </option>
                         <option value = "n/a"> Unavailable </option>
@@ -144,7 +147,7 @@
                     <div class = "col-sm-6">
                       <select name = "MaxNumRoommates">
                         <option value = "any"> Any </option>
-                        <option value = "6"> 6+ </option>
+                        <option value = "99"> 6+ </option>
                         <option value = "5"> 5 </option>
                         <option value = "4"> 4 </option>
                         <option value = "3"> 3 </option>
