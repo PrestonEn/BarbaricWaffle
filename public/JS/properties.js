@@ -3,13 +3,12 @@ function makeEditable(button){
 		button.value = "1";
 		button.style.backgroundColor = "orange";
 		button.innerHTML = "cancel";
-
 	var headers = document.getElementsByClassName("removeable");
-
+	document.getElementById("remove").style.display = "block";
 	for (var i = headers.length - 1; i >= 0; i--) {
 		var id = headers[i].getAttribute("name");
 		var text = headers[i].innerHTML;
-		headers[i].innerHTML = text + " " + "<label style = 'color:red'> remove <input type=checkbox class = 'rmChecks' name = '"+id+"' value = '"+text+"''></labeL>";
+		headers[i].innerHTML = "<label style = 'position:absolute;right:0;top:0.5em'> <input type=checkbox class = 'rmChecks' name = '"+id+"'></labeL>";
 	}
 
 	document.getElementById('buttonHolder').innerHTML = "<button type = 'submit' class = 'btn btn-primary' style = 'right: 7em; down: 14em;' onClick='removeElements()'> delete </button>";
@@ -20,10 +19,11 @@ function makeEditable(button){
 		button.style.backgroundColor = "grey";
 		button.innerHTML = "edit";
 
+	document.getElementById("remove").style.display = "none";
 	var headers = document.getElementsByClassName("removeable");
 	for (var i = headers.length - 1; i >= 0; i--) {
 		var text = headers[i].innerHTML;
-		headers[i].innerHTML = headers[i].getElementsByTagName('input')[0].value;
+		headers[i].innerHTML = "";
 	}
 
 	document.getElementById('buttonHolder').innerHTML = "";

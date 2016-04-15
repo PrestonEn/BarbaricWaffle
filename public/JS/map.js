@@ -11,26 +11,26 @@ var searchLocationID = new Array();
 var infowindow;
 var locationIDs = new Array();
 
+
+
+
+//Google Maps js--------------------------------------------------------------------//
+
 function initMap(arr, ids, price, title, long, lat) {
     var coords;
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            success(position, arr, ids);
-        });
-
-    } else {
-        error('Geo Location is not supported');
-        coords = {
-            lat: 43.1,
-            lng: -79.3
-        };
-        setMap(arr, ids, coords);
-    }
+      
     prices = price;
     titles = title;
     longitude = long;
     latitude = lat;
     locationIDs = ids;
+        
+        coords = {
+            lat: 43.1,
+            lng: -79.3
+        };
+        setMap(arr, ids, coords);
+ 
 }
 
 function setMap(arr, ids, position) {
@@ -183,11 +183,15 @@ function searchFilters(e){
 
     });
     
+    var prices = slider.noUiSlider.get();
+   
     
     var input = $("#searchFilter select[name='region']").val(); 
-    updateLatLongFromCity(input);
+    if(input != "All"){
+        updateLatLongFromCity(input);
+    }
     
-    var form = $('#searchFilter').serialize();
+    var form = $('#searchFilter').serialize()+ "&minPrice=" + prices[0]+ "&maxPrice=" + prices[1];
     
     //ajax call to update sideBar
     $.ajax({

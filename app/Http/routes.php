@@ -20,8 +20,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('addSearches', 'pageStructureController@searches');
 
-
-
     Route::get('mapListing','lisController@mapListings');
 
     Route::get('profile/{userId}','lisController@mainProfileActiveListings');
@@ -32,12 +30,21 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
+    Route::post('profileSettings/{userId}/resetPassword', 'userController@updatePassword');
+
+    Route::post('profileSettings/{userId}/resetName', 'userController@updateName');
+
+    Route::post('profileSettings/{userId}/resetPhoneNumber', 'userController@updatePhoneNumber');
+
     Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
 
-    Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
+    Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');
+
+    Route::get('ListingByProperty/{locationId}', 'lisController@getPropertyListings');
 
     Route::get('listingsList/{order}', 'lisController@allListings');
 
+    Route::get('houseTemplate/{listingId}', 'lisController@singleListingInfo');
 
     Route::get('handleRemoval', 'postingModification@makeInactive');
 
@@ -45,8 +52,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('signIn', 'Auth\AuthController@authenticate');
     
+    Route::get('addProperty', 'pageStructureController@addProperty');
+
     // Add listing POST request
-    Route::post('/addListing', 'ListingController@addListing');
+    Route::post('addProperty', 'propertyController@add');
+
 
     Route::post('/updateSidebar', 'ListingController@updateSidebar');
     
