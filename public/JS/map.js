@@ -95,9 +95,14 @@ function boundChangedEvent() {
             'id': markersInBound
         },
         success: function (data) {
-
-            $("#sideBar").html(data);
-
+            if(!$.trim(data)){
+                   
+            }
+            else{
+               
+                $("#sideBar").html(data);
+            
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
