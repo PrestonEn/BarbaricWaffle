@@ -128,6 +128,7 @@ class ListingController extends Controller
         if($request->ajax()){
             //dd($request->all());
             
+            $country = Input::get('country');
             $region = Input::get('region');
             $maxPrice = Input::get('maxPrice');
             $minPrice = Input::get('minPrice');
@@ -144,7 +145,6 @@ class ListingController extends Controller
             $other_pets =      (Input::has('other')) ? 1 : null;
             $numMates = Input::get('MaxNumRoommates');
             
-            $locations = explode(',', $region);
             if($laundry == "na") $laundry = 0;
             
             //$locations = Location::where('city', $region)->get();
@@ -176,7 +176,7 @@ class ListingController extends Controller
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
                 if($region != "All"){
-                    if($location['city'] == $locations[0]){
+                    if($location['city'] == $region && $location['country'] == $country){
                         //dd($list);
                         array_push($listings, $location);
                         $count = $count +1;
@@ -213,6 +213,7 @@ class ListingController extends Controller
         
             //dd($request->all());
         if($request->ajax()){
+            
             $region = Input::get('region');
             
             //$locations = explode(',', $region);
@@ -222,6 +223,7 @@ class ListingController extends Controller
             
             $save->user()->associate(Auth::user());
             $save->city = $region;
+            $save->country = Input::get('country');
             
             //$save->country = $locations[1];
             $save->price_monthly_min = Input::get('minPrice');
@@ -253,13 +255,42 @@ class ListingController extends Controller
         if($request->ajax()){
             $id = $_POST['id'];
             $savedFilters = Saved_Search::where('saved_search_id', '=', $id)
-                ->where('user_id','=', Auth::user()->user_id)
                 ->get();
+            
             
             
             return response()->json(['data'=>$savedFilters]);
             
         }
     
+    }
+    
+    public function getCitiesFromCountry(Request $request){
+        if($request->ajax()){
+            $country = $_POST['country'];
+            $locations = Location::where('country', '=', $country)
+                ->get();
+            
+            $city = array();
+            
+            foreach($locations as $location){
+                //$listings = Location::where($list->listing->location.city, '=', $region);         
+                $listings = $location->listing;
+                foreach($listings as $list){
+                    $listingInfo = $list->listing_info;  
+                    foreach($listingInfo as $listInfo){
+                     
+                        if($listInfo['is_active'] == 1){
+                            array_push($city, $location->city);
+                        }  
+                        
+                    }
+                }
+            }
+            //dd($city);
+            return $city;
+            
+        }
+        
     }
 }

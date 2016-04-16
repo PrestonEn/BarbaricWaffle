@@ -50,20 +50,27 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-sm-4">
-                                    <label class="textLabel"> Region </label>
-                                    <select class="form-control" id = "region" name="region">
+                                <div class="form-group col-sm-3">
+                                    <label class="textLabel"> Country </label>
+                                    <select onchange="getCitiesFromCountry(this)" class="form-control" id = "country" name="country">
+                                        <option></option>
                                         @foreach($location as $loc)
-                                        <option> {{$loc->city}} </option>
+                                        <option value = "{{$loc->country}}"> {{$loc->country}} </option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group col-sm-3">
+                                    <label class="textLabel"> City </label>
+                                    <select disabled class="form-control" id = "region" name="region">
+                                        
+                                    </select>
+                                </div>
 
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                     <label class="textLabel"> Rooms </label>
                                     <input class="form-control" type="text" name="rooms" />
                                 </div>
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                     <label class="textLabel"> Bathroom </label>
                                     <input class="form-control" type="text" name="bathrooms" />
                                 </div>

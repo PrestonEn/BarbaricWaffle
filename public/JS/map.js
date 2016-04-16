@@ -223,8 +223,8 @@ function searchFilters(e) {
                 });
             });
 
-            var input = $("#searchFilter select[name='region']").val();
-            if (input != "All" && lat != 0) {
+            //var input = $("#searchFilter select[name='region']").val();
+            if (lat != 0) {
                 map.setCenter(new google.maps.LatLng(lat, long));
             }
             var trueMarkers = new Array();
@@ -296,7 +296,7 @@ function saveSearch(e) {
 
                 $('#savedSearch').append($('<option>', {
                     value: value.saved_search_id,
-                    text: value.city,
+                    text: value.city + "," + value.country,
                 }));
                 passToArray(value);
             });
@@ -323,11 +323,13 @@ function updateSearch(savedId) {
     else $("input[name='rooms']").val("");
     if (savedSearchArray[id].num_bathrooms_total != 0) $("input[name='bathrooms']").val(savedSearchArray[id].num_bathrooms_total);
     else $("input[name='bathrooms']").val("");
-    
-    
+
+
     $("#maxRoommates").val(savedSearchArray[id].num_roommates_max);
-    
+
+    $("#country").val(savedSearchArray[id].country);
     $("#region").val(savedSearchArray[id].city);
+
 
     if (savedSearchArray[id].owner_pays_internet == 0) $("input[name='internet']").prop("checked", false);
     else {
@@ -362,84 +364,46 @@ function updateSearch(savedId) {
         $("input[name='furnished']").prop("checked", true);
     }
 
-
-
     searchFilters(event);
 
 }
 
 
-
-
-
-
-
-
-/*  ----------Old Save search form update
-function updateSearch(savedId) {
-
-
+function getCitiesFromCountry(country) {
+    var c = country.value;
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 
     });
+
+    //ajax call to update sideBar
     $.ajax({
         type: "POST",
-        url: "/getSavedSearch",
+        url: "/getCitiesFromCountry",
         data: {
-            id: savedId.value
+            country: c
         },
         success: function (data) {
+            if ($.trim(data)) {
+                $('#region').empty();
+                $('#region').prop('disabled', false);
+                $('#region').append($('<option>', {
+                    value: data,
+                    text: data,
+                }));
+            }
+            else{
+                $('#region').empty();
+                $('#region').prop('disabled', true);
+            }
 
-            $.each(data, function (k, value) {
-
-                $.each(value, function (key, val) {
-
-                    $("input[name='rooms']").val(val.num_bedrooms_total);
-                    $("input[name='bathrooms']").val(val.num_bathrooms_total);
-
-                    if (val.owner_pays_internet = 0) $("input[name='internet']").prop("checked", false);
-                    else {
-                        $("input[name='internet']").prop("checked", true);
-                    }
-                    if (val.owner_pays_water = 0) $("input[name='water']").prop("checked", false);
-                    else {
-                        $("input[name='water']").prop("checked", true);
-                    }
-                    if (val.owner_pays_electricty = 0) $("input[name='hydro']").prop("checked", false);
-                    else {
-                        $("input[name='hydro']").prop("checked", true);
-                    }
-                    if (val.has_kitchen = 0) $("input[name='hasKitchen']").prop("checked", false);
-                    else {
-                        $("input[name='hasKitchen']").prop("checked", true);
-                    }
-                    if (val.allowed_dogs = 0) $("input[name='dogs']").prop("checked", false);
-                    else {
-                        $("input[name='dogs']").prop("checked", true);
-                    }
-                    if (val.allowed_cats = 0) $("input[name='cats']").prop("checked", false);
-                    else {
-                        $("input[name='cats']").prop("checked", true);
-                    }
-                    if (val.allowed_other_pets = 0) $("input[name='other']").prop("checked", false);
-                    else {
-                        $("input[name='other']").prop("checked", true);
-                    }
-                    if (val.has_furnishings = 0) $("input[name='furnished']").prop("checked", false);
-                    else {
-                        $("input[name='furnished']").prop("checked", true);
-                    }
-
-
-                });
-            });
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
         }
     });
-    }
-    */
+
+
+}
