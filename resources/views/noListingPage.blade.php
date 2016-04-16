@@ -1,0 +1,1 @@
+<img src="{{URL::asset('/img/nothing.jpg')}}" alt="nothing" height="auto" width="100%">

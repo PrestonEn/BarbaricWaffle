@@ -115,9 +115,11 @@ class ListingController extends Controller
                 $ids = $_POST['id'];
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
                 //returns sidebar view with udpated listings
-               
+                
+                
                 return view ('sidebarUpdate', compact('listingInfo'));
             }
+            else return view('noListingPage');
         }  
     }
     
@@ -130,19 +132,20 @@ class ListingController extends Controller
             $minPrice = Input::get('minPrice');
             $rooms = Input::get('rooms');
             $bathrooms = Input::get('bathrooms');
-            $kitchen =             (Input::has('haskitchen')) ? 1 : 0;
+            $kitchen =             (Input::has('hasKitchen')) ? 1 : null;
             $laundry = Input::get('laundry');
-            $internet =     (Input::has('internet')) ? 1 : 0;
-            $water =        (Input::has('water')) ? 1 : 0;
-            $electricity =  (Input::has('hydro')) ? 1 : 0;
-            $pets =          (Input::has('pets')) ? 1 : 0;
+            $internet =     (Input::has('internet')) ? 1 : null;
+            $water =        (Input::has('water')) ? 1 : null;
+            $electricity =  (Input::has('hydro')) ? 1 : null;
+            $pets =          Input::get('pets');
             $dogs =            (Input::has('dogs')) ? 1 : 0;
             $cats =            (Input::has('cats')) ? 1 : 0;
             $other_pets =      (Input::has('other')) ? 1 : 0;
-            $numMates = Input::get('MaxNumRoomates');
+            $numMates = Input::get('MaxNumRoommates');
             
             $locations = explode(',', $region);
-            if($laundry == "") $laundry = null;
+            if($laundry == "na") $laundry = 0;
+            
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
@@ -150,18 +153,24 @@ class ListingController extends Controller
                 ->whereIfNotNull('price_monthly',"<=", $maxPrice)
                 ->whereIfNotNull('price_monthly',">=", $minPrice)
                 ->whereIfNotNull('num_bathrooms_total', "=",$bathrooms)
-                ->whereIfNotNull('num_roomates_max', "<=", $numMates)
-                ->whereIfNotNull('has_laundry', "=", $laundry);
-                //->whereIfNotNull('owner_pays_internet', "=",$internet)
-                //->whereIfNotNull('owner_pays_electricity', "=",$electricity);
-                //->whereIfNotNull('allowed_dogs', "=",$dogs)
-                //->whereIfNotNull('allowed_cats', "=",$cats)
-                //->whereIfNotNull('allowed_other_pets', "=",$other_pets);
+                ->whereIfNotNull('has_laundry', "=", $laundry)
+                ->whereIfNotNull('owner_pays_internet', "=",$internet)
+                ->whereIfNotNull('has_kitchen', "=",$kitchen)
+                ->whereIfNotNull('owner_pays_electricity', "=",$electricity)
+                ->whereIfNotNull('owner_pays_water', "=",$water)
+                ->whereIfNotNull('owner_has_pets', "=",$pets)
+                ->whereIfNotNull('allowed_dogs', "=",$dogs)
+                ->whereIfNotNull('allowed_cats', "=",$cats)
+                ->whereIfNotNull('allowed_other_pets', "=",$other_pets);
             
+            if($numMates == "any") $query = $query->where('num_roommates_max', "<=", "99");
+            else $query = $query->where('num_roommates_max', "=", $numMates);
             
             $listingInfo = $query->get();
             $listings = array();
-            
+            $long = 0;
+            $lat = 0;
+            $count = 0;
             foreach($listingInfo as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
@@ -169,6 +178,9 @@ class ListingController extends Controller
                     if($location['city'] == $locations[0]){
                         //dd($list);
                         array_push($listings, $location);
+                        $count = $count +1;
+                        $long = $long + $location->longitude;
+                        $lat = $lat + $location->latitude; 
                     }
                 }
                 else{
@@ -177,7 +189,13 @@ class ListingController extends Controller
                 
                 
             }
-            
+            if($count != 0){
+                $long = $long/$count;
+                $lat = $lat/$count;
+            }
+          
+            array_push($listings, $lat);
+            array_push($listings, $long);
             //dd($internet);
            // dd($listings);
             

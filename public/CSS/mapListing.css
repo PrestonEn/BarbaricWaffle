@@ -1,71 +1,116 @@
-#col1, #col2{
-  height:100%;
+#col1,
+#col2 {
+    height: 100%;
 }
 
-.centerText{
-  text-align: center;
+.centerText {
+    text-align: center;
 }
 
 #modalButton {
-  background-color: #006666;
-  height: 100%;
-  width: auto;
-  font-size: 1.7vh;
+    background-color: #006666;
+    height: 100%;
+    width: auto;
+    font-size: 1.7vh;
+    border: 0 !important;
 }
 
-.table{
-  padding: 0px;
-  margin: 0px;
+.table {
+    padding: 0px;
+    margin: 0px;
 }
 
-#modalButtonHolder{
-  height: 6vh;
-  min-height: 30px;
-  width: 100%;
-  position: fixed;
-  background-color: #002F2F;
-  left:0;
-  bottom:0;
-  z-index: 99;
+#modalButtonHolder {
+    height: 6vh;
+    min-height: 30px;
+    width: 100%;
+    position: fixed;
+    background-color: #002F2F;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
 }
 
 #col2>.row {
-  height: 30%;
-  width: 100%;
-  margin-top: 1.3em;
-  margin-bottom: 1.3em;
-  border-top: 1px solid #00e6e6;
+    height: 30%;
+    width: 100%;
+    margin-top: 1.3em;
+    margin-bottom: 1.3em;
+    border-top: 1px solid #00e6e6;
 }
 
-#col2{
-  font-size: 1vmax;
-  font-family: 'calibri', sans-serif;
-  overflow-y: scroll;
-  padding-left:0px;
+#col2 {
+    font-size: 1vmax;
+    font-family: 'calibri', sans-serif;
+    overflow-y: scroll;
+    padding-left: 0px;
 }
 
 #title {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 #col2 .housePic {
-  height: 100%;
-  width: auto;
-} 
+    height: 30%;
+    width: auto;
+}
 
 .feature {
-  width: 1.1vw;
-  height: 1.1vw;
+    width: 1.1vw;
+    height: 1.1vw;
 }
 
 #col2 table {
-  font-size: 80%;
+    font-size: 80%;
 }
 
 .table-condensed tr th {
-   border-bottom: 1px solid #A7A37E; /* Change the color you want to set */
+    border-bottom: 1px solid #A7A37E;
+    /* Change the color you want to set */
 }
 
 .table-condensed tr td {
-   border-bottom: 1px solid #A7A37E; /* Change the color you want to set */
+    border-bottom: 1px solid #A7A37E;
+    /* Change the color you want to set */
+}
+
+.customButton {
+    border-radius: 0 !important;
+    border: 0px;
+    outline: 0;
+}
+
+.button1 {
+    background-color: #006666 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+
+.markerLabel {
+    box-sizing: border-box;
+    background: url(../img/home.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 2px solid #006666;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+     -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+}
+
+.markerHovered{
+    box-sizing: border-box;
+    background: url(../img/home.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 2px solid #00FF66;
+    height: 36px;
+    width: 36px;
+    border-radius: 36px;
+    
+     -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
 }
