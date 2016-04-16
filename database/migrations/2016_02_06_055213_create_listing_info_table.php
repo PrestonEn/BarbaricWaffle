@@ -45,7 +45,7 @@ class CreateListingInfoTable extends Migration
             $table->date('rental_available_to')->nullable;
 
             //House details
-            $table->integer('room_level')->nullable;
+            $table->string('room_level', 7)->nullable;
             $table->integer('room_size_sqft')->unsigned()->nullable;
 
             $table->integer('num_bedrooms_total')->unsigned()->nullable;
@@ -53,7 +53,7 @@ class CreateListingInfoTable extends Migration
             $table->integer('num_roommates_max')->unsigned()->nullable;
 
             $table->boolean('has_furnishings');
-            $table->string('details_furnishings', 255)->nullable;
+            //$table->string('details_furnishings', 255)->nullable;
 
             //Utilities & extras
             $table->boolean('has_kitchen');

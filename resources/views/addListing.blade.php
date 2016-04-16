@@ -123,7 +123,7 @@
             <div class="row">
                 <div class="form-group col-sm-3">
                     <label>Square Footage:</label>
-                    <input type="text" class="form-control" id="sqft_id" name="sqft_name" value="{{ old('sqft_name') }}"required>
+                    <input type="text" class="form-control" id="sqft_id" name="sqft_name" value="{{ old('sqft_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
                     <label># Bedrooms:</label>
@@ -131,16 +131,16 @@
                 </div>
                 <div class="form-group col-sm-3">
                     <label># Bathrooms:</label>
-                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}"required>
+                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
                     <label>Max # Roommates:</label>
-                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}"required>
+                    <input type="text" class="form-control" id="roommatesNum_id" name="roommatesNum_name" value="{{ old('roommatesNum_name') }}" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="yard_name" value="{{ old('yard_name') }}">
+                    <input type="checkbox" name="yard_name" value='true' @if(old('yard_name')=='true') checked @endif}}>
                     <label>Yard?</label>
                 </div>
                 <div class="form-group col-sm-3">
@@ -193,15 +193,15 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="internetCK_name">
+                    <input type="checkbox" name="internet_name">
                     <label>Internet Charge?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="electricityCK_name">
+                    <input type="checkbox" name="electricity_name">
                     <label>Electricity Charge?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="waterCK_name">
+                    <input type="checkbox" name="water_name">
                     <label>Water Charge?</label>
                 </div>
             </div>
@@ -211,7 +211,7 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="smokeCK_name">
+                    <input type="checkbox" name="smoke_name">
                     <label>Smoke Free?</label>
                 </div>
             </div>
