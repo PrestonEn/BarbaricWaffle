@@ -67,19 +67,22 @@ class lisController extends Controller
 
 		public function singleListingInfo($listingId){
 			//Should this have an ->active()?
+			$listing = Listing::where('listing_id','=',$listingId)->first();
+			$user = $listing->location->user;
+
+
 			$listings = Listing_Info::where('listing_id','=',$listingId)->get();
 			$listingInfo = $listings->first();
 
 			$creationDate = $listingInfo->created_at;
 			$date = $creationDate->diffInDays();
-
-			return view('houseTemplate', compact('listingInfo'), compact('date'));
+			return view('houseTemplate', compact('listingInfo'), compact('date'))->with('user',$user);
 		}
 
 		public function viewForeignProfile($userId){
 			$user = User::where('user_id','=',$userId)->first();
-			$listingsActive = Listing::users_listings();
-			return view('profileView', compact('listingsActive'), compact('user'));
+			$locations = $user->locations;
+			return view('profileView', compact('locations'), compact('user'));
 		}
 
 		public function getPropertyListings($locationId){

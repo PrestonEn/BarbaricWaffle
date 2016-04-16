@@ -22,9 +22,8 @@
         </div>
         <div class="col-sm-6">
             <div class="imgGallery"></div>
-            <div id="requestViewing" class="button col-sm-5">Request Viewing</div>
-            <div id="requestInfo" class="button col-sm-5">Request Info</div>
-            <div id="callNow" class="button col-sm-2">Call Now!</div>
+            <div id="saveToFavourites" class="button col-sm-6">Save to Favourites</div>
+            <div id="callNow" class="button col-sm-6"><a id = "callNowLink"alt="Call Listing Owner" href="tel:{{$user->phone}}">Call Now!</a></div>
             <div class="row">
                 <div class="col-sm-12">
                     <h4>Description</h4>
@@ -71,7 +70,7 @@
 
 
                     <p class="col-sm-6" id="sendMessage">Send a message</p>
-                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$listingInfo->listing->location->user->user_id}}">View Profile</a></p>
+                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$user->user_id}}">View Profile</a></p>
 
                 </div>
             </div>
