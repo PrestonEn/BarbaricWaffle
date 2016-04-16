@@ -91,4 +91,18 @@ class lisController extends Controller
 			return view('listingByProperty', compact('listings'), compact('location'));
 		}
 
+		public function addToFavourites($listingId){
+			$user = Auth::user();
+
+			foreach ($user->favourite_listings as $fav) {
+				if ($fav->listing_id == $listingId){
+					return redirect('profileFavourites');
+				}
+			}
+
+			$listing = Listing::where('listing_id','=',$listingId)->first();
+			$user->favourite_listings()->save($listing);
+			return redirect('profileFavourites');
+		}
+
 }

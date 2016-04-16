@@ -7,7 +7,7 @@
 			<div id = "navbarLeft" class="list-group">
 	  			<a id = "colourNavBar" href="../profile/{{Auth::user()->user_id}}" class="list-group-item active">Profile</a>
 	  			<a href="../profileSearches" class="list-group-item">Saved Searches</a>
-	  			<a href="../profileFavourites/{{Auth::user()->user_id}}" class="list-group-item">Favourites</a>
+	  			<a href="../profileFavourites" class="list-group-item">Favourites</a>
 	  			<!--<a href="../profileMessages" class="list-group-item">Messages</a>-->
 	  			<a href="../profilePostings/{{Auth::user()->user_id}}" class="list-group-item">Posted Listings</a>
 	  			<a href="../profileSettings/{{Auth::user()->user_id}}" class="list-group-item">Settings</a>

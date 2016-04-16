@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-6">
             <div class="imgGallery"></div>
-            <div id="saveToFavourites" class="button col-sm-6">Save to Favourites</div>
+            <div id="saveToFavourites" class="button col-sm-6" onClick="window.location ='../profileFavourites/{{$listingInfo->listing->listing_id}}'">Save to Favourites</div>
             <div id="callNow" class="button col-sm-6"><a id = "callNowLink"alt="Call Listing Owner" href="tel:{{$user->phone}}">Call Now!</a></div>
             <div class="row">
                 <div class="col-sm-12">
