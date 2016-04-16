@@ -226,6 +226,7 @@ function searchFilters(e) {
             //var input = $("#searchFilter select[name='region']").val();
             if (lat != 0) {
                 map.setCenter(new google.maps.LatLng(lat, long));
+                map.setZoom(3);
             }
             var trueMarkers = new Array();
             var falseMarkers = new Array();
@@ -386,6 +387,7 @@ function getCitiesFromCountry(country) {
             country: c
         },
         success: function (data) {
+            
             if ($.trim(data)) {
                 $('#region').empty();
                 $('#region').prop('disabled', false);

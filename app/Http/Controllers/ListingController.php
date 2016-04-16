@@ -124,12 +124,15 @@ class ListingController extends Controller
         }  
     }
     
+    
+    
     public function searchFilters(Request $request){
         if($request->ajax()){
             //dd($request->all());
             
             $country = Input::get('country');
             $region = Input::get('region');
+            
             $maxPrice = Input::get('maxPrice');
             $minPrice = Input::get('minPrice');
             $rooms = Input::get('rooms');
@@ -146,7 +149,7 @@ class ListingController extends Controller
             $numMates = Input::get('MaxNumRoommates');
             
             if($laundry == "na") $laundry = 0;
-            
+            if($maxPrice == 2000) $maxPrice = 99999;
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
@@ -172,10 +175,12 @@ class ListingController extends Controller
             $long = 0;
             $lat = 0;
             $count = 0;
+            
             foreach($listingInfo as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
-                if($region != "All"){
+                
+                if($country != "all"){
                     if($location['city'] == $region && $location['country'] == $country){
                         //dd($list);
                         array_push($listings, $location);
@@ -185,16 +190,16 @@ class ListingController extends Controller
                     }
                 }
                 else{
-                     array_push($listings, $location);
+                    array_push($listings, $location);
+                    $count = $count +1;
+                    $long = $long + $location->longitude;
+                    $lat = $lat + $location->latitude; 
                 }
-                
-                
             }
             if($count != 0){
                 $long = $long/$count;
                 $lat = $lat/$count;
             }
-          
             array_push($listings, $lat);
             array_push($listings, $long);
             //dd($internet);

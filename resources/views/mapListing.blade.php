@@ -53,7 +53,7 @@
                                 <div class="form-group col-sm-3">
                                     <label class="textLabel"> Country </label>
                                     <select onchange="getCitiesFromCountry(this)" class="form-control" id = "country" name="country">
-                                        <option></option>
+                                        <option value = "all">All</option>
                                         @foreach($location as $loc)
                                         <option value = "{{$loc->country}}"> {{$loc->country}} </option>
                                         @endforeach
