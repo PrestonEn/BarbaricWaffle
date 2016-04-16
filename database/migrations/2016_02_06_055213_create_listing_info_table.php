@@ -44,7 +44,6 @@ class CreateListingInfoTable extends Migration
             $table->date('rental_available_from');
             $table->date('rental_available_to')->nullable;
 
-
             //House details
             $table->integer('room_level')->nullable;
             $table->integer('room_size_sqft')->unsigned()->nullable;

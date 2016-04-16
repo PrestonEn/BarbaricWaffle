@@ -5,7 +5,7 @@
 
 <div class="container" style="width:700px;">
     <div class="row">
-        <h2>Create a New Listing</h2>
+        </br>        
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -15,61 +15,99 @@
                 </ul>
             </div>
         @endif
+
+        <div class = "pageTitle"> Create a New Listing </div>    
+
         <form method="POST" id="addListingsForm" role="form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="longitude_id" name="longitude_name" />
             <input type="hidden" id="latitude_id" name="latitude_name" />
 
             <!-- Title -->
-            <div class="form-group">
+            <div class="form-group col-sm-12">
+                <label for="title_name">Listing Title:</label>
                 <div class="form-group">
                     <input type="text" class="form-control" id="title_id" name="title_name" placeholder="Enter Title" value="{{ old('title_name') }}" required>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="description">Listing Description:</label>
+            <div class="form-group col-sm-12">
+                <label for="description_name">Listing Description:</label>
                 <textarea class="form-control" rows="5" id="description_id" name="description_name">{{ old('description_name') }}</textarea>
             </div>
 
-            <!-- Location -->
+            @if(!empty($locations))
             <div class="row">
-                <div class="col-sm-12">
-                    <p>Location</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-9">
+                <div class="form-group col-sm-6">
+                    <label for="location_name">Location:</label>
                     <select class="form-control" id="location_id" name="location_name" value="{{ old('location_name') }}" required>
                         @foreach ($locations as $loc)
                             <option value="{{$loc->location_id}}">{{$loc->street_address}}, {{$loc->city}}, {{$loc->province}}</option>
                         @endforeach
                     </select>
                 </div>
+
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="Unit Number" value="{{ old('unitNum_name') }}">
+                    <label for="location_name">Floor Number</label>
+                    <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="" value="{{ old('unitNum_name') }}">
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label for="location_name">Unit Number</label>
+                    <input type="text" class="form-control" id="unitNum_id" name="unitNum_name" placeholder="" value="{{ old('unitNum_name') }}">
                 </div>
             </div>
 
+            <div class="row" id = "registerInquiry">
+                <div class="form-group col-sm-12">
+                    <div class = "panel panel-default">
+                        Address not listed above? <a href="../addProperty">Add a New Property.</a>
+                    </div>
+                </div>
+            </div>
+            @else
+            <input type="hidden" id="location_id" name="location_name" />
+            <div class="row" id = "registerInquiry">
+                <div class="form-group col-sm-12">
+                    <div class = "panel panel-default">
+                        No locations found! <a href="../addProperty">Add a New Property</a> to be able to post a listing.
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <!--Rental Length-->
             <div class="row">
-                <div class="form-group col-sm-9">  
-                    <a href="../addProperty" class="list-group-item">Add a new Property</a>
+                <div class="form-group col-sm-4">
+                    <label>Available from:</label>
+                    <div class='input-group date' id='dateFrom_id' name='dateFrom_name'>
+                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" value="{{ old('dateFrom_name') }}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Available To:</label>
+                    <div class='input-group date' id='dateTo_id' name='dateTo_name'>
+                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" value="{{ old('dateTo_name') }}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="description">Min. Lease (Months)</label>
+                    <input type="text" class="form-control" id="rentalLength_id" name="rentalLength_name" placeholder="12" value="{{ old('rentalLength_name') }}">
                 </div>
             </div>
 
             <!-- House Info -->
             <div class="row">
-                <div class="col-sm-12">
-                    <p><b>House Information</b></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="rent_id" name="rent_name" placeholder="Rental Price (Monthly)" value="{{ old('rent_name') }}" required>
+                <div class="form-group col-sm-4">
+                    <label for="description">Rent (Monthly):</label>
+                    <input type="text" class="form-control" id="rent_id" name="rent_name" placeholder="" value="{{ old('rent_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-
                     <select class="form-control" id="houseType_id" name="houseType_name" value="{{ old('houseType_name') }}" required>
                         <option>House</option>
                         <option>Apartment</option>
@@ -80,28 +118,64 @@
                     <input type="text" class="form-control" id="sqftSize_id" name="sqftSize_name" placeholder="Square Footage" value="{{ old('sqftSize_name') }}">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="description">Pricing Information:</label>
-                <textarea class="form-control" rows="3" id="priceDescription_id" name="priceDescription_name" 
-                    placeholder="First and last month rent required up front, yearly payments, etc.">{{ old('priceDescription_name') }}</textarea>
+            
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label for="description">Pricing Information:</label>
+                    <textarea class="form-control" rows="3" id="priceDescription_id" name="priceDescription_name" 
+                        placeholder="First and last month rent required up front, yearly payments, etc.">{{ old('priceDescription_name') }}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label># Bedrooms:</label>
+                    <input type="text" class="form-control" id="bedrooms_id" name="bedrooms_name" value="{{ old('bedrooms_name') }}" required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label># Bathrooms:</label>
+                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}"required>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Max # Roommates:</label>
+                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}"required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <hr style="border-color: #000000;">
+                </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="bedrooms_id" name="bedrooms_name" placeholder="Number of Bedrooms" value="{{ old('bedrooms_name') }}" required>
+                    <input type="checkbox" name="pet" value="pet">
+                    <label>Dogs Allowed?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" placeholder="Number of Bathrooms" value="{{ old('bathrooms_name') }}"required>
+                    <input type="checkbox" name="pet" value="pet">
+                    <label>Cats Allowed?</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="pet" value="pet">
+                    <label>Other Pets Allowed?</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="pet" value="pet">
+                    <label>Allergy Concerns?</label>
                 </div>
             </div>
-            <!--
             <div class="row">
-                <div class="checkbox col-sm-4">
-                    <label>
-                        <input type="checkbox" name="pet" value="pet">Pets</label>
+                <div class="form-group col-sm-12">
+                    <label>Pet Information:</label>
+                    <textarea class="form-control" rows="3" id="petDescription_id" name="petDescription_name" 
+                        placeholder="Additional Pet information, allergy concerns, etc.">{{ old('petDescription_name') }}</textarea>
                 </div>
-                <div class="checkbox col-sm-4">
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
                     <label>
-                        <input type="checkbox" name="smoke" value="smoke">Smoke Free</label>
+                        <input type="checkbox" name="smoke" value="smoke"> Smoke Free</label>
                 </div>
                 <div class="checkbox col-sm-4">
                     <label>
@@ -144,31 +218,11 @@
                         <input type="checkbox" name="otherPet" value="otherPet">Other Pets</label>
                 </div>
             </div>
-            -->
+            
             <div class="form-group">
                 <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="Amenities" value="{{ old('amenities_name') }}">
             </div>
-            <div class="row">
-                <label class="col-sm-6">Available from</label>
 
-                <label class="col-sm-6">To</label>
-                <div class="form-group col-sm-6">
-                    <div class='input-group date' id='dateFrom_id' name='dateFrom_name'>
-                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" value="{{ old('dateFrom_name') }}"/>
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group col-sm-6">
-                    <div class='input-group date' id='dateTo_id' name='dateTo_name'>
-                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" value="{{ old('dateTo_name') }}"/>
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
 
             <!--
             <div class="row">
