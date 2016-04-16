@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailer;
 use Mail;
 use Hash;
 use Auth;
+use Image;
 use Validator;
 use App\User;
 use App\Http\Requests;
@@ -111,22 +112,19 @@ class userController extends Controller
 
 
     public function updateImage(Request $request){
-        // validate for file type
         $this->validate($request, [
+                'photo' => 'bail|required|image',
+            ]);   
+        
+
+
+
+        if ($request->hasFile('photo')) {
+            $user = Auth::user();
+
             
-            ]);
 
-        // get the image from the request
-        // process it to a reasonable size/quality
-        // save the image to a location
-
-        // remove any old image of the user
-
-        // save that location to the database, associated to a user
-
-        // return them to the profile page
-
-
+        }
     }
 
 }

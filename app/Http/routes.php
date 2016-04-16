@@ -73,7 +73,7 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
-    Route::get('/wakawaka', 'lisController@imTest');
+    Route::post('profileSettings/{userId}/updateImage', 'userController@updateImage');
 
 
 
