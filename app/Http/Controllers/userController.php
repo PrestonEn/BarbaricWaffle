@@ -121,10 +121,27 @@ class userController extends Controller
 
         if ($request->hasFile('photo')) {
             $user = Auth::user();
+            $img = Image::make(Input::file('photo'));
+            // resize the image to a width of 300 and constrain aspect ratio (auto height)
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
-            
+            $filename = 'images/profile'.$user->user_id.'jpg';
+            $img->save($filename, 100);
+
+            $user->fill(['user_image_filename' => $filename])->save();
+
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Profile Image Change Successful');
+
 
         }
+
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Profile Image Change Failed');
     }
 
 }
