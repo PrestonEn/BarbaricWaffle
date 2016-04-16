@@ -6,16 +6,20 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/signUp.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
+</br>
+
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class = "pageTitle"> Sign Up </div>
-	@if (count($errors) > 0)
-	    <div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+
 <form action = "signUp" method = "post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
