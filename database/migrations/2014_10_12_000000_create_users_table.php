@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('phone', 18)->unique();
 
             //Additional User Information
+            $table->string('user_image_filename')->default('');
+
             
 
             //Laravel Generated
