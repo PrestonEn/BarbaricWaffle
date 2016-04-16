@@ -1,3 +1,6 @@
+h2 {
+	text-align: center;
+}
 
 .formWidth{
     width: 800px;
@@ -12,3 +15,4 @@
 #dropzoneFileUpload {
 	background-color: white;
 }
+
