@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use App\User;
 use App\Listing;
 use App\Location;
+use App\Saved_Search;
 use App\Listing_Info;
 use Carbon\Carbon;
 use DateTime;
@@ -138,9 +139,9 @@ class ListingController extends Controller
             $water =        (Input::has('water')) ? 1 : null;
             $electricity =  (Input::has('hydro')) ? 1 : null;
             $pets =          Input::get('pets');
-            $dogs =            (Input::has('dogs')) ? 1 : 0;
-            $cats =            (Input::has('cats')) ? 1 : 0;
-            $other_pets =      (Input::has('other')) ? 1 : 0;
+            $dogs =            (Input::has('dogs')) ? 1 : null;
+            $cats =            (Input::has('cats')) ? 1 : null;
+            $other_pets =      (Input::has('other')) ? 1 : null;
             $numMates = Input::get('MaxNumRoommates');
             
             $locations = explode(',', $region);
@@ -163,7 +164,7 @@ class ListingController extends Controller
                 ->whereIfNotNull('allowed_cats', "=",$cats)
                 ->whereIfNotNull('allowed_other_pets', "=",$other_pets);
             
-            if($numMates == "any") $query = $query->where('num_roommates_max', "<=", "99");
+            if($numMates == "99") $query = $query->where('num_roommates_max', "<=", "99");
             else $query = $query->where('num_roommates_max', "=", $numMates);
             
             $listingInfo = $query->get();
@@ -205,5 +206,60 @@ class ListingController extends Controller
         }
         
         
+    }
+    
+    
+    public function saveFilter(Request $request){
+        
+            //dd($request->all());
+        if($request->ajax()){
+            $region = Input::get('region');
+            
+            //$locations = explode(',', $region);
+            
+            //gonna add country later
+            $save = new Saved_Search;
+            
+            $save->user()->associate(Auth::user());
+            $save->city = $region;
+            
+            //$save->country = $locations[1];
+            $save->price_monthly_min = Input::get('minPrice');
+            $save->price_monthly_max = Input::get('maxPrice');
+            $save->num_bathrooms_total = Input::get('bathrooms');
+            $save->num_bedrooms_total = Input::get('rooms');
+            $save->has_kitchen = (Input::has('hasKitchen')) ? 1: 0;
+            $save->owner_pays_internet = (Input::has('internet')) ? 1: 0;
+            $save->owner_pays_water = (Input::has('water')) ? 1: 0;
+            $save->owner_pays_electricity = (Input::has('hydro')) ? 1: 0;
+            $save->owner_has_pets = Input::get('pets');
+            $save->allowed_dogs = (Input::has('dogs')) ? 1 : 0;
+            $save->allowed_cats = (Input::has('cats')) ? 1 : 0;
+            $save->allowed_other_pets = (Input::has('other')) ? 1 : 0;
+            $save->has_furnishings = (Input::has('furnished')) ? 1 : 0;
+            
+            
+            $save->num_roommates_max = Input::get('MaxNumRoommates');
+            $save->save();    
+            
+            return response()->json(['data'=>$save]);
+        }
+        
+    }
+    
+
+
+    public function getFilter(Request $request){
+        if($request->ajax()){
+            $id = $_POST['id'];
+            $savedFilters = Saved_Search::where('saved_search_id', '=', $id)
+                ->where('user_id','=', Auth::user()->user_id)
+                ->get();
+            
+            
+            return response()->json(['data'=>$savedFilters]);
+            
+        }
+    
     }
 }

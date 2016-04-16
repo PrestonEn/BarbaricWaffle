@@ -1,4 +1,3 @@
-
 var map;
 var geocoder;
 var markers = new Array();
@@ -12,6 +11,7 @@ var latitude = new Array();
 var searchLocationID = new Array();
 var infowindow;
 var locationIDs = new Array();
+var savedSearchArray = new Array();
 
 
 
@@ -31,7 +31,7 @@ function initMap(arr, ids, price, title, long, lat) {
         lng: -79.3
     };
     setMap(arr, ids, coords);
-   
+
 }
 
 function setMap(arr, ids, position) {
@@ -62,7 +62,7 @@ function setMap(arr, ids, position) {
             boundChangedEvent();
         }, 500);
     });
-    
+
 }
 
 //Event which fires after the long + lat bounds have changed
@@ -126,7 +126,7 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
             path: google.maps.SymbolPath.CIRCLE,
             scale: 0,
         },
-        labelAnchor: new google.maps.Point(15,0),
+        labelAnchor: new google.maps.Point(15, 0),
         labelClass: "markerLabel",
     });
 
@@ -148,7 +148,7 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
         window.location.href = "houseTemplate/" + ids;
     });
     */
-    
+
 
 }
 
@@ -252,21 +252,194 @@ function searchFilters(e) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
         }
     });
-}//end search filters
+} //end search filters
 
 //hover listing to show marker
-function showMarker(id){
+function showMarker(id) {
     //markersInBound[id].set("labelClass", "markerHovered");
     //alert(markersInBound[id]);
-    
+
     markers[markers.length - id].set("labelClass", "markerHovered");
-    markers[markers.length - id].set("labelAnchor", new google.maps.Point(18,0));
+    markers[markers.length - id].set("labelAnchor", new google.maps.Point(18, 0));
 }
 
-function hideMarker(id){
+function hideMarker(id) {
     //markersInBound[id].set("labelClass", "markerHovered");
     //alert(markersInBound[id]);
     markers[markers.length - id].set("labelClass", "markerLabel");
-    markers[markers.length - id].set("labelAnchor", new google.maps.Point(15,0));
+    markers[markers.length - id].set("labelAnchor", new google.maps.Point(15, 0));
 }
 
+function saveSearch(e) {
+    e.preventDefault();
+    //needed in laravel for ajax
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+
+    });
+
+    var prices = slider.noUiSlider.get();
+
+
+    var form = $('#searchFilter').serialize() + "&minPrice=" + prices[0] + "&maxPrice=" + prices[1];
+
+    //ajax call to update sideBar
+    $.ajax({
+        type: "POST",
+        url: "/saveFilter",
+        data: form,
+        success: function (data) {
+
+            $.each(data, function (k, value) {
+
+                $('#savedSearch').append($('<option>', {
+                    value: value.saved_search_id,
+                    text: value.city,
+                }));
+                passToArray(value);
+            });
+            alert("Saved");
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("POST: ", jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+//passes all saveSearches into global array
+function passToArray(savedSearch) {
+    savedSearchArray.push(savedSearch);
+}
+
+function updateSearch(savedId) {
+    var id = savedId.value - 1;
+
+    if (savedSearchArray[id].num_bedrooms_total != 0) $("input[name='rooms']").val(savedSearchArray[id].num_bedrooms_total);
+    else $("input[name='rooms']").val("");
+    if (savedSearchArray[id].num_bathrooms_total != 0) $("input[name='bathrooms']").val(savedSearchArray[id].num_bathrooms_total);
+    else $("input[name='bathrooms']").val("");
+    
+    
+    $("#maxRoommates").val(savedSearchArray[id].num_roommates_max);
+    
+    $("#region").val(savedSearchArray[id].city);
+
+    if (savedSearchArray[id].owner_pays_internet == 0) $("input[name='internet']").prop("checked", false);
+    else {
+        $("input[name='internet']").prop("checked", true);
+    }
+    if (savedSearchArray[id].owner_pays_water == 0) $("input[name='water']").prop("checked", false);
+    else {
+        $("input[name='water']").prop("checked", true);
+    }
+    if (savedSearchArray[id].owner_pays_electricity == 0) $("input[name='hydro']").prop("checked", false);
+    else {
+        $("input[name='hydro']").prop("checked", true);
+    }
+    if (savedSearchArray[id].has_kitchen == 0) $("input[name='hasKitchen']").prop("checked", false);
+    else {
+        $("input[name='hasKitchen']").prop("checked", true);
+    }
+    if (savedSearchArray[id].allowed_dogs == 0) $("input[name='dogs']").prop("checked", false);
+    else {
+        $("input[name='dogs']").prop("checked", true);
+    }
+    if (savedSearchArray[id].allowed_cats == 0) $("input[name='cats']").prop("checked", false);
+    else {
+        $("input[name='cats']").prop("checked", true);
+    }
+    if (savedSearchArray[id].allowed_other_pets == 0) $("input[name='other']").prop("checked", false);
+    else {
+        $("input[name='other']").prop("checked", true);
+    }
+    if (savedSearchArray[id].has_furnishings == 0) $("input[name='furnished']").prop("checked", false);
+    else {
+        $("input[name='furnished']").prop("checked", true);
+    }
+
+
+
+    searchFilters(event);
+
+}
+
+
+
+
+
+
+
+
+/*  ----------Old Save search form update
+function updateSearch(savedId) {
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+
+    });
+    $.ajax({
+        type: "POST",
+        url: "/getSavedSearch",
+        data: {
+            id: savedId.value
+        },
+        success: function (data) {
+
+            $.each(data, function (k, value) {
+
+                $.each(value, function (key, val) {
+
+                    $("input[name='rooms']").val(val.num_bedrooms_total);
+                    $("input[name='bathrooms']").val(val.num_bathrooms_total);
+
+                    if (val.owner_pays_internet = 0) $("input[name='internet']").prop("checked", false);
+                    else {
+                        $("input[name='internet']").prop("checked", true);
+                    }
+                    if (val.owner_pays_water = 0) $("input[name='water']").prop("checked", false);
+                    else {
+                        $("input[name='water']").prop("checked", true);
+                    }
+                    if (val.owner_pays_electricty = 0) $("input[name='hydro']").prop("checked", false);
+                    else {
+                        $("input[name='hydro']").prop("checked", true);
+                    }
+                    if (val.has_kitchen = 0) $("input[name='hasKitchen']").prop("checked", false);
+                    else {
+                        $("input[name='hasKitchen']").prop("checked", true);
+                    }
+                    if (val.allowed_dogs = 0) $("input[name='dogs']").prop("checked", false);
+                    else {
+                        $("input[name='dogs']").prop("checked", true);
+                    }
+                    if (val.allowed_cats = 0) $("input[name='cats']").prop("checked", false);
+                    else {
+                        $("input[name='cats']").prop("checked", true);
+                    }
+                    if (val.allowed_other_pets = 0) $("input[name='other']").prop("checked", false);
+                    else {
+                        $("input[name='other']").prop("checked", true);
+                    }
+                    if (val.has_furnishings = 0) $("input[name='furnished']").prop("checked", false);
+                    else {
+                        $("input[name='furnished']").prop("checked", true);
+                    }
+
+
+                });
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("POST: ", jqXHR, textStatus, errorThrown);
+        }
+    });
+    }
+    */

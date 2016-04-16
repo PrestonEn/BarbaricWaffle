@@ -29,9 +29,30 @@
                     <div class="customContainer" id="search">
                         <form id="searchFilter" action="#" method="#">
                             <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="textLabel"> Saved Searches</label>
+                                    <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
+                                        <option></option>
+                                        @foreach($savedSearch as $saved)
+
+                                        <script>
+                                            $(document).ready(function () {
+                                                var obj = <?php echo json_encode($saved); ?>;
+                                                passToArray(obj);
+                                            });
+                                        </script>
+
+                                        <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
+
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-sm-4">
                                     <label class="textLabel"> Region </label>
-                                    <select class="form-control" name="region">
+                                    <select class="form-control" id = "region" name="region">
                                         @foreach($location as $loc)
                                         <option> {{$loc->city}} </option>
                                         @endforeach
@@ -114,14 +135,14 @@
                                     </div>
                                     <div class="col-sm-4 columns form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="hydro"> Free Electricity
+                                            <input type="checkbox" name="hydro"> Free Hydro
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="col-sm-4 columns form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="water"> Free Hydro
+                                            <input type="checkbox" name="water"> Free Electricity
                                         </label>
                                     </div>
                                     <div class="col-sm-4 columns form-group">
@@ -186,22 +207,26 @@
 
                                     <div class="col-sm-4">
                                         <label class="textLabel"># roomates</label>
-                                        <select class="form-control" name="MaxNumRoommates">
-                                            <option value="any"> Any </option>
+                                        <select id = "maxRoommates" class="form-control" name="MaxNumRoommates">
+                                            <option value="99"> Any </option>
                                             <option value="6"> 6 </option>
                                             <option value="5"> 5 </option>
                                             <option value="4"> 4 </option>
                                             <option value="3"> 3 </option>
                                             <option value="2"> 2 </option>
                                             <option value="1"> 1 </option>
+                                            <option value="0"> 0 </option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <button onClick="searchFilters(event)" class="btn btn-primary position button1">Submit</button>
+                                    <button onClick="saveSearch(event)" class="btn btn-primary position button1">Save Search</button>
+
                                 </div>
+
 
 
                             </div>
@@ -212,7 +237,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    >
                 </div>
             </div>
         </div>
@@ -248,8 +273,9 @@
 
         <script>
             google.maps.event.addDomListener(window, 'load', function () {
-                    load();
-                });
+                load();
+            });
+
             function load() {
                 var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
                 var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
@@ -258,11 +284,9 @@
                 var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
                 var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
 
-                 initMap(arr, ids, price, title, long, lat)
-            
+                initMap(arr, ids, price, title, long, lat)
+
             }
-            
-            
         </script>
 
         <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>

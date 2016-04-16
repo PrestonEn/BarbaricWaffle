@@ -66,6 +66,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::post('/searchFilter', 'ListingController@searchFilters');
 
+    Route::post('/saveFilter', 'ListingController@saveFilter');
+    Route::post('/getSavedSearch', 'ListingController@getFilter');
     Route::get('/logout', function()
     {
         Auth::logout();
