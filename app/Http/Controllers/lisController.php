@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Image;
 use App\Listing;
 use App\User;
 use App\Location;
@@ -87,5 +88,6 @@ class lisController extends Controller
 			$listings = $location->listing;
 			return view('listingByProperty', compact('listings'), compact('location'));
 		}
+
 
 }

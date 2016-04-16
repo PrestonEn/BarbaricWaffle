@@ -73,6 +73,8 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
+    Route::get('/wakawaka', 'lisController@imTest');
+
 
 
 });
