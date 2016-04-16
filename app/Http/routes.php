@@ -32,6 +32,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('profileFavourites/{listingId}', 'lisController@addToFavourites');
     //Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
 
+    Route::post('profileFavourites', 'lisController@removeFromFavourites');
+
+    Route::post('profilePostings', 'lisController@removeFromListings');
+
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
     Route::post('profileSettings/{userId}/resetPassword', 'userController@updatePassword');
@@ -40,9 +44,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('profileSettings/{userId}/resetPhoneNumber', 'userController@updatePhoneNumber');
 
-    Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
+    Route::get('profilePostings', 'lisController@getProfileListings');
 
-    Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');
+    Route::get('profileProperties', 'lisController@getProfileProperties');
+
+    Route::post('profileProperties', 'lisController@removeProperties');
 
     Route::get('ListingByProperty/{locationId}', 'lisController@getPropertyListings');
 

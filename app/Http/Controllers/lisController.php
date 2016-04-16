@@ -43,15 +43,15 @@ class lisController extends Controller
 			return view('profile', compact('listingsActive'), compact('user'));
 		}
 
-		public function getProfileProperties($userId){
-			$user = User::where('user_id','=',$userId)->first();
+		public function getProfileProperties(){
+			$user = Auth::user();
 			$locations = $user->locations;
 			return view ('profileProperties', compact('locations'));
 		}
 
-		public function getProfileListings($userId){
-			$user = User::where('user_id','=',$userId)->first();
-			$listings = Listing::users_listings($userId)->get();
+		public function getProfileListings(){
+			$user = Auth::user();
+			$listings = Listing::users_listings($user->user_id)->get();
 			return view ('profilePostings', compact('listings'));
 		}
 
@@ -99,10 +99,41 @@ class lisController extends Controller
 					return redirect('profileFavourites');
 				}
 			}
-
 			$listing = Listing::where('listing_id','=',$listingId)->first();
 			$user->favourite_listings()->save($listing);
 			return redirect('profileFavourites');
 		}
 
+		public function removeFromFavourites(){
+			$toRemove = json_decode(Input::get('array'));
+			$user->favourite_listings()->detach($toRemove);
+			return redirect('../profileFavourites');
+		}
+
+		public function removeFromListings(){
+			$toRemove = json_decode(Input::get('array'));
+			foreach ($toRemove as $remove) {
+				$listings = Listing::where('listing_id','=',$remove)->first();
+				$listInfo = $listings->listing_info->first();
+				$listInfo->is_active = 0;
+				$listInfo->save();
+			}
+			return redirect('profilePostings');
+		}
+
+		public function removeProperties(){
+			$toRemove = json_decode(Input::get('array'));
+			foreach ($toRemove as $rem) {
+				$location = Location::where('location_id','=',$rem)->first();;
+				$listings = $location->listing;
+				foreach ($listings as $listing) {
+					$listInfo = $listing->listing_info->first();
+					$listInfo->delete();	
+					$listing->delete();
+				}
+				$location->delete();
+			}
+			return redirect('profileProperties');
+		}
+		
 }
