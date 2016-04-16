@@ -80,6 +80,7 @@ class userController extends Controller
                             ->with('update','Password Change Successful');
     }
 
+
     public function updateName(Request $request){
         $this->validate($request, [
                 'firstName' => 'required|confirmed|max:60',
@@ -107,5 +108,25 @@ class userController extends Controller
                             ->with('update','Phone Number Change Successful');
     
     }    
+
+
+    public function updateImage(Request $request){
+        // validate for file type
+        $this->validate($request, [
+            
+            ]);
+
+        // get the image from the request
+        // process it to a reasonable size/quality
+        // save the image to a location
+
+        // remove any old image of the user
+
+        // save that location to the database, associated to a user
+
+        // return them to the profile page
+
+
+    }
 
 }
