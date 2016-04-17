@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <label class="textLabel"> Saved Searches</label>
-                                    @if($savedSearch)
+                                    @if($savedSearch != null && $savedSearch->count() != 0)
                                         <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
                                         <option></option>
                                             @foreach($savedSearch as $saved)
@@ -249,7 +249,6 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    >
                 </div>
             </div>
         </div>
@@ -298,7 +297,6 @@
                 var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
 
                 initMap(arr, ids, price, title, long, lat)
-
             }
         </script>
 
