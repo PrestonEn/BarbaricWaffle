@@ -1,21 +1,29 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
 
+@extends('navbarTop') 
 
-@extends('navbarTop') @section('content')
+@section('content')
 
 <div class="customWidth">
     <div class="row">
         <div class="col-sm-3">
-            <h4>{{ $listingInfo->listing->location->street_address}} {{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}</h4>
+            <h4>
+                {{ $listingInfo->listing->location->street_address}}
+                </br>{{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}
+                @if ( $listingInfo->unit )
+                    </br> Unit {{ $listingInfo->unit }} 
+                @endif
+            </h4>
             <h1>${{$listingInfo->price_monthly}}/mth</h1>
-            <h4 class="style">{{$listingInfo->num_bedrooms_total}} Bedrooms</h4>
-            <h4>{{$listingInfo->num_bathrooms_total}} Bathrooms</h4>
+            <h4 class="style">
+                {{$listingInfo->num_bedrooms_total}} Bedrooms, {{$listingInfo->num_bathrooms_total}} Bathrooms
+                </br>
+            </h4>
             <p>Added to our website 
-
-                @if($date==0)
-                today 
+                @if($date == 0)
+                    today 
                 @else
-                {{$date}} day(s) ago</p>
+                    {{$date}} day(s) ago</p>
                 @endif
             <p class="mls">MLS®: {{ $listingInfo->mls_number }}</p>
 
@@ -57,9 +65,9 @@
                 </div>
             </div>
             <div class="row landlordProfile">
-                <div class="col-sm-12 margin">
+                <!--<div class="col-sm-12 margin">
                     <h4>Properties Contact profile</h4>
-                </div>
+                </div>-->
                 <div class="col-sm-5">
                     <div class="profile"></div>
                 </div>

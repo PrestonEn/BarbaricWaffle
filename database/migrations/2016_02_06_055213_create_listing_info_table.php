@@ -74,7 +74,7 @@ class CreateListingInfoTable extends Migration
 
             //MLS number storage.
             //Has a small prefix of 2 letters, then 7 digits.
-            $table->string('mls_number', 10)->nullable;
+            $table->string('mls_number', 10)->default('N/A');
 
             $table->timestamps();
         });
