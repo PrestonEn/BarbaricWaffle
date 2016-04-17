@@ -47,6 +47,15 @@ table td {
 	padding-left: 0;
 }
 
-#secondTitle{
+.secondTitle{
 	visibility: hidden;
+}
+
+#listingsLink {
+	color: #0000EE;
+	cursor: pointer; cursor: hand;
+}
+
+#listingsLink:hover{
+	text-decoration: underline;
 }

@@ -147,4 +147,50 @@ class lisController extends Controller
 		$listings = $location->listing;
 		return view('listingByProperty', compact('listings'), compact('location'));
 	}
+
+	public function removeSearches(){
+		$toRemove = json_decode(Input::get('array'));
+
+		foreach ($toRemove as $rem) {
+			$search = Saved_Search::where('saved_search_id','=',$rem)->first();
+			$search->delete();
+		}
+	return redirect('profileSearches');
+	}
+
+	public function getSearchListings($searchId){
+		$search = Saved_Search::where('saved_search_id','=',$searchId)->first();
+		$listing = Listing::where('date_created_min','>=',$search->date_created_min)->first();
+		dd($listing);
+
+
+/*
+'date_created_min',
+            'date_created_max',
+            'is_active',
+            'search_description',
+            'price_monthly_min',
+            'price_monthly_max',
+            'rental_length_months_min',
+            'rental_length_months_max',
+            'rental_available_from',
+            'rental_available_to',
+            'room_size_sqft_min',
+            'room_size_sqft_max',
+            'num_roommates_max',
+            'has_furnishings',
+            'has_kitchen',
+            'has_laundry',
+            'has_yard',
+            'owner_pays_internet',
+            'owner_pays_water',
+            'owner_pays_electricity',
+            'owner_has_pets',
+            'allowed_dogs',
+            'allowed_cats',
+            'allowed_other_pets'
+
+*/
+
+	}
 }

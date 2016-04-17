@@ -19,6 +19,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileSearches', 'pageStructureController@profileSearches');
 
+    Route::get('profileSearches/{searchId}', 'lisController@getSearchListings');
+
     Route::get('addSearches', 'pageStructureController@searches');
 
     Route::get('mapListing','lisController@mapListings');
@@ -35,6 +37,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('profileFavourites', 'lisController@removeFromFavourites');
 
     Route::post('profilePostings', 'lisController@removeFromListings');
+
+    Route::post('profileSearches', 'lisController@removeSearches');
 
     Route::get('profileSettings', 'userController@profileSettingPagePopulation');
 
