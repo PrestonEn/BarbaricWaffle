@@ -31,21 +31,27 @@
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <label class="textLabel"> Saved Searches</label>
-                                    <select onchange="updateSearch(this)" id="savedSearch" class="form-control" name="savedSearch">
+                                    @if($savedSearch != null && $savedSearch->count() != 0)
+                                        <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
                                         <option></option>
-                                        @if(Auth::check()) @foreach($savedSearch as $saved)
+                                            @foreach($savedSearch as $saved)
 
-                                        <script>
-                                            $(document).ready(function () {
-                                                var obj = <?php echo json_encode($saved); ?>;
-                                                passToArray(obj);
-                                            });
-                                        </script>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    var obj = <?php echo json_encode($saved); ?>;
+                                                    passToArray(obj);
+                                                });
+                                            </script>
 
-                                        <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
+                                            <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
 
-                                        @endforeach @endif
-
+                                            @endforeach
+                                        </select>
+                                    @elseif(!Auth::check())
+                                        <p>Make an account to save searches!</p>
+                                    @else
+                                        <p>No Saved Searches!</p>
+                                    @endif
                                     </select>
                                 </div>
                             </div>
@@ -334,6 +340,7 @@
         $title = array();
         $long = array();
         $lat = array();
+        $arr = array();
 
         foreach ($listingInfo as $listing) {
             $l = $listing->listing->location;
@@ -361,9 +368,7 @@
             var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
             var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
             var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
-
             initMap(arr, ids, price, title, long, lat)
-
         }
     </script>
 
