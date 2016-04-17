@@ -46,3 +46,7 @@ form {
 form .row{
 	margin-top: 1.2em;
 }
+
+div .pageHeaderDiv {
+	text-align: center;
+}

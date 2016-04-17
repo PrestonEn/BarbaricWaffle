@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            @if(!empty($locations))
+            @if(!empty($locations) && $locations->count()>0)
             <div class="row">
                 <div class="form-group col-sm-6">
                     <label for="location_name">Location:</label>
@@ -243,12 +243,10 @@
             </div>
             -->
             <div class="row">
-                <label class="col-sm-6">Images</label>
-
-                <label class="col-sm-6">To</label>
-                <div class="form-group col-sm-6">
+                <label>Images</label>
+                <div class="form-group col-sm-12">
                     <div class='input-group file' id='' name=''>
-<input type="file" class="form-control" name="image[]" placeholder="Upload Image" multiple="true">
+                        <input type="file" class="form-control" name="image[]" placeholder="Upload Image" multiple="true">
                     </div>
                 </div>
 

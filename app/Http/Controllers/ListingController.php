@@ -115,34 +115,35 @@ class ListingController extends Controller
         
         $listingInfo->save();
 
-        // foreach ($request->file('image') as $file) {
-        //     $file_prefix = '../images/listing_photos/';
+        $imageNum = 0;
 
-        //     $img = Image::make($file);
-        //     $img_t = Image::make($file);
+        foreach ($request->file('image') as $file) {
+            $imageNum = $imageNum + 1;
+            $file_prefix = 'images/listing_photos/';
 
-        //     $img->resize(600, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     });
+            $img = Image::make($file);
+            $img_t = Image::make($file);
 
-        //     $img->resize(300, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     });
+            $img->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
 
-        //     $filename = $file_prefix . time() . $listing->listing_id;
+            $filename = $file_prefix . time() . '_imgNum' . $imageNum . '_' . $listing->listing_id;
 
-        //     $img->save($filename);
-        //     $img_t->save($filename.'_t');
+            $img->save($filename);
+            $img_t->save($filename . '_thumb', 100);
 
-        //     $lis_img = new Listing_Image;
-
-        //     $lis_img->listing()->attach($listing->listing_id);
-        //     $lis_img->image_filename = $filename;
-        //     $lis_img->image_filename_thumbnail = $filename. '_t';
-
-        // }
-
+            $lis_img = new Listing_Image;
+            $lis_img->listing_id = $listing->listing_id;
+            $lis_img->image_filename = $filename;
+            $lis_img->image_filename_thumbnail = $filename . '_thumb';
+            $lis_img->save();
+        }
         return redirect('houseTemplate/'.$listing->listing_id);
     }
     
@@ -228,7 +229,7 @@ class ListingController extends Controller
                 }
                 else{
                     array_push($listings, $location);
-                    $count = $count +1;
+                    $count = $count + 1;
                     $long = $long + $location->longitude;
                     $lat = $lat + $location->latitude; 
                 }
