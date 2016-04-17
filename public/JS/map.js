@@ -12,7 +12,8 @@ var searchLocationID = new Array();
 var infowindow;
 var locationIDs = new Array();
 var savedSearchArray = new Array();
-
+var mcOptions;
+var mc;
 
 
 //Google Maps js--------------------------------------------------------------------//
@@ -36,12 +37,20 @@ function initMap(arr, ids, price, title, long, lat) {
 
 function setMap(arr, ids, position) {
 
+    
     var mapDiv = document.getElementById("col1");
     map = new google.maps.Map(mapDiv, {
         center: position,
         zoom: 14
     });
 
+    mcOptions = {
+        gridSize: 50,
+        maxZoom: 15
+    };
+    mc = new MarkerClusterer(map, [], mcOptions);
+    
+    
     infowindow = new google.maps.InfoWindow({
         content: ''
     });
@@ -138,6 +147,7 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
     });
     markers[j] = marker;
     j++;
+    mc.addMarker(marker, true);
 
     var htmlString = "<p>" + price + "</p>" + "<p>" + title + "</p>";
 
@@ -387,7 +397,7 @@ function getCitiesFromCountry(country) {
             country: c
         },
         success: function (data) {
-            
+
             if ($.trim(data)) {
                 $('#region').empty();
                 $('#region').prop('disabled', false);
@@ -395,8 +405,7 @@ function getCitiesFromCountry(country) {
                     value: data,
                     text: data,
                 }));
-            }
-            else{
+            } else {
                 $('#region').empty();
                 $('#region').prop('disabled', true);
             }
@@ -407,4 +416,3 @@ function getCitiesFromCountry(country) {
         }
     });
 }
-

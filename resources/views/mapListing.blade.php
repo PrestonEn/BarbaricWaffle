@@ -370,6 +370,7 @@
     <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
 
     <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('JS/markerCluster.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
 
