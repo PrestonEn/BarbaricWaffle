@@ -30,7 +30,7 @@
    </div>
 
 
-   <form name="formyform" method="post" action="profileProperties">
+   <form name="formyform" method="post" action="profileSearches">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input id = "array" name="array" type="hidden" value="">
    @foreach($search as $s)
@@ -38,34 +38,30 @@
          <div class = "col-xs-12 col-sm-12">
                      <table class = "table">
                         <tr>
-
-                           <!--
-                           'date_created_min',
-                           'date_created_max',
-                           'is_active',
-                           'search_description',
-                           'price_monthly_min',
-                           'price_monthly_max',
-                           'rental_length_months_min',
-                           'rental_length_months_max',
-                           'rental_available_from',
-                           'rental_available_to',
-                           'room_size_sqft_min',
-                           'room_size_sqft_max',
-                           'num_roommates_max',
-                           
-                           -->
-
-                           <td class = "col-xs-2 col-sm-1 removeable searchCriteria"  name = {{$s->saved_search_id}} ></div>
+                           <td class = "col-xs-2 col-sm-2 removeable searchCriteria"  name = {{$s->saved_search_id}} ></div>
                            <td class = "col-xs-3 col-sm-3">
                               <strong> Search Criteria </strong>
                               <ul class = "searchCriteria">
-                              @if($s->date_created_min == null)<li> halllp</li> @endif
+                                 <li> Min Price : {{$s->price_monthly_min}}</li>
+                                 <li> Max Price : {{$s->price_monthly_max}}</li>
 
+                              @if($s->rental_length_months_min != null)<li>Minimum Lease Length : {{$s->rental_length_months_min}}</li> @endif
+                              @if($s->rental_length_months_max != null)<li>Maximum Lease Length : {{$s->rental_length_months_max}}</li> @endif
+                              
+                              @if($s->date_created_min != null)<li>Listing Posted After {{$s->date_created_min}}</li> @endif
+                              @if($s->date_created_max != null)<li>Listing Posted Before {{$s->date_created_max}}</li> @endif
+
+                              @if($s->rental_available_from != null)<li>Available From : {{$s->rental_available_from}}</li> @endif
+                              @if($s->rental_available_to != null)<li>Available Until : {{$s->rental_available_to}}</li> @endif
+                              
+                              @if($s->room_size_sqft_min != null)<li>Minimum Square Footage : {{$s->room_size_sqft_min}}</li> @endif
+                              @if($s->room_size_sqft_max != null)<li>Maximum Square Footage : {{$s->room_size_sqft_max}}</li> @endif
+
+                              @if($s->num_roommates_max != null)<li>Maximum Desired Roommates : {{$s->num_roommates_max}}</li> @endif
                               </ul>   
                            </td>
                            <td class = "col-xs-3 col-sm-3">
-                              <strong id = "secondTitle"> Search Criteria </strong>
+                              <strong class = "secondTitle"> Search Criteria </strong>
                               <ul class = "searchCriteria secondCol">
                               @if($s->allowed_dogs == 1) <li>Dogs Allowed</li>@endif
                               @if($s->allowed_cats == 1) <li>Cats Allowed</li>@endif
@@ -80,8 +76,10 @@
                               @if($s->has_furnishings == 1) <li>Property is Furnished</li>@endif
                               </ul>   
                            </td>
-                           <td class = "col-xs-3 col-sm-1"></td>
-                           <td class = "col-xs-2 col-sm-1 searchCriteria"><a href = '#'> View Associated Listings</a></td>
+                           <td class = "col-xs-1 col-sm-1"></td>
+                           <td class = "col-xs-3 col-sm-3">
+                              <strong class = "secondTitle"> Search Criteria </strong><br>
+                           <div id="listingsLink" onclick='window.location="../mapListing"' class="searchCriteria"> View Associated Listings</div></td>
                         </tr>
                      </table>                
          </div>
@@ -90,7 +88,7 @@
       
    </form>
 
-   <div id = "addProp"> Searches not meeting your criteria? <a href="../addProperty"> Add a new Saved Search</a></div>
+   <div id = "addProp"> Searches not meeting your criteria? <a href="#"> Add a new Saved Search</a></div>
    <div></div>
 
 @stop

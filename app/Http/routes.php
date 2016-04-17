@@ -36,6 +36,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('profilePostings', 'lisController@removeFromListings');
 
+    Route::post('profileSearches', 'lisController@removeSearches');
+
     Route::get('profileSettings', 'userController@profileSettingPagePopulation');
 
     Route::post('profileSettings/resetPassword', 'userController@updatePassword');

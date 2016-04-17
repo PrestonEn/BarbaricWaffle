@@ -42,7 +42,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Phone Number</h2>
-  <form action="{{$user->user_id}}/resetPhoneNumber" method="post">
+  <form action="profileSettings/resetPhoneNumber" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
@@ -67,7 +67,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Password</h2>
-  <form action= "{{$user->user_id}}/resetPassword" method="post">
+  <form action= "profileSettings/resetPassword" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
@@ -92,7 +92,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Edit Name</h2>
-  <form action= "{{$user->user_id}}/resetName" method="post">
+  <form action= "profileSettings/resetName" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
@@ -117,7 +117,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Profile Image</h2>
-  <form action= "{{$user->user_id}}/updateImage" method="post" enctype="multipart/form-data">
+  <form action= "profileSettings/updateImage" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">

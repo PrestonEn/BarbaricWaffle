@@ -147,4 +147,14 @@ class lisController extends Controller
 		$listings = $location->listing;
 		return view('listingByProperty', compact('listings'), compact('location'));
 	}
+
+	public function removeSearches(){
+		$toRemove = json_decode(Input::get('array'));
+
+		foreach ($toRemove as $rem) {
+			$search = Saved_Search::where('saved_search_id','=',$rem)->first();
+			$search->delete();
+		}
+	return redirect('profileSearches');
+	}
 }
