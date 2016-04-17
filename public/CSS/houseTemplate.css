@@ -85,7 +85,16 @@ h4 {
         }
     }
 
+#saveToFavourites {
+    background-color: #ff8b4d;
+    border: 1px solid #ff8b4d;
+    color: white;
+}
 
+#callNowLink {
+    color: white;
+    text-decoration: none;
+}
 
 #callNow {
     background-color: #F95900;

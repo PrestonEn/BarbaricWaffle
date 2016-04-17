@@ -60,6 +60,7 @@ select {
 }
 
 .listing {
+	cursor: pointer; cursor: hand;
 	border-top: 4px solid grey;
 }
 

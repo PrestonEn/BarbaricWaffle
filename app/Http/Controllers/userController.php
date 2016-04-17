@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailer;
 use Mail;
 use Hash;
 use Auth;
+use Image;
 use Validator;
 use App\User;
 use App\Http\Requests;
@@ -43,9 +44,10 @@ class userController extends Controller
         $user->phone = Input::get('phone');
         
 
-        Mail::send('emails.registered', $arrayName = array('a' => 5) , function ($message) use ($user) {
-            $message->from('homestead.proto@gmail.com', 'Your Application');
-            $message->to($user->email);
+        Mail::raw('This is a message from Homestead.  A property in your saved searches has been found, please visit the website to see the results.' , function ($message) {
+            $message->from('homestead.proto@gmail.com', 'Homestead');
+            $message->to('sms4f00@gmail.com');
+			$message->subject('9059310355');
         });     
 
         $user->save();
@@ -80,6 +82,7 @@ class userController extends Controller
                             ->with('update','Password Change Successful');
     }
 
+
     public function updateName(Request $request){
         $this->validate($request, [
                 'firstName' => 'required|confirmed|max:60',
@@ -107,5 +110,39 @@ class userController extends Controller
                             ->with('update','Phone Number Change Successful');
     
     }    
+
+
+    public function updateImage(Request $request){
+        $this->validate($request, [
+                'photo' => 'bail|required|image',
+            ]);   
+        
+
+
+
+        if ($request->hasFile('photo')) {
+            $user = Auth::user();
+            $img = Image::make(Input::file('photo'));
+            // resize the image to a width of 300 and constrain aspect ratio (auto height)
+            $img->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $filename = 'images/profile'.$user->user_id.'jpg';
+            $img->save($filename, 100);
+
+            $user->fill(['user_image_filename' => $filename])->save();
+
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Profile Image Change Successful');
+
+
+        }
+
+
+        return redirect('profileSettings/'.Auth::user()->user_id)
+                            ->with('update','Profile Image Change Failed');
+    }
 
 }

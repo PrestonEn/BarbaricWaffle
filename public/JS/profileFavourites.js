@@ -3,6 +3,10 @@ function makeEditable(button){
 		button.value = "1";
 		button.style.backgroundColor = "orange";
 		button.innerHTML = "cancel";
+		if (document.getElementById('warning')!= null){
+			document.getElementById('warning').innerHTML = '*** Note that deleting a property will delete all listings at that property ***';
+		}
+
 
 	var headers = document.getElementsByClassName("removeable");
 
@@ -27,15 +31,39 @@ function makeEditable(button){
 	}
 
 	document.getElementById('buttonHolder').innerHTML = "";
-
+	if (document.getElementById('warning')!= null){
+			document.getElementById('warning').innerHTML = '';
+		}
 	}
 	}
 
 
 	function removeElements(){
+		var contin = true;
+		var toDelete = [];
+		var index = 0;
 
-		var id = [];
+		var id = document.getElementsByTagName('input');
+		for (var i = id.length - 1; i >= 0; i--) {
+			if (id[i].checked){
+				toDelete[index] = id[i].getAttribute("name");
+				index = index+1;
+			}
+		};
 
+		if (index > 0){
+			if (document.getElementById('warning') != null){
+				contin = window.confirm("Be aware that deleting a property will also delete all associated listings.");
+			}
+
+
+			if (contin == true){
+				document.getElementById('array').value = JSON.stringify(toDelete);
+				document.forms["formyform"].submit();
+			}
+		}
+
+		/*
 		var url = location.href;
 		var url = url.split('/');
 		var userId = url[url.length-1];
@@ -54,5 +82,6 @@ function makeEditable(button){
            	href: link   
       	}
     });
+*/
 
 	}

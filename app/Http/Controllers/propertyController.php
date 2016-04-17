@@ -74,7 +74,7 @@ class propertyController extends Controller
         $property->city = $city;
         $property->save();
 
-        return redirect('profileProperties/'.Auth::user()->user_id);
+        return redirect('profileProperties');
 
 
     }

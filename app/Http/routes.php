@@ -28,7 +28,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('profileView/{userId}','lisController@viewForeignProfile');
 
     Route::get('profileFavourites', 'lisController@getFavouriteListings');
+
+    Route::get('profileFavourites/{listingId}', 'lisController@addToFavourites');
     //Route::get('profileFavourites/{userId}', 'lisController@getFavouriteListings');
+
+    Route::post('profileFavourites', 'lisController@removeFromFavourites');
+
+    Route::post('profilePostings', 'lisController@removeFromListings');
 
     Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
 
@@ -38,9 +44,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('profileSettings/{userId}/resetPhoneNumber', 'userController@updatePhoneNumber');
 
-    Route::get('profilePostings/{userId}', 'lisController@getProfileListings');
+    Route::get('profilePostings', 'lisController@getProfileListings');
 
-    Route::get('profileProperties/{userId}', 'lisController@getProfileProperties');
+    Route::get('profileProperties', 'lisController@getProfileProperties');
+
+    Route::post('profileProperties', 'lisController@removeProperties');
 
     Route::get('ListingByProperty/{locationId}', 'lisController@getPropertyListings');
 
@@ -76,7 +84,7 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
-    Route::get('/wakawaka', 'lisController@imTest');
+    Route::post('profileSettings/{userId}/updateImage', 'userController@updateImage');
 
 
 
