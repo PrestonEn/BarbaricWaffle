@@ -7,7 +7,7 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="{!! asset('JS/profileImageHandle.js') !!}"></script>
+  <script type="text/javascript" src="{!! asset('JS/profileImageHandle.js') !!}"></script>
 	<title> ProfileSettings </title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileSettings.css') !!}" media="all" rel="stylesheet" type="text/css" />
@@ -117,7 +117,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Profile Image</h2>
-  <form action= "{{$user->user_id}}/updateImage" method="post" enctype="multipart/form-data">
+  <form action= "updateImage" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">

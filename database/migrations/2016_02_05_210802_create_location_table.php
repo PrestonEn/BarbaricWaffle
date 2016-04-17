@@ -30,7 +30,7 @@ class CreateLocationTable extends Migration
             $table->string('street_address', 255);
             $table->string('city', 255);
             $table->string('province', 255);
-            $table->string('postal_code', 6);
+            $table->string('postal_code', 10);
             $table->string('country', 255);
             //$table->string('unit', 31)->nullable;//Moved to listingInfo
 

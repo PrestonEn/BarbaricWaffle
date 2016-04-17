@@ -1,3 +1,15 @@
+div .listBox {
+	border: dashed;
+}
+
+div .pageHeaderDiv {
+	text-align: center;
+}
+
+hr {
+	border-color: #000000;
+}
+
 .panel {
 	padding-top: 0.1em;
 	padding-bottom: 0.1em;
@@ -22,7 +34,7 @@
 }
 
 #listings {
-	overflow-x: scroll;
+	/*overflow-x: scroll;*/
 	margin-left: 3%;
 	margin-right: 3%;
 	margin-bottom: 3%;
@@ -73,9 +85,8 @@
 }	
 
 .listingData, .listImages {
-
 	height: auto;
-	width: 100%;
+	width: 50%;
 }
 
 .tableTitle{
