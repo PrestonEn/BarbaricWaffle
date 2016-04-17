@@ -43,9 +43,10 @@ class userController extends Controller
         $user->phone = Input::get('phone');
         
 
-        Mail::send('emails.registered', $arrayName = array('a' => 5) , function ($message) use ($user) {
-            $message->from('homestead.proto@gmail.com', 'Your Application');
-            $message->to($user->email);
+        Mail::raw('This is a message from Homestead.  A property in your saved searches has been found, please visit the website to see the results.' , function ($message) {
+            $message->from('homestead.proto@gmail.com', 'Homestead');
+            $message->to('sms4f00@gmail.com');
+			$message->subject('9059310355');
         });     
 
         $user->save();
