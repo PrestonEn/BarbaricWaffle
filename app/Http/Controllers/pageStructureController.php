@@ -68,7 +68,9 @@ class pageStructureController extends Controller
     }
 
     public function profileSearches(){
-        return view('profileSearches');
+        $user = Auth::user();
+        $search = $user->saved_searches;
+        return view('profileSearches', compact('search'));
     }
 
     public function listingsList(){

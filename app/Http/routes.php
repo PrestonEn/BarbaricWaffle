@@ -11,7 +11,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
 
-    Route::get('profileMessages', 'pageStructureController@profileMessages');
+    //Route::get('profileMessages', 'pageStructureController@profileMessages');
 
     Route::get('/','lisController@mapListings');
 
