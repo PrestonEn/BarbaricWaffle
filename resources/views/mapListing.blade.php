@@ -31,43 +31,38 @@
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <label class="textLabel"> Saved Searches</label>
-                                    @if($savedSearch != null && $savedSearch->count() != 0)
-                                        <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
+                                    <select onchange="updateSearch(this)" id="savedSearch" class="form-control" name="savedSearch">
                                         <option></option>
-                                            @foreach($savedSearch as $saved)
+                                        @if(Auth::check()) @foreach($savedSearch as $saved)
 
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var obj = <?php echo json_encode($saved); ?>;
-                                                    passToArray(obj);
-                                                });
-                                            </script>
+                                        <script>
+                                            $(document).ready(function () {
+                                                var obj = <?php echo json_encode($saved); ?>;
+                                                passToArray(obj);
+                                            });
+                                        </script>
 
-                                            <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
+                                        <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
 
-                                            @endforeach
-                                        </select>
-                                    @elseif(!Auth::check())
-                                        <p>Make an account to save searches!</p>
-                                    @else
-                                        <p>No Saved Searches!</p>
-                                    @endif
+                                        @endforeach @endif
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-3">
                                     <label class="textLabel"> Country </label>
-                                    <select onchange="getCitiesFromCountry(this)" class="form-control" id = "country" name="country">
-                                        <option value = "all">All</option>
+                                    <select onchange="getCitiesFromCountry(this)" class="form-control" id="country" name="country">
+                                        <option value="all">All</option>
                                         @foreach($location as $loc)
-                                        <option value = "{{$loc->country}}"> {{$loc->country}} </option>
+                                        <option value="{{$loc->country}}"> {{$loc->country}} </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-3">
                                     <label class="textLabel"> City </label>
-                                    <select disabled class="form-control" id = "region" name="region">
-                                        
+                                    <select disabled class="form-control" id="region" name="region">
+
                                     </select>
                                 </div>
 
@@ -219,7 +214,7 @@
 
                                     <div class="col-sm-4">
                                         <label class="textLabel"># roomates</label>
-                                        <select id = "maxRoommates" class="form-control" name="MaxNumRoommates">
+                                        <select id="maxRoommates" class="form-control" name="MaxNumRoommates">
                                             <option value="99"> Any </option>
                                             <option value="6"> 6 </option>
                                             <option value="5"> 5 </option>
@@ -235,30 +230,102 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <button onClick="searchFilters(event)" class="btn btn-primary position button1">Submit</button>
+                                    @if(Auth::check())
                                     <button onClick="saveSearch(event)" class="btn btn-primary position button1">Save Search</button>
+                                    @else
+                                    <button type="button" id="logInModalButton" class="btn btn-primary position button1">Save Search</button>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#logInModalButton").click(function () {
 
+                                                $('#logInModal').modal('show');
+                                            });
+                                        });
+                                    </script>
+                                    @endif
                                 </div>
-
-
 
                             </div>
                         </form>
                     </div>
                 </div>
 
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 </div>
             </div>
         </div>
     </div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q"></script>
+    <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Log In</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please log in</p>
+                    <br/>
+                    <form action="signIn" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                            <div class="col-xs-10 col-sm-8 col-md-6">
+                                Email :
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                            <div class="col-xs-10 col-sm-8 col-md-6">
+                                Password :
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                            <div class="col-xs-7 col-sm-5 col-md-4">
+                                <button type="submit" class="btn btn-default"> Sign In </button>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-2">
+                                <a href="../passwordRetrieval" id="forgotPass"> Forgot your password? </a>
+                            </div>
+                        </div>
 
 
-    <?php
+                        <div class="row" id="registerInquiry">
+                            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+                            <div class="col-xs-10 col-sm-8 col-md-6">
+                                <div class="panel panel-default">
+                                    Not Yet Registered? <a href="../signUp"> Sign up </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TYaJ1DT_MLRMhkoN6FKknWTkMh5Rg6Q"></script>
+
+
+<?php
         $i = 0;
         $lat = array();
         $lon = array();
@@ -267,7 +334,6 @@
         $title = array();
         $long = array();
         $lat = array();
-        $arr = array();
 
         foreach ($listingInfo as $listing) {
             $l = $listing->listing->location;
@@ -283,27 +349,29 @@
         };
     ?>
 
-        <script>
-            google.maps.event.addDomListener(window, 'load', function () {
-                load();
-            });
+    <script>
+        google.maps.event.addDomListener(window, 'load', function () {
+            load();
+        });
 
-            function load() {
-                var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
-                var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
-                var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
-                var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
-                var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
-                var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
+        function load() {
+            var arr = <?php echo '["' . implode('", "', $arr) . '"]'; ?>;
+            var ids = <?php echo '["' . implode('", "', $ids) . '"]'; ?>;
+            var price = <?php echo '["' . implode('", "', $price) . '"]'; ?>;
+            var title = <?php echo '["' . implode('", "', $title) . '"]'; ?>;
+            var long = <?php echo '["' . implode('", "', $long) . '"]'; ?>;
+            var lat = <?php echo '["' . implode('", "', $lat) . '"]'; ?>;
 
-                initMap(arr, ids, price, title, long, lat)
-            }
-        </script>
+            initMap(arr, ids, price, title, long, lat)
 
-        <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
+        }
+    </script>
 
-        <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
-        <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
-        <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
+    <script type="text/javascript" src="{!! asset('JS/nouislider.js') !!}"></script>
 
-        @stop
+    <script type="text/javascript" src="{!! asset('JS/addSearches.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('JS/markerCluster.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
+
+    @stop

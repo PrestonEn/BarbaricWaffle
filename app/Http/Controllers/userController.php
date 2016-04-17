@@ -116,9 +116,6 @@ class userController extends Controller
                 'photo' => 'bail|required|image',
             ]);   
         
-
-
-
         if ($request->hasFile('photo')) {
             $user = Auth::user();
             $img = Image::make(Input::file('photo'));
@@ -126,6 +123,8 @@ class userController extends Controller
             $img->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
+
+            $img->crop(300, 300);
 
             $filename = 'images/profile'.$user->user_id.'jpg';
             $img->save($filename, 100);
@@ -138,8 +137,6 @@ class userController extends Controller
 
 
         }
-
-
         return redirect('profileSettings')
                             ->with('update','Profile Image Change Failed');
     }
