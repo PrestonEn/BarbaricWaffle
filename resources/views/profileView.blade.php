@@ -33,7 +33,9 @@
 			<div class = "row" id = "listings">
 				<table id = "listingTable" class = "table table-bordered">
 					<tr>
-
+						@if (count($locations)==0)
+      						<div class = "center">No properties to display - <a href="../addProperty"> Add a new property</a></div>
+      					@endif
                   @foreach ($locations as $location)
                   	@foreach($location->listing as $lists)
                   		@foreach($lists->listing_info as $list)

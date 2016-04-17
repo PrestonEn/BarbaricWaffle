@@ -52,6 +52,9 @@
 
   <div class = "pageBody row">
 
+      @if (count($listingInfo)==0)
+      <div class = "center">No Listings to display</div>
+      @endif
       @foreach ($listingInfo as $listing)
 
 

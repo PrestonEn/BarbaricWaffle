@@ -30,6 +30,9 @@
       <form name="formyform" method="post" action="../profilePostings">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input id = "array" name="array" type="hidden" value="">
+      @if (count($listings)==0)
+      <div class = "center">No Listings to display</div>
+      @endif
       @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 1)

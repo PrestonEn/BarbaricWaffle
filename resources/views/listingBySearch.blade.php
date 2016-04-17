@@ -5,25 +5,18 @@
 
   @section('content')
 
-  
-  <div id = "test">
-  </div>
-
+  <br>
   <div class = "pageTitle">
-    Available Listings
+    Listings Meeting Search Criteria
   </div>
-  <div id = "subtitle">
-    At <em>{{$location->street_address}}, {{$location->city}}</em>
-  </div>
+  <br>
 
   <div class = "pageBody row">
 
-
       @if (count($listings)==0)
-      <div class = "center">No Listings to display</div>
+      <div class = "center">No Listings to display - <a href="../mapListing">Create new Saved Search?</a></div>
       @endif
-      @foreach ($listings as $listing)
-      @foreach ($listing->listing_info as $list)
+      @foreach ($listings as $list)
 
       <div class = "listing col-xs-12" onclick="window.location = '../../houseTemplate/{{$list->listing_id}}'">
         <div class = "col-xs-12 col-sm-4">
@@ -92,7 +85,6 @@
             </table> 
           </div>
         </div>  
-      @endforeach
     @endforeach
     
   </div>
