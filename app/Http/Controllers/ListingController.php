@@ -32,29 +32,30 @@ class ListingController extends Controller
             //But in the case the user SOMEHOW is not logged in, redirect
             return redirect('signIn');
         }
-        //$temp = $this->validate($request, [
+
         $v = Validator::make($request->all(), [
             //In order which they appear, to make the error readable
             
             //Listing Title
             'title_name'            => 'bail|required',
-            'description_name'      => '',
 
-            //Location
-            'location_name'      => 'bail|required|numeric',
-
-            //Listinginfo
-            'rent_name'             => 'bail|required|numeric',
-            'priceDescription_name' => '',
-
-            'bedrooms_name'         => 'bail|numeric',
-            'bathrooms_name'        => 'bail|numeric',
-            'sqftSize_name'         => 'bail|numeric',
-
-            'mls'                   => 'alpha_num',
-
+            'location_name'     => 'bail|required|numeric',
+            'floorNum_name'     => 'bail|alpha_num',
+            'unitNum_name'      => 'bail|alpha_num',
+            
             'dateFrom_name'         => 'bail|required',
             'dateTo_name'           => 'bail',
+
+            'rent_name'             => 'bail|required|numeric|min:0',
+            'rentalLength_name'     => 'bail|numeric|min:0',
+            'priceDescription_name' => '',
+
+            'sqft_name'             => 'min:0',
+            'bedrooms_name'         => 'bail|numeric|min:0',
+            'bathrooms_name'        => 'bail|numeric|min:0',
+            'sqftSize_name'         => 'bail|numeric|min:0',
+
+            'mls'                   => 'alpha_num',
         ]);
 
         //Check if validation passes. If not, redirect.
@@ -78,30 +79,35 @@ class ListingController extends Controller
         $listingInfo->listing_description = Input::get('description_name', 'No Description');
 
         $listingInfo->price_monthly =       Input::get('rent_name');
-        $listingInfo->price_description =    Input::get('priceDescription_name', 'No Description');
+        $listingInfo->price_description =   Input::get('priceDescription_name', 'No Description');
+
+        $listingInfo->unit =                Input::get('unitNum_name');
+        $listingInfo->room_level =          Input::get('floorNum_name');
 
         $listingInfo->num_bedrooms_total =  Input::get('bedrooms_name');
         $listingInfo->num_bathrooms_total = Input::get('bathrooms_name');
+        $listingInfo->num_roommates_max =   Input::get('roommatesNum_name');
         $listingInfo->room_size_sqft =      Input::get('sqftSize_name', 0);
 
         //Booleans
-        $listingInfo->has_kitchen =             (Input::has('kitchen')) ? true : false;
-        $listingInfo->has_laundry =             (Input::has('laundry')) ? true : false;
-        $listingInfo->has_yard =                (Input::has('yard')) ? true : false;
-        $listingInfo->owner_pays_internet =     (Input::has('internet')) ? true : false;
-        $listingInfo->owner_pays_water =        (Input::has('water')) ? true : false;
-        $listingInfo->owner_pays_electricity =  (Input::has('electricity')) ? true : false;
-        $listingInfo->owner_has_pets =          (Input::has('pets')) ? true : false;
-        $listingInfo->allowed_dogs =            (Input::has('dog')) ? true : false;
-        $listingInfo->allowed_cats =            (Input::has('cat')) ? true : false;
-        $listingInfo->allowed_other_pets =      (Input::has('otherPet')) ? true : false;
+        $listingInfo->has_kitchen =             (Input::has('kitchen_name')) ? true : false;
+        $listingInfo->has_laundry =             (Input::has('laundry_name')) ? true : false;
+        $listingInfo->has_yard =                (Input::has('yard_name')) ? true : false;
+        $listingInfo->has_furnishingS =          (Input::has('furnishing_name')) ? true : false;
+
+        $listingInfo->owner_pays_internet =     (Input::has('internet_name')) ? true : false;
+        $listingInfo->owner_pays_water =        (Input::has('water_name')) ? true : false;
+        $listingInfo->owner_pays_electricity =  (Input::has('electricity_name')) ? true : false;
+        $listingInfo->owner_has_pets =          (Input::has('allergy_name')) ? true : false;
+        $listingInfo->allowed_dogs =            (Input::has('dogs_name')) ? true : false;
+        $listingInfo->allowed_cats =            (Input::has('cats_name')) ? true : false;
+        $listingInfo->allowed_other_pets =      (Input::has('otherPets_name')) ? true : false;
         
-        $listingInfo->mls_number = Input::get('mls', 'N/A');
+        $listingInfo->mls_number =              Input::get('mls', 'N/A');
         
-        //$usableDateFrom =  Carbon::createFromFormat('d/m/Y', Input::get('dateFrom'));
-        $listingInfo->rental_length_months_min = 0;
-        $listingInfo->rental_available_from = Input::has('dateFrom_name', Carbon::now());
-        $listingInfo->rental_available_to = Input::get('dateTo_name');
+        $listingInfo->rental_length_months_min = Input::get('rentalLength_name');
+        $listingInfo->rental_available_from = Input::get('dateFrom_name');
+        $listingInfo->rental_available_to = Input::get('dateTo_name', NULL);
         
         $listingInfo->save();
 

@@ -195,6 +195,7 @@
         $title = array();
         $long = array();
         $lat = array();
+        $arr = array();
 
         foreach ($listingInfo as $listing) {
             $l = $listing->listing->location;

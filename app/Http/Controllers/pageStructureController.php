@@ -50,7 +50,7 @@ class pageStructureController extends Controller
         if(!Auth::check()){
             return redirect('signIn')->withErrors(['You need to be signed in to post a listing!']);
         }else{
-            $user = User::where('user_id','=', '21')->first();
+            $user = Auth::user();//User::where('user_id','=', '21')->first();
             $locations = $user->locations;
             return view('addListing', compact('locations'));
         }
