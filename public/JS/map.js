@@ -37,7 +37,7 @@ function initMap(arr, ids, price, title, long, lat) {
 
 function setMap(arr, ids, position) {
 
-    
+
     var mapDiv = document.getElementById("col1");
     map = new google.maps.Map(mapDiv, {
         center: position,
@@ -49,8 +49,8 @@ function setMap(arr, ids, position) {
         maxZoom: 15
     };
     mc = new MarkerClusterer(map, [], mcOptions);
-    
-    
+
+
     infowindow = new google.maps.InfoWindow({
         content: ''
     });
@@ -152,11 +152,11 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
     var htmlString = "<p>" + price + "</p>" + "<p>" + title + "</p>";
 
     makeInfoWindow(marker, map, infowindow, htmlString);
-    
+
     google.maps.event.addListener(marker, 'click', function (num) {
         window.location.href = "getProperyPageFromHouseId/" + ids;
     });
-    
+
 
 
 }
@@ -329,6 +329,12 @@ function passToArray(savedSearch) {
 function updateSearch(savedId) {
     var id = savedId.value - 1;
 
+
+
+    getCitiesFromCountry(savedSearchArray[id].country);
+
+    slider.noUiSlider.set([savedSearchArray[id].price_monthly_min, savedSearchArray[id].price_monthly_max]);
+
     if (savedSearchArray[id].num_bedrooms_total != 0) $("input[name='rooms']").val(savedSearchArray[id].num_bedrooms_total);
     else $("input[name='rooms']").val("");
     if (savedSearchArray[id].num_bathrooms_total != 0) $("input[name='bathrooms']").val(savedSearchArray[id].num_bathrooms_total);
@@ -339,6 +345,7 @@ function updateSearch(savedId) {
 
     $("#country").val(savedSearchArray[id].country);
     $("#region").val(savedSearchArray[id].city);
+
 
 
     if (savedSearchArray[id].owner_pays_internet == 0) $("input[name='internet']").prop("checked", false);
@@ -357,6 +364,11 @@ function updateSearch(savedId) {
     else {
         $("input[name='hasKitchen']").prop("checked", true);
     }
+    
+    if (savedSearchArray[id].owner_has_pets == 0) $("input[name='nopets']").prop("checked", false);
+    else {
+        $("input[name='nopets']").prop("checked", true);
+    }
     if (savedSearchArray[id].allowed_dogs == 0) $("input[name='dogs']").prop("checked", false);
     else {
         $("input[name='dogs']").prop("checked", true);
@@ -373,14 +385,29 @@ function updateSearch(savedId) {
     else {
         $("input[name='furnished']").prop("checked", true);
     }
+    if (savedSearchArray[id].smoke_free == 0) $("input[name='smoke']").prop("checked", false);
+    else {
+        $("input[name='smoke']").prop("checked", true);
+    }
+    if (savedSearchArray[id].has_yard == 0) $("input[name='yard']").prop("checked", false);
+    else {
+        $("input[name='yard']").prop("checked", true);
+    }
+    if (savedSearchArray[id].has_laundry == 0) $("input[name='laundry']").prop("checked", false);
+    else {
+        $("input[name='laundry']").prop("checked", true);
+    }
 
-    searchFilters(event);
+    updateCheckBoxes();
+
+
+    //searchFilters(event);
 
 }
 
 
-function getCitiesFromCountry(country) {
-    var c = country.value;
+function getCitiesFromCountry(c) {
+    var country = c.value;
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -414,4 +441,28 @@ function getCitiesFromCountry(country) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
         }
     });
+}
+
+function clearForm(e) {
+    e.preventDefault();
+
+    $('#searchFilter').trigger("reset");
+    $('#region').prop('disabled', true);
+    $('#region').val('');
+    updateCheckBoxes();
+
+}
+
+function updateCheckBoxes() {
+    $('input[type=checkbox]').each(function () {
+        var sThisVal = (this.checked ? "1" : "0");
+        if(sThisVal == 1) $(this).closest('.checkbox-inline, .checkbox').addClass('checked');
+        else $(this).closest('.checkbox-inline, .checkbox').removeClass('checked');
+    });
+    $('input[type=radio]').each(function () {
+        var sThisVal = (this.checked ? "1" : "0");
+        if(sThisVal == 1) $(this).closest('.radio-inline, .radio').addClass('checked');
+        else $(this).closest('.radio-inline, .radio').removeClass('checked');
+    });
+
 }

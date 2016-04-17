@@ -59,7 +59,8 @@ class CreateSavedSearchesTable extends Migration
 
             $table->boolean('has_kitchen')->nullable;
             $table->boolean('has_laundry')->nullable;
-            //$table->boolean('has_yard')->nullable;
+            $table->boolean('has_yard')->nullable;
+            $table->boolean('smoke_free')->nullable;
 
             $table->boolean('owner_pays_internet')->nullable;
             $table->boolean('owner_pays_water')->nullable;
