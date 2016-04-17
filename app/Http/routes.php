@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('mapListing','lisController@mapListings');
 
-    Route::get('profile/{userId}','lisController@mainProfileActiveListings');
+    Route::get('profile','lisController@mainProfileActiveListings');
 
     Route::get('profileView/{userId}','lisController@viewForeignProfile');
 
@@ -36,13 +36,13 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('profilePostings', 'lisController@removeFromListings');
 
-    Route::get('profileSettings/{userId}', 'userController@profileSettingPagePopulation');
+    Route::get('profileSettings', 'userController@profileSettingPagePopulation');
 
-    Route::post('profileSettings/{userId}/resetPassword', 'userController@updatePassword');
+    Route::post('profileSettings/resetPassword', 'userController@updatePassword');
 
-    Route::post('profileSettings/{userId}/resetName', 'userController@updateName');
+    Route::post('profileSettings/resetName', 'userController@updateName');
 
-    Route::post('profileSettings/{userId}/resetPhoneNumber', 'userController@updatePhoneNumber');
+    Route::post('profileSettings/resetPhoneNumber', 'userController@updatePhoneNumber');
 
     Route::get('profilePostings', 'lisController@getProfileListings');
 
@@ -88,7 +88,7 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
-    Route::post('profileSettings/{userId}/updateImage', 'userController@updateImage');
+    Route::post('profileSettings/updateImage', 'userController@updateImage');
 
 
 

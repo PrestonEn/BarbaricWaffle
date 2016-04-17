@@ -40,13 +40,15 @@
                            <td class = "col-xs-3 col-sm-1">{{ $location->postal_code}}, {{ $location->country}}</td>
                            <td class = "col-xs-3 col-sm-2"><a href = '../ListingByProperty/{{$location->location_id}}'> View Associated Listings</a></td>
                         </tr>
-                     </table>  
-                 
+                     </table>                
          </div>
       </div>
    @endforeach
       
    </form>
+
+   <div id = "addProp"> Not one of the properties you were looking for? <a href="../addProperty"> Add a new property</a></div>
+   <div></div>
 @stop
 
 @extends('navbarTop')

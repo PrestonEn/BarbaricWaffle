@@ -38,7 +38,7 @@
     {{$user->first_name}} {{$user->last_name}}
   </div>
 
-  <form action="{{$user->user_id}}/updateImage" method="post"  enctype="multipart/form-data">
+  <form action="profileSettings/updateImage" method="post"  enctype="multipart/form-data">
           <button type="button" id="select_image" >Select a file to upload</button>
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -63,7 +63,7 @@
       </div>
     </div>  
 
-    <form action="{{$user->user_id}}/resetPhoneNumber" method="post">
+    <form action="profileSettings/resetPhoneNumber" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
@@ -98,7 +98,7 @@
       </div>
     </div>  
 
-    <form action="{{$user->user_id}}/resetName" method="post">
+    <form action="profileSettings/resetName" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
@@ -145,7 +145,7 @@
         </div>
     </div>  
 
-    <form action= "{{$user->user_id}}/resetPassword" method="post">
+    <form action= "profileSettings/resetPassword" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
