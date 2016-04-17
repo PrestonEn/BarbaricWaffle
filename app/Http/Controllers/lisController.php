@@ -16,7 +16,7 @@ use App\Saved_Search;
 use Auth;
 class lisController extends Controller
 {
-		public function allListings($order){
+	public function allListings($order){
 		$listingInfoQuery = Listing_Info::active();
 		if ($order == 1) {
 			$listingInfoQuery->orderBy('created_at');
