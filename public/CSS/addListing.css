@@ -16,3 +16,10 @@ h2 {
 	background-color: white;
 }
 
+.checkPet {
+	text-align: left;
+}
+
+#petsAdd{
+	display: none;
+}

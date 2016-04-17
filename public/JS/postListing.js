@@ -1,4 +1,16 @@
 
+function getMoreCheckboxes(value){
+	if (value == 0){
+		document.getElementById('petsAdd').style.display = "block";
+		document.getElementById('pets').value = 1;
+	}
+	else{
+		document.getElementById('petsAdd').style.display = "none";
+		document.getElementById('pets').value = 0;
+	}
+
+}
+
 
 function checkSubmit() {
 

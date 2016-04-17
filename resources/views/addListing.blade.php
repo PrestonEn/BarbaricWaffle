@@ -30,7 +30,8 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" id="addListingsForm" role="form">
+        <form method="POST" id="addListingsForm" role="form" enctype="multipart/form-data">
+
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="longitude_id" name="longitude_name" />
             <input type="hidden" id="latitude_id" name="latitude_name" />
@@ -108,6 +109,8 @@
                     <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" placeholder="Number of Bathrooms" value="{{ old('bathrooms_name') }}"required>
                 </div>
             </div>
+
+           
             <!--
             <div class="row">
                 <div class="checkbox col-sm-4">
@@ -163,6 +166,28 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="Amenities" value="{{ old('amenities_name') }}">
             </div>
+
+             <div class="form-group">
+                <label for="description">Pets:</label>
+            </div>
+            <div class="row">
+                <div class ="col-xs-4 col-sm-2">Pet Friendly : </div>
+                <div class ="col-xs-1 col-sm-1 checkPet"><input type= "checkbox" id = "pets" name="pets" value="0" onClick="getMoreCheckboxes(value)"></input></div>
+            </div>
+            <br>
+            <div class = "row" id = "petsAdd">
+                <div class = "col-xs-4 col-sm-2"> Dogs : </div>
+                <div class ="col-xs-1 col-sm-1 checkPet"><input type= "checkbox" name="dogs" value="dogs"></input></div>
+                <div class = "col-xs-4 col-sm-2"> Cats : </div>
+                <div class ="col-xs-1 col-sm-1 checkPet"><input type= "checkbox" name="cats" value="cats"></input></div>
+                <div class = "col-xs-4 col-sm-2"> Other : </div>
+                <div class ="col-xs-1 col-sm-1 checkPet"><input type= "checkbox" name="other" value="other"></input></div>
+            </div>
+            <br>
+
+
+
+
             <div class="row">
                 <label class="col-sm-6">Available from</label>
 
@@ -195,6 +220,18 @@
                 </div>
             </div>
             -->
+            <div class="row">
+                <label class="col-sm-6">Images</label>
+
+                <label class="col-sm-6">To</label>
+                <div class="form-group col-sm-6">
+                    <div class='input-group file' id='' name=''>
+<input type="file" class="form-control" name="image[]" placeholder="Upload Image" multiple="true">
+                    </div>
+                </div>
+
+            </div>
+
             <br />
             <button class="btn btn-default">Submit</button>
         </form>
