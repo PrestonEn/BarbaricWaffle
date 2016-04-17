@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Image;
 use Auth;
 use Log;
 use Illuminate\Http\Response;
@@ -12,6 +12,7 @@ use App\Listing;
 use App\Location;
 use App\Saved_Search;
 use App\Listing_Info;
+use App\Listing_Image;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Support\Facades\Input;
@@ -57,6 +58,8 @@ class ListingController extends Controller
             'sqftSize_name'         => 'bail|numeric|min:0',
 
             'mls'                   => 'alpha_num',
+
+            // 'files_name[]'          => 'required|images',
         ]);
 
         //Check if validation passes. If not, redirect.
@@ -111,6 +114,34 @@ class ListingController extends Controller
         $listingInfo->rental_available_to = Input::get('dateTo_name', NULL);
         
         $listingInfo->save();
+
+        // foreach ($request->file('image') as $file) {
+        //     $file_prefix = '../images/listing_photos/';
+
+        //     $img = Image::make($file);
+        //     $img_t = Image::make($file);
+
+        //     $img->resize(600, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+
+        //     $img->resize(300, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+
+
+        //     $filename = $file_prefix . time() . $listing->listing_id;
+
+        //     $img->save($filename);
+        //     $img_t->save($filename.'_t');
+
+        //     $lis_img = new Listing_Image;
+
+        //     $lis_img->listing()->attach($listing->listing_id);
+        //     $lis_img->image_filename = $filename;
+        //     $lis_img->image_filename_thumbnail = $filename. '_t';
+
+        // }
 
         return redirect('houseTemplate/'.$listing->listing_id);
     }

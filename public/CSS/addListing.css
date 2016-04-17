@@ -20,3 +20,11 @@ h2 {
 #dropzoneFileUpload {
 	background-color: white;
 }
+
+.checkPet {
+	text-align: left;
+}
+
+#petsAdd{
+	display: none;
+}

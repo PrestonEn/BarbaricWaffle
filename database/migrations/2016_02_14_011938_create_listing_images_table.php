@@ -26,14 +26,8 @@ class CreateListingImagesTable extends Migration
             //Do not include file path. 
             //Should be in form of [filename].[file_type]
             //Filename should be unique.
-            $table->string('image_filename')->unique();
-            $table->string('image_filename_thumbnail');
-
-            //Image purpose.
-            //Number specifies order of appearance, with
-            //0 being the listings main image and higher
-            //values showing up later in the listing details.
-            $table->integer('image_priority');
+            $table->string('image_filename')->default('../images/houseDefault.jpeg');
+            $table->string('image_filename_thumbnail')->default('../images/houseDefault.jpeg');
 
             $table->timestamps();
         });

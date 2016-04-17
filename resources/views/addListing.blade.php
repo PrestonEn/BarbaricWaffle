@@ -33,7 +33,8 @@
 
         <div class = "pageTitle"> Create a New Listing </div>    
 
-        <form method="POST" id="addListingsForm" role="form">
+        <form method="POST" id="addListingsForm" role="form" enctype="multipart/form-data">
+
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="longitude_id" name="longitude_name" />
             <input type="hidden" id="latitude_id" name="latitude_name" />
@@ -241,6 +242,18 @@
                 </div>
             </div>
             -->
+            <div class="row">
+                <label class="col-sm-6">Images</label>
+
+                <label class="col-sm-6">To</label>
+                <div class="form-group col-sm-6">
+                    <div class='input-group file' id='' name=''>
+<input type="file" class="form-control" name="image[]" placeholder="Upload Image" multiple="true">
+                    </div>
+                </div>
+
+            </div>
+
             <br />
             <button class="btn btn-default">Submit</button>
         </form>
