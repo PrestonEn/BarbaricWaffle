@@ -88,7 +88,7 @@ Route::group(['middleware' => ['web']], function () {
         return Redirect::to('/');
     });
 
-    Route::post('profileSettings/updateImage', 'userController@updateImage');
+    Route::post('updateImage', 'userController@updateImage');
 
 
 
