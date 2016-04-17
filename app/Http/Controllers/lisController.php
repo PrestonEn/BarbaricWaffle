@@ -162,6 +162,8 @@ class lisController extends Controller
 		$search = Saved_Search::where('saved_search_id','=',$searchId)->first();
 		$listing = Listing::where('date_created_min','>=',$search->date_created_min)->first();
 		dd($listing);
+	}
+}
 
 
 /*
@@ -191,6 +193,3 @@ class lisController extends Controller
             'allowed_other_pets'
 
 */
-
-	}
-}
