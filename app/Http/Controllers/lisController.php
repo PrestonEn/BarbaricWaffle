@@ -42,9 +42,9 @@ class lisController extends Controller
 		return view('mapListing', compact('listingInfo','location', 'savedSearch'), compact('num'));
 	}
 
-	public function mainProfileActiveListings($userId){
-		$user = User::where('user_id','=',$userId)->first();
-		$listingsActive = Listing::users_listings($userId)->get(); //Is this supposed to also have ->active()?
+	public function mainProfileActiveListings(){
+		$user = Auth::user();
+		$listingsActive = Listing::users_listings($user->user_id)->get(); //Is this supposed to also have ->active()?
 		return view('profile', compact('listingsActive'), compact('user'));
 	}
 
@@ -139,5 +139,12 @@ class lisController extends Controller
 			$location->delete();
 		}
 		return redirect('profileProperties');
+	}
+
+	public function getProperyFromListing($ListingId){
+		$list = Listing::where('listing_id','=',$ListingId)->first();
+		$location = $list->location;
+		$listings = $location->listing;
+		return view('listingByProperty', compact('listings'), compact('location'));
 	}
 }

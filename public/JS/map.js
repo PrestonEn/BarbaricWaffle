@@ -142,12 +142,11 @@ function getCoor(address, map, geocoder, ids, price, title, long, lat) {
     var htmlString = "<p>" + price + "</p>" + "<p>" + title + "</p>";
 
     makeInfoWindow(marker, map, infowindow, htmlString);
-
-    /*
+    
     google.maps.event.addListener(marker, 'click', function (num) {
-        window.location.href = "houseTemplate/" + ids;
+        window.location.href = "getProperyPageFromHouseId/" + ids;
     });
-    */
+    
 
 
 }
