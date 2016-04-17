@@ -58,7 +58,6 @@ $factory->define(App\Listing_Info::class, function (Faker\Generator $faker) {
             'num_roommates_max'     =>  $faker->randomDigit,
 
             'has_furnishings'       =>  $faker->boolean,
-            'details_furnishings'   =>  $faker->text(200),
 
             'has_kitchen'       =>  $faker->boolean,
             'has_laundry'       =>  $faker->boolean,

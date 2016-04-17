@@ -31,22 +31,27 @@
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <label class="textLabel"> Saved Searches</label>
-                                    <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
+                                    @if($savedSearch)
+                                        <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
                                         <option></option>
-                                        @foreach($savedSearch as $saved)
+                                            @foreach($savedSearch as $saved)
 
-                                        <script>
-                                            $(document).ready(function () {
-                                                var obj = <?php echo json_encode($saved); ?>;
-                                                passToArray(obj);
-                                            });
-                                        </script>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    var obj = <?php echo json_encode($saved); ?>;
+                                                    passToArray(obj);
+                                                });
+                                            </script>
 
-                                        <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
+                                            <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
 
-                                        @endforeach
-
-                                    </select>
+                                            @endforeach
+                                        </select>
+                                    @elseif(!Auth::check())
+                                        <p>Make an account to save searches!</p>
+                                    @else
+                                        <p>No Saved Searches!</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">

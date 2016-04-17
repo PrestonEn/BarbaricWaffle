@@ -34,10 +34,11 @@ class lisController extends Controller
 		$listingInfo = Listing_Info::where('is_active','=',1)->get();
 		$num = Listing_Info::where('is_active','=',1)->count();	
         $location = Location::select('city', 'country')->groupBy('city')->get();
-        $savedSearch = Saved_Search::where('user_id', '=', Auth::user()->user_id)->get();
-        
-        
-        
+   		if(Auth::check()){
+        	$savedSearch = Saved_Search::where('user_id', '=', Auth::user()->user_id)->get();
+    	}else{
+    		$savedSearch = null;
+    	}
 		return view('mapListing', compact('listingInfo','location', 'savedSearch'), compact('num'));
 	}
 
