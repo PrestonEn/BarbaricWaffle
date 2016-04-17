@@ -64,6 +64,10 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('addProperty', 'pageStructureController@addProperty');
 
+    Route::get('getProperyPageFromHouseId/{ListingId}', 'lisController@getProperyFromListing');
+
+
+
     // Add listing POST request
     Route::post('addProperty', 'propertyController@add');
     Route::post('addListing', 'ListingController@addListing');

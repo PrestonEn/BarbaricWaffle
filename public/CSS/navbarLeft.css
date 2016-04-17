@@ -8,6 +8,7 @@
 
 	#profilePic{
 		border-radius: 50%;
+		max-height: 350px;
 	}
 	@media only screen and (max-width : 320px){
 		#profilePic{

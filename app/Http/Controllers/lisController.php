@@ -140,4 +140,13 @@ class lisController extends Controller
 		}
 		return redirect('profileProperties');
 	}
+
+	public function getProperyFromListing($ListingId){
+		$list = Listing::where('listing_id','=',$ListingId)->first();
+		$location = $list->location;
+		$listings = $location->listing;
+		return view('listingByProperty', compact('listings'), compact('location'));
+
+
+	}
 }
