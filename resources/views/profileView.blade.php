@@ -18,7 +18,7 @@
 
 		<div class = "backPane panel">
 			<strong>Phone Number : </strong>
-			<div class = "profileInfo"> 555-555-5555 </div>
+			<div class = "profileInfo"> {{$user->phone}} </div>
 		</div>
 
 
@@ -35,10 +35,11 @@
 				<table id = "listingTable" class = "table table-bordered">
 					<tr>
 
-                  @foreach ($listingsActive as $listing)
-                    @foreach($listing->listing_info as $list)
-                    @if($list->is_active)
-						<td class = "listingCell" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
+                  @foreach ($locations as $location)
+                  	@foreach($location->listing as $lists)
+                  		@foreach($lists->listing_info as $list)
+                   		@if($list->is_active)
+						<td class = "listingCell" onclick="window.location = '../../houseTemplate/{{$list->listing_id}}'">
                				<img class="listImages" src="http://chicagorealestatedude.com/wp-content/uploads/2014/04/house-question.jpg">
                				<table class = "listingData table table-condensed">	
                					<tr>
@@ -56,7 +57,8 @@
    						</td>
                      @endif
                      @endforeach
-                  @endforeach    			
+                  	@endforeach
+                  @endforeach   			
 				</table>
 			</div>
 	</div>

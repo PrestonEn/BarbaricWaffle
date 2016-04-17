@@ -26,6 +26,10 @@
          </div>
       </div>
 
+
+      <form name="formyform" method="post" action="../profilePostings">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input id = "array" name="array" type="hidden" value="">
       @foreach($listings as $listing)
       @foreach($listing->listing_info as $list)
       @if($list->is_active == 1)
@@ -171,7 +175,7 @@
       @endif
       @endforeach
       @endforeach
-
+  </form>
 </body>
 @stop
 

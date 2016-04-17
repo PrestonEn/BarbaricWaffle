@@ -2,9 +2,24 @@
 
 @extends('navbarTop') @section('content')
 
+<div class = "bHolder">
+ <div id = "modalButtonHolder">
+    <button type="button" class="btn btn-primary helpButton" data-toggle="modal" data-target=".bs-example-modal-sm" >?</button>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+           test
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="container">
 
 
-<div class="container" style="width:700px;">
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -16,7 +31,7 @@
       </div>
       <div class="modal-body">
       <div class="modal-body">
-        <div id="mapCanvas" style="width: 500px; height: 400px"></div>
+        <div id="mapCanvas" style="width: 95%; height: 400px"></div>
       </div>
       <div class="modal-footer">
       </div>      </div>
@@ -29,9 +44,11 @@
 </div>
 
 
+<h2 style="text-align:center;">Add a New Property</h2>
 
     <div class="row">
-        <h2>Add a New Property</h2>
+        <div class = "col-xs-0 col-sm-2"></div>
+        <div class = "col-xs-12 col-sm-10">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -75,6 +92,7 @@
         </form>
         <!-- Submits form info thru postProperty.js -->
         <button onClick="postProperty(event)" class="btn btn-default">Submit</button>
+        </div>
     </div>
 </div>
 

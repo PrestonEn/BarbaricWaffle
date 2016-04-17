@@ -2,8 +2,23 @@
 
 @extends('navbarTop') @section('content')
 
+<div class = "bHolder">
+ <div id = "modalButtonHolder">
+    <button type="button" class="btn btn-primary helpButton" data-toggle="modal" data-target=".bs-example-modal-sm" >?</button>
+</div>
 
-<div class="container" style="width:700px;">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+           test
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="col-xs-0 col-sm-2"></div>
+<div class="container col-sm-8">
     <div class="row">
         </br>        
         @if (count($errors) > 0)

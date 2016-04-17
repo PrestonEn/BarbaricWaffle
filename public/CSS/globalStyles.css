@@ -22,3 +22,18 @@ div.row {
   margin-right: 0px; 
   margin-left: 0px;
 }
+
+.bHolder {
+	text-align:right;
+	margin-right:2%; 
+	margin-top:60px;
+}
+
+.helpButton {
+	border-radius: 50%;
+	border: 1px solid #0000b3;
+}
+
+.modal-content {
+	text-align: left;2
+}
