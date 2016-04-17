@@ -223,7 +223,7 @@ function searchFilters(e) {
                 });
             });
 
-            //var input = $("#searchFilter select[name='region']").val();
+            //sets center and zoom level of google map
             if (lat != 0) {
                 map.setCenter(new google.maps.LatLng(lat, long));
                 map.setZoom(3);
@@ -406,6 +406,5 @@ function getCitiesFromCountry(country) {
             console.log("POST: ", jqXHR, textStatus, errorThrown);
         }
     });
-
-
 }
+

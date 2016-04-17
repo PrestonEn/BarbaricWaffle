@@ -33,12 +33,20 @@ class lisController extends Controller
 			$listingInfo = Listing_Info::where('is_active','=',1)->get();
 			$num = Listing_Info::where('is_active','=',1)->count();	
             $location = Location::select('city', 'country')->groupBy('city')->get();
-            $savedSearch = Saved_Search::where('user_id', '=', Auth::user()->user_id)->get();
             
+            $savedSearch = null;
+            if (Auth::user()) {
+                $savedSearch = Saved_Search::where('user_id', '=', Auth::user()->user_id)->get();
+                return view('mapListing', compact('listingInfo','location', 'savedSearch'), compact('num'));
+		
+            }
+            else{
+                return view('mapListing', compact('listingInfo','location','savedSearch'), compact('num'));
+		
+                
+            }    
             
-            
-			return view('mapListing', compact('listingInfo','location', 'savedSearch'), compact('num'));
-		}
+			}
 
 		public function mainProfileActiveListings($userId){
 			$user = User::where('user_id','=',$userId)->first();
