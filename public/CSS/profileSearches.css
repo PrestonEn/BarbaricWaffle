@@ -1,18 +1,14 @@
+#addProp{
+	text-align: center; 
+	font-size: 1em;
+	margin-bottom: 2em;
+}
+
 table {
 	margin: auto;
 	margin-top: 1%;
 }
 
-button {
-	background-color: grey;
-	position: absolute;
-	right:30px;
-	margin-right: 4.5%;
-}
-
-#editButton {
-	width: 65px;
-}
 
 #buttonDiv {
 	margin-bottom: 2.9em;
@@ -46,7 +42,11 @@ table td {
 	text-align: left;
 }
 
-button {
-	position: absolute;
-	right:0;
+.searchCriteria {
+	font-size: 1.8vmax;
+	padding-left: 0;
+}
+
+#secondTitle{
+	visibility: hidden;
 }

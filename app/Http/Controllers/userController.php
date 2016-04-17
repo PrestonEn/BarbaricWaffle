@@ -54,9 +54,8 @@ class userController extends Controller
         return redirect('signIn');
     }
     
-	public function profileSettingPagePopulation($userId){
-		$user = User::where('user_id','=',$userId);
-		$user = $user->first();
+	public function profileSettingPagePopulation(){
+		$user = Auth::user();
 		return view('profileSettings', compact('user'));
 	}
 
@@ -71,14 +70,14 @@ class userController extends Controller
             ]);
 
             if(!Auth::attempt(['email' => Auth::user()->email, 'password' => Input::get('oldPass')])){
-                return redirect('profileSettings/'.Auth::user()->user_id)
+                return redirect('profileSettings')
                     ->withErrors(['The currently set password was not inputted correctly']);
             }
                 $newPass = Hash::make(Input::get('nPass'));
                  $user = Auth::user();
                  Auth::user()->fill([
                      'password' => $newPass])->save();
-                     return redirect('profileSettings/'.Auth::user()->user_id)
+                     return redirect('profileSettings')
                             ->with('update','Password Change Successful');
     }
 
@@ -93,7 +92,7 @@ class userController extends Controller
                      'first_name' => Input::get('firstName'),
                      'last_name' => Input::get('lastName')])->save();         
 
-        return redirect('profileSettings/'.Auth::user()->user_id)
+        return redirect('profileSettings')
                             ->with('update','Name Change Successful');
     
     }
@@ -106,7 +105,7 @@ class userController extends Controller
         Auth::user()->fill([
                      'phone' => Input::get('phone')])->save();         
 
-        return redirect('profileSettings/'.Auth::user()->user_id)
+        return redirect('profileSettings')
                             ->with('update','Phone Number Change Successful');
     
     }    
@@ -134,14 +133,14 @@ class userController extends Controller
             $user->fill(['user_image_filename' => $filename])->save();
 
 
-        return redirect('profileSettings/'.Auth::user()->user_id)
+        return redirect('profileSettings')
                             ->with('update','Profile Image Change Successful');
 
 
         }
 
 
-        return redirect('profileSettings/'.Auth::user()->user_id)
+        return redirect('profileSettings')
                             ->with('update','Profile Image Change Failed');
     }
 

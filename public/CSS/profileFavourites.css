@@ -15,6 +15,12 @@
 	font-size: 1.2em;
 }
 
+#addProp{
+	text-align: center; 
+	font-size: 0.9em;
+	margin-bottom: 2em;
+}
+
 #buttonDiv {
 	margin-bottom: 2.9em;
 }
