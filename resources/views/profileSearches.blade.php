@@ -79,7 +79,7 @@
                            <td class = "col-xs-1 col-sm-1"></td>
                            <td class = "col-xs-3 col-sm-3">
                               <strong class = "secondTitle"> Search Criteria </strong><br>
-                           <div id="listingsLink" onclick='window.location="../mapListing"' class="searchCriteria"> View Associated Listings</div></td>
+                           <div id="listingsLink" onclick='window.location="profileSearches/{{$s->saved_search_id}}"' class="searchCriteria"> View Associated Listings</div></td>
                         </tr>
                      </table>                
          </div>
