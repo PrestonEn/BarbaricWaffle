@@ -22,11 +22,8 @@ $(document).ready(function () {
         }
 
     });
-
-});
-//extra---------------------
-/*
-$(document).ready(function () {
+    
+    //form checkbox/radio button selecting
     $('.form-group').on('click', 'input[type=radio]', function () {
         $(this).closest('.form-group').find('.radio-inline, .radio').removeClass('checked');
         $(this).closest('.radio-inline, .radio').addClass('checked');
@@ -38,8 +35,7 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
             $(this).closest('.additional-info-wrap').find('.additional-info').removeClass('hide').find('input,select').removeAttr('disabled');
         } else {
-            $(this).closest('.additional-info-wrap').find('.additional-info').addClass('hide').find('input,select').val('').attr('disabled', 'disabled');
-        }
+             }
     });
     $('input[type=radio]').click(function () {
         $(this).closest('.form-group').find('.additional-info-wrap .additional-info').addClass('hide').find('input,select').val('').attr('disabled', 'disabled');
@@ -47,9 +43,8 @@ $(document).ready(function () {
             $(this).closest('.additional-info-wrap').find('.additional-info').removeClass('hide').find('input,select').removeAttr('disabled');
         }
     });
-});
 
-*/
+});
 
 
 //-------------------------

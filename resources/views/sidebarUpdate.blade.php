@@ -1,6 +1,6 @@
 
         @foreach($listingInfo as $listing)
-        <div id="subrow" class="row">
+        <div onmouseover = "showMarker({{$listing->listing_id}})" onmouseout = "hideMarker({{$listing->listing_id}})" id="subrow" class="row">
 
             <div class="col-xs-6" onclick="window.location = '../../houseTemplate/{{$listing->listing_id}}'">
                 <div id="eg1">

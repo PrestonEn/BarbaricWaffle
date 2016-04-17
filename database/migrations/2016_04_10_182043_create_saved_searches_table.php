@@ -21,32 +21,36 @@ class CreateSavedSearchesTable extends Migration
                   ->references('user_id')
                   ->on('users');        
 
-            $table->dateTime('date_created_min')->nullable;
-            $table->dateTime('date_created_max')->nullable;
-            $table->boolean('is_active')->default(true)->nullable;
+            //$table->dateTime('date_created_min')->nullable;
+            //$table->dateTime('date_created_max')->nullable;
+            //$table->boolean('is_active')->default(true)->nullable;
+
+            //location
+            $table->string('city', 255)->nullable;
+            $table->string('country', 255)->nullable;
 
             //Listing info.
-            $table->string('search_description', 255)->nullable;
-
+            //$table->string('search_description', 255)->nullable;
+            
             //Price
             $table->double('price_monthly_min', 10, 2)->nullable;
             $table->double('price_monthly_max', 10, 2)->nullable;
             
             //Length of rental
-            $table->integer('rental_length_months_min')->unsigned()->nullable;
-            $table->integer('rental_length_months_max')->unsigned()->nullable;
+            //$table->integer('rental_length_months_min')->unsigned()->nullable;
+            //$table->integer('rental_length_months_max')->unsigned()->nullable;
 
-            $table->date('rental_available_from')->nullable;
-            $table->date('rental_available_to')->nullable;
+            //$table->date('rental_available_from')->nullable;
+            //$table->date('rental_available_to')->nullable;
 
 
             //House details
             //$table->integer('room_level')->nullable;
-            $table->integer('room_size_sqft_min')->unsigned()->nullable;
-            $table->integer('room_size_sqft_max')->unsigned()->nullable;
+            //$table->integer('room_size_sqft_min')->unsigned()->nullable;
+            //$table->integer('room_size_sqft_max')->unsigned()->nullable;
 
-            //$table->integer('num_bedrooms_total')->unsigned()->nullable;
-            //$table->integer('num_bathrooms_total')->unsigned();
+            $table->integer('num_bedrooms_total')->unsigned()->nullable;
+            $table->integer('num_bathrooms_total')->unsigned();
             $table->integer('num_roommates_max')->unsigned()->nullable;
 
 
@@ -55,7 +59,7 @@ class CreateSavedSearchesTable extends Migration
 
             $table->boolean('has_kitchen')->nullable;
             $table->boolean('has_laundry')->nullable;
-            $table->boolean('has_yard')->nullable;
+            //$table->boolean('has_yard')->nullable;
 
             $table->boolean('owner_pays_internet')->nullable;
             $table->boolean('owner_pays_water')->nullable;

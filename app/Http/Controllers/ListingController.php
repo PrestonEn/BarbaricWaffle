@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use App\User;
 use App\Listing;
 use App\Location;
+use App\Saved_Search;
 use App\Listing_Info;
 use Carbon\Carbon;
 use DateTime;
@@ -121,34 +122,40 @@ class ListingController extends Controller
                 $ids = $_POST['id'];
                 $listingInfo = Listing_Info::whereIn('listing_id', $ids)->get();   
                 //returns sidebar view with udpated listings
-               
+                
+                
                 return view ('sidebarUpdate', compact('listingInfo'));
             }
+            else return view('noListingPage');
         }  
     }
+    
+    
     
     public function searchFilters(Request $request){
         if($request->ajax()){
             //dd($request->all());
             
+            $country = Input::get('country');
             $region = Input::get('region');
+            
             $maxPrice = Input::get('maxPrice');
             $minPrice = Input::get('minPrice');
             $rooms = Input::get('rooms');
             $bathrooms = Input::get('bathrooms');
-            $kitchen =             (Input::has('haskitchen')) ? 1 : 0;
+            $kitchen =             (Input::has('hasKitchen')) ? 1 : null;
             $laundry = Input::get('laundry');
-            $internet =     (Input::has('internet')) ? 1 : 0;
-            $water =        (Input::has('water')) ? 1 : 0;
-            $electricity =  (Input::has('hydro')) ? 1 : 0;
-            $pets =          (Input::has('pets')) ? 1 : 0;
-            $dogs =            (Input::has('dogs')) ? 1 : 0;
-            $cats =            (Input::has('cats')) ? 1 : 0;
-            $other_pets =      (Input::has('other')) ? 1 : 0;
-            $numMates = Input::get('MaxNumRoomates');
+            $internet =     (Input::has('internet')) ? 1 : null;
+            $water =        (Input::has('water')) ? 1 : null;
+            $electricity =  (Input::has('hydro')) ? 1 : null;
+            $pets =          Input::get('pets');
+            $dogs =            (Input::has('dogs')) ? 1 : null;
+            $cats =            (Input::has('cats')) ? 1 : null;
+            $other_pets =      (Input::has('other')) ? 1 : null;
+            $numMates = Input::get('MaxNumRoommates');
             
-            $locations = explode(',', $region);
-            if($laundry == "") $laundry = null;
+            if($laundry == "na") $laundry = 0;
+            if($maxPrice == 2000) $maxPrice = 99999;
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
@@ -156,34 +163,51 @@ class ListingController extends Controller
                 ->whereIfNotNull('price_monthly',"<=", $maxPrice)
                 ->whereIfNotNull('price_monthly',">=", $minPrice)
                 ->whereIfNotNull('num_bathrooms_total', "=",$bathrooms)
-                ->whereIfNotNull('num_roomates_max', "<=", $numMates)
-                ->whereIfNotNull('has_laundry', "=", $laundry);
-                //->whereIfNotNull('owner_pays_internet', "=",$internet)
-                //->whereIfNotNull('owner_pays_electricity', "=",$electricity);
-                //->whereIfNotNull('allowed_dogs', "=",$dogs)
-                //->whereIfNotNull('allowed_cats', "=",$cats)
-                //->whereIfNotNull('allowed_other_pets', "=",$other_pets);
+                ->whereIfNotNull('has_laundry', "=", $laundry)
+                ->whereIfNotNull('owner_pays_internet', "=",$internet)
+                ->whereIfNotNull('has_kitchen', "=",$kitchen)
+                ->whereIfNotNull('owner_pays_electricity', "=",$electricity)
+                ->whereIfNotNull('owner_pays_water', "=",$water)
+                ->whereIfNotNull('owner_has_pets', "=",$pets)
+                ->whereIfNotNull('allowed_dogs', "=",$dogs)
+                ->whereIfNotNull('allowed_cats', "=",$cats)
+                ->whereIfNotNull('allowed_other_pets', "=",$other_pets);
             
+            if($numMates == "99") $query = $query->where('num_roommates_max', "<=", "99");
+            else $query = $query->where('num_roommates_max', "=", $numMates);
             
             $listingInfo = $query->get();
             $listings = array();
+            $long = 0;
+            $lat = 0;
+            $count = 0;
             
             foreach($listingInfo as $list){
                 //$listings = Location::where($list->listing->location.city, '=', $region);         
                 $location = $list->listing->location;
-                if($region != "All"){
-                    if($location['city'] == $locations[0]){
+                
+                if($country != "all"){
+                    if($location['city'] == $region && $location['country'] == $country){
                         //dd($list);
                         array_push($listings, $location);
+                        $count = $count +1;
+                        $long = $long + $location->longitude;
+                        $lat = $lat + $location->latitude; 
                     }
                 }
                 else{
-                     array_push($listings, $location);
+                    array_push($listings, $location);
+                    $count = $count +1;
+                    $long = $long + $location->longitude;
+                    $lat = $lat + $location->latitude; 
                 }
-                
-                
             }
-            
+            if($count != 0){
+                $long = $long/$count;
+                $lat = $lat/$count;
+            }
+            array_push($listings, $lat);
+            array_push($listings, $long);
             //dd($internet);
            // dd($listings);
             
@@ -192,6 +216,92 @@ class ListingController extends Controller
             
         }
         
+        
+    }
+    
+    
+    public function saveFilter(Request $request){
+        
+            //dd($request->all());
+        if($request->ajax()){
+            
+            $region = Input::get('region');
+            
+            //$locations = explode(',', $region);
+            
+            //gonna add country later
+            $save = new Saved_Search;
+            
+            $save->user()->associate(Auth::user());
+            $save->city = $region;
+            $save->country = Input::get('country');
+            
+            //$save->country = $locations[1];
+            $save->price_monthly_min = Input::get('minPrice');
+            $save->price_monthly_max = Input::get('maxPrice');
+            $save->num_bathrooms_total = Input::get('bathrooms');
+            $save->num_bedrooms_total = Input::get('rooms');
+            $save->has_kitchen = (Input::has('hasKitchen')) ? 1: 0;
+            $save->owner_pays_internet = (Input::has('internet')) ? 1: 0;
+            $save->owner_pays_water = (Input::has('water')) ? 1: 0;
+            $save->owner_pays_electricity = (Input::has('hydro')) ? 1: 0;
+            $save->owner_has_pets = Input::get('pets');
+            $save->allowed_dogs = (Input::has('dogs')) ? 1 : 0;
+            $save->allowed_cats = (Input::has('cats')) ? 1 : 0;
+            $save->allowed_other_pets = (Input::has('other')) ? 1 : 0;
+            $save->has_furnishings = (Input::has('furnished')) ? 1 : 0;
+            
+            
+            $save->num_roommates_max = Input::get('MaxNumRoommates');
+            $save->save();    
+            
+            return response()->json(['data'=>$save]);
+        }
+        
+    }
+    
+
+
+    public function getFilter(Request $request){
+        if($request->ajax()){
+            $id = $_POST['id'];
+            $savedFilters = Saved_Search::where('saved_search_id', '=', $id)
+                ->get();
+            
+            
+            
+            return response()->json(['data'=>$savedFilters]);
+            
+        }
+    
+    }
+    
+    public function getCitiesFromCountry(Request $request){
+        if($request->ajax()){
+            $country = $_POST['country'];
+            $locations = Location::where('country', '=', $country)
+                ->get();
+            
+            $city = array();
+            
+            foreach($locations as $location){
+                //$listings = Location::where($list->listing->location.city, '=', $region);         
+                $listings = $location->listing;
+                foreach($listings as $list){
+                    $listingInfo = $list->listing_info;  
+                    foreach($listingInfo as $listInfo){
+                     
+                        if($listInfo['is_active'] == 1){
+                            array_push($city, $location->city);
+                        }  
+                        
+                    }
+                }
+            }
+            //dd($city);
+            return $city;
+            
+        }
         
     }
 }

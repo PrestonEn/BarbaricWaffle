@@ -49,7 +49,7 @@ class propertyController extends Controller
                     $postal_code = $comp->long_name;
                     break;
                 case 'country': //COUNTRY
-                    $country = $comp->short_name;
+                    $country = $comp->long_name;
                     break;
                 case 'neighborhood':
                 case 'locality':

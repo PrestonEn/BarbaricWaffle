@@ -1,11 +1,4 @@
-.main {
-	margin-top: 5em;
-}
 
-.row {
-	padding-top: 1.2em;
-	padding-bottom: 1.2em;
-}
 
 #sButton {
 	width: 9vmax;
@@ -19,19 +12,9 @@
 	bottom: 0;
 	right: 0;
 }
-select {
-	width: 10em;
-}
 
-select, input {
-	background-color: #A7A37E;
-	color: white;
-}
 
-input {
-	position: absolute;
-	right: 40%;
-}
+
 
 .backdrop {
 	margin-left: 10vw;
@@ -82,3 +65,126 @@ input {
 #minRange, #maxRange {
 	width:50vw;
 }
+
+
+
+label.radio-inline,
+label.checkbox-inline {
+    background-color: #dcdfd4;
+    cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 2px !important;
+    margin-right: 2%;
+    margin-left: 0;
+    padding: 10px 10px 10px 30px;
+}
+
+label.radio-inline.checked,
+label.checkbox-inline.checked {
+    background-color: #006666;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px #000 !important;
+}
+
+.checkbox-inline + .checkbox-inline,
+.radio-inline + .radio-inline {
+    margin-left: 0 !important;
+}
+
+.columns{
+    margin: 0 !important;
+    padding: 2 !important;
+    
+}
+
+.columns label.checkbox-inline {
+    min-width: 180px;
+    vertical-align: top;
+    width: 100%;
+    
+}
+
+.columns label.radio-inline{
+    
+    min-width: 180px;
+    vertical-align: top;
+    width: 30%;
+}
+
+.inner {
+  min-width: 10px !important;  
+    
+}
+
+.additional-info-wrap {
+    display: inline-block;
+    margin: 0 2% 0 0;
+    min-width: 180px;
+    position: relative;
+    vertical-align: top;
+    width: 30%;
+}
+
+
+.additional-info label{
+    
+    
+}
+
+.additional-info-wrap label.checkbox-inline,
+.additional-info-wrap label.radio-inline {
+    width: 100% !important;
+}
+
+.additional-info-wrap .additional-info {
+    background-color: #006666;
+    clear: both;
+    color: #fff !important;
+    margin-top: -10px;
+    padding: 0 10px 10px;
+    text-shadow: 1px 1px 2px #000 !important;
+    width: 100%;
+}
+
+h3{
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+    
+}
+
+input[type=text]{
+    border-radius: 0;
+    
+    
+}
+
+.customContainer{
+    width: 100%;
+    margin: 0 auto;
+    
+    
+}
+
+select{
+    border-radius: 0 !important;
+    margin-bottom: 5px;
+    
+}
+
+.slider{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.margin{
+    margin-bottom: 20px;
+}
+
+.position{
+    margin-top: 10px;
+    
+}
+
