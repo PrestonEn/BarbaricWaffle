@@ -6,6 +6,8 @@
 @section('profileContent')
 
 <head>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="{!! asset('JS/profileImageHandle.js') !!}"></script>
 	<title> ProfileSettings </title>
 	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 	<link href="{!! asset('CSS/profileSettings.css') !!}" media="all" rel="stylesheet" type="text/css" />
@@ -36,15 +38,17 @@
     {{$user->first_name}} {{$user->last_name}}
   </div>
 
-  <form action="" method="post">
+  <form action="{{$user->user_id}}/updateImage" method="post"  enctype="multipart/form-data">
+          <button type="button" id="select_image" >Select a file to upload</button>
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class = "row">
-        <div class = "col-xs-1"></div>
-          Input Picture Drag and Drop here
+
+
       </div>  
       <div class = "row">
         <div id = "button" class = "col-xs-12">
+          <input type = "file" class = "form-control" name = "photo" id="img_store">
           <button type = "submit" class = "btn-md">Submit</input>
         </div>
       </div> 
@@ -180,6 +184,7 @@
 @stop
 
 @extends('navbarTop')
+
 
 </body>
 </html>

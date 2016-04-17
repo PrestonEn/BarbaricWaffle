@@ -3,7 +3,7 @@
 
 <div class = "row">
 		<div class = "col-xs-12 col-sm-3" id = "baseCol">
-			<img id = "profilePic" class = "img-responsive" src="../images/profilePicDefault.jpeg">
+			<img id = "profilePic" class = "img-responsive" src="../{{Auth::user()->user_image_filename}}">
 			<div id = "navbarLeft" class="list-group">
 	  			<a id = "colourNavBar" href="../profile/{{Auth::user()->user_id}}" class="list-group-item active">Profile</a>
 	  			<a href="../profileSearches" class="list-group-item">Saved Searches</a>

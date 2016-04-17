@@ -40,7 +40,8 @@
 		<div class = "col-xs-10 col-sm-8 col-md-6">
 			Phone Number : 
 			<!--<div class = "controls form-inline">-->
-			<input type = "text" class = "form-control" placeholder="123-456-7890 x1234" name = "phone" maxlength = "18" value="{{ old('phone') }}">
+			<input type = "text" class = "form-control" placeholder="123-456-7890 x1234" name = "phone" maxlength = "18" 
+			value="{{ old('phone') }}">
 			<!--</div>-->
 		<div class = "col-xs-5"></div>	
 		</div>
