@@ -84,4 +84,9 @@ class pageStructureController extends Controller
     public function profileMessages(){
         return view('profileMessages');
     }
+
+    public function listingFoundSMS(){
+    	return view('listingFoundSMS', ['name'=>'Test Guy']);
+    }
+
 }

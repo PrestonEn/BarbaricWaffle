@@ -66,6 +66,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('getProperyPageFromHouseId/{ListingId}', 'lisController@getProperyFromListing');
 
+    Route::get('listingFoundSMS', 'pageStructureController@listingFoundSMS'); //SMS View
 
 
     // Add listing POST request
