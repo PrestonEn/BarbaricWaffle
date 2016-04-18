@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang = "en">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="{!! asset('JS/profileImageHandle.js') !!}"></script>
+<title> ProfileSettings </title>
+<link href="{!! asset('CSS/profileSettings.css') !!}" media="all" rel="stylesheet" type="text/css" />
 
 @extends('navbarLeft')
 
 @section('profileContent')
-
-<head>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script type="text/javascript" src="{!! asset('JS/profileImageHandle.js') !!}"></script>
-	<title> ProfileSettings </title>
-	<link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
-	<link href="{!! asset('CSS/profileSettings.css') !!}" media="all" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
 
   @if (session('update'))
     <div class="alert alert-success">

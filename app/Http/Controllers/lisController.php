@@ -86,8 +86,9 @@ class lisController extends Controller
 
 	public function viewForeignProfile($userId){
 		$user = User::where('user_id','=',$userId)->first();
-		$locations = $user->locations;
-		return view('profileView', compact('locations'), compact('user'));
+		//$locations = $user->locations;
+		$listings = Listing::users_listings($userId)->get();
+		return view('profileView', compact('listings'), compact('user'));
 	}
 
 	public function getPropertyListings($locationId){
