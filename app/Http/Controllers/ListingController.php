@@ -163,6 +163,7 @@ class ListingController extends Controller
     }
     
     
+
     
     public function searchFilters(Request $request){
         if($request->ajax()){
@@ -176,30 +177,33 @@ class ListingController extends Controller
             $rooms = Input::get('rooms');
             $bathrooms = Input::get('bathrooms');
             $kitchen =             (Input::has('hasKitchen')) ? 1 : null;
-            $laundry = Input::get('laundry');
+            $laundry = (Input::has('laundry')) ? 1 : null;
             $internet =     (Input::has('internet')) ? 1 : null;
             $water =        (Input::has('water')) ? 1 : null;
             $electricity =  (Input::has('hydro')) ? 1 : null;
-            $pets =          Input::get('pets');
+            $smoke =  (Input::has('smoke')) ? 1 : null;
+            $yard =  (Input::has('yard')) ? 1 : null;
+            $pets = (Input::has('nopets')) ? 1 : null;
             $dogs =            (Input::has('dogs')) ? 1 : null;
             $cats =            (Input::has('cats')) ? 1 : null;
             $other_pets =      (Input::has('other')) ? 1 : null;
             $numMates = Input::get('MaxNumRoommates');
             
-            if($laundry == "na") $laundry = 0;
             if($maxPrice == 2000) $maxPrice = 99999;
             //$locations = Location::where('city', $region)->get();
             
             //$listings = $locations->listing();    
-            $query = Listing_Info::whereIfNotNull('num_bedrooms_total', "=",$rooms)
+            $query = Listing_Info::whereIfNotNull('num_bedrooms_total', "<=",$rooms)
                 ->whereIfNotNull('price_monthly',"<=", $maxPrice)
                 ->whereIfNotNull('price_monthly',">=", $minPrice)
-                ->whereIfNotNull('num_bathrooms_total', "=",$bathrooms)
+                ->whereIfNotNull('num_bathrooms_total', "<=",$bathrooms)
                 ->whereIfNotNull('has_laundry', "=", $laundry)
                 ->whereIfNotNull('owner_pays_internet', "=",$internet)
                 ->whereIfNotNull('has_kitchen', "=",$kitchen)
                 ->whereIfNotNull('owner_pays_electricity', "=",$electricity)
                 ->whereIfNotNull('owner_pays_water', "=",$water)
+                ->whereIfNotNull('has_laundry', "=",$laundry)
+                ->whereIfNotNull('has_yard', "=",$yard)
                 ->whereIfNotNull('owner_has_pets', "=",$pets)
                 ->whereIfNotNull('allowed_dogs', "=",$dogs)
                 ->whereIfNotNull('allowed_cats', "=",$cats)
@@ -251,13 +255,10 @@ class ListingController extends Controller
         
     }
     
-    
     public function saveFilter(Request $request){
         
             //dd($request->all());
         if($request->ajax()){
-            
-            $region = Input::get('region');
             
             //$locations = explode(',', $region);
             
@@ -265,9 +266,9 @@ class ListingController extends Controller
             $save = new Saved_Search;
             
             $save->user()->associate(Auth::user());
-            $save->city = $region;
+          
             $save->country = Input::get('country');
-            
+            $save->city = Input::get('region');
             //$save->country = $locations[1];
             $save->price_monthly_min = Input::get('minPrice');
             $save->price_monthly_max = Input::get('maxPrice');
@@ -277,12 +278,13 @@ class ListingController extends Controller
             $save->owner_pays_internet = (Input::has('internet')) ? 1: 0;
             $save->owner_pays_water = (Input::has('water')) ? 1: 0;
             $save->owner_pays_electricity = (Input::has('hydro')) ? 1: 0;
-            $save->owner_has_pets = Input::get('pets');
+            $save->owner_has_pets = (Input::has('nopets')) ? 1 : 0;
             $save->allowed_dogs = (Input::has('dogs')) ? 1 : 0;
             $save->allowed_cats = (Input::has('cats')) ? 1 : 0;
+            $save->has_yard = (Input::has('yard')) ? 1 : 0;
+            $save->has_laundry= (Input::has('laundry')) ? 1 : 0;
             $save->allowed_other_pets = (Input::has('other')) ? 1 : 0;
             $save->has_furnishings = (Input::has('furnished')) ? 1 : 0;
-            
             
             $save->num_roommates_max = Input::get('MaxNumRoommates');
             $save->save();    

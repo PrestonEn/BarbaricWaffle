@@ -59,13 +59,14 @@ class CreateListingInfoTable extends Migration
             $table->boolean('has_kitchen');
             $table->boolean('has_laundry');
             $table->boolean('has_yard');
-
+            $table->boolean('smoke_free');
             $table->boolean('owner_pays_internet');
             $table->boolean('owner_pays_water');
             $table->boolean('owner_pays_electricity');
 
             //Pet details
             //Note: Should these booleans be one bitmasked unsigned int?
+
             $table->boolean('owner_has_pets');
             $table->boolean('allowed_dogs');
             $table->boolean('allowed_cats');
