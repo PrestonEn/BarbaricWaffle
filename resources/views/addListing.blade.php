@@ -2,25 +2,35 @@
 
 @extends('navbarTop') @section('content')
 
-<div class = "bHolder">
- <div id = "modalButtonHolder">
-    <button type="button" class="btn btn-primary helpButton" data-toggle="modal" data-target=".bs-example-modal-sm" >?</button>
-</div>
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-           test
-        </div>
-    </div>
-</div>
-
-</div>
-
 <div class="col-xs-0 col-sm-2"></div>
 <div class="container col-sm-8">
     <div class="row">
         </br>        
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="pageTitle col-xs-10 col-sm-8"> 
+                Create a New Listing 
+            </div>
+            <div class="bHolderv2 col-xs-1 col-sm-2">
+                <div id = "modalButtonHolder">
+                    <button type="button" class="btn btn-primary helpButton" data-toggle="modal" data-target=".bs-example-modal-sm" >?</button>
+                </div>
+
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            </br>
+                            <p>
+                                Use this page to add a new listing!
+                                A star (*) shows that the field is required to submit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -31,26 +41,16 @@
             </div>
         @endif
 
-        <div class = "pageTitle"> Create a New Listing </div>    
-
         <form method="POST" id="addListingsForm" role="form" enctype="multipart/form-data">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="longitude_id" name="longitude_name" />
             <input type="hidden" id="latitude_id" name="latitude_name" />
 
-            <!-- Title -->
-            <div class="form-group col-sm-12">
-                <label for="title_name">Listing Title:</label>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="title_id" name="title_name" placeholder="Enter Title" value="{{ old('title_name') }}" required>
-                </div>
-            </div>
-
             @if(!empty($locations) && $locations->count()>0)
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label for="location_name">Location:</label>
+                    <label for="location_name">Location*:</label>
                     <select class="form-control" id="location_id" name="location_name" value="{{ old('location_name') }}" required>
                         @foreach ($locations as $loc)
                             <option value="{{$loc->location_id}}">{{$loc->street_address}}, {{$loc->city}}, {{$loc->province}}</option>
@@ -87,14 +87,22 @@
             </div>
             @endif
 
+            <!-- Title -->
+            <div class="form-group col-sm-12">
+                <label for="title_name">Listing Title*:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title_id" name="title_name" placeholder="Enter Title" value="{{ old('title_name') }}" required>
+                </div>
+            </div>
+
             <!--Rental Length-->
             <h2>Rental Length</h2>
             <hr>
             <div class="row">
                 <div class="form-group col-sm-4">
-                    <label>Available from:</label>
+                    <label>Available From*:</label>
                     <div class='input-group date' id='dateFrom_id' name='dateFrom_name'>
-                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" value="{{ old('dateFrom_name') }}"/>
+                        <input type='text' id='dateFrom_id' name='dateFrom_name' class="form-control" value="{{ old('dateFrom_name') }}" required>
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -103,7 +111,7 @@
                 <div class="form-group col-sm-4">
                     <label>Available To:</label>
                     <div class='input-group date' id='dateTo_id' name='dateTo_name'>
-                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" value="{{ old('dateTo_name') }}"/>
+                        <input type='text' id='dateTo_id' name='dateTo_name' class="form-control" value="{{ old('dateTo_name') }}">
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -120,7 +128,7 @@
             <hr>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label for="description">Rent (Monthly):</label>
+                    <label for="description">Rent (Monthly)*:</label>
                     <input type="text" class="form-control" id="rent_id" name="rent_name" placeholder="" value="{{ old('rent_name') }}" required>
                 </div>
             </div>
@@ -138,20 +146,20 @@
             <hr>
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <label>Square Footage:</label>
-                    <input type="text" class="form-control" id="sqft_id" name="sqft_name" value="{{ old('sqft_name') }}" required>
-                </div>
-                <div class="form-group col-sm-3">
-                    <label># Bedrooms:</label>
+                    <label>Number of Bedrooms*:</label>
                     <input type="text" class="form-control" id="bedrooms_id" name="bedrooms_name" value="{{ old('bedrooms_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
-                    <label># Bathrooms:</label>
+                    <label>Number of Bathrooms*:</label>
                     <input type="text" class="form-control" id="bathrooms_id" name="bathrooms_name" value="{{ old('bathrooms_name') }}" required>
                 </div>
                 <div class="form-group col-sm-3">
+                    <label>Square Footage:</label>
+                    <input type="text" class="form-control" id="sqft_id" name="sqft_name" value="{{ old('sqft_name') }}">
+                </div>
+                <div class="form-group col-sm-3">
                     <label>Max # Roommates:</label>
-                    <input type="text" class="form-control" id="roommatesNum_id" name="roommatesNum_name" value="{{ old('roommatesNum_name') }}" required>
+                    <input type="text" class="form-control" id="roommatesNum_id" name="roommatesNum_name" value="{{ old('roommatesNum_name') }}">
                 </div>
             </div>
             <div class="row">
@@ -160,15 +168,15 @@
                     <label>Yard?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="kitchen_name" value="{{ old('kitchen_name') }}">
+                    <input type="checkbox" name="kitchen_name" value='true' @if(old('kitchen_name')=='true') checked @endif>
                     <label>Kitchen?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="laundry_name" value="{{ old('laundry_name') }}">
+                    <input type="checkbox" name="laundry_name" value='true' @if(old('laundry_name')=='true') checked @endif>
                     <label>Laundry?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="furnishing_name" value="{{ old('furnishing_name') }}">
+                    <input type="checkbox" name="furnishing_name" value='true' @if(old('furnishing_name')=='true') checked @endif>
                     <label>Furnishings?</label>
                 </div>
             </div>
@@ -183,20 +191,20 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="dogs_name" value="{{ old('dogs_name') }}">
+                    <input type="checkbox" name="dogs_name" value='true' @if(old('dogs_name')=='true') checked @endif>
                     <label>Dogs Allowed?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="cats_name" value="{{ old('furnishing_name') }}">
+                    <input type="checkbox" name="cats_name" value='true' @if(old('cats_name')=='true') checked @endif>
                     <label>Cats Allowed?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="otherPets_name" value="{{ old('furnishing_name') }}">
+                    <input type="checkbox" name="otherPets_name" value='true' @if(old('otherPets_name')=='true') checked @endif>
                     <label>Other Pets Allowed?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="allergy_name" value="{{ old('furnishing_name') }}">
-                    <label>Allergy Concerns?</label>
+                    <input type="checkbox" name="allergy_name" value='true' @if(old('allergy_name')=='true') checked @endif>
+                    <label>Other Pets in Building?</label>
                 </div>
             </div>
             <div class="row">
@@ -209,25 +217,26 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="internet_name">
-                    <label>Internet Charge?</label>
+                    <input type="checkbox" name="internet_name" value='true' @if(old('internet_name')=='true') checked @endif>
+                    <label>Free Internet?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="electricity_name">
-                    <label>Electricity Charge?</label>
+                    <input type="checkbox" name="electricity_name" value='true' @if(old('electricity_name')=='true') checked @endif>
+                    <label>Free Electricity?</label>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="water_name">
-                    <label>Water Charge?</label>
+                    <input type="checkbox" name="water_name" value='true' @if(old('water_name')=='true') checked @endif>
+                    <label>Free Water?</label>
                 </div>
             </div>
             <div class="form-group col-sm-12">
-                <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="Amenities" value="{{ old('amenities_name') }}">
+                <label>Amenities Information</label>
+                <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="How water, electricty and internet bills will be charged." value="{{ old('amenities_name') }}">
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <input type="checkbox" name="smoke_name">
+                    <input type="checkbox" name="smoke_name" value='true' @if(old('smoke_name')=='true') checked @endif>
                     <label>Smoke Free?</label>
                 </div>
             </div>
@@ -242,21 +251,19 @@
                 </div>
             </div>
             -->
+
             <div class="row">
-                <label>Images</label>
+                <label>Upload Listing Images</label>
                 <div class="form-group col-sm-12">
                     <div class='input-group file' id='' name=''>
-                        <input type="file" class="form-control" name="image[]" placeholder="Upload Image" multiple="true">
+                        <input type="file" class="" name="image[]" placeholder="Upload Image" multiple="true" required>
                     </div>
                 </div>
-
             </div>
 
             <br />
             <button class="btn btn-default">Submit</button>
         </form>
-        <!-- Submits form info thrupostListing.js -->
-        <!-- <button onClick="test(event)" class="btn btn-default">Save</button> -->
     </div>
 </div>
 

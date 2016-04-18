@@ -1,32 +1,37 @@
-    .navbar {
-      margin-bottom: 0;
-      color: white;
-      background-color: #002F2F;
-    }
+.navbar {
+  margin-bottom: 0;
+  color: white;
+  background-color: #002F2F;
+}
 
-    .navbar .navbar-header {
-      font-size: 1.3em;
-      margin: 0.7em;
-    }
+.navbar .navbar-header {
+  font-size: 1.3em;
+  margin: 0.7em;
+}
 
-    #navElements {
-      margin-right: 1em;
-    }    
+#navElements {
+  margin-right: 1em;
+}    
 
-    .navbar input{
-      margin: 0.7em;
-      color:black;
-    }
+.navbar input{
+  margin: 0.7em;
+  color:black;
+}
 
-    .button {
-      margin: 0px;
-    }
+.button {
+  margin: 0px;
+}
 
-    #siteName {
-      color: white;
-      text-decoration: none;
-    }
+#siteName {
+  color: white;
+  text-decoration: none;
+}
 
-    body {
-      background-color:  #EFECCA;
-    }
+body {
+  background-color:  #EFECCA;
+}
+
+.wrap {
+  height: 100%;
+  overflow: auto;
+}
