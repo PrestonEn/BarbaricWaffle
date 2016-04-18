@@ -32,33 +32,32 @@
                                 <div class="form-group col-sm-12">
                                     <label class="textLabel"> Saved Searches</label>
                                     @if($savedSearch != null && $savedSearch->count() != 0)
-                                        <select onchange="updateSearch(this)" id = "savedSearch" class="form-control" name="savedSearch">
+                                    <select onchange="updateSearch(this)" id="savedSearch" class="form-control" name="savedSearch">
                                         <option></option>
-                                            @foreach($savedSearch as $saved)
+                                        @foreach($savedSearch as $saved)
 
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var obj = <?php echo json_encode($saved); ?>;
-                                                    passToArray(obj);
-                                                });
-                                            </script>
+                                        <script>
+                                            $(document).ready(function () {
+                                                var obj = <?php echo json_encode($saved); ?>;
+                                                passToArray(obj);
+                                            });
+                                        </script>
 
-                                            <option value="{{$saved->saved_search_id}}"> {{$saved->city}} </option>
+                                        <option value="{{$saved->saved_search_id}}"> {{$saved->city}}, {{$saved->country}} </option>
 
-                                            @endforeach
-                                        </select>
-                                    @elseif(!Auth::check())
-                                        <p>Make an account to save searches!</p>
-                                    @else
-                                        <p>No Saved Searches!</p>
-                                    @endif
+                                        @endforeach
                                     </select>
+                                    @elseif(!Auth::check())
+                                    <p>Make an account to save searches!</p>
+                                    @else
+                                    <p>No Saved Searches!</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-sm-3">
                                     <label class="textLabel"> Country </label>
-                                    <select onchange="getCitiesFromCountry(this)" class="form-control" id="country" name="country">
+                                    <select onchange="getCitiesFromCountry(this.value)" class="form-control" id="country" name="country">
                                         <option value="all">All</option>
                                         @foreach($location as $loc)
                                         <option value="{{$loc->country}}"> {{$loc->country}} </option>
@@ -97,36 +96,52 @@
                             </div>
                             <div class="row">
 
-                                <div class="form-group">
 
-                                    <label class="col-sm-2 control-label">Pets</label>
+                                <label class="col-sm-2 control-label">Pets</label>
 
-                                    <div class="col-sm-10 columns">
-                                        <span class="additional-info-wrap">        
-                                        <label class="radio-inline petsRadioButton">  
-                                            <input type="radio" name="pets" id="pets" value="Grape">Yes                       
-                                        </label>                         
-                                        <div class="additional-info hide">
-                                            <label class="inner radio-inline petsRadioButton">
-                                                <input type="checkbox" id="dog" name="dogs"/>Dog
-                                            </label>
-                                            <label class="inner radio-inline petsRadioButton">
-                                                <input type="checkbox" id="cat" name="cats" />Cat
-                                            </label>
-                                            <label class="inner radio-inlin petsRadioButtone">
-                                                <input type="checkbox" id="other" name="other" />Other
-                                            </label>
-                                        </div>                    
-                                        </span>
-
-                                        <label class="radio-inline petsRadioButton">
-                                            <input type="radio" name="pets" value="0"> No
-                                        </label>
-                                        <label class="checked radio-inline petsRadioButton">
-                                            <input type="radio" name="pets" value="" checked="checked"> Dont' Care
+                                <div class="col-sm-10 columns">
+                                    <div class="col-sm-3 columns form-group">
+                                        <label class="checkbox-inline">
+                                            <input class="yespets" type="checkbox" name="dogs">Dogs
                                         </label>
                                     </div>
+
+                                    <div class="col-sm-3 columns form-group">
+                                        <label class="checkbox-inline">
+                                            <input class="yespets" type="checkbox" name="cats">Cats
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-3 columns form-group">
+                                        <label class="checkbox-inline">
+                                            <input class="yespets" type="checkbox" name="other">Other Pets
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-3 columns form-group">
+                                        <label class="checkbox-inline">
+                                            <input id="nopets" type="checkbox" name="nopets">No Pets
+                                        </label>
+                                    </div>
+
                                 </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $(".yespets").change(function () {
+                                            if (this.checked) {
+                                                $("input[name='nopets']").prop("checked",false);
+                                                updateCheckBoxes();
+                                            }
+                                        });
+                                         $("#nopets").change(function () {
+                                            if (this.checked) {
+                                                $("input[name='dogs']").prop("checked",false);
+                                                $("input[name='cats']").prop("checked",false);
+                                                $("input[name='other']").prop("checked",false);
+                                                updateCheckBoxes();
+                                            }
+                                        });
+                                        
+                                    });
+                                </script>
 
                             </div>
 
@@ -160,12 +175,12 @@
                                     </div>
                                     <div class="col-sm-4 columns form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="smokeFree"> Smoke Free
+                                            <input type="checkbox" name="smoke"> Smoke Free
                                         </label>
                                     </div>
                                     <div class="col-sm-4 columns form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="smokeFree"> Smoke Free
+                                            <input type="checkbox" name="yard"> Yard
                                         </label>
                                     </div>
                                 </div>
@@ -177,44 +192,16 @@
                                     </div>
                                     <div class="col-sm-4 columns form-group">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="wheelChair"> Wheelchair Accessible
+                                            <input type="checkbox" name="laundry"> Onsite Laundry
                                         </label>
                                     </div>
-                                    <div class="col-sm-4 columns form-group">
-                                        <label class="checkbox-inline">
-                                            <input type="checkbox" name="parking"> Free Parking
-                                        </label>
-                                    </div>
+                                    
                                 </div>
+
                             </div>
 
                             <br />
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <label class="textLabel">Room Level</label>
-                                        <select class="form-control" name="rmLevel">
-                                            <option value="any">Any</option>
-                                            <option value="basement">Basement</option>
-                                            <option value="mainFloor">Main Floor</option>
-                                            <option value="upper">Upper Floors</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class=" col-sm-4">
-                                        <label class="textLabel">Laundry</label>
-                                        <select class="form-control" name="Laundry">
-                                            <option value="any"> Any </option>
-                                            <option value="coinOper"> On Site (coin operated) </option>
-                                            <option value="noCost"> On Site (no cost) </option>
-                                            <option value="na"> Unavailable </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
                                 <div class="form-group">
 
@@ -236,6 +223,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <button onClick="searchFilters(event)" class="btn btn-primary position button1">Submit</button>
+                                    <button onClick="clearForm(event)" class="btn btn-primary position button1">Clear Form</button>
                                     @if(Auth::check())
                                     <button onClick="saveSearch(event)" class="btn btn-primary position button1">Save Search</button>
                                     @else
@@ -255,7 +243,6 @@
                         </form>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 

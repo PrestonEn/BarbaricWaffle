@@ -86,8 +86,9 @@ class lisController extends Controller
 
 	public function viewForeignProfile($userId){
 		$user = User::where('user_id','=',$userId)->first();
-		$locations = $user->locations;
-		return view('profileView', compact('locations'), compact('user'));
+		//$locations = $user->locations;
+		$listings = Listing::users_listings($userId)->get();
+		return view('profileView', compact('listings'), compact('user'));
 	}
 
 	public function getPropertyListings($locationId){
@@ -111,7 +112,8 @@ class lisController extends Controller
 
 	public function removeFromFavourites(){
 		$toRemove = json_decode(Input::get('array'));
-		$user->favourite_listings()->detach($toRemove);
+
+		Auth::user()->favourite_listings()->detach($toRemove);
 		return redirect('../profileFavourites');
 	}
 
@@ -132,8 +134,16 @@ class lisController extends Controller
 			$location = Location::where('location_id','=',$rem)->first();;
 			$listings = $location->listing;
 			foreach ($listings as $listing) {
+
+				foreach($listing->listing_image as $image){
+					if ($image != null){
+						$image->delete();
+					}
+				}
 				$listInfo = $listing->listing_info->first();
-				$listInfo->delete();	
+				if ($listInfo != null){
+					$listInfo->delete();
+				}	
 				$listing->delete();
 			}
 			$location->delete();
@@ -141,7 +151,7 @@ class lisController extends Controller
 		return redirect('profileProperties');
 	}
 
-	public function getProperyFromListing($ListingId){
+	public function getPropertyFromListing($ListingId){
 		$list = Listing::where('listing_id','=',$ListingId)->first();
 		$location = $list->location;
 		$listings = $location->listing;
@@ -160,36 +170,27 @@ class lisController extends Controller
 
 	public function getSearchListings($searchId){
 		$search = Saved_Search::where('saved_search_id','=',$searchId)->first();
-		$listing = Listing::where('date_created_min','>=',$search->date_created_min)->first();
-		dd($listing);
+		$topPrice = $search->price_monthly_max;
+
+		if ($topPrice == 2000){
+			$topPrice = 5000000;
+		}
+
+		$listings = Listing_Info::whereIfNotNull('num_bedrooms_total', "=",$search->num_bedrooms_total)
+                ->whereIfNotNull('price_monthly',"<=", $search->price_monthly_min)
+                ->whereIfNotNull('price_monthly',">=", $topPrice)
+                ->whereIfNotNull('num_bathrooms_total', "=",$search->num_bathrooms_total)
+                ->whereIfNotNull('has_laundry', "=", $search->has_laundry)
+                ->whereIfNotNull('owner_pays_internet', "=",$search->owner_pays_internet)
+                ->whereIfNotNull('has_kitchen', "=",$search->has_kitchen)
+                ->whereIfNotNull('owner_pays_electricity', "=",$search->owner_pays_electricity)
+                ->whereIfNotNull('owner_pays_water', "=",$search->owner_pays_water)
+                ->whereIfNotNull('owner_has_pets', "=",$search->owner_has_pets)
+                ->whereIfNotNull('allowed_dogs', "=",$search->allowed_dogs)
+                ->whereIfNotNull('allowed_cats', "=",$search->allowed_cats)
+                ->whereIfNotNull('allowed_other_pets', "=",$search->allowed_other_pets)->get();
+                return view('listingBySearch', compact('listings'));
 	}
 }
 
 
-/*
-'date_created_min',
-            'date_created_max',
-            'is_active',
-            'search_description',
-            'price_monthly_min',
-            'price_monthly_max',
-            'rental_length_months_min',
-            'rental_length_months_max',
-            'rental_available_from',
-            'rental_available_to',
-            'room_size_sqft_min',
-            'room_size_sqft_max',
-            'num_roommates_max',
-            'has_furnishings',
-            'has_kitchen',
-            'has_laundry',
-            'has_yard',
-            'owner_pays_internet',
-            'owner_pays_water',
-            'owner_pays_electricity',
-            'owner_has_pets',
-            'allowed_dogs',
-            'allowed_cats',
-            'allowed_other_pets'
-
-*/

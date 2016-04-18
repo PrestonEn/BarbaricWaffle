@@ -33,6 +33,11 @@
    <form name="formyform" method="post" action="profileSearches">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input id = "array" name="array" type="hidden" value="">
+   
+   @if (count($search)==0)
+      <div class = "center">No searches to display</div>
+      <br>
+      @endif
    @foreach($search as $s)
       <div class = "row">   
          <div class = "col-xs-12 col-sm-12">
@@ -42,8 +47,16 @@
                            <td class = "col-xs-3 col-sm-3">
                               <strong> Search Criteria </strong>
                               <ul class = "searchCriteria">
-                                 <li> Min Price : {{$s->price_monthly_min}}</li>
-                                 <li> Max Price : {{$s->price_monthly_max}}</li>
+                                 <li> Min Price : {{$s->price_monthly_min}}
+                                    
+
+                                 </li>
+                                 <li> Max Price : 
+                                    @if ($s->price_monthly_max == 2000)
+                                    2000+
+                                    @else
+                                    {{$s->price_monthly_max}}
+                                    @endif</li>
 
                               @if($s->rental_length_months_min != null)<li>Minimum Lease Length : {{$s->rental_length_months_min}}</li> @endif
                               @if($s->rental_length_months_max != null)<li>Maximum Lease Length : {{$s->rental_length_months_max}}</li> @endif
@@ -88,7 +101,7 @@
       
    </form>
 
-   <div id = "addProp"> Searches not meeting your criteria? <a href="#"> Add a new Saved Search</a></div>
+   <div id = "addProp"> Searches not meeting your criteria? <a href="../mapListing"> Add a new Saved Search</a></div>
    <div></div>
 
 @stop

@@ -37,3 +37,8 @@ div.row {
 .modal-content {
 	text-align: left;2
 }
+
+.center{
+	text-align: center;
+	font-style: italic;
+}
