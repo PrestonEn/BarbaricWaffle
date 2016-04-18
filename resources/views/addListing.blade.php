@@ -180,8 +180,25 @@
                     <label>Furnishings?</label>
                 </div>
             </div>
-
-             <div class="form-group col-sm-12">
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="smoke_name" value='true' @if(old('smoke_name')=='true') checked @endif>
+                    <label>Smoke Free?</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="internet_name" value='true' @if(old('internet_name')=='true') checked @endif>
+                    <label>Free Internet?</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="electricity_name" value='true' @if(old('electricity_name')=='true') checked @endif>
+                    <label>Free Electricity?</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <input type="checkbox" name="water_name" value='true' @if(old('water_name')=='true') checked @endif>
+                    <label>Free Water?</label>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
                 <label for="description_name">House and Listing Description:</label>
                 <textarea class="form-control" rows="5" id="description_id" name="description_name">{{ old('description_name') }}</textarea>
             </div>
@@ -214,33 +231,12 @@
                         placeholder="Additional Pet information, allergy concerns, etc.">{{ old('petDescription_name') }}</textarea>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="form-group col-sm-3">
-                    <input type="checkbox" name="internet_name" value='true' @if(old('internet_name')=='true') checked @endif>
-                    <label>Free Internet?</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="checkbox" name="electricity_name" value='true' @if(old('electricity_name')=='true') checked @endif>
-                    <label>Free Electricity?</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="checkbox" name="water_name" value='true' @if(old('water_name')=='true') checked @endif>
-                    <label>Free Water?</label>
-                </div>
-            </div>
+<!-- 
             <div class="form-group col-sm-12">
                 <label>Amenities Information</label>
                 <input type="text" class="form-control" id="amenities_id" name="amenities_name" placeholder="How water, electricty and internet bills will be charged." value="{{ old('amenities_name') }}">
             </div>
-
-            <div class="row">
-                <div class="form-group col-sm-3">
-                    <input type="checkbox" name="smoke_name" value='true' @if(old('smoke_name')=='true') checked @endif>
-                    <label>Smoke Free?</label>
-                </div>
-            </div>
-
+ -->
             <!--
             <div class="row">
                 <div class="col-sm-12">
