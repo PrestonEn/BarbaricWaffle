@@ -69,7 +69,7 @@
                             <ul>
                                 @if ($listingInfo->allowed_dogs)<li>Dogs Allowed</li>@else<li>NO Dogs Allowed</li>@endif
                                 @if ($listingInfo->allowed_cats)<li>Cats Allowed</li>@else<li>NO Cats Allowed</li>@endif
-                                @if ($listingInfo->allowed_other_pets)<li>Some Pets Allowed</li>@else<li>NO Pets Allowed</li>@endif
+                                @if ($listingInfo->allowed_other_pets)<li>Some Pets Allowed</li>@else<li>Some Pets NOT Allowed</li>@endif
                                 @if ($listingInfo->owner_has_pets)<li>Other Pets In Building</li>@endif
                             </ul>
                         </div>
@@ -90,6 +90,7 @@
                 <div class="col-sm-7">
                     <h2>{{ $listingInfo->listing->location->user->first_name}} {{ $listingInfo->listing->location->user->last_name}}</h2>
                     <p>Joined {{ $listingInfo->listing->location->user->created_at->diffInDays()}} day(s) ago</p>
+                    <p class="col-sm-6" id="sendMessage"><a alt="Navigate to rentors profile" href="../../profileView/{{$user->user_id}}">View Profile</a></p>
                     <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$user->user_id}}">View Profile</a></p>
 
                 </div>
