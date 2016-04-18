@@ -68,10 +68,11 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('addProperty', 'pageStructureController@addProperty');
 
-    Route::get('getProperyPageFromHouseId/{ListingId}', 'lisController@getProperyFromListing');
+    Route::get('getProperyPageFromHouseId/{ListingId}', 'lisController@getPropertyFromListing');
 
     Route::get('listingFoundSMS', 'pageStructureController@listingFoundSMS'); //SMS View
 
+    Route::get('listingMeetingSearch/{listings}', 'lisController@showSearchedListings');
 
     // Add listing POST request
     Route::post('addProperty', 'propertyController@add');

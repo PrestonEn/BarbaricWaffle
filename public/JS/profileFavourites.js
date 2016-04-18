@@ -4,6 +4,7 @@ function makeEditable(button){
 		button.style.backgroundColor = "orange";
 		button.innerHTML = "cancel";
 		if (document.getElementById('warning')!= null){
+			document.getElementById('warning').style.textAlign = "center";
 			document.getElementById('warning').innerHTML = '*** Note that deleting a property will delete all listings at that property ***';
 		}
 

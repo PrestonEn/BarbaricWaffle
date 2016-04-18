@@ -10,6 +10,7 @@
             <h4>
                 {{ $listingInfo->listing->location->street_address}}
                 </br>{{ $listingInfo->listing->location->city}}, {{$listingInfo->listing->location->province}}
+                </br> {{$listingInfo->listing->location->country}}
                 @if ( $listingInfo->unit )
                     </br> Unit {{ $listingInfo->unit }} 
                 @endif

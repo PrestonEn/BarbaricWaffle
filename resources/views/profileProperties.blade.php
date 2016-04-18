@@ -19,8 +19,9 @@
 <div class = "pageTitle"> Profile Properties </div>
 
    <div class = "row" id = "buttonDiv">
-      <div class = "col-xs-12">
+      <div class = "col-xs-12 col-sm-12 col-lg-12">
          <label id = "warning"></label>
+         <br>
          <label id = "buttonHolder"></label>
          <labeL><button id = 'editButton' class = "btn btn-primary" value = "0" onclick="makeEditable(this)">edit</button></label>
 	   </div>
@@ -30,6 +31,9 @@
    <form name="formyform" method="post" action="profileProperties">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input id = "array" name="array" type="hidden" value="">
+   @if (count($locations)==0)
+      <div class = "center">No properties to display</div>
+      @endif
    @foreach($locations as $location)
       <div class = "row">   
          <div class = "col-xs-12 col-sm-12">
