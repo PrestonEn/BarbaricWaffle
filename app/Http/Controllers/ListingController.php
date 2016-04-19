@@ -91,7 +91,7 @@ class ListingController extends Controller
         $listingInfo->num_bedrooms_total =  Input::get('bedrooms_name');
         $listingInfo->num_bathrooms_total = Input::get('bathrooms_name');
         $listingInfo->num_roommates_max =   Input::get('roommatesNum_name');
-        $listingInfo->room_size_sqft =      Input::get('sqftSize_name', 0);
+        $listingInfo->room_size_sqft =      Input::get('sqft_name', 0);
 
         //Booleans
         $listingInfo->has_kitchen =             (Input::has('kitchen_name')) ? true : false;
@@ -106,7 +106,9 @@ class ListingController extends Controller
         $listingInfo->allowed_dogs =            (Input::has('dogs_name')) ? true : false;
         $listingInfo->allowed_cats =            (Input::has('cats_name')) ? true : false;
         $listingInfo->allowed_other_pets =      (Input::has('otherPets_name')) ? true : false;
-        
+        $listingInfo->smoke_free =              (Input::has('smoke_name')) ? true : false;
+        $listingInfo->details_pets =            Input::get('petDescription_name');
+
         $listingInfo->mls_number =              Input::get('mls', 'N/A');
         
         $listingInfo->rental_length_months_min = Input::get('rentalLength_name');

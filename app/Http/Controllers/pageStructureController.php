@@ -52,6 +52,10 @@ class pageStructureController extends Controller
         }else{
             $user = Auth::user();
             $locations = $user->locations;
+            if($locations==null || $locations->count() < 1){
+                //No locations, redirect to add property first.
+                return redirect('addProperty');
+            }
             return view('addListing', compact('locations'));
         }
     }
