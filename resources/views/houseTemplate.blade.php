@@ -1,4 +1,5 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
+<link href="{!! asset('CSS/navbarLeft.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
 
 @extends('navbarTop') 
 
@@ -70,7 +71,9 @@
                     <h4>Properties Contact profile</h4>
                 </div>-->
                 <div class="col-sm-5">
-                    <div class="profile"></div>
+                    <div class="profile">
+                        <img id = "profilePic" class = "img-responsive" src="../{{$user->user_image_filename}}">
+                    </div>
                 </div>
                 <div class="col-sm-7">
                     <h2>{{ $listingInfo->listing->location->user->first_name}} {{ $listingInfo->listing->location->user->last_name}}</h2>
@@ -83,16 +86,6 @@
 
                 </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <h4>Similar Listings</h4>
-            <div class="col-sm-12 similarListing">
-            </div>
-            <div class="col-sm-12 similarListing">
-            </div>
-            <div class="col-sm-12 similarListing">
-            </div>
-
         </div>
     </div>
 </div>
