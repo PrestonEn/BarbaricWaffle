@@ -9,8 +9,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('signUp','pageStructureController@signUp');
 
-    Route::get('passwordRetrieval', 'pageStructureController@passwordRetrieval');
+    Route::get('passwordRetrieval', 'Auth\PasswordController@getEmail');
+    Route::post('passwordRetrieval', 'Auth\PasswordController@postEmail');
 
+    // Password reset routes...
+    Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@postReset');
     //Route::get('profileMessages', 'pageStructureController@profileMessages');
 
     Route::get('/','lisController@mapListings');

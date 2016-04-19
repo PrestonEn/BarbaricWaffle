@@ -74,7 +74,7 @@ class lisController extends Controller
 		//Should this have an ->active()?
 		$listing = Listing::where('listing_id','=',$listingId)->first();
 		$user = $listing->location->user;
-
+		
 
 		$listings = Listing_Info::where('listing_id','=',$listingId)->get();
 		$listingInfo = $listings->first();

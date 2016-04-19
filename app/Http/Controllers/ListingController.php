@@ -79,7 +79,7 @@ class ListingController extends Controller
        
         $listingInfo->is_active = true;
 
-        $listingInfo->listing_title =       Input::get('title_name');
+        $listingInfo->listing_title =       ucwords(Input::get('title_name'));
         $listingInfo->listing_description = Input::get('description_name', 'No Description');
 
         $listingInfo->price_monthly =       Input::get('rent_name');

@@ -1,4 +1,5 @@
 <link href="{!! asset('CSS/houseTemplate.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
+<link href="{!! asset('CSS/navbarLeft.css') !!}" media="all" rel="stylesheet" type="text/css" /> 
 
 @extends('navbarTop') 
 
@@ -84,7 +85,7 @@
                 </div>-->
                 <div class="col-sm-5">
                     <div class="profile">
-                        <img src="../{{$user->user_image_filename}}" id="profilePic" class="img-responsive img-circle">
+                        <img id = "profilePic" class = "img-responsive" src="../{{$user->user_image_filename}}">
                     </div>
                 </div>
                 <div class="col-sm-7">
@@ -96,7 +97,7 @@
                 </div>
             </div>
         </div>
-<!--         <div class="col-sm-3">
+        <!--<div class="col-sm-3">
             <h4>Similar Listings</h4>
             <div class="col-sm-12 similarListing">
             </div>
@@ -104,8 +105,9 @@
             </div>
             <div class="col-sm-12 similarListing">
             </div>
+        </div>-->
         </div>
- -->    </div>
+    </div>
 </div>
 
 

@@ -36,7 +36,7 @@ trait ResetsPasswords
             return view('auth.passwords.email');
         }
 
-        return view('auth.password');
+        return view('passwordRetrieval');
     }
 
     /**
