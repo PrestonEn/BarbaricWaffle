@@ -56,7 +56,7 @@ class ListingController extends Controller
             'bedrooms_name'         => 'bail|numeric|min:0',
             'bathrooms_name'        => 'bail|numeric|min:0',
             'sqftSize_name'         => 'bail|numeric|min:0',
-
+            'image.*'               => 'required|image', 
             'mls'                   => 'alpha_num',
 
             // 'files_name[]'          => 'required|images',

@@ -42,11 +42,11 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('profileSettings', 'userController@profileSettingPagePopulation');
 
-    Route::post('profileSettings/resetPassword', 'userController@updatePassword');
+    Route::post('resetPassword', 'userController@updatePassword');
 
-    Route::post('profileSettings/resetName', 'userController@updateName');
+    Route::post('resetName', 'userController@updateName');
 
-    Route::post('profileSettings/resetPhoneNumber', 'userController@updatePhoneNumber');
+    Route::post('resetPhoneNumber', 'userController@updatePhoneNumber');
 
     Route::get('profilePostings', 'lisController@getProfileListings');
 

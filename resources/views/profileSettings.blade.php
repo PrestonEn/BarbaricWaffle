@@ -34,7 +34,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Phone Number</h2>
-  <form action="{{$user->user_id}}/resetPhoneNumber" method="post">
+  <form action="resetPhoneNumber" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
@@ -59,7 +59,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Change Password</h2>
-  <form action= "{{$user->user_id}}/resetPassword" method="post">
+  <form action= "resetPassword" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
@@ -74,6 +74,10 @@
     </div> 
 
     <div class = "row">
+      <div class = "col-xs-10 col-md-6">
+        <label>Confirm New Password:</label>
+        <input type = "password" class = "form-control" name = "nPass_confirmation">
+      </div>
       <div class = "col-xs-1"></div>
       <div id = "button" class = "col-xs-10">
         <button type = "submit" class = "btn-md">Submit</input>
@@ -84,7 +88,7 @@
 
 <div class = "col-xs-12 col-md-6">
   <h2>Edit Name</h2>
-  <form action= "{{$user->user_id}}/resetName" method="post">
+  <form action= "resetName" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class = "row">
