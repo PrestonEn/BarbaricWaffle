@@ -31,7 +31,6 @@ class Listing_Info extends Model
             'num_roommates_max',
 
             'has_furnishings',
-            'details_furnishings',
 
             'has_kitchen',
             'has_laundry',
@@ -40,6 +39,8 @@ class Listing_Info extends Model
             'owner_pays_internet',
             'owner_pays_water',
             'owner_pays_electricity',
+
+            'smoke_free',
 
             'owner_has_pets',
             'allowed_dogs',
