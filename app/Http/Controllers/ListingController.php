@@ -97,7 +97,7 @@ class ListingController extends Controller
         $listingInfo->has_kitchen =             (Input::has('kitchen_name')) ? true : false;
         $listingInfo->has_laundry =             (Input::has('laundry_name')) ? true : false;
         $listingInfo->has_yard =                (Input::has('yard_name')) ? true : false;
-        $listingInfo->has_furnishingS =          (Input::has('furnishing_name')) ? true : false;
+        $listingInfo->has_furnishings =          (Input::has('furnishing_name')) ? true : false;
 
         $listingInfo->owner_pays_internet =     (Input::has('internet_name')) ? true : false;
         $listingInfo->owner_pays_water =        (Input::has('water_name')) ? true : false;
