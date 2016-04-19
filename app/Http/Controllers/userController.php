@@ -89,8 +89,8 @@ class userController extends Controller
             ]);   
 
         Auth::user()->fill([
-                     'first_name' => Input::get('firstName'),
-                     'last_name' => Input::get('lastName')])->save();         
+                     'first_name' => ucwords(Input::get('firstName')),
+                     'last_name' => ucwords(Input::get('lastName'))])->save();         
 
         return redirect('profileSettings')
                             ->with('update','Name Change Successful');
