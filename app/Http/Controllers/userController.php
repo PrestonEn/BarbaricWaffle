@@ -35,8 +35,8 @@ class userController extends Controller
 
 
         $user = new User;
-        $user->first_name = Input::get('firstName');
-        $user->last_name = Input::get('lastName');
+        $user->first_name = ucwords(Input::get('firstName'));
+        $user->last_name = ucwords(Input::get('lastName'));
 
         $user->password = bcrypt(Input::get('pass'));
         
