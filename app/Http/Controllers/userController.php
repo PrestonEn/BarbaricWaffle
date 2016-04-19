@@ -35,8 +35,8 @@ class userController extends Controller
 
 
         $user = new User;
-        $user->first_name = Input::get('firstName');
-        $user->last_name = Input::get('lastName');
+        $user->first_name = ucwords(Input::get('firstName'));
+        $user->last_name = ucwords(Input::get('lastName'));
 
         $user->password = bcrypt(Input::get('pass'));
         
@@ -89,8 +89,8 @@ class userController extends Controller
             ]);   
 
         Auth::user()->fill([
-                     'first_name' => Input::get('firstName'),
-                     'last_name' => Input::get('lastName')])->save();         
+                     'first_name' => ucwords(Input::get('firstName')),
+                     'last_name' => ucwords(Input::get('lastName'))])->save();         
 
         return redirect('profileSettings')
                             ->with('update','Name Change Successful');
@@ -120,11 +120,11 @@ class userController extends Controller
             $user = Auth::user();
             $img = Image::make(Input::file('photo'));
             // resize the image to a width of 300 and constrain aspect ratio (auto height)
-            $img->resize(500, null, function ($constraint) {
+            $img->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
 
-            $img->crop(300, 300);
+            $img->crop(800, 800);
 
             $filename = 'images/profile'.$user->user_id.'jpg';
             $img->save($filename, 100);
@@ -137,8 +137,7 @@ class userController extends Controller
 
 
         }
-        return redirect('profileSettings')
-                            ->with('update','Profile Image Change Failed');
+
     }
 
 }

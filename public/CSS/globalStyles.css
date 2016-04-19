@@ -29,6 +29,10 @@ div.row {
 	margin-top:60px;
 }
 
+.bHolderv2 {
+	text-align:right;
+}
+
 .helpButton {
 	border-radius: 50%;
 	border: 1px solid #0000b3;

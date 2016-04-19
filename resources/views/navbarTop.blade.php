@@ -23,7 +23,7 @@
 
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container-fluid navbarCSS">
     <div class = "navbar-header"><a id = "siteName" href="../mapListing">Homestead</a>
 
         <button type="button-small" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style = "margin:0px;padding:0px">
@@ -54,7 +54,7 @@
 
 
 
-<div >
+<div class="wrap">
 
 @yield('content')
 </div>
