@@ -2,6 +2,9 @@
 <link href="{!! asset('CSS/mapListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/addSearches.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/nouislider.css') !!}" media="all" rel="stylesheet" type="text/css" /> @extends('navbarTop') @section('content')
+
+
+
 <form method="POST" action="/password/reset">
     {!! csrf_field() !!}
     <input type="hidden" name="token" value="{{ $token }}">
@@ -35,4 +38,3 @@
         </button>
     </div>
 </form>
-@stop
