@@ -84,8 +84,8 @@ class userController extends Controller
 
     public function updateName(Request $request){
         $this->validate($request, [
-                'firstName' => 'required|confirmed|max:60',
-                'lastName' => 'required|confirmed|max:60',
+                'firstName' => 'required|max:60',
+                'lastName' => 'required|max:60',
             ]);   
 
         Auth::user()->fill([
