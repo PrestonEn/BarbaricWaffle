@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use Image;
 use Auth;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
+use Mail;
+
 
 class ListingController extends Controller
 {
@@ -146,6 +149,133 @@ class ListingController extends Controller
             $lis_img->image_filename_thumbnail = $filename . '_thumb';
             $lis_img->save();
         }
+
+		/* Scan new listing for saved searches match, and send SMS message */
+
+		$dbg = false;  //set to true for testing
+
+		$query = <<<SQL
+			SELECT 	*
+			FROM 	homestead.saved_searches AS SEARCH
+			INNER 	JOIN homestead.users AS USER ON SEARCH.user_id = USER.user_id
+SQL;
+		$searches = DB::select($query);
+
+
+		foreach($searches as $s) {
+			$match = true;
+
+			if($dbg)print "User {$s->first_name} has a search<br>";
+
+			$str = $s->phone;
+			$ph = "";
+
+			for($i=0; $i<strlen($str); $i++) {
+				if( is_numeric($str[$i]) )
+					$ph = $ph . $str[$i];
+			}
+
+			$ph = substr($ph, 0, 10);
+
+
+			if($dbg)printf("The phone is : " .  $ph . "<br>");
+
+
+			/* Check price range if max pricing is not in saved search */
+			if( $s->price_monthly_max < 2000) {
+				if( ($listingInfo->price_monthly >= $s->price_monthly_min) &&
+					  ($listingInfo->price_monthly <= $s->price_monthly_max) ) {
+					if($dbg)print "Price matches search criteria<br>";
+
+				}
+				else
+					$match = false;
+			}
+
+
+			if( $listingInfo->num_bedrooms_total < $s->num_bedrooms_total )
+				$match = false;
+			if($dbg){if(!$match) print "No match 1<br>";}
+
+			if( $listingInfo->num_bathrooms_total < $s->num_bathrooms_total )
+				$match = false;
+			if($dbg){if(!$match) print "No match 2<br>";}
+
+			if( $listingInfo->num_roommates_max > $s->num_roommates_max )
+				$match = false;
+			if($dbg){if(!$match) print "No match 3<br>";}
+
+			if( ($s->has_kitchen == 1 ? true : false) && !$listingInfo->has_kitchen )
+				$match = false;
+			if($dbg){if(!$match) print "No match 4 {$listingInfo->has_kitchen} {$listingInfo->has_kitchen} " . (Input::has('kitchen_name') ? "A" : "B") . "<br>";}
+
+			if( ($s->has_laundry == 1 ? true : false) && !$listingInfo->has_laundry )
+				$match = false;
+			if($dbg){if(!$match) print "No match 5<br>";}
+
+			if( ($s->has_yard == 1 ? true : false) && !$listingInfo->has_yard )
+				$match = false;
+			if($dbg){if(!$match) print "No match 6<br>";}
+
+			if( ($s->has_furnishings == 1 ? true : false) && !$listingInfo->has_furnishings )
+				$match = false;
+			if($dbg){if(!$match) print "No match 7<br>";}
+
+			if( ($s->owner_pays_internet == 1 ? true : false) && !$listingInfo->owner_pays_internet )
+				$match = false;
+			if($dbg){if(!$match) print "No match 8<br>";}
+
+			if( ($s->owner_pays_water == 1 ? true : false) && !$listingInfo->owner_pays_water )
+				$match = false;
+			if($dbg){if(!$match) print "No match 9<br>";}
+
+			if( !($s->owner_has_pets == 1 ? true : false) && $listingInfo->owner_has_pets )
+				$match = false;
+			if($dbg){if(!$match) print "No match 10<br>";}
+
+			if( ($s->allowed_dogs == 1 ? true : false) && !$listingInfo->allowed_dogs )
+				$match = false;
+			if($dbg){if(!$match) print "No match 11<br>";}
+
+			if( ($s->allowed_cats == 1 ? true : false) && !$listingInfo->allowed_cats )
+				$match = false;
+			if($dbg){if(!$match) print "No match 12<br>";}
+
+			if( ($s->allowed_other_pets == 1 ? true : false) && !$listingInfo->allowed_other_pets )
+				$match = false;
+			if($dbg){if(!$match) print "No match 13<br>";}
+
+
+			if($match && strlen($ph) == 10) {
+				if($dbg)print "This listing matches your search criteria<br>";
+
+
+				$msg = <<<MSG
+Hello {$s->first_name}!
+Homestead has found a {$listingInfo->num_bedrooms_total} bedroom,{$listingInfo->num_bathrooms_total} bathroom property that matches the criteria in your saved search #{$s->saved_search_id}.
+
+Please visit our website to check out the listing for more details!
+
+Regards,
+ The Homestead Team
+
+MSG;
+
+				Mail::raw($msg, function ($message) use ($ph, $msg) {
+					$message->from('homestead.proto@gmail.com', 'Homestead');
+					$message->to('sms4f00@gmail.com');
+					$message->subject($ph);
+
+					//print "SMS sent to $ph<br>";
+				});     
+
+			}
+			else {if($dbg)print "This listing does not match your search criteria<br>";}
+		}
+
+
+		if($dbg)return (var_dump($searches) . var_dump($listingInfo));
+
         return redirect('houseTemplate/'.$listing->listing_id);
     }
     
