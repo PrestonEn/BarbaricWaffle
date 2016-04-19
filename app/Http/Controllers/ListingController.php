@@ -261,10 +261,18 @@ Regards,
 
 MSG;
 
+				$em = $s->email;
+
 				Mail::raw($msg, function ($message) use ($ph, $msg) {
 					$message->from('homestead.proto@gmail.com', 'Homestead');
 					$message->to('sms4f00@gmail.com');
 					$message->subject($ph);
+				});     
+
+				Mail::raw($msg, function ($message) use ($ph, $msg, $em) {
+					$message->from('homestead.proto@gmail.com', 'Homestead');
+					$message->to($em);
+					$message->subject('Homestead listing search results');
 
 					//print "SMS sent to $ph<br>";
 				});     
