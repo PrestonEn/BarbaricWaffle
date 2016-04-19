@@ -240,7 +240,7 @@ trait ResetsPasswords
      */
     protected function getResetSuccessResponse($response)
     {
-        return redirect($this->redirectPath())->with('status', trans($response));
+        return redirect('signIn')->with('status', trans($response));
     }
 
     /**
