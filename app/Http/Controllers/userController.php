@@ -11,6 +11,8 @@ use Auth;
 use Image;
 use Validator;
 use App\User;
+use App\Listing_Info;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -127,10 +129,27 @@ class userController extends Controller
 
         return redirect('profileSettings')
                             ->with('update','Profile Image Change Successful');
-
-
         }
 
     }
 
+    public function sendContactEmail(Request $request){
+        if(Auth::check()){
+            $userRecieving = User::findOrFail($request->recievingUser);
+            $userSending = Auth::user();
+            $listingInfo = Listing_Info::findOrFail($request->listing_id);
+
+            Mail::send('emails.contactLandlord', 
+                    ['userSending' => $userSending, 'userRecieving' => $userRecieving, 'propertyId', 'listingInfo' => $listingInfo], 
+                    function ($m) use ($userSending, $userRecieving) {
+                        $m->from('homestead.proto@gmail.com', 'Homestead Listing Bot');
+                        $m->to($userRecieving->email, $userRecieving->name)
+                            ->subject($userSending->first_name . ' ' . $userSending->last_name . ' wants to talk about your property!');
+                    });
+
+            return redirect('houseTemplate/'.$request->listing_id);
+        }else{
+            return redirect('signIn')->withErrors('You need to be signed in to contact the owner!');
+        }
+    }
 }
