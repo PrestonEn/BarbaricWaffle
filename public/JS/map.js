@@ -196,7 +196,8 @@ function updateLatLongFromCity(cityName) {
 function searchFilters(e) {
 
     e.preventDefault();
-    mc.setMap(null);
+    //mc.setMap(null);
+    mc.clearMarkers(); 
 
     searchLocationID.length = 0;
 
@@ -246,6 +247,7 @@ function searchFilters(e) {
                 for (var j = 0; j < markers.length; j++) {
                     if (markers[j].id == searchLocationID[i]) {
                         trueMarkers.push(markers[j]);
+                        mc.addMarker(markers[j]);
 
                     } else {
                         falseMarkers.push(markers[j]);
