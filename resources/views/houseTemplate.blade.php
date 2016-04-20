@@ -5,6 +5,14 @@
 
 @section('content')
 
+
+<script type="text/javascript">
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    // 
+}
+</script>
+
+
 <div class="customWidth">
     <div class="row">
         <div class="col-sm-3">
