@@ -175,7 +175,11 @@ SQL;
 					$ph = $ph . $str[$i];
 			}
 
-			$ph = substr($ph, 0, 10);
+
+			if($ph[0] == 1)
+				$ph = substr($ph, 0, 11);
+			else
+				$ph = substr($ph, 0, 10);
 
 
 			if($dbg)printf("The phone is : " .  $ph . "<br>");
