@@ -8,6 +8,15 @@
 
 <br>
 <div class = "pageTitle"> Password Retrieval </div>	
+
+@if (session('update'))
+    <div class="alert alert-success">
+      <ul>
+        <li>{{ session('update') }}</li>
+      </ul>
+    </div>
+@endif
+
   @if (count($errors) > 0)
       <div class="alert alert-danger">
           <ul>

@@ -15,6 +15,14 @@
     </div>
 @endif
 
+@if (session('update'))
+    <div class="alert alert-success">
+      <ul>
+        <li>{{ session('update') }}</li>
+      </ul>
+    </div>
+@endif
+
 <div class = "pageTitle"> Sign In </div>	
 
 
