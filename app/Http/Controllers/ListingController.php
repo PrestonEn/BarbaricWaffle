@@ -129,11 +129,8 @@ class ListingController extends Controller
             $img = Image::make($file);
             $img_t = Image::make($file);
 
-            $img->resize(600, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
 
-            $img->resize(300, null, function ($constraint) {
+            $img_t->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
 

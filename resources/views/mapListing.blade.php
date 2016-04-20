@@ -1,7 +1,8 @@
 <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/mapListing.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('CSS/addSearches.css') !!}" media="all" rel="stylesheet" type="text/css" />
-<link href="{!! asset('CSS/nouislider.css') !!}" media="all" rel="stylesheet" type="text/css" /> @extends('navbarTop') @section('content')
+<link href="{!! asset('CSS/nouislider.css') !!}" media="all" rel="stylesheet" type="text/css" /> @extends('navbarTop') 
+@section('content')
 <div class="row">
     <div id="col1" class="col-md-8 col-sm-12 col-xs-12">
 

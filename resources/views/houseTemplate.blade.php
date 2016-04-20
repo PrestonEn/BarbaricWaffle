@@ -44,7 +44,25 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
         </div>
         <div class="col-sm-6">
-            <div class="imgGallery"></div>
+
+            <div class="imgGallery">
+            <a href="../{{$images->first()->image_filename}}" data-lightbox="image-1" data-title="">
+                <div class="contain_first" style="height: 100%;
+    position:relative;    background:   url('../{{$images->first()->image_filename}}')no-repeat;
+    background-size: cover;
+    background-position: center;">
+
+                </div>
+                </a>
+            </div>
+
+
+@foreach($images as $image)
+    @if($image != $images->first())<a href="../{{$image->image_filename}}" data-lightbox="image-1" data-title=""></a>@endif
+@endforeach
+
+
+
             <div id="saveToFavourites" class="button col-sm-6" onClick="window.location ='../profileFavourites/{{$listingInfo->listing->listing_id}}'">Save to Favourites</div>
             <div id="callNow" class="button col-sm-6"><a id = "callNowLink"alt="Call Listing Owner" href="tel:{{$user->phone}}">Call Now!</a></div>
             <div class="row">
