@@ -106,7 +106,7 @@ trait ResetsPasswords
      */
     protected function getSendResetLinkEmailSuccessResponse($response)
     {
-        return redirect()->back()->with('status', trans($response));
+        return redirect()->back()->with('status', trans($response))->with('update','An e-mail has been sent to the provided e-mail address. Please read this document for further instruction.');
     }
 
     /**

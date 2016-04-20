@@ -46,7 +46,7 @@ class userController extends Controller
         $user->phone = Input::get('phone');
 
         $user->save();
-        return redirect('signIn');
+        return redirect('signIn')->with('update','A verification e-mail has been sent to the provided e-mail address. Please read this document for further instruction.');
     }
     
 	public function profileSettingPagePopulation(){
