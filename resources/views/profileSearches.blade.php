@@ -45,7 +45,7 @@
                         <tr>
                            <td class = "col-xs-2 col-sm-2 removeable searchCriteria"  name = {{$s->saved_search_id}} ></div>
                            <td class = "col-xs-3 col-sm-3">
-                              <strong> Search Criteria </strong>
+                              <strong> Search Criteria : #{{$s->saved_search_id}}</strong>
                               <ul class = "searchCriteria">
                                  <li> Min Price : {{$s->price_monthly_min}}
                                     
