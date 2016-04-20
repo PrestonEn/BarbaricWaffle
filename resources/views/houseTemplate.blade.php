@@ -45,10 +45,13 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         </div>
         <div class="col-sm-6">
 
+
+@if(count($images) > 0)
+
             <div class="imgGallery">
             <a href="../{{$images->first()->image_filename}}" data-lightbox="image-1" data-title="">
                 <div class="contain_first" style="height: 100%;
-    position:relative;    background:   url('../{{$images->first()->image_filename}}')no-repeat;
+    position:relative;    background:   url('/{{$images->first()->image_filename}}')no-repeat;
     background-size: cover;
     background-position: center;">
 
@@ -60,6 +63,24 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 @foreach($images as $image)
     @if($image != $images->first())<a href="../{{$image->image_filename}}" data-lightbox="image-1" data-title=""></a>@endif
 @endforeach
+
+@else
+
+            <div class="imgGallery">
+            <a href="../images/houseDefault.jpeg" data-lightbox="image-1" data-title="">
+                <div class="contain_first" style="height: 100%;
+    position:relative;    background:   url('../images/houseDefault.jpeg')no-repeat;
+    background-size: cover;
+    background-position: center;">
+
+                </div>
+                </a>
+            </div>
+
+
+@endif
+
+
 
 
 
