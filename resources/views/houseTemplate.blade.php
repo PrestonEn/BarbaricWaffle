@@ -91,8 +91,17 @@
                 <div class="col-sm-7">
                     <h2>{{ $listingInfo->listing->location->user->first_name}} {{ $listingInfo->listing->location->user->last_name}}</h2>
                     <p>Joined {{ $listingInfo->listing->location->user->created_at->diffInDays()}} day(s) ago</p>
-                    <p class="col-sm-6" id="sendMessage"><a alt="Navigate to rentors profile" href="../../profileView/{{$user->user_id}}">View Profile</a></p>
-                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to rentors profile" href="../../profileView/{{$user->user_id}}">View Profile</a></p>
+                    <form method="POST" id="sendContactInfo" style="display:none;" action="../sendContactEmail">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="recievingUser" value="{{$user->user_id}}">
+                        <input type="hidden" name="listing_id" value="{{$listingInfo->listing_id}}">
+                    </form>
+                    <p class="col-sm-6" id="sendMessage">
+                        <a onClick="sendEmailForm()">
+                            Contact Owner
+                        </a>
+                    </p>                    
+                    <p class="col-sm-6" id="viewProfile"><a alt="Navigate to realtors profile" href="../profileView/{{$user->user_id}}">View Profile</a></p>
 
                 </div>
             </div>
@@ -115,5 +124,10 @@
 <script type="text/javascript" src="{!! asset('JS/map.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('JS/houseTemplate.js') !!}"></script>
 
-
+<script type="text/javascript">
+function sendEmailForm()
+{
+  document.getElementById("sendContactInfo").submit();
+}
+</script>
 @stop
