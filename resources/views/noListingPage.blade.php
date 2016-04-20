@@ -1,1 +1,1 @@
-<p style ="font-size:200%">No Listings has been found</p>
+<p style ="font-size:200%;text-align:center;margin-top:2em;">No Listings have been found</p>
