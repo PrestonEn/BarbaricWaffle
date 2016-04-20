@@ -40,6 +40,7 @@ class CreateLocationTable extends Migration
 
             //To be changed later, google walkscore
             $table->integer('walkscore')->nullable;
+            $table->string('image_path', 255)->default('images/houseDefault.jpeg');
 
             $table->timestamps();
         });
