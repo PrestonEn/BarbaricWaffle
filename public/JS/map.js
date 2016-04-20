@@ -196,6 +196,8 @@ function updateLatLongFromCity(cityName) {
 function searchFilters(e) {
 
     e.preventDefault();
+    mc.setMap(null);
+
     searchLocationID.length = 0;
 
 
@@ -244,6 +246,7 @@ function searchFilters(e) {
                 for (var j = 0; j < markers.length; j++) {
                     if (markers[j].id == searchLocationID[i]) {
                         trueMarkers.push(markers[j]);
+
                     } else {
                         falseMarkers.push(markers[j]);
                     }
@@ -255,6 +258,7 @@ function searchFilters(e) {
             }
             for (var i = 0; i < trueMarkers.length; i++) {
                 trueMarkers[i].setVisible(true);
+
             }
             boundChangedEvent();
         },
@@ -364,7 +368,7 @@ function updateSearch(savedId) {
     else {
         $("input[name='hasKitchen']").prop("checked", true);
     }
-    
+
     if (savedSearchArray[id].owner_has_pets == 0) $("input[name='nopets']").prop("checked", false);
     else {
         $("input[name='nopets']").prop("checked", true);
@@ -423,14 +427,17 @@ function getCitiesFromCountry(c) {
             country: c
         },
         success: function (data) {
-
+            var array = data.toString().split(',');
+          
             if ($.trim(data)) {
                 $('#region').empty();
                 $('#region').prop('disabled', false);
-                $('#region').append($('<option>', {
-                    value: data,
-                    text: data,
-                }));
+                for (var i = 0; i < array.length; i++) {
+                    $('#region').append($('<option>', {
+                        value: array[i],
+                        text: array[i],
+                    }));
+                }
             } else {
                 $('#region').empty();
                 $('#region').prop('disabled', true);
@@ -456,12 +463,12 @@ function clearForm(e) {
 function updateCheckBoxes() {
     $('input[type=checkbox]').each(function () {
         var sThisVal = (this.checked ? "1" : "0");
-        if(sThisVal == 1) $(this).closest('.checkbox-inline, .checkbox').addClass('checked');
+        if (sThisVal == 1) $(this).closest('.checkbox-inline, .checkbox').addClass('checked');
         else $(this).closest('.checkbox-inline, .checkbox').removeClass('checked');
     });
     $('input[type=radio]').each(function () {
         var sThisVal = (this.checked ? "1" : "0");
-        if(sThisVal == 1) $(this).closest('.radio-inline, .radio').addClass('checked');
+        if (sThisVal == 1) $(this).closest('.radio-inline, .radio').addClass('checked');
         else $(this).closest('.radio-inline, .radio').removeClass('checked');
     });
 
