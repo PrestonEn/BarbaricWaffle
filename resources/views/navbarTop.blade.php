@@ -14,6 +14,8 @@
   <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="{!! asset('CSS/globalStyles.css') !!}" media="all" rel="stylesheet" type="text/css" />
   <link href="{!! asset('CSS/navbarTop.css') !!}" media="all" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('CSS/lightbox.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700' rel='stylesheet' type='text/css'>
   
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -58,6 +60,7 @@
 
 @yield('content')
 </div>
+    <script src="{!! asset('JS/lightbox.js') !!}"></script>
 
 </body>
 

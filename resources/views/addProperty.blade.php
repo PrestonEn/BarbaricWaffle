@@ -98,6 +98,23 @@
                     <input type="text" class="form-control" id="country_id" name="country_name" placeholder="Country" value="{{ old('country_name') }}" required>
                 </div>
             </div>
+        
+    <div class = "row">
+      <label>Property Image:</label>
+      <div class = "col-xs-10 col-md-10">
+        <!--<button type="button" id="select_image" >Select a file to upload</button>-->
+      </div>
+    </div> 
+
+      <div class = "row">
+        <div id = "button" class = "col-xs-6">
+          <input type = "file" class = "" name = "photo" id="img_store">
+        </div>
+        <div id = "button" class = "col-xs-10">
+          <button type = "submit" class = "btn-md">Submit</input>
+        </div>
+      </div> 
+
         </form>
         <!-- Submits form info thru postProperty.js -->
         <button onClick="postProperty(event)" class="btn btn-default">Submit</button>

@@ -21,7 +21,8 @@ class Location extends Model
             'unit', 
         	'country',
             'latitude',
-            'longitude'
+            'longitude',
+            'image_path'
     ];
     
     public function listing(){

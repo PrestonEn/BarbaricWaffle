@@ -79,9 +79,11 @@ class lisController extends Controller
 		$listings = Listing_Info::where('listing_id','=',$listingId)->get();
 		$listingInfo = $listings->first();
 
+		$images = $listing->listing_image;
+
 		$creationDate = $listingInfo->created_at;
 		$date = $creationDate->diffInDays();
-		return view('houseTemplate', compact('listingInfo'), compact('date'))->with('user',$user);
+		return view('houseTemplate', compact('listingInfo'), compact('date'))->with('user',$user)->with('images', $images);
 	}
 
 	public function viewForeignProfile($userId){

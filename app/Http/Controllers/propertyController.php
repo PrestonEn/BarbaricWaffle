@@ -18,7 +18,7 @@ class propertyController extends Controller
             'postalCode_name' => 'required',
             'city_name' => 'required',
             'province_name' => 'required',
-            'country_name' => 'required'
+            'country_name' => 'required',
         ]);
 
         $json_raw = Input::get('maps_json_name');
@@ -72,6 +72,7 @@ class propertyController extends Controller
         $property->longitude = $lng;
         $property->latitude = $lat;
         $property->city = $city;
+        // $property->image_path = $filename;
         $property->save();
 
         return redirect('profileProperties');

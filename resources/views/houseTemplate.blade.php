@@ -5,6 +5,14 @@
 
 @section('content')
 
+
+<script type="text/javascript">
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    // 
+}
+</script>
+
+
 <div class="customWidth">
     <div class="row">
         <div class="col-sm-3">
@@ -36,7 +44,46 @@
 
         </div>
         <div class="col-sm-6">
-            <div class="imgGallery"></div>
+
+
+@if(count($images) > 0)
+
+            <div class="imgGallery">
+            <a href="../{{$images->first()->image_filename}}" data-lightbox="image-1" data-title="">
+                <div class="contain_first" style="height: 100%;
+    position:relative;    background:   url('/{{$images->first()->image_filename}}')no-repeat;
+    background-size: cover;
+    background-position: center;">
+
+                </div>
+                </a>
+            </div>
+
+
+@foreach($images as $image)
+    @if($image != $images->first())<a href="../{{$image->image_filename}}" data-lightbox="image-1" data-title=""></a>@endif
+@endforeach
+
+@else
+
+            <div class="imgGallery">
+            <a href="../images/houseDefault.jpeg" data-lightbox="image-1" data-title="">
+                <div class="contain_first" style="height: 100%;
+    position:relative;    background:   url('../images/houseDefault.jpeg')no-repeat;
+    background-size: cover;
+    background-position: center;">
+
+                </div>
+                </a>
+            </div>
+
+
+@endif
+
+
+
+
+
             <div id="saveToFavourites" class="button col-sm-6" onClick="window.location ='../profileFavourites/{{$listingInfo->listing->listing_id}}'">Save to Favourites</div>
             <div id="callNow" class="button col-sm-6"><a id = "callNowLink"alt="Call Listing Owner" href="tel:{{$user->phone}}">Call Now!</a></div>
             <div class="row">
