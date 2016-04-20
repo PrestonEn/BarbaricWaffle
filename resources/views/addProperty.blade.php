@@ -9,8 +9,17 @@
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-           test
+        <div class="modal-content" style = "padding:2em;">
+            Use this page to add a new property!
+            <br><br>
+            The full completion of this form will aid us in locating your property.
+            Upon submission of this form, you will be met with a pop up window displaying a map which uses
+            Google in order to determine the location of the inputted address.
+            At this point, you will be able to modify or accept the location. Upon acceptance, you will be sent to the properties page
+            where you may review all of your created properties.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
 </div>

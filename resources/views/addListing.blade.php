@@ -19,17 +19,37 @@
 
                 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                     <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
+                        <div class="modal-content" style = "padding:2em;">
                             </br>
                             <p>
                                 Use this page to add a new listing!
                                 A star (*) shows that the field is required to submit.
+                                <br><br>
+                                A listing will be associated with a property - should you not have any active properties, 
+                                select the "Add a New Property" link to navigate to the Property Creation Form.
+                                <br><br>
+                                Multiple images may be uploaded in correlation to a single listing, however they must all be selected during a single instance
+                                of the 'Choose Image' pop-up window being open. Simply drag your cursor over multiple images to upload these, or click on them individually while holding 'ctrl' ('command' on apple machines).
+                                <br><br>
+                                The form will inform you if you attempt to submit a listing without completing the forms required fields. Should you submit a properly filled form, you will be brought to 
+                                a new page wherein the newly created listings' details and images will be displayed.
                             </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>   
         </div>
+
+        @if (session('warning'))
+            <div class="alert alert-warning">
+              <ul>
+                <li>{{ session('warning') }}</li>
+              </ul>
+            </div>
+        @endif
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">
